@@ -8,18 +8,18 @@ class Content extends React.Component {
   
 
  
-  render() {
+  render(props) {
     if(this.props.action === "findSound"){
     return(
-      <FindSound />
+      <FindSound  mytoken={this.props.mytoken}/>
     )
   }else if(this.props.action === "findArtist"){
     return(
-      <FindArtist />
+      <FindArtist  mytoken={this.props.mytoken} />
     )
   }else if(this.props.action === "homePage"){
     return(
-      <HomePage />
+      <HomePage  mytoken={this.props.mytoken}/>
     )
   }
   }

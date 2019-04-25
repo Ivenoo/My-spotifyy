@@ -2,18 +2,22 @@ body{
     background: rgb(63, 63, 63);
     color: white;
     font-family: 'Arial';
+    border: solid 0px;
+    margin: 0px;
 
 }
 .App-Menu{
     margin-left:auto;
     text-align:center;
+    margin-right:25px;
+
 }
 .App-Contener{
     margin-top:10px;
     padding-top:20px;
-    color:red;
+    color:rgb(255, 255, 255);
     width:100%;
-    border-top: solid 1px white;
+    border-top: solid 1px rgb(255, 115, 0);
 }
 
 .main-button{
@@ -21,9 +25,27 @@ body{
     margin-bottom:10px;
     margin-top:13px;
     cursor: pointer;
+    font-family: "Ink Free";
+    background: rgb(255, 115, 0);
 
 }
 .Home-Page{
     float:left;
     margin-top:0px;
+    margin-right:10px;
+    margin-bottom:10px;
+    cursor: pointer;
+}
+.frames{
+    border: solid 0px red;
+}
+.App-Contener div{
+    margin-left: 10px;
+}
+.szukajka{
+    text-align:center;
+}
+.artist-name, .track-name{
+    color:rgb(255, 0, 0);
+    font-size:20px;
 }
