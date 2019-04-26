@@ -14,7 +14,7 @@ class AppHeader extends React.Component {
          height="40px" width="40px" alt=" " className="Home-Page" onClick ={this.props.selectAction.bind(this, "homePage")} value="HomePage"/>
         <button className="main-button" onClick ={this.props.selectAction.bind(this, "findSound")}>Find Sound</button>
         <button className="main-button" onClick={this.props.selectAction.bind(this, "findArtist")}>Find Artist</button>
-        <button className="main-button" onClick={this.props.selectAction.bind(this, "findArtist")}>Favourite List</button>
+        <button className="main-button" onClick={this.props.selectAction.bind(this, "findGenres")}>Find Genres</button>
       </div>
     )
   }

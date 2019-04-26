@@ -31,7 +31,6 @@ search(e){
   }).then(resp =>{ this.setState({
     artistList: resp.data.artists.items
    })
-   console.log(this.state.artistList)
   }).catch(error => (new Error(console.log(error))))
 }
 

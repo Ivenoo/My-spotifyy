@@ -4,12 +4,12 @@ import axios from 'axios';
 
 
 
-class FindSound extends React.Component {
+class FindGenres extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       searchValue: [],
-      trackList:[]
+      searchList:[]
     }
   }
 
@@ -20,16 +20,17 @@ search(e){
   })
   if(value === ''){
   this.setState({
-  trackList: []
+  searchList: []
 })
 }else{
   axios({
-    url: `https://api.spotify.com/v1/search?q=${value}&type=track&limit=10`,
+    url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track`,
     headers:{
      'Authorization': 'Bearer ' + this.props.mytoken
     }
-  }).then(resp =>{ this.setState({
-    trackList: resp.data.tracks.items
+  }).then(resp =>
+    { this.setState({
+    searchList: resp.data.tracks.items
    })
   }).catch(error => (new Error(console.log(error))))
 }
@@ -45,12 +46,16 @@ window.open(url)
     return(
       <div>
         <div className="szukajka">
-        <input type="text" placeholder="Search Tracks..." onChange={this.search.bind(this)}/><br/>
-       search: {this.state.searchValue}<br/>
+       <select onChange={this.search.bind(this)}>
+         {this.props.typeTracks.map(element=>{
+           return(
+             <option>{element}</option>
+           )
+         })}
+       </select>
        </div>
        <ol>
-       {
-         this.state.trackList.map((element, index)=>{
+       {this.state.searchList.map((element, index)=>{
             if(element.preview_url != null){
           
           return(
@@ -83,4 +88,4 @@ window.open(url)
   }
 }
 
-export default FindSound;
+export default FindGenres;
