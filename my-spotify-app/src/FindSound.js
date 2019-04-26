@@ -61,7 +61,8 @@ window.open(url)
             Title: <strong className="track-name">" {element.name} "</strong><br/>
             <img src={element.album.images[2].url}
             height="40px" width="40px" alt=" " /><br/>
-            <img  alt=" "  src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png" width="50px" height="50px" onClick={this.listen.bind(this, element.preview_url)}/><br/><br/>
+            <img  alt=" "  src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png" width="50px" height="50px" margin-right="80px" onClick={this.listen.bind(this, element.preview_url)}/>
+            <img  alt=" "  src="C:\Users\Iveno\Desktop\Gicior_Z_Bolqiem\My-spotify\my-spotify-app\img\white.png" width="40px" height="40px" onClick={this.listen.bind(this, element.preview_url)}/><br/><br/>
             {/* <iframe src={element.preview_url} height="25px" className="frames"></iframe><br/><br/><br/> */}
             </li>
             )}else{

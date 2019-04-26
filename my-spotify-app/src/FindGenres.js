@@ -47,9 +47,9 @@ window.open(url)
       <div>
         <div className="szukajka">
        <select onChange={this.search.bind(this)}>
-         {this.props.typeTracks.map(element=>{
+         {this.props.typeTracks.map((element, index)=>{
            return(
-             <option>{element}</option>
+             <option key={index}>{element}</option>
            )
          })}
        </select>
@@ -62,7 +62,7 @@ window.open(url)
             
             <li  key={index}>
            Author: {element.artists.map((element2, index) => { 
-             return(<span key='index' >{element2.name}, </span>)})}<br/>
+             return(<span key={index} >{element2.name}, </span>)})}<br/>
             Title: <strong className="track-name">" {element.name} "</strong><br/>
             <img src={element.album.images[2].url}
             height="40px" width="40px" alt=" " /><br/>
@@ -73,7 +73,7 @@ window.open(url)
               return(
                 <li  key={index}>
                 Author: {element.artists.map((element2, index) => { 
-                   return(<span key='index'>{element2.name}, </span>)})}<br/>
+                   return(<span key={index}>{element2.name}, </span>)})}<br/>
                 Title: <strong className="track-name">" {element.name} "</strong><br/>
                 <img src={element.album.images[2].url}
                 height="40px" width="40px" alt=" " /><br/><br/><br/><br/>

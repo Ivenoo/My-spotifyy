@@ -15,6 +15,8 @@ class AppHeader extends React.Component {
         <button className="main-button" onClick ={this.props.selectAction.bind(this, "findSound")}>Find Sound</button>
         <button className="main-button" onClick={this.props.selectAction.bind(this, "findArtist")}>Find Artist</button>
         <button className="main-button" onClick={this.props.selectAction.bind(this, "findGenres")}>Find Genres</button>
+        <button className="main-button" onClick={this.props.selectAction.bind(this, "findAlbum")}>Find Album</button>
+        <button className="main-button" onClick={this.props.selectAction.bind(this, "favourite")}>Favourite</button>
       </div>
     )
   }
