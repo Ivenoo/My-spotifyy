@@ -9,7 +9,9 @@ class Favourite extends React.Component {
     super(props);
     this.state = {
       searchValue: [],
-      trackList:[]
+      trackList:[],
+      box:[],
+      box2: []
     }
   }
 
@@ -33,13 +35,19 @@ search(e){
    })
   }).catch(error => (new Error(console.log(error))))
 }
-
 }
 
-  render() {
-    return(
+test =() =>{
+  return(<p>{localStorage.getItem('fav')}</p>)
+}
+
+render() {
+  return(
      <div>
-       HELLO YOUR FAVOURITE SONGS
+       <div>HELOO</div>
+      {
+       this.test()
+      }
      </div>
     )
   }

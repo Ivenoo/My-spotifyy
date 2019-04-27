@@ -54,3 +54,12 @@ body{
     text-decoration: none;
     margin-bottom:50px !important ;
 }
+.plays{
+    margin-right:10px;
+    width: 50px ;
+    height: 50px;
+    cursor: pointer;
+}
+.button-favourite{
+    cursor:pointer;
+}

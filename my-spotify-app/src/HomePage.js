@@ -41,6 +41,10 @@ listen(url){
 window.open(url)
 }
 }
+
+componentWillUnmount(){
+}
+
  render() {
   return(
     <div>

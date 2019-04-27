@@ -9,14 +9,16 @@ class FindSound extends React.Component {
     super(props);
     this.state = {
       searchValue: [],
-      trackList:[]
+      trackList:[],
+      
     }
   }
 
 search(e){
   const value = e.currentTarget.value
   this.setState({
-    searchValue: value
+    searchValue: value,
+    elo: ''
   })
   if(value === ''){
   this.setState({
@@ -31,6 +33,7 @@ search(e){
   }).then(resp =>{ this.setState({
     trackList: resp.data.tracks.items
    })
+   this.createfav()
   }).catch(error => (new Error(console.log(error))))
 }
 
@@ -40,6 +43,55 @@ listen(url){
 window.open(url)
 }
 }
+heart = ((id) => {
+  const fav =JSON.parse(localStorage.getItem('fav'));
+  let heartTrue = 0;
+  
+  fav.forEach(element=>{
+    if(element === id){
+      heartTrue = 1;
+    }
+  })
+  if(heartTrue){
+    return(<img  alt=" "  className="button-favourite" src="./img/red.png" width="40px" height="40px" onClick={this.changeFavourite.bind(this, id)}/>)
+  }else{
+    return(<img  alt=" " className="button-favourite" src="./img/white.png" width="40px" height="40px" onClick={this.changeFavourite.bind(this, id)}/>)
+  }
+})
+
+changeFavourite = (id) =>{
+
+    if(!localStorage.getItem('fav')){
+      const favourite= [id]
+      localStorage.setItem("fav", JSON.stringify(favourite));
+    }else{
+      const fav =JSON.parse(localStorage.getItem('fav'));
+      let favouriteTrue = 0;
+      let favouriteIndex;
+      
+      fav.forEach((element,index)=>{
+        if(element === id){
+          favouriteTrue = 1;
+          favouriteIndex = index;
+        }
+      })
+      if(!favouriteTrue){
+        fav.push(id)
+        localStorage.setItem("fav", JSON.stringify(fav))
+        this.setState({
+          elo: ''
+        })
+      }
+      else{
+        fav.splice(favouriteIndex, 1)
+        localStorage.setItem("fav", JSON.stringify(fav))
+        this.setState({
+          elo: ''
+        })
+      }
+    }
+}
+      
 
   render() {
     return(
@@ -57,22 +109,23 @@ window.open(url)
             
             <li  key={index}>
            Author: {element.artists.map((element2, index) => { 
-             return(<span key='index' >{element2.name}, </span>)})}<br/>
+             return(<span key={index} >{element2.name}, </span>)})}<br/>
             Title: <strong className="track-name">" {element.name} "</strong><br/>
             <img src={element.album.images[2].url}
             height="40px" width="40px" alt=" " /><br/>
-            <img  alt=" "  src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png" width="50px" height="50px" margin-right="80px" onClick={this.listen.bind(this, element.preview_url)}/>
-            <img  alt=" "  src="C:\Users\Iveno\Desktop\Gicior_Z_Bolqiem\My-spotify\my-spotify-app\img\white.png" width="40px" height="40px" onClick={this.listen.bind(this, element.preview_url)}/><br/><br/>
+            <img  alt=" "  className="plays" src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png"  onClick={this.listen.bind(this, element.preview_url)}/>
+            {this.heart(element.id)}
             {/* <iframe src={element.preview_url} height="25px" className="frames"></iframe><br/><br/><br/> */}
             </li>
             )}else{
               return(
                 <li  key={index}>
                 Author: {element.artists.map((element2, index) => { 
-                   return(<span key='index'>{element2.name}, </span>)})}<br/>
+                   return(<span key={index}>{element2.name}, </span>)})}<br/>
                 Title: <strong className="track-name">" {element.name} "</strong><br/>
                 <img src={element.album.images[2].url}
-                height="40px" width="40px" alt=" " /><br/><br/><br/><br/>
+                height="40px" width="40px" alt=" " /><br/><br/>
+               {this.heart(element.id)}<br/><br/><br/>
                 </li>
                 )
             }
