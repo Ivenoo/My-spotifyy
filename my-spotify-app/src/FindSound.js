@@ -65,7 +65,7 @@ changeFavourite = (id) =>{
       const favourite= [id]
       localStorage.setItem("fav", JSON.stringify(favourite));
     }else{
-      const fav =JSON.parse(localStorage.getItem('fav'));
+      const fav = JSON.parse(localStorage.getItem('fav'));
       let favouriteTrue = 0;
       let favouriteIndex;
       

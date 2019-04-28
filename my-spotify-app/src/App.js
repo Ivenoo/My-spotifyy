@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       action: "homePage",
-     mytoken: `BQACzeLGfkKU6YDQbDqafow6AC1aRw2u40dLLZbTowWHcs0QYWV_RyZv6BzE9r6qyU6t96eGrrvB1350yfJSKg82NwWGhf7Lg3dTa7Ny59pmn4_p2PxKKfDmqQ0SQ2-nqHUdwOf6C_CkY8kd37oUtjeSBWA_SqmEUhij7o_RQAD7gEbi2nSHAZq4`
+     mytoken: `BQDpO69RXzqY1BAt0bjVpLrNv73l2-TaiK6HpRgWjQE36M2zh-9eRcxL3Vvui7FzQHVqpr0zcjiFrIh5Pn3p8cf-gH7Jx3-GoHapUvNnBzZcWh-rKdaBT2rcRSq_vTXBtXTOkA6S9JUUMcdrZCrdxsl0To2-B_mJo1b4u6ZiYJA-Zc7wYZaFnMec`
     }
   }
 selectAction = (action) =>{
