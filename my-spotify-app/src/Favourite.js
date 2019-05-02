@@ -39,7 +39,7 @@ search(e){
 }
 
 myFavouriteSongs =() =>{
-  JSON.parse(localStorage.getItem('fav')).map((element, index) =>{
+  JSON.parse(localStorage.getItem('fav')).map(element =>{
     axios({
       url: `https://api.spotify.com/v1/tracks/${element}`,
       headers:{
@@ -54,6 +54,9 @@ myFavouriteSongs =() =>{
 
   })
 }
+componentDidMount(){
+  this.myFavouriteSongs()
+}
 listen(url){
   if(url != null){
 window.open(url)
@@ -64,7 +67,7 @@ render() {
   return(
     <div>
        <div>ITS YOUR FAVOURITE SONGS</div>
-       <button onClick={this.myFavouriteSongs}>SHOW MY LISTS</button>
+       {/* <button onClick={this.myFavouriteSongs}>SHOW MY LISTS</button> */}
        <ol>
         {
           this.state.favArray.map((element,index) =>{

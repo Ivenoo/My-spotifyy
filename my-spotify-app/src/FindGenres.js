@@ -9,10 +9,33 @@ class FindGenres extends React.Component {
     super(props);
     this.state = {
       searchValue: [],
-      searchList:[]
+      searchList:[],
+      limit: 5
     }
   }
-
+  limit(e){
+    const limitValue = e.currentTarget.value
+    this.setState({
+      limit: limitValue
+    })
+    if(this.state.searchValue === ''){
+    this.setState({
+    searchList: []
+  })
+  }else{
+    axios({
+      url: `https://api.spotify.com/v1/search?q=genre:${this.state.searchValue}&type=track&limit=${limitValue}`,
+      headers:{
+       'Authorization': 'Bearer ' + this.props.mytoken
+      }
+    }).then(resp =>
+      { this.setState({
+      searchList: resp.data.tracks.items
+     })
+    }).catch(error => (new Error(console.log(error))))
+  }
+  
+  }
 search(e){
   const value = e.currentTarget.value
   this.setState({
@@ -24,7 +47,7 @@ search(e){
 })
 }else{
   axios({
-    url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track`,
+    url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}`,
     headers:{
      'Authorization': 'Bearer ' + this.props.mytoken
     }
@@ -53,6 +76,14 @@ window.open(url)
            )
          })}
        </select>
+       <select onChange={this.limit.bind(this)}>
+          <option>5</option>
+          <option>10</option>
+          <option>15</option>
+          <option>20</option>
+          <option>25</option>
+          <option>30</option>
+        </select><br/>
        </div>
        <ol>
        {this.state.searchList.map((element, index)=>{

@@ -10,15 +10,38 @@ class FindSound extends React.Component {
     this.state = {
       searchValue: [],
       trackList:[],
+      limit: 5
       
     }
   }
+limit(e){
+  const valueLimit = e.currentTarget.value
+  if(this.state.searchValue === []){
+    console.log('please write name of tracks')
+    this.setState({
+    trackList: []
+  })
+  }else{
+    this.setState({
+      limit: valueLimit
+    })
+    axios({
+      url: `https://api.spotify.com/v1/search?q=${this.state.searchValue}&type=track&limit=${valueLimit}`,
+      headers:{
+       'Authorization': 'Bearer ' + this.props.mytoken
+      }
+    }).then(resp =>{ this.setState({
+      trackList: resp.data.tracks.items
+     })
+     this.createfav()
+    }).catch(error => (new Error(console.log(error))))
+  }
+}
 
 search(e){
   const value = e.currentTarget.value
   this.setState({
-    searchValue: value,
-    elo: ''
+    searchValue: value
   })
   if(value === ''){
   this.setState({
@@ -26,13 +49,14 @@ search(e){
 })
 }else{
   axios({
-    url: `https://api.spotify.com/v1/search?q=${value}&type=track&limit=10`,
+    url: `https://api.spotify.com/v1/search?q=${value}&type=track&limit=${this.state.limit}`,
     headers:{
      'Authorization': 'Bearer ' + this.props.mytoken
     }
   }).then(resp =>{ this.setState({
     trackList: resp.data.tracks.items
    })
+   console.log(resp)
    this.createfav()
   }).catch(error => (new Error(console.log(error))))
 }
@@ -97,8 +121,18 @@ changeFavourite = (id) =>{
     return(
       <div>
         <div className="szukajka">
-        <input type="text" placeholder="Search Tracks..." onChange={this.search.bind(this)}/><br/>
+        <input type="text" placeholder="Search Tracks..." onChange={this.search.bind(this)}/>
+        <select onChange={this.limit.bind(this)}>
+          <option>5</option>
+          <option>10</option>
+          <option>15</option>
+          <option>20</option>
+          <option>25</option>
+          <option>30</option>
+        </select>
+        <br/>
        search: {this.state.searchValue}<br/>
+
        </div>
        <ol>
        {
