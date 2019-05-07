@@ -1,13 +1,14 @@
 import React from 'react';
 import AppHeader from './AppHeader'
 import Content from './Content'
-
+const activeToken = `BQB6aEWndZPQbBIo5B0UrH0DCktn9PlAuB-rkMYp_Ngfjgf_4Z0c1ZxkhKj0K64hNNLJTgheedQ9AvJvPTIzeTdQ-iS89fLLL9nqfoRPVjpG8bmrZBgHBzEO5cEZ4OpyO5aYaMzByeSPMBdIn6oXpae3myhl7BmLFN1jQZ4pR6QFinp9LGpsUzXp`
 class App extends React.Component {
+
   constructor(props){
     super(props);
     this.state = {
       action: "homePage",
-     mytoken: `BQAXttPX85hf8JCUiYkTYgSHwHH6vVVBI1pI_LKxrRLXi7Pj7MF7Oa9DZl86x_r_A_0IeM7EAkPRsOq5j8lUWaPx-B5i5OMSAwYK4wD1Bd9YMHSgwLyTfHLSKcEJUHpIZvfebwpE9W7FQ6ETWNL_UPGRNwXRwrYPZKtmBCZkInRVzSQ60FJfdUJH`
+     mytoken: activeToken
     }
   }
 selectAction = (action) =>{
