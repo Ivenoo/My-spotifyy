@@ -10,7 +10,10 @@ class FindSound extends React.Component {
     this.state = {
       searchValue: [],
       trackList:[],
-      limit: 5
+      limit: 5,
+      prev: null,
+      next: null,
+      myoffset: 'offset=0'
       
     }
   }
@@ -26,12 +29,14 @@ limit(e){
       limit: valueLimit
     })
     axios({
-      url: `https://api.spotify.com/v1/search?q=${this.state.searchValue}&type=track&limit=${valueLimit}`,
+      url: `https://api.spotify.com/v1/search?q=${this.state.searchValue}&type=track&${this.state.myoffset}&limit=${valueLimit}`,
       headers:{
        'Authorization': 'Bearer ' + this.props.mytoken
       }
     }).then(resp =>{ this.setState({
-      trackList: resp.data.tracks.items
+      trackList: resp.data.tracks.items,
+      prev: resp.data.tracks.previous,
+      next: resp.data.tracks.next
      })
      this.createfav()
     }).catch(error => (new Error(console.log(error))))
@@ -45,23 +50,42 @@ search(e){
   })
   if(value === ''){
   this.setState({
-  trackList: []
+  trackList: [],
+  prev: null,
+      next: null
 })
 }else{
+  this.getList(value, 0)
+}
+}
+getList = (value,link) =>{
+  let url = `https://api.spotify.com/v1/search?q=${value}&type=track&limit=${this.state.limit}`
+
+  if(link !== 0){
+    url = link;
+    const start = link.indexOf('offset=')
+    const stop = link.indexOf('&limit')
+    const finishoff = link.slice(start,stop)
+    this.setState({
+      myoffset: finishoff
+    })
+  }
   axios({
-    url: `https://api.spotify.com/v1/search?q=${value}&type=track&limit=${this.state.limit}`,
+    url: url,
     headers:{
      'Authorization': 'Bearer ' + this.props.mytoken
     }
   }).then(resp =>{ this.setState({
-    trackList: resp.data.tracks.items
+    trackList: resp.data.tracks.items,
+    prev: resp.data.tracks.previous,
+    next: resp.data.tracks.next
    })
    console.log(resp)
    this.createfav()
   }).catch(error => (new Error(console.log(error))))
 }
 
-}
+
 listen(url){
   if(url != null){
 window.open(url)
@@ -92,13 +116,14 @@ changeFavourite = (id) =>{
       const fav = JSON.parse(localStorage.getItem('fav'));
       let favouriteTrue = 0;
       let favouriteIndex;
-      
-      fav.forEach((element,index)=>{
-        if(element === id){
+      for(let i=0; i< fav.length; i++){
+        if(fav[i] === id){
           favouriteTrue = 1;
-          favouriteIndex = index;
+          favouriteIndex = i;
+          break;
         }
-      })
+      } 
+      
       if(!favouriteTrue){
         fav.push(id)
         localStorage.setItem("fav", JSON.stringify(fav))
@@ -115,9 +140,16 @@ changeFavourite = (id) =>{
       }
     }
 }
-      
+
 
   render() {
+    let prevButton = "", nextButton = "";
+    if(this.state.prev !==null){
+      prevButton = <button onClick={this.getList.bind(this,0,this.state.prev)}>Previous</button>
+    }
+    if(this.state.next !==null){
+      nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}>Next</button>
+    }
     return(
       <div>
         <div className="szukajka">
@@ -163,10 +195,12 @@ changeFavourite = (id) =>{
                 </li>
                 )
             }
-          }
+        }
         )}
        </ol>
-      </div>
+      {prevButton}
+      {nextButton}
+    </div>
     )
   }
 }
