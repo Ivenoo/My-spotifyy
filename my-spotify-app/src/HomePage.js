@@ -34,7 +34,9 @@ const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
 componentDidMount(){
 this.refresh()
 }
-
+componentWillReceiveProps(props,state){
+  this.refresh()
+}
  
 listen(url){
   if(url != null){

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import FindSound from './FindSound';
 import FindArtist from './FindArtist';
 import HomePage from './HomePage';
@@ -8,24 +7,10 @@ import FindAlbum from './FindAlbum';
 import Favourite from './Favourite';
 
 class Content extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = ({
-      typeTracks:[],
-    })
-  }
+  
   
   componentDidMount(){
-    axios({
-      url: `https://api.spotify.com/v1/recommendations/available-genre-seeds`,
-      headers:{
-       'Authorization': 'Bearer ' + this.props.mytoken
-      }
-    }).then(resp =>
-      { this.setState({
-        typeTracks: resp.data.genres
-     })
-    }).catch(error => (new Error(console.log(error))))
+    this.props.getGenres()
   }
  
   render(props) {
@@ -43,7 +28,7 @@ class Content extends React.Component {
     )
   }else if(this.props.action === "findGenres"){
     return(
-      <FindGenres  mytoken={this.props.mytoken} typeTracks={this.state.typeTracks}/>
+      <FindGenres  mytoken={this.props.mytoken} typeTracks={this.props.typeTracks}/>
     )
   }else if(this.props.action === "findAlbum"){
     return(
