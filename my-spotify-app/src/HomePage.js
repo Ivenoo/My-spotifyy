@@ -22,6 +22,7 @@ const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
 
 
    const randomTrack = Math.floor(Math.random()*10);
+   if(this.props.mytoken.length > 0){
   axios({
     url: `https://api.spotify.com/v1/search?q=*${randomLetter}*&type=track&limit=20&offset=${randomTrack}`,
     headers:{
@@ -29,7 +30,7 @@ const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     }
   }).then(resp =>  this.setState({
     randomSongs:  resp.data.tracks.items
-  }))
+  }))}
 }
 componentDidMount(){
 this.refresh()

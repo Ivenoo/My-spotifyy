@@ -42,6 +42,7 @@ class App extends React.Component {
  
  
   refreshToken = () =>{
+    
     axios({
       method: "GET",
       url: 'https://accounts.spotify.com/authorize?client_id=1f1b95fa237c478ea8fed693c7793755&response_type=token&scope=user-read-private%20user-read-email&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F'
@@ -58,7 +59,7 @@ class App extends React.Component {
           this.setState({
             mytoken: token
           })
-          this.getGenres()
+         this.getGenres()
         });
       }
        
@@ -102,7 +103,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <AppHeader selectAction={this.selectAction} />
-        <hr/>
+        <hr className='menu-line'/>
         <div className="App-Content">
           <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/>
         </div>

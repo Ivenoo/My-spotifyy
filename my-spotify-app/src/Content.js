@@ -10,7 +10,7 @@ class Content extends React.Component {
   
   
   componentDidMount(){
-    this.props.getGenres()
+ setTimeout(this.props.getGenres(),3000)
   }
  
   render(props) {
@@ -28,7 +28,7 @@ class Content extends React.Component {
     )
   }else if(this.props.action === "findGenres"){
     return(
-      <FindGenres  mytoken={this.props.mytoken} typeTracks={this.props.typeTracks}/>
+      <FindGenres searchGenres={this.props.genres} mytoken={this.props.mytoken} typeTracks={this.props.typeTracks}/>
     )
   }else if(this.props.action === "findAlbum"){
     return(

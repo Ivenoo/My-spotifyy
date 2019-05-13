@@ -58,7 +58,7 @@ if(div.innerHTML === ""){
   }).then(resp =>{ 
    resp.data.items.map(element => {
      if(element.preview_url != null){
-    return(div.innerHTML = div.innerHTML + `<li>  <a  class="name-songs-linked" href=${element.preview_url} target="_blank"> ${element.name} </a>  </li><br/>`)
+    return(div.innerHTML = div.innerHTML + `<li>  <a  class="name-songs-linked" style="color:blue" href=${element.preview_url} target="_blank"> ${element.name} </a>  </li><br/>`)
   }else{
     return(div.innerHTML = div.innerHTML + `<li> ${element.name} </li><br/>`)
   }})
@@ -66,6 +66,22 @@ if(div.innerHTML === ""){
 }
 
 }
+changeButton = (id) =>{
+  document.getElementById(id).style.display = "none";
+  document.getElementById(id +'a').style.display = "block";
+}
+openList = (index, id) =>{
+  this.showSongs(index, id)
+ // changeButton()
+ this.changeButton(id)
+}
+closeList = (index, id) =>{
+  // const div= document.getElementById(index);
+  document.getElementById(index).innerHTML = "";
+  document.getElementById(id).style.display = "block";
+  document.getElementById(id +'a').style.display = "none";
+}
+
 
 
 
@@ -85,7 +101,8 @@ if(div.innerHTML === ""){
             Album: <strong className="album-name">" {element.name} "</strong><br/>
             <img src={element.images[2].url}
             height="40px" width="40px" alt=" " /><br/>
-            <button  key= {index} className="main-button" onClick={this.showSongs.bind(this, index, element.id)}>tracks from this album</button><br/><br/>
+            <button id={element.id} key= {index} className="main-button" onClick={this.openList.bind(this, index, element.id)}>tracks from this album</button>
+            <button id={element.id +'a'} key= {index} className="main-buttonc" onClick={this.closeList.bind(this, index , element.id) }>close tracks list</button><br/>
             <ol id={index} className="to-kill"></ol><br/><br/><br/>
             </li>
             )

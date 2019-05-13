@@ -176,9 +176,11 @@ changeFavourite = (id) =>{
             <li  key={index}>
            Author: {element.artists.map((element2, index) => { 
              return(<span key={index} >{element2.name}, </span>)})}<br/>
-            Title: <strong className="track-name">" {element.name} "</strong><br/>
-            <img src={element.album.images[2].url}
-            height="40px" width="40px" alt=" " /><br/>
+            <div className='img-track'>
+            Title: <span className="track-name"> {element.name} </span><br/>
+            <img src={element.album.images[0].url}
+            height="500px" width="500px" alt=" " /><br/>
+            </div>
             <img  alt=" "  className="plays" src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png"  onClick={this.listen.bind(this, element.preview_url)}/>
             {this.heart(element.id)}
             {/* <iframe src={element.preview_url} height="25px" className="frames"></iframe><br/><br/><br/> */}
@@ -189,8 +191,8 @@ changeFavourite = (id) =>{
                 Author: {element.artists.map((element2, index) => { 
                    return(<span key={index}>{element2.name}, </span>)})}<br/>
                 Title: <strong className="track-name">" {element.name} "</strong><br/>
-                <img src={element.album.images[2].url}
-                height="40px" width="40px" alt=" " /><br/><br/>
+                <img src={element.album.images[0].url}
+                height="200px" width="200px" alt=" " /><br/><br/>
                {this.heart(element.id)}<br/><br/><br/>
                 </li>
                 )

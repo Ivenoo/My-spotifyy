@@ -1,65 +1,75 @@
-body{
-    background: rgb(63, 63, 63);
-    color: white;
-    font-family: 'Arial';
-    border: solid 0px;
-    margin: 0px;
-
+body {
+  background: #3f3f3f;
+  color: white;
+  font-family: 'Arial';
+  border: solid 0px;
+  margin: 0px;
 }
-.App-Menu{
-    margin-left:auto;
-    text-align:center;
-    margin-right:25px;
-
+body .App-Menu {
+  margin-left: auto;
+  text-align: center;
+  margin-right: 25px;
 }
-.App-Contener{
-    margin-top:10px;
-    padding-top:20px;
-    color:rgb(255, 255, 255);
-    width:100%;
-    border-top: solid 1px rgb(255, 115, 0);
+body .App-Menu {
+  margin-left: auto;
+  text-align: center;
+  margin-right: 25px;
 }
-
-.main-button{
-    margin-right:10px;
-    margin-bottom:10px;
-    margin-top:13px;
-    cursor: pointer;
-    font-family: "Ink Free";
-    background: rgb(255, 115, 0);
-
+body .menu-line {
+  color: #ff7300;
 }
-.Home-Page{
-    float:left;
-    margin-top:0px;
-    margin-right:10px;
-    margin-bottom:10px;
-    cursor: pointer;
+body .main-button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 13px;
+  cursor: pointer;
+  font-family: "Ink Free";
+  background: #ff7300;
 }
-.frames{
-    border: solid 0px red;
+body .Home-Page {
+  float: left;
+  margin-top: 0px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
-.App-Contener div{
-    margin-left: 10px;
+body .frames {
+  border: solid 0px #ff7300;
 }
-.szukajka{
-    text-align:center;
+body .App-Contener div {
+  margin-left: 10px;
 }
-.artist-name, .track-name{
-    color:rgb(255, 0, 0);
-    font-size:20px;
+body .szukajka {
+  text-align: center;
 }
-.name-songs-linked{
-    color:white ;
-    text-decoration: none;
-    margin-bottom:50px !important ;
+body .name-songs-linked {
+  color: white ;
+  text-decoration: none;
+  margin-bottom: 50px !important ;
 }
-.plays{
-    margin-right:10px;
-    width: 50px ;
-    height: 50px;
-    cursor: pointer;
+body .plays {
+  margin-right: 10px;
+  width: 50px ;
+  height: 50px;
+  cursor: pointer;
 }
-.button-favourite{
-    cursor:pointer;
+body .button-favourite {
+  cursor: pointer;
+}
+body span.track-name {
+  color: rgba(255, 115, 0, 0.9);
+  font-size: 20px;
+  display: none;
+}
+body .img-track:hover span.track-name {
+  display: block;
+}
+body .main-buttonc {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 13px;
+  cursor: pointer;
+  font-family: "Ink Free";
+  background: #ff7300;
+  display: none;
 }
