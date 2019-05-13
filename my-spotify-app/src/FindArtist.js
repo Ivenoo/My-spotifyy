@@ -13,7 +13,9 @@ class FindArtist extends React.Component {
       limit: 5,
       prev: null,
       next: null,
-      myoffset: 'offset=0'
+      myoffset: 'offset=0',
+      timeout: 0,
+      test: []
     }
   }
   limit(e){
@@ -41,10 +43,14 @@ class FindArtist extends React.Component {
   
   }
 search(e){
-  const value = e.currentTarget.value
-  this.setState({
-    searchValue: value
-  })
+  const value = e.target.value; // this is the search text
+    if(this.state.timeout) clearTimeout(this.state.timeout);
+    this.state.timeout = setTimeout(() => {
+      this.setState({
+        searchValue: value
+      })
+      console.log(this.state.searchValue)
+    }, 800);
   if(value === ''){
   this.setState({
   artistList: [],
@@ -55,51 +61,52 @@ search(e){
   this.getList(value, 0)
 }
 }
-getList = (value,link) =>{
-  let url = `https://api.spotify.com/v1/search?q=${value}&type=artist&limit=${this.state.limit}`
-
-  if(link !== 0){
-    url = link;
-    const start = link.indexOf('offset=')
-    const stop = link.indexOf('&limit')
-    const finishoff = link.slice(start,stop)
-    console.log(finishoff)
-    this.setState({
-      myoffset: finishoff
-    })
-  }
-  axios({
-    url: url,
-    headers:{
-     'Authorization': 'Bearer ' + this.props.mytoken
+getList = (value,link) =>{ 
+  if(this.state.timeout) clearTimeout(this.state.timeout);
+  this.state.timeout = setTimeout(() => {
+    let url = `https://api.spotify.com/v1/search?q=${value}&type=artist&limit=${this.state.limit}`
+    if(link !== 0){
+      url = link;
+      const start = link.indexOf('offset=')
+      const stop = link.indexOf('&limit')
+      const finishoff = link.slice(start,stop)
+      console.log(finishoff)
+      this.setState({
+        myoffset: finishoff
+      })
     }
-  }).then(resp =>{ this.setState({
-    artistList: resp.data.artists.items,
-    prev: resp.data.artists.previous,
-    next: resp.data.artists.next
-   })
-  }).catch(error => (new Error(console.log(error))))
+    axios({
+      url: url,
+      headers:{
+       'Authorization': 'Bearer ' + this.props.mytoken
+      }
+    }).then(resp =>{
+      this.setState({
+      artistList: resp.data.artists.items,
+      prev: resp.data.artists.previous,
+      next: resp.data.artists.next
+     })
+    }).catch(error => (new Error(console.log(error))))
+  }, 800);
+  
 }
+
 listen(url){
   if(url != null){
 window.open(url)
 }
 }
-prevNext = () =>{
-  if(this.state.artistList.length == 0){
-    return(
-    <p>WRITE NAME ARTIST TO SEARCH</p>
-    )
-  }else{
-    return(
-      <div>
-      <button>prev</button>
-      <button>next</button>
-      </div>
-    )
-  }
-} 
 
+// looking = (e) =>{
+//   const searchText = e.target.value; // this is the search text
+//     if(this.state.timeout) clearTimeout(this.state.timeout);
+//     this.state.timeout = setTimeout(() => {
+//       this.setState({
+//         searchValue: searchText
+//       })
+//       console.log(this.state.searchValue)
+//     }, 800);
+// }
   render() {
     let prevButton = "", nextButton = "";
     if(this.state.prev !==null){
@@ -112,6 +119,7 @@ prevNext = () =>{
       <div>
         <div className="szukajka">
         <input type="text" placeholder="Search Artists..." onChange={this.search.bind(this)}/>
+        {/* <input type="text"  id= "searchArtist" placeholder="Search Artists..." onChange={this.looking.bind(this)}/> */}
         <select onChange={this.limit.bind(this)}>
           <option>5</option>
           <option>10</option>

@@ -45,8 +45,6 @@ window.open(url)
 }
 }
 
-componentWillUnmount(){
-}
 
  render() {
   return(
