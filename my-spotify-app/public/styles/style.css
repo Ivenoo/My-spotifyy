@@ -59,9 +59,6 @@ body .button-favourite {
 body span.track-name {
   color: rgba(255, 115, 0, 0.9);
   font-size: 20px;
-  display: none;
-}
-body .img-track:hover span.track-name {
   display: block;
 }
 body .main-buttonc {
@@ -72,4 +69,13 @@ body .main-buttonc {
   font-family: "Ink Free";
   background: #ff7300;
   display: none;
+}
+body .notexist {
+  display: none;
+}
+body .exist {
+  display: block;
+}
+body .title {
+  color: red;
 }

@@ -9,12 +9,19 @@ class FindAlbum extends React.Component {
     super(props);
     this.state = {
       searchValue: [],
-      albumList:[]
+      albumList:[],
+      searchValueToExist: '',
+      notFindAlbum: 'notexist'
     }
   }
 
 search(e){
   const value = e.currentTarget.value
+  this.setState({
+    searchValueToExist: value
+  })
+  if(this.state.timeout) clearTimeout(this.state.timeout);
+  this.state.timeout = setTimeout(() => {
   const toClear = document.querySelectorAll('.to-kill')
   toClear.forEach(element =>{
     element.innerHTML = ""
@@ -36,9 +43,10 @@ search(e){
     this.setState({
       albumList: resp.data.albums.items
      })
+     this.exist()
   }).catch(error => (new Error(console.log(error))))
 }
-
+}, 400);
 }
 
 listen(url){
@@ -49,6 +57,8 @@ window.open(url)
 
 showSongs(index, id){
 const div= document.getElementById(index);
+if(this.state.timeout) clearTimeout(this.state.timeout);
+  this.state.timeout = setTimeout(() => {
 if(div.innerHTML === ""){
   axios({
     url: `https://api.spotify.com/v1/albums/${id}/tracks`,
@@ -62,9 +72,10 @@ if(div.innerHTML === ""){
   }else{
     return(div.innerHTML = div.innerHTML + `<li> ${element.name} </li><br/>`)
   }})
+
   }).catch(error => (new Error(console.log(error))))
 }
-
+}, 400);
 }
 changeButton = (id) =>{
   document.getElementById(id).style.display = "none";
@@ -83,6 +94,17 @@ closeList = (index, id) =>{
 }
 
 
+exist =() =>{
+  if(this.state.albumList.length <= 0 && this.state.searchValueToExist.length > 0){
+  this.setState({
+    notFindAlbum: 'exist'
+  })
+  }else{
+    this.setState({
+      notFindAlbum: 'notexist'
+    })
+}
+}
 
 
   render() {
@@ -90,8 +112,9 @@ closeList = (index, id) =>{
       <div>
          <div className="szukajka">
         <input type="text" placeholder="Search Albums..." onChange={this.search.bind(this)}/><br/>
-       search: {this.state.searchValue}<br/>
+       search: <br/>
        </div>
+       <span className={this.state.notFindAlbum}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
        <ol>
        { this.state.albumList.map((element, index)=>{
           return(

@@ -13,7 +13,9 @@ class FindSound extends React.Component {
       limit: 5,
       prev: null,
       next: null,
-      myoffset: 'offset=0'
+      myoffset: 'offset=0',
+      notFindTracks: 'notexist',
+      searchValueToExist: ''
       
     }
   }
@@ -44,7 +46,12 @@ limit(e){
 }
 
 search(e){
+  this.setState({
+    searchValueToExist: value
+  })
   const value = e.currentTarget.value
+  if(this.state.timeout) clearTimeout(this.state.timeout);
+  this.state.timeout = setTimeout(() => {
   this.setState({
     searchValue: value
   })
@@ -57,8 +64,11 @@ search(e){
 }else{
   this.getList(value, 0)
 }
+}, 400);
 }
 getList = (value,link) =>{
+  if(this.state.timeout) clearTimeout(this.state.timeout);
+  this.state.timeout = setTimeout(() => {
   let url = `https://api.spotify.com/v1/search?q=${value}&type=track&limit=${this.state.limit}`
 
   if(link !== 0){
@@ -80,9 +90,10 @@ getList = (value,link) =>{
     prev: resp.data.tracks.previous,
     next: resp.data.tracks.next
    })
-   console.log(resp)
+   this.exist()
    this.createfav()
   }).catch(error => (new Error(console.log(error))))
+  }, 400);
 }
 
 
@@ -141,6 +152,17 @@ changeFavourite = (id) =>{
     }
 }
 
+exist =() =>{
+  if(this.state.trackList.length <= 0 && this.state.searchValueToExist.length > 0){
+  this.setState({
+    notFindTracks: 'exist'
+  })
+  }else{
+    this.setState({
+      notFindTracks: 'notexist'
+    })
+}
+}
 
   render() {
     let prevButton = "", nextButton = "";
@@ -163,9 +185,10 @@ changeFavourite = (id) =>{
           <option>30</option>
         </select>
         <br/>
-       search: {this.state.searchValue}<br/>
+       search:<br/>
 
        </div>
+       <span className={this.state.notFindTracks}><strong className="title">{this.state.searchValue} </strong> not exist</span>
        <ol>
        {
          this.state.trackList.map((element, index)=>{
@@ -179,7 +202,7 @@ changeFavourite = (id) =>{
             <div className='img-track'>
             Title: <span className="track-name"> {element.name} </span><br/>
             <img src={element.album.images[0].url}
-            height="500px" width="500px" alt=" " /><br/>
+            height="200px" width="200px" alt=" " /><br/>
             </div>
             <img  alt=" "  className="plays" src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png"  onClick={this.listen.bind(this, element.preview_url)}/>
             {this.heart(element.id)}
@@ -190,7 +213,7 @@ changeFavourite = (id) =>{
                 <li  key={index}>
                 Author: {element.artists.map((element2, index) => { 
                    return(<span key={index}>{element2.name}, </span>)})}<br/>
-                Title: <strong className="track-name">" {element.name} "</strong><br/>
+                Title: <span className="track-name">" {element.name} "</span><br/>
                 <img src={element.album.images[0].url}
                 height="200px" width="200px" alt=" " /><br/><br/>
                {this.heart(element.id)}<br/><br/><br/>

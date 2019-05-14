@@ -15,7 +15,8 @@ class FindArtist extends React.Component {
       next: null,
       myoffset: 'offset=0',
       timeout: 0,
-      test: []
+      notFindArtist: 'notexist',
+      searchValueToExist: ''
     }
   }
   limit(e){
@@ -25,7 +26,8 @@ class FindArtist extends React.Component {
     })
     if(this.state.searchValue === []){
     this.setState({
-    artistList: []
+    artistList: [],
+    test: 'exist'
   })
   }else{
     axios({
@@ -44,18 +46,21 @@ class FindArtist extends React.Component {
   }
 search(e){
   const value = e.target.value; // this is the search text
+  this.setState({
+    searchValueToExist: value
+  })
     if(this.state.timeout) clearTimeout(this.state.timeout);
     this.state.timeout = setTimeout(() => {
       this.setState({
         searchValue: value
       })
-      console.log(this.state.searchValue)
-    }, 800);
+    }, 400);
   if(value === ''){
   this.setState({
   artistList: [],
   prev: null,
-  next: null
+  next: null,
+  notFindArtist: 'notexist'
 })
 }else{
   this.getList(value, 0)
@@ -83,11 +88,11 @@ getList = (value,link) =>{
     }).then(resp =>{
       this.setState({
       artistList: resp.data.artists.items,
-      prev: resp.data.artists.previous,
-      next: resp.data.artists.next
+      prev: resp.data.artists.previous
      })
+     this.exist()
     }).catch(error => (new Error(console.log(error))))
-  }, 800);
+  }, 400);
   
 }
 
@@ -96,17 +101,18 @@ listen(url){
 window.open(url)
 }
 }
+exist =() =>{
+  if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
+  this.setState({
+    notFindArtist: 'exist'
+  })
+  }else{
+    this.setState({
+      notFindArtist: 'notexist'
+    })
+}
+}
 
-// looking = (e) =>{
-//   const searchText = e.target.value; // this is the search text
-//     if(this.state.timeout) clearTimeout(this.state.timeout);
-//     this.state.timeout = setTimeout(() => {
-//       this.setState({
-//         searchValue: searchText
-//       })
-//       console.log(this.state.searchValue)
-//     }, 800);
-// }
   render() {
     let prevButton = "", nextButton = "";
     if(this.state.prev !==null){
@@ -128,13 +134,13 @@ window.open(url)
           <option>25</option>
           <option>30</option>
         </select><br/>
-       search: {this.state.searchValue}<br/>
+       search:  <br/>
        </div>
-       <ol>
+       <ol className="list-Artist">
+       <span className={this.state.notFindArtist}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
        {
          this.state.artistList.map((element, index)=>{
             if(element.images.length > 0){
-          
           return(
             
             <li  key={index}>
