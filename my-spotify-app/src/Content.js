@@ -12,7 +12,6 @@ class Content extends React.Component {
   componentDidMount(){
  setTimeout(this.props.getGenres(),3000)
   }
- 
   render(props) {
     if(this.props.action === "findSound"){
     return(

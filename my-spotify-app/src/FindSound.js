@@ -15,7 +15,8 @@ class FindSound extends React.Component {
       next: null,
       myoffset: 'offset=0',
       notFindTracks: 'notexist',
-      searchValueToExist: ''
+      searchValueToExist: '',
+       timeout: 0
       
     }
   }

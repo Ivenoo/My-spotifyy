@@ -11,7 +11,8 @@ class FindAlbum extends React.Component {
       searchValue: [],
       albumList:[],
       searchValueToExist: '',
-      notFindAlbum: 'notexist'
+      notFindAlbum: 'notexist',
+      timeout: 0
     }
   }
 
@@ -22,10 +23,6 @@ search(e){
   })
   if(this.state.timeout) clearTimeout(this.state.timeout);
   this.state.timeout = setTimeout(() => {
-  const toClear = document.querySelectorAll('.to-kill')
-  toClear.forEach(element =>{
-    element.innerHTML = ""
-  })
   this.setState({
     searchValue: value
   })
