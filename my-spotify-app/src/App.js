@@ -1,23 +1,19 @@
 import React from 'react';
 import AppHeader from './AppHeader';
 import Content from './Content';
-import axios from 'axios'
+import axios from 'axios';
+import {BrowserRouter as Router} from "react-router-dom";
  
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      action: "homePage",
       mytoken : "",
       typeTracks: []
     }
   }
  
-  selectAction = (action, event) =>{
-    this.setState({
-      action
-    })
-  }
+  
  
   getGenres = () =>{
     axios({
@@ -40,67 +36,59 @@ class App extends React.Component {
     })
   }
  
- 
   refreshToken = () =>{
-    
-    axios({
-      method: "GET",
-      url: 'https://accounts.spotify.com/authorize?client_id=1f1b95fa237c478ea8fed693c7793755&response_type=token&scope=user-read-private%20user-read-email&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F'
-    }).then(resp =>{
-      if(window.location.href.indexOf("access_token=") < 0 ){
-        const adress = window.open(resp.request.responseURL)
-        adress.addEventListener('load', (event) => {
-          const url = String(adress.location)
-          adress.close()
-          const start = url.indexOf('access_token=') + 13;
-          const stop = url.indexOf('&token_type=')
-          const token = url.slice(start,stop)
-          console.log(this.state.mytoken)
-          this.setState({
-            mytoken: token
-          })
-         this.getGenres()
-        });
+    var request = require("request");
+     
+    var options = { method: 'POST',
+      url: 'https://accounts.spotify.com/api/token',
+      qs: { grant_type: 'client_credentials' },
+      headers:
+       { 'cache-control': 'no-cache',
+         Connection: 'keep-alive',
+         'content-length': '',
+         'accept-encoding': 'gzip, deflate',
+         cookie: '_ga=GA1.2.729828902.1557929894; _gid=GA1.2.629422520.1557929894',
+         Host: 'accounts.spotify.com',
+         'Postman-Token': 'efd95536-22cb-4ef2-ae72-e723183d6cd6,4c56ad54-2d22-4dd2-8774-968820564f2f',
+         'Cache-Control': 'no-cache',
+         Accept: '*/*',
+         'User-Agent': 'PostmanRuntime/7.13.0',
+         Authorization: 'Basic MWYxYjk1ZmEyMzdjNDc4ZWE4ZmVkNjkzYzc3OTM3NTU6MmVlNjIwM2Q5NDU3NDVjNjgzNmExMzg0MWRhMDUzYTY=',
+         'Content-Type': 'application/x-www-form-urlencoded' } };
+     
+    request(options,  (error, response, body) => {
+      if (error) throw new Error(error);
+      if (response){
+        response = JSON.parse(response.body)
+        console.log(response.access_token)
+        this.blah(response.access_token)
+        setTimeout(()=>{this.refreshToken()} , 3600000)
       }
-       
-    })
-    .catch(error =>console.log(new Error(`Wystąpił problem ${error}`)))
+      console.log(body);
+    });  
   }
- 
- 
- 
-  // // ++++++++++++++++  Client Credentials Flow ++++++++++++++++++++++++++
-  // token = () =>{
-  //   const CLIENT_ID = 'f9d33397eb674ca789d6fb448a2e7377';
-  //   const CLIENT_SECRET = '8634936da44d49d88f040f28ddc40247';
-  //   const auth = "Basic " + new Buffer(CLIENT_ID + ":" + CLIENT_SECRET).toString('base64')
+
+  blah = (param) => {
+    this.setState({
+      mytoken: param
+    })
+    this.getGenres()
+  }
+  check = () =>{
+if(this.state.mytoken === ''){
+  this.refreshToken()
+}
+  }
+
    
-  //   console.log(auth)
- 
-  //   axios({
-  //     method: "POST",
-  //     url: "https://accounts.spotify.com/api/token",
-  //     headers:{
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //       "Authorization" : "Basic ZjlkMzMzOTdlYjY3NGNhNzg5ZDZmYjQ0OGEyZTczNzc6ODYzNDkzNmRhNDRkNDlkODhmMDQwZjI4ZGRjNDAyNDc=",
-  //     },
-  //     data: {
-  //       "grant_type": "authorization_code",
-  //     },
-  //     // json: true,
-  //     })
-  //     .then(resp => {
-  //       console.log(resp)
-  //     })
-  //     .catch(error => console.log(new Error(`Wystąpił problem ${error}`)))
-  // }
  
   render() {
     if(!localStorage.getItem("limit")){
       localStorage.setItem("limit" , 20)
     }
- 
+    this.check()
     return (
+      <Router>
       <div className="App">
         <AppHeader selectAction={this.selectAction} />
         <hr className='menu-line'/>
@@ -108,6 +96,7 @@ class App extends React.Component {
           <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/>
         </div>
       </div>
+      </Router>
     );
   }
 }

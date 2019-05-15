@@ -5,40 +5,30 @@ import HomePage from './HomePage';
 import FindGenres from './FindGenres';
 import FindAlbum from './FindAlbum';
 import Favourite from './Favourite';
+import {Route, Switch} from 'react-router-dom';
+import Error from './Error';
+
 
 class Content extends React.Component {
-  
-  
-  componentDidMount(){
- setTimeout(this.props.getGenres(),3000)
-  }
+ 
+  test2000 = ()=>{
+    console.log('dziala')
+   }
   render(props) {
-    if(this.props.action === "findSound"){
     return(
-      <FindSound  mytoken={this.props.mytoken}/>
-    )
-  }else if(this.props.action === "findArtist"){
-    return(
-      <FindArtist  mytoken={this.props.mytoken} />
-    )
-  }else if(this.props.action === "homePage"){
-    return(
-      <HomePage  mytoken={this.props.mytoken}/>
-    )
-  }else if(this.props.action === "findGenres"){
-    return(
-      <FindGenres searchGenres={this.props.genres} mytoken={this.props.mytoken} typeTracks={this.props.typeTracks}/>
-    )
-  }else if(this.props.action === "findAlbum"){
-    return(
-      <FindAlbum  mytoken={this.props.mytoken} />
-    )
-  }else if(this.props.action === "favourite"){
-    return(
-      <Favourite  mytoken={this.props.mytoken} />
-    )
-  }
-  }
+      <div id="content">
+      <Switch>
+      <Route exact path="/" render={()=> <HomePage   mytoken={this.props.mytoken}/> }/>
+      <Route exact path="/findsound" render={()=> <FindSound  mytoken={this.props.mytoken}/> }/>
+      <Route exact path="/findartist" render={()=> <FindArtist mytoken={this.props.mytoken} /> }/>
+      <Route exact path="/findgenres" render={()=> <FindGenres searchGenres={this.props.genres} mytoken={this.props.mytoken} typeTracks={this.props.typeTracks}/> }/>
+      <Route exact path="/findalbum" render={()=> <FindAlbum  test={this.test2000} mytoken={this.props.mytoken} /> }/>
+      <Route exact path="/favourite" render={()=> <Favourite  mytoken={this.props.mytoken} />}/>
+      <Route component={()=> <Error/>}/>
+      </Switch>
+      </div>
+    )   
+}
 }
 
 export default Content;

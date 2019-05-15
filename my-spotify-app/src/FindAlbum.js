@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import {BrowserRouter, Route} from "react-router-dom";
+import {test} from './Service.js'
 
 
 
@@ -12,10 +14,20 @@ class FindAlbum extends React.Component {
       albumList:[],
       searchValueToExist: '',
       notFindAlbum: 'notexist',
-      timeout: 0
+      timeout: 0,
+      valuee: 's'
     }
   }
 
+
+//   search(e){
+//     const value = e.currentTarget.value
+//     test(this.state.valuee,value)
+//     if(this.state.valuee.length > 3){
+// console.log('aaaaaaaaa')
+//     }
+//   }
+  
 search(e){
   const value = e.currentTarget.value
   this.setState({
@@ -31,6 +43,11 @@ search(e){
   albumList: []
 })
 }else{
+  this.getList(value)
+}
+}, 400);
+}
+getList = (value) =>{
   axios({
     url: `https://api.spotify.com/v1/search?q=${value}&type=album&limit=10`,
     headers:{
@@ -43,9 +60,6 @@ search(e){
      this.exist()
   }).catch(error => (new Error(console.log(error))))
 }
-}, 400);
-}
-
 listen(url){
   if(url != null){
 window.open(url)
@@ -54,6 +68,7 @@ window.open(url)
 
 showSongs(index, id){
 const div= document.getElementById(index);
+
 if(this.state.timeout) clearTimeout(this.state.timeout);
   this.state.timeout = setTimeout(() => {
 if(div.innerHTML === ""){
@@ -105,7 +120,7 @@ exist =() =>{
 
 
   render() {
-    return(
+    return( 
       <div>
          <div className="szukajka">
         <input type="text" placeholder="Search Albums..." onChange={this.search.bind(this)}/><br/>
@@ -117,12 +132,12 @@ exist =() =>{
           return(
             <li  key={index}>
            Author: {element.artists.map((element2, index) => { 
-             return(<span key={index} >{element2.name}, </span>)})}<br/>
+             return(<span key={index +1} >{element2.name}, </span>)})}<br/>
             Album: <strong className="album-name">" {element.name} "</strong><br/>
             <img src={element.images[2].url}
             height="40px" width="40px" alt=" " /><br/>
-            <button id={element.id} key= {index} className="main-button" onClick={this.openList.bind(this, index, element.id)}>tracks from this album</button>
-            <button id={element.id +'a'} key= {index} className="main-buttonc" onClick={this.closeList.bind(this, index , element.id) }>close tracks list</button><br/>
+            <button id={element.id} key= {index +2} className="main-button" onClick={this.openList.bind(this, index, element.id)}>tracks from this album</button>
+            <button id={element.id +'a'} key= {index +3} className="main-buttonc" onClick={this.closeList.bind(this, index , element.id) }>close tracks list</button><br/>
             <ol id={index} className="to-kill"></ol><br/><br/><br/>
             </li>
             )
