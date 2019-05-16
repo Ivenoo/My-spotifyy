@@ -60,11 +60,11 @@ class App extends React.Component {
       if (error) throw new Error(error);
       if (response){
         response = JSON.parse(response.body)
-        console.log(response.access_token)
+       // console.log(response.access_token)
         this.blah(response.access_token)
         setTimeout(()=>{this.refreshToken()} , 3600000)
       }
-      console.log(body);
+    //  console.log(body);
     });  
   }
 

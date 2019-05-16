@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import SingleArtist from './SingleArtist';
 
 
 
@@ -139,39 +140,8 @@ exist =() =>{
        <ol className="list-Artist">
        <span className={this.state.notFindArtist}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
        {
-         this.state.artistList.map((element, index)=>{
-            if(element.images.length > 0){
-          return(
-            
-            <li  key={index}>
-            
-            Name: <strong className="artist-name">{element.name}</strong><br/>
-            <img src={element.images[2].url}
-            height="40px" width="40px" alt=" " /><br/>
-            <b>genres of music:</b><br/>
-            {element.genres.map((element,index) =>{
-              return(
-                <span key={index}>{element} <br/></span>
-              )
-            } )}<br/>
-            total followres: {element.followers.total}<br/><br/><br/>
-            </li>
-            )}else{
-              return(
-                <li  key={index}>
-                Name: <strong className="artist-name">{element.name}</strong><br/><br/><br/><br/>
-
-                <b>genres of music:</b><br/>
-            {element.genres.map(element =>{
-              return(
-                <span>{element}</span>
-              )
-            } )}<br/>
-                total followres: {element.followers.total}<br/><br/><br/>
-                </li>
-                )
-            }
-          }
+         this.state.artistList.map((element, index)=>
+         <SingleArtist  key={index} parentElement={element} parentIndex={index} />
         )}
        </ol>
        {prevButton}

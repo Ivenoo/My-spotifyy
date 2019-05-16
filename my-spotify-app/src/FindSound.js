@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import SingleTrack from './SingleTrack';
 
 
 
@@ -192,36 +192,8 @@ exist =() =>{
        <span className={this.state.notFindTracks}><strong className="title">{this.state.searchValue} </strong> not exist</span>
        <ol>
        {
-         this.state.trackList.map((element, index)=>{
-            if(element.preview_url != null){
-          
-          return(
-            
-            <li  key={index}>
-           Author: {element.artists.map((element2, index) => { 
-             return(<span key={index} >{element2.name}, </span>)})}<br/>
-            <div className='img-track'>
-            Title: <span className="track-name"> {element.name} </span><br/>
-            <img src={element.album.images[0].url}
-            height="200px" width="200px" alt=" " /><br/>
-            </div>
-            <img  alt=" "  className="plays" src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png"  onClick={this.listen.bind(this, element.preview_url)}/>
-            {this.heart(element.id)}
-            {/* <iframe src={element.preview_url} height="25px" className="frames"></iframe><br/><br/><br/> */}
-            </li>
-            )}else{
-              return(
-                <li  key={index}>
-                Author: {element.artists.map((element2, index) => { 
-                   return(<span key={index}>{element2.name}, </span>)})}<br/>
-                Title: <span className="track-name">" {element.name} "</span><br/>
-                <img src={element.album.images[0].url}
-                height="200px" width="200px" alt=" " /><br/><br/>
-               {this.heart(element.id)}<br/><br/><br/>
-                </li>
-                )
-            }
-        }
+         this.state.trackList.map((element, index)=>
+         <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
         )}
        </ol>
       {prevButton}
