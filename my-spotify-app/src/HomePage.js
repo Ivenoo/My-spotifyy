@@ -32,9 +32,7 @@ const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     randomSongs:  resp.data.tracks.items
   }))}
 }
-componentDidMount(){
-this.refresh()
-}
+
 componentWillReceiveProps(props,state){
   this.refresh()
 }
