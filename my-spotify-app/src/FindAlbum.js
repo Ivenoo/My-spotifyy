@@ -19,14 +19,6 @@ class FindAlbum extends React.Component {
     }
   }
 
-
-//   search(e){
-//     const value = e.currentTarget.value
-//     test(this.state.valuee,value)
-//     if(this.state.valuee.length > 3){
-// console.log('aaaaaaaaa')
-//     }
-//   }
   
 search(e){
   const value = e.currentTarget.value
