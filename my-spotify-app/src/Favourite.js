@@ -17,7 +17,7 @@ class Favourite extends React.Component {
     }
   }
   myFavouriteSongsFirst =(e) =>{
-    JSON.parse(localStorage.getItem('fav')).map(element =>{
+    JSON.parse(localStorage.getItem('fav')).map(element =>
       axios({
         url: `https://api.spotify.com/v1/tracks/${element}`,
         headers:{
@@ -30,7 +30,7 @@ class Favourite extends React.Component {
           }) 
        })
   
-    })
+    )
   }
   componentDidMount(){
     this.myFavouriteSongsFirst()

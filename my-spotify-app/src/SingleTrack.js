@@ -1,5 +1,4 @@
 import React from 'react';
-import Favourite from './Favourite';
 
 
 class SingleTrack extends React.Component {

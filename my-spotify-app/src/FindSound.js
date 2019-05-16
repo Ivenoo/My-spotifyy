@@ -47,12 +47,13 @@ limit(e){
 }
 
 search(e){
+  const value = e.currentTarget.value
   this.setState({
     searchValueToExist: value
   })
-  const value = e.currentTarget.value
-  if(this.state.timeout) clearTimeout(this.state.timeout);
-  this.state.timeout = setTimeout(() => {
+  let timeouter = this.state.timeout
+  if(timeouter) clearTimeout(timeouter);
+  timeouter = setTimeout(() => {
   this.setState({
     searchValue: value
   })
@@ -68,8 +69,9 @@ search(e){
 }, 400);
 }
 getList = (value,link) =>{
-  if(this.state.timeout) clearTimeout(this.state.timeout);
-  this.state.timeout = setTimeout(() => {
+  let timeouter = this.state.timeout
+  if(timeouter) clearTimeout(timeouter);
+  timeouter= setTimeout(() => {
   let url = `https://api.spotify.com/v1/search?q=${value}&type=track&limit=${this.state.limit}`
 
   if(link !== 0){

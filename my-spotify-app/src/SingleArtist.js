@@ -1,5 +1,4 @@
 import React from 'react';
-import Favourite from './Favourite';
 
 
 class SingleArtist extends React.Component {
@@ -13,7 +12,6 @@ class SingleArtist extends React.Component {
     
     render(){
       const parentElement = this.props.parentElement;
-      const parentIndex = this.props.parentIndex;
       let artistPhoto = ""
       if(parentElement.images.length > 0) 
       artistPhoto =<img src={parentElement.images[0].url} width="64px" heigth="64px" alt=""/>

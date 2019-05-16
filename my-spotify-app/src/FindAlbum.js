@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter, Route} from "react-router-dom";
-import {test} from './Service.js';
 import SingleAlbum from './SingleAlbum';
 
 
@@ -26,8 +24,9 @@ search(e){
   this.setState({
     searchValueToExist: value
   })
-  if(this.state.timeout) clearTimeout(this.state.timeout);
-  this.state.timeout = setTimeout(() => {
+  let timeouter = this.state.timeout
+  if(timeouter) clearTimeout(timeouter);
+  timeouter = setTimeout(() => {
   this.setState({
     searchValue: value
   })

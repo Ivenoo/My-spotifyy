@@ -50,8 +50,9 @@ search(e){
   this.setState({
     searchValueToExist: value
   })
-    if(this.state.timeout) clearTimeout(this.state.timeout);
-    this.state.timeout = setTimeout(() => {
+  let timeouter = this.state.timeout
+    if(timeouter) clearTimeout(timeouter);
+    timeouter = setTimeout(() => {
       this.setState({
         searchValue: value
       })
@@ -68,8 +69,9 @@ search(e){
 }
 }
 getList = (value,link) =>{ 
-  if(this.state.timeout) clearTimeout(this.state.timeout);
-  this.state.timeout = setTimeout(() => {
+  let timeouter = this.state.timeout
+  if(timeouter) clearTimeout(timeouter);
+  timeouter = setTimeout(() => {
     let url = `https://api.spotify.com/v1/search?q=${value}&type=artist&limit=${this.state.limit}`
     if(link !== 0){
       url = link;

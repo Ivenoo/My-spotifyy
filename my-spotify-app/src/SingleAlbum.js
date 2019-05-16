@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Favourite from './Favourite';
 
 
 class SingleAlbum extends React.Component {
@@ -14,9 +13,9 @@ class SingleAlbum extends React.Component {
 
     showSongs(index, id){
       const div= document.getElementById(index);
-      
-      if(this.state.timeout) clearTimeout(this.state.timeout);
-        this.state.timeout = setTimeout(() => {
+      let timeouter = this.state.timeout
+      if(timeouter) clearTimeout(timeouter);
+      timeouter = setTimeout(() => {
       if(div.innerHTML === ""){
         axios({
           url: `https://api.spotify.com/v1/albums/${id}/tracks`,
