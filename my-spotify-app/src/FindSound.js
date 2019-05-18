@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
+import Limit from './Limit'
 
 
 
@@ -20,6 +21,7 @@ class FindSound extends React.Component {
       
     }
   }
+         //  USTAWIANIE ILOSCI WYSWIETLANYCH PIOSENEK //
 limit(e){
   const valueLimit = e.currentTarget.value
   if(this.state.searchValue === []){
@@ -179,14 +181,7 @@ exist =() =>{
       <div>
         <div className="szukajka">
         <input type="text" placeholder="Search Tracks..." onChange={this.search.bind(this)}/>
-        <select onChange={this.limit.bind(this)}>
-          <option>5</option>
-          <option>10</option>
-          <option>15</option>
-          <option>20</option>
-          <option>25</option>
-          <option>30</option>
-        </select>
+        <Limit changeLimit={this.limit.bind(this)}/>
         <br/>
        search:<br/>
 

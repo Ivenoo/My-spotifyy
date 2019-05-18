@@ -1,21 +1,11 @@
 import React from 'react';
 
-
-
-
-// Error = ()  =>{
-//     return(
-//             <h1>THIS SUBPAGE IS NOT EXIST</h1>
-//         )
-// }
-class Error extends React.Component {
-    render(){
-        return(
-            <div className="error">
-                THIS SUBPAGE IS EXIST
-            </div>
+const Error = ()  =>{
+    return(
+            <h1 className="Wrong-Link">
+                THIS SUBPAGE IS NOT EXIST
+            </h1>
         )
-    }
 }
 
 export default Error;

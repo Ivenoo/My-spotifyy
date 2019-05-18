@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
+import Limit from './Limit'
 
 
 
@@ -76,14 +77,7 @@ window.open(url)
            )
          })}
        </select>
-       <select onChange={this.limit.bind(this)}>
-          <option>5</option>
-          <option>10</option>
-          <option>15</option>
-          <option>20</option>
-          <option>25</option>
-          <option>30</option>
-        </select><br/>
+       <Limit changeLimit={this.limit.bind(this)}/>
        </div>
        <ol>
        {this.state.searchList.map((element, index)=>

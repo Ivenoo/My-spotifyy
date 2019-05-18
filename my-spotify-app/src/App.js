@@ -14,7 +14,7 @@ class App extends React.Component {
   }
  
   
- 
+                      // POBIERANIE LISTY  TYPÓW MUZYKI //
   getGenres = () =>{
     axios({
       url: `https://api.spotify.com/v1/recommendations/available-genre-seeds`,
@@ -35,7 +35,7 @@ class App extends React.Component {
       }
     })
   }
- 
+                              // ODSWIEZANIE TOKENA //
   refreshToken = () =>{
     var request = require("request");
      
@@ -60,11 +60,9 @@ class App extends React.Component {
       if (error) throw new Error(error);
       if (response){
         response = JSON.parse(response.body)
-       // console.log(response.access_token)
         this.blah(response.access_token)
         setTimeout(()=>{this.refreshToken()} , 3600000)
       }
-    //  console.log(body);
     });  
   }
 

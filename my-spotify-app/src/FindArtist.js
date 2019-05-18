@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleArtist from './SingleArtist';
+import Limit from './Limit';
 
 
 
@@ -129,14 +130,8 @@ exist =() =>{
         <div className="szukajka">
         <input type="text" placeholder="Search Artists..." onChange={this.search.bind(this)}/>
         {/* <input type="text"  id= "searchArtist" placeholder="Search Artists..." onChange={this.looking.bind(this)}/> */}
-        <select onChange={this.limit.bind(this)}>
-          <option>5</option>
-          <option>10</option>
-          <option>15</option>
-          <option>20</option>
-          <option>25</option>
-          <option>30</option>
-        </select><br/>
+        <Limit changeLimit={this.limit.bind(this)}/>
+        <br/>
        search:  <br/>
        </div>
        <ol className="list-Artist">

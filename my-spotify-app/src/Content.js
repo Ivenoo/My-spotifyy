@@ -8,7 +8,7 @@ import Favourite from './Favourite';
 import {Route, Switch} from 'react-router-dom';
 import Error from './Error';
 
-
+        // KOMPONENT WYSWIETLAJACY POSZCZEGÓLNY KOMPONENT  WYBRAY Z MENU //
 class Content extends React.Component {
  
   test2000 = ()=>{

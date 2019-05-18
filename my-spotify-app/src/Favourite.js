@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
+import Limit from './Limit'
 
 
 
@@ -16,7 +17,9 @@ class Favourite extends React.Component {
       limit: 5,
     }
   }
-  myFavouriteSongsFirst =(e) =>{
+
+        // FUNKCJA POBIERAJACA ULUBIONE PIOSENKI PO ID (KTORE JEST W LOCAL STORAGE)//
+  myFavouriteSongs =(e) =>{
     JSON.parse(localStorage.getItem('fav')).map(element =>
       axios({
         url: `https://api.spotify.com/v1/tracks/${element}`,
@@ -31,48 +34,50 @@ class Favourite extends React.Component {
        })
   
     )
+
+
   }
   componentDidMount(){
-    this.myFavouriteSongsFirst()
+    this.myFavouriteSongs()
   }
 
 
-
-addmyoffset =() =>{
+  //WYSWIETLANIE KOLEJNYCH PIOSENEK Z LISTY ULUBIONYCH (NEXT) //
+addOffset =() =>{
   this.setState({
     myoffset: parseInt(this.state.myoffset) + parseInt(this.state.limit)
   })
 }
+
+            //USTAWIENIE LIMITU WYSWIETLANYCH PIOSENEK//
 changeLimit = (e) =>{
   const newLimit = e.currentTarget.value
   this.setState({
     limit: newLimit
   })
 }
-removemyoffsets =() =>{
+
+      // WYSWIETLANEI POPRZEDNICH PIOSENEK (PREVIOUS) DZIALA PO UPRZEDNIM KLIKNIECIU NA NEXT//
+removeOffset =() =>{
   this.setState({
     myoffset: parseInt(this.state.myoffset) - parseInt(this.state.limit)
   })
 }
+
+
+
 render() {
   let prevButton = "", nextButton = "";
   if(this.state.myoffset  > 0){
-    prevButton = <button onClick={this.removemyoffsets}>Previous</button>
+    prevButton = <button onClick={this.removeOffset}>Previous</button>
   }
   if(this.state.myoffset < this.state.favArray.length - this.state.limit){
-    nextButton = <button onClick={this.addmyoffset}>Next</button>
+    nextButton = <button onClick={this.addOffset}>Next</button>
   }
   return(
     <div>
        <div>ITS YOUR FAVOURITE SONGS</div>
-       <select onChange={this.changeLimit.bind(this)} >
-          <option>5</option>
-          <option>10</option>
-          <option>15</option>
-          <option>20</option>
-          <option>25</option>
-          <option>30</option>
-        </select>
+       <Limit changeLimit={this.changeLimit.bind(this)}/>
        <ol>
         {
           this.state.favArray.slice(this.state.myoffset,parseInt(this.state.myoffset) + parseInt(this.state.limit)).map((element,index) =>
