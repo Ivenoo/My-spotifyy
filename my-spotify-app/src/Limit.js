@@ -2,9 +2,7 @@ import React from 'react';
 
 
 class Limit extends React.Component {
-     constructor(props){
-        super(props);
-    }
+
 
     render(){
         return(
@@ -15,6 +13,10 @@ class Limit extends React.Component {
             <option>20</option>
             <option>25</option>
             <option>30</option>
+            <option>35</option>
+            <option>40</option>
+            <option>45</option>
+            <option>50</option>
             </select>
         )
     }

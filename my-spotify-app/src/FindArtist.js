@@ -4,7 +4,7 @@ import SingleArtist from './SingleArtist';
 import Limit from './Limit';
 
 
-
+let timeouter;
 
 class FindArtist extends React.Component {
   constructor(props){
@@ -21,101 +21,92 @@ class FindArtist extends React.Component {
       searchValueToExist: ''
     }
   }
+    
+    //WYZNACZANIE LIMITU WYSWIETLNYCH PIOSENEK NA STRONE//
   limit(e){
+    const limitValue = e.currentTarget.value
+    this.setState({
+      limit: limitValue,
+    })
+    console.log(this.state.artistList.length)
+    setTimeout(() => this.search(this.state.searchValue),10)
+  }
+
+    //POBIERANIE WARTOSCI INPUTA I PRZYPISYWANIE DO STANU//
+  inputValue(e){
     const value = e.currentTarget.value
     this.setState({
-      limit: value
+      searchValue: value
     })
-    if(this.state.searchValue === []){
+    setTimeout(() => this.search(this.state.searchValue),10)
+  }
+
+    //PRZYPISANIE DO STANU WARTOSCI  Z INPUTA I WYWOLANIE POBIERANIA  LISTY//
+  search(value){
+      clearTimeout(timeouter);
+     
+        this.setState({
+          searchValue: value
+        })
+     
+    if(value === ''){
     this.setState({
     artistList: [],
-    test: 'exist'
+    prev: null,
+    next: null,
+    notFindArtist: 'notexist'
   })
   }else{
-    axios({
-      url: `https://api.spotify.com/v1/search?q=${this.state.searchValue}&type=artist&limit=${value}&${this.state.myoffset}`,
-      headers:{
-       'Authorization': 'Bearer ' + this.props.mytoken
-      }
-    }).then(resp =>{ this.setState({
-      artistList: resp.data.artists.items,
-      prev: resp.data.artists.previous,
-      next: resp.data.artists.next
-     })
-    }).catch(error => (new Error(console.log(error))))
-  }
-  
-  }
-search(e){
-  const value = e.target.value; // this is the search text
-  this.setState({
-    searchValueToExist: value
-  })
-  let timeouter = this.state.timeout
-    if(timeouter) clearTimeout(timeouter);
     timeouter = setTimeout(() => {
-      this.setState({
-        searchValue: value
+    this.getList(value, 0)
+  }, 400);
+  }
+  }
+
+    //WCZYTYWANIE PIOSENEK Z API//
+  getList = (value,link) =>{ 
+    this.setState({
+      refresh: ''
+    })
+    console.log('GL')
+      let url = `https://api.spotify.com/v1/search?q=${value}&type=artist&limit=${this.state.limit}`
+      if(link !== 0){
+        url = link;
+        const start = link.indexOf('offset=')
+        const stop = link.indexOf('&limit')
+        const finishoff = link.slice(start,stop)
+        console.log(finishoff)
+        this.setState({
+          myoffset: finishoff
+        })
+      }
+      axios({
+        url: url,
+        headers:{
+        'Authorization': 'Bearer ' + this.props.mytoken
+        }
+      }).then(resp =>{
+        this.setState({
+        artistList: resp.data.artists.items,
+        prev: resp.data.artists.previous
       })
-    }, 400);
-  if(value === ''){
-  this.setState({
-  artistList: [],
-  prev: null,
-  next: null,
-  notFindArtist: 'notexist'
-})
-}else{
-  this.getList(value, 0)
-}
-}
-getList = (value,link) =>{ 
-  let timeouter = this.state.timeout
-  if(timeouter) clearTimeout(timeouter);
-  timeouter = setTimeout(() => {
-    let url = `https://api.spotify.com/v1/search?q=${value}&type=artist&limit=${this.state.limit}`
-    if(link !== 0){
-      url = link;
-      const start = link.indexOf('offset=')
-      const stop = link.indexOf('&limit')
-      const finishoff = link.slice(start,stop)
-      console.log(finishoff)
+      this.exist()
+      }).catch(error => (new Error(console.log(error))))
+  
+    
+  }
+  //WYSWIETLA  NAPIS JESLI NIE ZNALEZIONO DANEGO ARTYSTY//
+  exist =() =>{
+    if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
       this.setState({
-        myoffset: finishoff
+        notFindArtist: 'exist'
+      })
+    }else{
+      this.setState({
+        notFindArtist: 'notexist'
       })
     }
-    axios({
-      url: url,
-      headers:{
-       'Authorization': 'Bearer ' + this.props.mytoken
-      }
-    }).then(resp =>{
-      this.setState({
-      artistList: resp.data.artists.items,
-      prev: resp.data.artists.previous
-     })
-     this.exist()
-    }).catch(error => (new Error(console.log(error))))
-  }, 400);
-  
-}
-
-listen(url){
-  if(url != null){
-window.open(url)
-}
-}
-exist =() =>{
-  if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
-  this.setState({
-    notFindArtist: 'exist'
-  })
-  }else{
-    this.setState({
-      notFindArtist: 'notexist'
-    })
-}
-}
+  }
 
   render() {
     let prevButton = "", nextButton = "";
@@ -128,7 +119,7 @@ exist =() =>{
     return(
       <div>
         <div className="szukajka">
-        <input type="text" placeholder="Search Artists..." onChange={this.search.bind(this)}/>
+        <input type="text" placeholder="Search Artists..." onChange={this.inputValue.bind(this)}/>
         {/* <input type="text"  id= "searchArtist" placeholder="Search Artists..." onChange={this.looking.bind(this)}/> */}
         <Limit changeLimit={this.limit.bind(this)}/>
         <br/>

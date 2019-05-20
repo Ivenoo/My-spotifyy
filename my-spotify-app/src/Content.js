@@ -8,13 +8,11 @@ import Favourite from './Favourite';
 import {Route, Switch} from 'react-router-dom';
 import Error from './Error';
 
-        // KOMPONENT WYSWIETLAJACY POSZCZEGÓLNY KOMPONENT  WYBRAY Z MENU //
+        // KOMPONENT WYSWIETLAJACY POSZCZEGÓLNY KOMPONENT  WYBRANY Z MENU //
 class Content extends React.Component {
  
-  test2000 = ()=>{
-    console.log('dziala')
-   }
-  render(props) {
+
+  render() {
     return(
       <div id="content">
       <Switch>

@@ -37,9 +37,9 @@ class App extends React.Component {
   }
                               // ODSWIEZANIE TOKENA //
   refreshToken = () =>{
-    var request = require("request");
+    const request = require("request");
      
-    var options = { method: 'POST',
+    const options = { method: 'POST',
       url: 'https://accounts.spotify.com/api/token',
       qs: { grant_type: 'client_credentials' },
       headers:
@@ -60,23 +60,22 @@ class App extends React.Component {
       if (error) throw new Error(error);
       if (response){
         response = JSON.parse(response.body)
-        this.blah(response.access_token)
-        setTimeout(()=>{this.refreshToken()} , 3600000)
+        this.setState({
+          mytoken: response.access_token
+        })
+        this.getGenres()
+        setTimeout(()=>{this.refreshToken()} , 3599900)
       }
     });  
   }
 
-  blah = (param) => {
-    this.setState({
-      mytoken: param
-    })
-    this.getGenres()
-  }
+
+
   check = () =>{
-if(this.state.mytoken === ''){
-  this.refreshToken()
-}
+    if(this.state.mytoken === ''){
+      this.refreshToken() 
   }
+}
 
    
  

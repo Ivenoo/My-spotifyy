@@ -8,6 +8,8 @@ class SingleTrack extends React.Component {
           refresh: ""
         }
     }
+
+      // USTAWIANIE SERCA ORAZ PODMIENIANIE KOLORU  W ZALEZNOSCI CZY DODANA ZOSTALA PIOSENKA CZY NIE//
     heart = ((id) => {
       const fav =JSON.parse(localStorage.getItem('fav'));
       let heartTrue = 0;
@@ -24,7 +26,7 @@ class SingleTrack extends React.Component {
       }
     })
     
-    
+      // DODAWANIE PIOSENKI DO ULUBIONYCH//
     changeFavourite = (id) =>{
         if(!localStorage.getItem('fav')){
           const favourite= [id]
@@ -45,23 +47,26 @@ class SingleTrack extends React.Component {
             fav.push(id)
             localStorage.setItem("fav", JSON.stringify(fav))
             this.setState({
-              elo: ''
+              fav: ''
             })
           }
           else{
             fav.splice(favouriteIndex, 1)
             localStorage.setItem("fav", JSON.stringify(fav))
             this.setState({
-              elo: ''
+              fav: ''
             })
           }
         }
     }
+
+      //OTWIERANIE FRAGMENTU UTWORU W NOWYM OKNIE//
     listen(url){
       if(url != null){
-    window.open(url)
+        window.open(url)
+      }
     }
-    }
+
     render(){
       const parentElement = this.props.parentElement;
       const parentIndex = this.props.parentIndex;
@@ -76,7 +81,6 @@ class SingleTrack extends React.Component {
             <img src={parentElement.album.images[2].url} height="40px" width="40px" alt=" " /><br/>
             {trackLink}
             {this.heart(parentElement.id)}
-            {/* <img  alt=" "  className="plays" src="https://images.vexels.com/media/users/3/135176/isolated/preview/a6508e565d25ab01f79a35c4319e0083-play-button-flat-icon-by-vexels.png"  onClick={this.listen.bind(this, parentElement.preview_url)}/><br/><br/> */}
             </li>
             )
 

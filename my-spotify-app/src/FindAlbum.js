@@ -3,7 +3,7 @@ import axios from 'axios';
 import SingleAlbum from './SingleAlbum';
 
 
-
+let timeouter;
 
 class FindAlbum extends React.Component {
   constructor(props){
@@ -18,60 +18,65 @@ class FindAlbum extends React.Component {
     }
   }
 
-  
-search(e){
-  const value = e.currentTarget.value
-  this.setState({
-    searchValueToExist: value
-  })
-  let timeouter = this.state.timeout
-  if(timeouter) clearTimeout(timeouter);
-  timeouter = setTimeout(() => {
-  this.setState({
-    searchValue: value
-  })
-  if(value === ''){
-  this.setState({
-  albumList: []
-})
-}else{
-  this.getList(value)
-}
-}, 400);
-}
-getList = (value) =>{
-  axios({
-    url: `https://api.spotify.com/v1/search?q=${value}&type=album&limit=10`,
-    headers:{
-     'Authorization': 'Bearer ' + this.props.mytoken
-    }
-  }).then(resp =>{ 
+              //POBIERANIE LISTY  ALBUMOW  Z API // 
+  search(e){
+    const value = e.currentTarget.value
     this.setState({
-      albumList: resp.data.albums.items
-     })
-     this.exist()
-  }).catch(error => (new Error(console.log(error))))
-}
-listen(url){
-  if(url != null){
-window.open(url)
-}
-}
-
-
-
-
-exist =() =>{
-  if(this.state.albumList.length <= 0 && this.state.searchValueToExist.length > 0){
-  this.setState({
-    notFindAlbum: 'exist'
-  })
-  }else{
-    this.setState({
-      notFindAlbum: 'notexist'
+      searchValueToExist: value
     })
-}
-}
+  
+    this.setState({
+      searchValue: value
+    })
+    
+    if(value === ''){
+      this.setState({
+        albumList: []
+      })
+    }else{
+      if(timeouter) clearTimeout(timeouter);
+        timeouter = setTimeout(() => { 
+        this.getList(this.state.searchValue)
+      }, 1000);
+    }
+
+  }
+    //POBIERANIE INFORMACJI O ALBUMACH Z API//
+  getList = (value) =>{
+    axios({
+      url: `https://api.spotify.com/v1/search?q=${value}&type=album&limit=10`,
+      headers:{
+      'Authorization': 'Bearer ' + this.props.mytoken
+      }
+    }).then(resp =>{ 
+      this.setState({
+        albumList: resp.data.albums.items
+      })
+      this.exist()
+    }).catch(error => (new Error(console.log(error))))
+  }
+
+      //URUCHAMIANIE  ODTWARZACZA W NOWYM OKNIE //
+  listen(url){
+    if(url != null){
+      window.open(url)
+    }
+  }
+
+
+
+    //WYSWIETLANIE INFORMACJI O BRAKU  ZNALEZIONYCH ELEMENTÓW//
+  exist =() =>{
+    if(this.state.albumList.length <= 0 && this.state.searchValue.length > 0){
+    this.setState({
+      notFindAlbum: 'exist'
+    })
+    }else{
+      this.setState({
+        notFindAlbum: 'notexist'
+      })
+    }
+  }
 
 
   render() {

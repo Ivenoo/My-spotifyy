@@ -1,76 +1,76 @@
 import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
-import Limit from './Limit'
-
+import Limit from './Limit';
+import {randomOffset} from './Service'
 
 
 class FindGenres extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      searchValue: [],
+      searchValue: '',
       searchList:[],
-      limit: 5
+      limit: 5,
+      refresh: '',
+      randOffset: 0
     }
   }
+
+    // USTAWIA LIMIT WYSWIETLANYCH  PIOSENEK NA STRONE//
   limit(e){
     const limitValue = e.currentTarget.value
     this.setState({
-      limit: limitValue
+      limit: limitValue,
     })
-    if(this.state.searchValue === ''){
+   setTimeout(() => this.search(this.state.searchValue),10)
+  }
+
+    // POBIERA WARTOSC INPUTA I PRZYPISUJE DO ZMIENNEJ//
+  inputValue(e){
+    const value = e.currentTarget.value
+    this.setState({
+      searchValue: value,
+      randOffset: randomOffset()
+    })
+    setTimeout(() => this.search(this.state.searchValue),10)
+  }
+
+    //POBIERA PIOSENKI Z WYBRANEGO GATUNKU//
+  search(value){
+    this.setState({
+      refresh: ''
+    })
+    if(value === ''){
     this.setState({
     searchList: []
   })
   }else{
     axios({
-      url: `https://api.spotify.com/v1/search?q=genre:${this.state.searchValue}&type=track&limit=${limitValue}`,
+      url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}&offset=${this.state.randOffset}`,
       headers:{
-       'Authorization': 'Bearer ' + this.props.mytoken
+      'Authorization': 'Bearer ' + this.props.mytoken
       }
     }).then(resp =>
       { this.setState({
       searchList: resp.data.tracks.items
-     })
+    })
     }).catch(error => (new Error(console.log(error))))
   }
-  
+    //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
   }
-search(e){
-  const value = e.currentTarget.value
-  this.setState({
-    searchValue: value
-  })
-  if(value === ''){
-  this.setState({
-  searchList: []
-})
-}else{
-  axios({
-    url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}`,
-    headers:{
-     'Authorization': 'Bearer ' + this.props.mytoken
+  listen(url){
+    if(url != null){
+      window.open(url)
     }
-  }).then(resp =>
-    { this.setState({
-    searchList: resp.data.tracks.items
-   })
-  }).catch(error => (new Error(console.log(error))))
-}
-
-}
-listen(url){
-  if(url != null){
-window.open(url)
-}
-}
+  }
 
   render() {
     return(
       <div>
         <div className="szukajka">
-       <select onChange={this.search.bind(this)}>
+       <select defaultValue='' onChange={this.inputValue.bind(this)}>
+         <option value="" disabled>Choose Genre ...</option>
          {this.props.typeTracks.map((element, index)=>{
            return(
              <option key={index}>{element}</option>

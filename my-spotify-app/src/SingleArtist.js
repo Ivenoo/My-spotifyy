@@ -9,7 +9,7 @@ class SingleArtist extends React.Component {
         }
     }
 
-    
+           //WYSWIETLANIE POJEDYNCZEGO ARTYSTY //
     render(){
       const parentElement = this.props.parentElement;
       let artistPhoto = ""

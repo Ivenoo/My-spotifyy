@@ -10,39 +10,43 @@ class SingleAlbum extends React.Component {
         }
     }
 
-
+      //POBIERA  INFORMACJE O ALBUMIE I ZWRACA  JAKO ELEMENT LISTY//
     showSongs(index, id){
       const div= document.getElementById(index);
       let timeouter = this.state.timeout
       if(timeouter) clearTimeout(timeouter);
       timeouter = setTimeout(() => {
-      if(div.innerHTML === ""){
-        axios({
-          url: `https://api.spotify.com/v1/albums/${id}/tracks`,
-          headers:{
-           'Authorization': 'Bearer ' + this.props.mytoken
-          }
-        }).then(resp =>{ 
-         resp.data.items.map(element => {
-           if(element.preview_url != null){
-          return(div.innerHTML = div.innerHTML + `<li>  <a  class="name-songs-linked" style="color:blue" href=${element.preview_url} target="_blank"> ${element.name} </a>  </li><br/>`)
-        }else{
-          return(div.innerHTML = div.innerHTML + `<li> ${element.name} </li><br/>`)
-        }})
-      
-        }).catch(error => (new Error(console.log(error))))
-      }
+        if(div.innerHTML === ""){
+          axios({
+            url: `https://api.spotify.com/v1/albums/${id}/tracks`,
+            headers:{
+            'Authorization': 'Bearer ' + this.props.mytoken
+            }
+          }).then(resp =>{ 
+          resp.data.items.map(element => {
+            if(element.preview_url != null){
+            return(div.innerHTML = div.innerHTML + `<li>  <a  class="name-songs-linked" style="color:blue" href=${element.preview_url} target="_blank"> ${element.name} </a>  </li><br/>`)
+          }else{
+            return(div.innerHTML = div.innerHTML + `<li> ${element.name} </li><br/>`)
+          }})
+          }).catch(error => (new Error(console.log(error))))
+        }
       }, 400);
-      }
+    }
+
+      //ZMIANA PRZYCISKU ROZWIJANIA LISTY//
       changeButton = (id) =>{
         document.getElementById(id).style.display = "none";
         document.getElementById(id +'a').style.display = "block";
       }
-      
+
+      //ROZWIJANIE LISTY //
     openList = (index, id) =>{
       this.showSongs(index, id)
       setTimeout(() =>{this.changeButton(id)},500);
     }
+    
+      //ZWIJANIE LISTY //
     closeList = (index, id) =>{
       document.getElementById(index).innerHTML = "";
       document.getElementById(id).style.display = "block";
