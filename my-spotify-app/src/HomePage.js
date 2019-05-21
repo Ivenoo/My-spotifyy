@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
+import FindAlbum from './FindAlbum';
 import { randomOffset, randomLetter} from './Service'
 
 
@@ -41,21 +42,36 @@ class HomePage extends React.Component {
   }
 
     //OTWIERANIE OKNA Z URYWKIEM PIOSENKI PO KLIKNIECIU NA IKONE PLAY//
-  listen(url){
-    if(url != null){
-      window.open(url)
-    }
-  }
+
+  // Dura = () =>{
+  //   <FindAlbum>
+  //     {FindAlbum.getList()}
+  //   </FindAlbum>
+   
+  // }
+test = () =>{
+    let dura = document.getElementsByTagName('Body')
 
 
+}
  render() {
   return(
-    <div>
+    <div className='Homepage-Box'>
+      <div className='Homepage-Album-Box'>
+      <ol>
+      <FindAlbum   mytoken={this.props.mytoken} />
+     </ol>
+      </div>
+      <div className='Homepage-Track-Box'>
      <ol>
      { this.state.randomSongs.map((element, index)=>
       <SingleTrack  key={index} parentElement={element} parentIndex={index} />
       )}
      </ol>
+     </div>
+     <div className='Homepage-Artist-Box'>
+     TU KIEDYS BEDĄ  NAJPOPULARNIEJSI ARTYSCI SERIO
+     </div>
     </div>
   )
 }

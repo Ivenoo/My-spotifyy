@@ -1,74 +1,45 @@
 body {
-  background: #3f3f3f;
-  color: white;
-  font-family: 'Arial';
-  border: solid 0px;
-  margin: 0px;
+  background: #202020;
 }
 body .App-Menu {
-  margin-left: auto;
-  text-align: center;
-  margin-right: 25px;
+  margin-bottom: 15px;
+  width: 800px;
+  margin: auto;
+  margin-bottom: 25px;
+  padding-bottom: 1px;
+  font-family: 'Bahnschrift Condensed';
 }
-body .App-Menu {
-  margin-left: auto;
-  text-align: center;
-  margin-right: 25px;
-}
-body .menu-line {
-  color: #ff7300;
-}
-body .main-button {
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-top: 13px;
-  cursor: pointer;
-  font-family: "Ink Free";
-  background: #ff7300;
-}
-body .Home-Page {
-  float: left;
-  margin-top: 0px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-body .frames {
-  border: solid 0px #ff7300;
-}
-body .App-Contener div {
-  margin-left: 10px;
-}
-body .szukajka {
-  text-align: center;
-}
-body .name-songs-linked {
-  color: white ;
+body .App-Menu .Menu-Buttons {
+  padding-bottom: 5px;
   text-decoration: none;
-  margin-bottom: 50px !important ;
+  border-bottom: solid 2px #fff ;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: 'Bahnschrift Condensed';
+  color: #ff8800;
+  font-size: 25px;
+  transition-duration: 1.5s;
 }
-body .plays {
-  margin-right: 10px;
-  width: 50px ;
-  height: 50px;
+body .App-Menu .Default-Location {
   cursor: pointer;
+  border-bottom: solid 2px #ff8800;
+  box-shadow: 0 2px 1px -1px #ff7300;
 }
-body .button-favourite {
-  cursor: pointer;
+body .App-Menu .Menu-Buttons:hover {
+  color: #fff;
+  transform: scale(0.5);
 }
-body span.track-name {
-  color: rgba(255, 115, 0, 0.9);
-  font-size: 20px;
-  display: block;
+body .App-Content {
+  font-family: 'Bahnschrift Condensed';
 }
-body .main-buttonc {
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-top: 13px;
-  cursor: pointer;
-  font-family: "Ink Free";
-  background: #ff7300;
-  display: none;
+body .App-Content .Homepage-Track-Box {
+  background: green;
+}
+body .App-Content .Homepage-Album-Box {
+  background: #ff00b3;
+}
+body .App-Content .Homepage-Artist-Box {
+  background: yellow;
 }
 body .notexist {
   display: none;

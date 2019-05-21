@@ -52,7 +52,7 @@ class SingleTrack extends React.Component {
           }
           else{
             fav.splice(favouriteIndex, 1)
-            localStorage.setItem("fav", JSON.stringify(fav))
+            localStorage.setItem("fav", JSON.stringify(fav));
             this.setState({
               fav: ''
             })
@@ -63,7 +63,7 @@ class SingleTrack extends React.Component {
       //OTWIERANIE FRAGMENTU UTWORU W NOWYM OKNIE//
     listen(url){
       if(url != null){
-        window.open(url)
+       window.open(url);
       }
     }
 
