@@ -1,6 +1,7 @@
 @font: 'Bahnschrift Condensed';
 @font-color: rgb(255, 136, 0);
 @back-color: rgb(32, 32, 32);
+@back-item: rgb(44, 44, 44);
 
 body{
   background: @back-color;
@@ -40,16 +41,65 @@ body{
   }
   .App-Content{
     font-family: @font;
+
+    
+    .Player{
+      position: fixed;
+      bottom: 0%;
+      width: 1200px;
+      height: 40px;
+      background-color:  @back-color;
+      display: none;
+      }
     
     .Homepage-Track-Box{
-      background:green;
+      background:@back-item;
+      width:50%;
+      
     }
+
     .Homepage-Album-Box{
-      background:rgb(255, 0, 179);
+      padding:10px 10px 10px 0px;
+      background:@back-item;
+      height:200px;
+      width: 2102px;
+      display:block;
+
+      .Home-Single-Album{
+        width: 200px ;
+        height:100%;
+        float:left;
+        margin-left:10px;
+
+
+       .Single-Album-Details{
+         color:white;
+         font-size:20px;
+         margin-top:50px;
+         position:absolute;
+       }
+
+        .Img-Rand-Album{
+          width: 200px ;
+          height:200px ;
+          transition-duration: 1.2s;
+          position: absolute;
+            
+          &:hover{
+              opacity:0.1;
+          }
+        
+          
+        }
+
+       
+      }
     }
     .Homepage-Artist-Box{
-      background:yellow;
+      background:@back-item;
     }
+  
+   
 
   }
   .notexist{
@@ -61,8 +111,11 @@ body{
     .title{
       color:red;
     }
-}
 
+    .main-buttonc{
+      display:none;
+    }
+}
 
 
 

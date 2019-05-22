@@ -24,6 +24,7 @@ class Content extends React.Component {
       <Route exact path="/favourite" render={()=> <Favourite  mytoken={this.props.mytoken} />}/>
       <Route component={()=> <Error/>}/>
       </Switch>
+      <audio controls autoPlay className="Player"/>
       </div>
     )   
 }

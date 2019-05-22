@@ -9,3 +9,8 @@ export const randomLetter = () =>{
     const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     return(randomLetter)
 }
+export const listen =(url) =>{
+    let player =  document.querySelector('.Player');
+    player.style.display = 'block';
+    player.src = url
+  }

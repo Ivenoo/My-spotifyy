@@ -1,4 +1,5 @@
 import React from 'react';
+import {listen} from './Service'
 
 
 class SingleTrack extends React.Component {
@@ -61,18 +62,14 @@ class SingleTrack extends React.Component {
     }
 
       //OTWIERANIE FRAGMENTU UTWORU W NOWYM OKNIE//
-    listen(url){
-      if(url != null){
-       window.open(url);
-      }
-    }
+
 
     render(){
       const parentElement = this.props.parentElement;
       const parentIndex = this.props.parentIndex;
       let trackLink = ""
       if(parentElement.preview_url !== null) 
-      trackLink = <img  className="button-favourite" onClick={this.listen.bind(this, parentElement.preview_url)} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
+      trackLink = <img  className="button-favourite" onClick={() =>{listen(parentElement.preview_url)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
           return(
             <li  key={parentIndex}>
             Author: {parentElement.artists.map((element2, index) => { 

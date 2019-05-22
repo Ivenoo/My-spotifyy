@@ -32,14 +32,48 @@ body .App-Menu .Menu-Buttons:hover {
 body .App-Content {
   font-family: 'Bahnschrift Condensed';
 }
+body .App-Content .Player {
+  position: fixed;
+  bottom: 0%;
+  width: 1200px;
+  height: 40px;
+  background-color: #202020;
+  display: none;
+}
 body .App-Content .Homepage-Track-Box {
-  background: green;
+  background: #2c2c2c;
+  width: 50%;
 }
 body .App-Content .Homepage-Album-Box {
-  background: #ff00b3;
+  padding: 10px 10px 10px 0px;
+  background: #2c2c2c;
+  height: 200px;
+  width: 2102px;
+  display: block;
+}
+body .App-Content .Homepage-Album-Box .Home-Single-Album {
+  width: 200px ;
+  height: 100%;
+  float: left;
+  margin-left: 10px;
+}
+body .App-Content .Homepage-Album-Box .Home-Single-Album .Single-Album-Details {
+  color: white;
+  font-size: 20px;
+  margin-top: 50px;
+  position: absolute;
+}
+body .App-Content .Homepage-Album-Box .Home-Single-Album .Img-Rand-Album {
+  width: 200px ;
+  height: 200px ;
+  transition-duration: 1.2s;
+  position: absolute;
+}
+body .App-Content .Homepage-Album-Box .Home-Single-Album .Img-Rand-Album:hover {
+  opacity: 0.1;
 }
 body .App-Content .Homepage-Artist-Box {
-  background: yellow;
+  background: #2c2c2c;
 }
 body .notexist {
   display: none;
@@ -49,4 +83,7 @@ body .exist {
 }
 body .title {
   color: red;
+}
+body .main-buttonc {
+  display: none;
 }
