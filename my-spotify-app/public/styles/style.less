@@ -51,10 +51,105 @@ body{
       background-color:  @back-color;
       display: none;
       }
-    
+
     .Homepage-Track-Box{
       background:@back-item;
-      width:50%;
+      width:600px;
+      margin-top:10px;
+      border-radius:10px;
+
+      .Single-Track{
+        display:block;
+        height:100px;
+        padding:5px 0px 5px 0px;
+        border-bottom: solid 1px @font-color;
+
+        &:hover{
+          background:rgb(107, 107, 107); 
+        }
+
+        .Single-Track-Img{
+          width:100px;
+          height:100px;
+          float:left;
+          position:absolute;
+
+        }
+
+        .Single-Track-Play-Icon{
+          height:70px;
+          width:70px;
+          margin:15px 0px 0px 15px;
+          float:left;
+          position:absolute;
+          opacity: 0.5;
+          cursor:pointer;
+
+          &:hover{
+            opacity: 0.7;
+          }
+        }
+
+        .Single-Track-Author-Title,.Single-Track-Name-Title{
+          padding-left:110px;
+          color:white;
+        }
+
+        .Single-Track-Author,.Single-Track-Name{
+          color: @font-color;
+         
+        }
+
+          .Single-Track-Button-Favourite{
+            width:40px;
+            height:40px;
+            margin-top:4px;
+            margin: 13px 0px  0px 110px;
+            position:absolute;
+            
+          }
+          .Single-Track-Comunity-Portal-yt{
+            width:55px;
+            height:40px;
+            margin: 15px 0px  0px 410px;
+            position:absolute;
+          }
+          .Single-Track-Comunity-Portal-spotify{
+            width:49px;
+            height:49px;
+            margin: 13px 0px  0px 475px;
+            position:absolute;
+          }
+          
+          .Single-Track-Comunity-Portal-soundcloud{
+            width:50px;
+            height:50px;
+            margin: 13px 0px  0px 534px;
+            position:absolute;
+          }
+
+          .Single-Track-Comunity-Portal-soundcloud,
+          .Single-Track-Comunity-Portal-spotify,
+          .Single-Track-Comunity-Portal-yt,
+          .Single-Track-Button-Favourite{
+            transition-duration: 2s;
+            // margin-top:12px;
+            filter: grayscale(0.8);
+            cursor:pointer;
+            
+          }
+
+          .Single-Track-Comunity-Portal-soundcloud:hover,
+          .Single-Track-Comunity-Portal-spotify:hover,
+          .Single-Track-Comunity-Portal-yt:hover,
+          .Single-Track-Button-Favourite:hover{
+            filter: grayscale(0);
+            // transform:scale(1.2);
+            transform:rotateX(180deg);
+          }
+
+
+      }  
     }
 
     .Homepage-Album-Box{

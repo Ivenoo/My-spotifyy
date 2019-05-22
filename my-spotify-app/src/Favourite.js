@@ -22,7 +22,7 @@ class Favourite extends React.Component {
   myFavouriteSongs =(e) =>{
 
     setTimeout(() =>{ 
-      JSON.parse(localStorage.getItem('fav')).map(element =>
+      JSON.parse(localStorage.getItem('favourite')).map(element =>
       axios({
         url: `https://api.spotify.com/v1/tracks/${element}`,
         headers:{
