@@ -12,10 +12,10 @@ class SingleTrack extends React.Component {
 
       // USTAWIANIE SERCA ORAZ PODMIENIANIE KOLORU  W ZALEZNOSCI CZY DODANA ZOSTALA PIOSENKA CZY NIE//
     heart = ((id) => {
-      const fav =JSON.parse(localStorage.getItem('fav'));
+      const favourite =JSON.parse(localStorage.getItem('favourite'));
       let heartTrue = 0;
       
-      fav.forEach(element=>{
+      favourite.forEach(element=>{
         if(element === id){
           heartTrue = 1;
         }
@@ -29,33 +29,33 @@ class SingleTrack extends React.Component {
     
       // DODAWANIE PIOSENKI DO ULUBIONYCH//
     changeFavourite = (id) =>{
-        if(!localStorage.getItem('fav')){
+        if(!localStorage.getItem('favourite')){
           const favourite= [id]
-          localStorage.setItem("fav", JSON.stringify(favourite));
+          localStorage.setItem("favourite", JSON.stringify(favourite));
         }else{
-          const fav = JSON.parse(localStorage.getItem('fav'));
+          const favourite = JSON.parse(localStorage.getItem('favourite'));
           let favouriteTrue = 0;
           let favouriteIndex;
           
-          for(let i=0; i< fav.length; i++){
-            if(fav[i] === id){
+          for(let i=0; i< favourite.length; i++){
+            if(favourite[i] === id){
               favouriteTrue = 1;
               favouriteIndex = i;
               break;
             }
           } 
           if(!favouriteTrue){
-            fav.push(id)
-            localStorage.setItem("fav", JSON.stringify(fav))
+            favourite.push(id)
+            localStorage.setItem("favourite", JSON.stringify(favourite))
             this.setState({
-              fav: ''
+              favourite: ''
             })
           }
           else{
-            fav.splice(favouriteIndex, 1)
-            localStorage.setItem("fav", JSON.stringify(fav));
+            favourite.splice(favouriteIndex, 1)
+            localStorage.setItem("favourite", JSON.stringify(favourite));
             this.setState({
-              fav: ''
+              favourite: ''
             })
           }
         }
