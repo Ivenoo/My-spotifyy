@@ -137,11 +137,12 @@ body{
             }
           }
           .Single-Track-Author-Title{
-            width:10%;
+            width:11%; 
             float:left;
             display:inline;
             color:white;
           }
+
 
           .Single-Track-Name-Title{
             float:left;
@@ -186,7 +187,7 @@ body{
             .Single-Track-Comunity-Portal-spotify{
               width:49px;
               height:49px;
-              margin: 13px 0px  0px 337px;
+              margin: 13px 0px  0px 335px;
               position:absolute;
             }
             
@@ -373,6 +374,7 @@ body{
         padding: 10px 0px 0px 0px;
         border-bottom: solid 1px #c86400;
         height:118px;
+
         .Random-Artists-IMG{
           width: 100px;
           height: 100px;
@@ -386,13 +388,13 @@ body{
           margin-left:110px;
 
           .Random-Artists-Genres-Title{
-            width: 21.2%;
+            width: 22.5%;
             float: left;
             display: inline;
             color: white;
           }
           .Random-Artists-Marquee{
-            width:78.8%;
+            width:77.5%;
             display:inline;
             float:left;
           }
@@ -402,6 +404,54 @@ body{
             display: inline;
             color: white;
           }
+        }
+        .Single-Track-Icon-Box{
+
+          .Single-Track-Comunity-Portal-fb{
+            width:47px;
+            height:47px;
+            margin: -8px 0px  0px 420px;
+            position:absolute;
+            border-radius:5px;
+          }
+
+          .Single-Track-Comunity-Portal-tw{
+            width:48px;
+            height:46px;
+            margin:  -7px 0px  0px 477px;
+            position:absolute;
+          }
+
+          .Single-Track-Comunity-Portal-insta{
+            width:50px;
+            height:50px;
+            margin: -9px 0px  10px 534px;
+            position:absolute;
+          }
+
+          .Single-Track-Comunity-Portal-fb,
+          .Single-Track-Comunity-Portal-tw,
+          .Single-Track-Comunity-Portal-insta{
+            transition-duration: 2s;
+            filter: grayscale(0.8);
+            cursor:pointer;  
+          }
+          .Single-Track-Comunity-Portal-fb:hover{
+            filter: grayscale(0);
+            transform:rotateX(360deg);
+          }
+
+          .Single-Track-Comunity-Portal-tw:hover{
+            filter: grayscale(0);
+            transform:rotateZ(360deg);
+          }
+
+          .Single-Track-Comunity-Portal-insta:hover{
+            filter: grayscale(0);
+            transform:rotateX(360deg);
+          }
+          
+
         }
       }
 

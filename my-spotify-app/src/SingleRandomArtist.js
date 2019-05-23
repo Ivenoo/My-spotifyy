@@ -9,6 +9,20 @@ class SingleRandomArtist extends React.Component {
         }
     }
 
+
+    fb = (url) =>{
+      console.log(url.trim())
+      window.open(`https://www.facebook.com/search/top/?q=${encodeURIComponent(url)}&epa=SEARCH_BOX`)
+    }
+    tw = (url) =>{
+      window.open(`https://twitter.com/search?q=${encodeURIComponent(url)}&src=typd`)
+    }
+    insta = (url) =>{
+      window.open(`https://soundcloud.com/search/sounds?q=${encodeURIComponent(url)}`)
+    }
+
+
+
            //WYSWIETLANIE POJEDYNCZEGO ARTYSTY //
     render(){
       const parentElement = this.props.parentElement;
@@ -34,6 +48,11 @@ class SingleRandomArtist extends React.Component {
             {parentElement.followers.total}
           </span>
         </div>
+        <div className="Single-Track-Icon-Box">
+                <a onClick={this.fb.bind(this,parentElement.name)} ><img src='./img/fb-icon.png' className="Single-Track-Comunity-Portal-fb btn btn-white btn-animation-1" alt=" " /></a>
+                <a onClick={this.tw.bind(this, parentElement.name)} ><img src='./img/tw-icon.png' className="Single-Track-Comunity-Portal-tw" alt=" " /></a>
+                <a onClick={this.insta.bind(this,parentElement.name)} ><img src='./img/insta-icon.png' className="Single-Track-Comunity-Portal-insta" alt=" " /></a>
+              </div>
         </div>
         )
 

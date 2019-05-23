@@ -32,32 +32,40 @@ body {
   margin: auto;
 }
 body .App-Menu {
+  margin-top: 30px;
+  margin-bottom: 20px;
   text-align: center;
-  margin-bottom: 25px;
-  padding-bottom: 1px;
 }
 body .App-Menu .Menu-Buttons {
-  padding-bottom: 5px;
+  background-color: #2b2b2b;
+  color: #6b6b6b;
   text-decoration: none;
-  border-bottom: solid 2px #fff ;
-  padding-right: 10px;
-  padding-left: 10px;
-  color: #c86400;
+  border-bottom: solid 1px #c86400;
+  border-top: solid 1px #c86400;
+  padding: 10px;
   font-size: 25px;
-  transition-duration: 1.5s;
+  transition-duration: 1s;
 }
 body .App-Menu .Default-Location {
-  cursor: pointer;
-  box-shadow: 0 2px 1px -1px #ff7300;
+  color: #c86400;
 }
 body .App-Menu .Menu-Buttons:hover {
-  color: #fff;
-  transform: scale(0.5);
+  cursor: pointer;
+  color: #FFF;
 }
 body .App-Content {
   margin: 0px auto;
   margin-top: 20px;
   z-index: 1;
+}
+body .App-Content .Right-Clear {
+  margin-left: 1200px;
+  position: absolute;
+  width: 2000px;
+  height: 100%;
+  background-color: #202020;
+  float: right;
+  z-index: 1000;
 }
 body .App-Content .Player {
   position: fixed;
@@ -112,7 +120,7 @@ body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-
   opacity: 0.7;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Author-Title {
-  width: 10%;
+  width: 11%;
   float: left;
   display: inline;
   color: white;
@@ -155,7 +163,7 @@ body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify {
   width: 49px;
   height: 49px;
-  margin: 13px 0px  0px 337px;
+  margin: 13px 0px  0px 335px;
   position: absolute;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud {
@@ -191,11 +199,30 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box {
   background: #2b2b2b;
   height: 210px;
   width: 100%;
-  padding: 10px 10px 10px 0px;
+  padding: 10px 0px 10px 0px;
   display: block;
   overflow: hidden;
   border-bottom: solid 1px #c86400;
   border-top: solid 1px #c86400;
+  box-shadow: inset 15px 0px 15px 3px #2b2b2b;
+}
+body .App-Content .Homepage-Box .Homepage-Albums-Box .Album-Box-Left-Smooth {
+  position: absolute;
+  margin-top: -10px;
+  height: 230px;
+  width: 40px;
+  z-index: 999;
+  box-shadow: inset 15px 0px 15px -2px #2b2b2b;
+}
+body .App-Content .Homepage-Box .Homepage-Albums-Box .Album-Box-Right-Smooth {
+  float: right;
+  margin-left: 1160px;
+  margin-top: -10px;
+  position: absolute;
+  height: 230px;
+  width: 40px;
+  z-index: 999;
+  box-shadow: inset -15px 0px 15px 2px #2b2b2b;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler {
   position: absolute;
@@ -249,7 +276,7 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-
   cursor: pointer;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler .Single-Album:hover {
-  z-index: 999;
+  z-index: 998;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler .Single-Album:hover .Single-Album-Image {
   opacity: 0.1;
@@ -306,13 +333,13 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Art
   margin-left: 110px;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Artists-Info-Box .Random-Artists-Genres-Title {
-  width: 21.2%;
+  width: 22.5%;
   float: left;
   display: inline;
   color: white;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Artists-Info-Box .Random-Artists-Marquee {
-  width: 78.8%;
+  width: 77.5%;
   display: inline;
   float: left;
 }
@@ -321,6 +348,44 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Art
   float: left;
   display: inline;
   color: white;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-fb {
+  width: 47px;
+  height: 47px;
+  margin: -8px 0px 0px 420px;
+  position: absolute;
+  border-radius: 5px;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-tw {
+  width: 48px;
+  height: 46px;
+  margin: -7px 0px 0px 477px;
+  position: absolute;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-insta {
+  width: 50px;
+  height: 50px;
+  margin: -9px 0px 10px 534px;
+  position: absolute;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-fb,
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-tw,
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-insta {
+  transition-duration: 2s;
+  filter: grayscale(0.8);
+  cursor: pointer;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-fb:hover {
+  filter: grayscale(0);
+  transform: rotateX(360deg);
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-tw:hover {
+  filter: grayscale(0);
+  transform: rotateZ(360deg);
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-insta:hover {
+  filter: grayscale(0);
+  transform: rotateX(360deg);
 }
 body .App-Content .Homepage-Box .Title-Box {
   text-align: center;
