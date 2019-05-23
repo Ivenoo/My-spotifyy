@@ -33,7 +33,7 @@ class RandomArtist extends React.Component {
     //WCZYTYWANIE PIOSENEK Z API//
   getList = () =>{ 
       axios({
-        url: `https://api.spotify.com/v1/search?q=*${randomLetter()}*&type=artist&limit=10`,
+        url: `https://api.spotify.com/v1/search?q=*${randomLetter()}*&type=artist&limit=10&offset=${randomOffset()}`,
         headers:{
         'Authorization': 'Bearer ' + this.props.mytoken
         }

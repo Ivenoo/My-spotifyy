@@ -2,7 +2,7 @@ import React from 'react';
 import {listen} from './Service'
 
 
-class SingleTrack extends React.Component {
+class RandomSingleTrack extends React.Component {
     constructor(props){
         super(props);
         this.state ={
@@ -67,8 +67,8 @@ class SingleTrack extends React.Component {
       spotify = (url) =>{
         window.open(url)
       }
-      soundcloud = (url) =>{
-        window.open(`https://soundcloud.com/search/sounds?q=${encodeURIComponent(url)}`)
+      soundcloud = (url,author) =>{
+        window.open(`https://soundcloud.com/search/sounds?q=${encodeURIComponent(url)}${encodeURIComponent(author)}`)
       }
 
     render(){
@@ -79,23 +79,22 @@ class SingleTrack extends React.Component {
       trackLink = <img  className="Single-Track-Play-Icon" onClick={() =>{listen(parentElement.preview_url)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
           return(
             <div  key={parentIndex} className="Single-Track" >
-            {/* <div className="Single-Track-Img-Play"> */}
               <img src={parentElement.album.images[1].url}  className="Single-Track-Img" alt=" " />
               {trackLink}
-            {/* </div> */}
             <div className="Single-Track-Info-Box">
               <span className="Single-Track-Author-Title">Author : </span>
-                <marquee className="Single-Track-Marquee-Author"  >
-                  {parentElement.artists.map((element2, index) => { 
-                  return(<span key={index} className="Single-Track-Author"> {element2.name}, </span>)})}<br/>
-                </marquee>
+                <div >
+                  <span  className="Single-Track-Author"> {parentElement.artists[0].name}</span><br/>
+                </div>
               <span className="Single-Track-Name-Title">Title : </span>
+              <marquee className="Single-Track-Marquee-Author"  >
               <span className="Single-Track-Name">" {parentElement.name} "</span><br/>
+              </marquee>
               <div className="Single-Track-Icon-Box">
                 {this.heart(parentElement.id)}
                 <a onClick={this.yt.bind(this,parentElement.name)} ><img src='./img/yt-icon.png' className="Single-Track-Comunity-Portal-yt" alt=" " /></a>
                 <a onClick={this.spotify.bind(this, parentElement.external_urls.spotify)} ><img src='./img/spotify-icon.png' className="Single-Track-Comunity-Portal-spotify" alt=" " /></a>
-                <a onClick={this.soundcloud.bind(this,parentElement.name)} ><img src='./img/soundcloud-icon.png' className="Single-Track-Comunity-Portal-soundcloud" alt=" " /></a>
+                <a onClick={this.soundcloud.bind(this,parentElement.name,parentElement.artists[0].name)} ><img src='./img/soundcloud-icon.png' className="Single-Track-Comunity-Portal-soundcloud" alt=" " /></a>
               </div>
             </div>
             
@@ -105,6 +104,6 @@ class SingleTrack extends React.Component {
     }   
 }
 
-export default SingleTrack;
+export default RandomSingleTrack;
 
 

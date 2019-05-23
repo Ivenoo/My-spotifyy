@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import SingleTrack from './SingleTrack';
+import RandomSingleTrack from './RandomSingleTrack';
 import RandomArtist from './RandomArtist';
 import RandomAlbums from './RandomAlbums';
 import { randomOffset, randomLetter} from './Service'
@@ -58,7 +58,7 @@ class HomePage extends React.Component {
       <div className='Homepage-Track-Box'>
         <div className='Title-Box' >RANDOM TRACKS</div>
      { this.state.randomSongs.map((element, index)=>
-      <SingleTrack  key={index} parentElement={element} parentIndex={index} />
+      <RandomSingleTrack  key={index} parentElement={element} parentIndex={index} />
       )}
      </div>
      <div className='Homepage-Artist-Box'>

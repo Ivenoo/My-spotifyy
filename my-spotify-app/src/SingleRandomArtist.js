@@ -19,16 +19,20 @@ class SingleRandomArtist extends React.Component {
         <div className="Random-Artists">
         {artistPhoto}
         <div className="Random-Artists-Info-Box">
-        Name: <strong className="artists-name">{parentElement.name}</strong><br/>
-        <span className="Random-Artists-Genres-Title">genres of music: </span>
-        <marquee className="Random-Artists-Marquee">
-        {parentElement.genres.map((element,index) =>{
-          return(
-            <span key={index}>{element},</span>
-          )
-        } )}
-        </marquee><br/>
-        total followres: {parentElement.followers.total}
+          <span className="Random-Artists-Genres-Titlee">Name :</span>
+          <span className="artists-name">{parentElement.name}</span><br/>
+          <span className="Random-Artists-Genres-Title">genres of music : </span>
+          <marquee className="Random-Artists-Marquee">
+          {parentElement.genres.map((element,index) =>{
+            return(
+              <span key={index} className="Random-Artist-One-Genre">{element}, </span>
+            )
+          })}
+          </marquee><br/>
+          <span className="Random-Artists-Genres-Titlee">total followres : </span>
+          <span>
+            {parentElement.followers.total}
+          </span>
         </div>
         </div>
         )
