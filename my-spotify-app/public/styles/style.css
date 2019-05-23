@@ -229,6 +229,65 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box {
   background: #2b2b2b;
+  margin: 10px 0px 0px 610px;
+  width: 600px;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Title-Box {
+  text-align: center;
+  padding-top: 10px;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box {
+  height: 70px;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Button-Favourite {
+  width: 40px;
+  height: 40px;
+  margin-top: 4px;
+  margin: 15px 0px  0px 0px;
+  position: absolute;
+  transition-duration: 2s;
+  cursor: pointer;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt {
+  width: 55px;
+  height: 40px;
+  margin: 16px 0px  0px 300px;
+  position: absolute;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify {
+  width: 49px;
+  height: 49px;
+  margin: 13px 0px  0px 365px;
+  position: absolute;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud {
+  width: 50px;
+  height: 50px;
+  margin: 13px 0px  0px 424px;
+  position: absolute;
+  z-index: 100;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud,
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify,
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt {
+  transition-duration: 2s;
+  filter: grayscale(0.8);
+  cursor: pointer;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud:hover {
+  filter: grayscale(0);
+  transform: rotateY(360deg);
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify:hover {
+  filter: grayscale(0);
+  transform: rotateZ(360deg);
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt:hover {
+  filter: grayscale(0);
+  transform: rotateX(360deg);
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Single-Track-Icon-Box .Single-Track-Button-Favourite:hover {
+  transform: scale(1.2);
 }
 body .notexist {
   display: none;
