@@ -4,16 +4,33 @@
 @back-color: rgb(32, 32, 32);
 @back-item: rgb(44, 44, 44);
 
-@keyframes slider{
-  0% { transform:translateX(0);}
-  100% { transform:translateX(-100%);}
+
+@keyframes slider_box1 {
+  0% {transform: translateX(0%);}
+  100% {transform: translateX(-200%);}
 }
+
+@keyframes slider_box2 {
+  0% {transform: translateX(0%);}
+  100% {transform: translateX(-200%);}
+}
+
+@keyframes slider_box3 {
+  0% {transform: translateX(0%)};
+  100%{transform: translateX(-200%);}
+}
+
+@slider_duration: 60s;
+@slider2_delay: 0s;
+@slider3_delay: 30s;
+
 
 body{
   background: @back-color;
   font-family: @font;
   color: @font-color;
   z-index: 1;
+  overflow-x: hidden;
 
   .App-Menu{
     margin-bottom: 15px;
@@ -164,35 +181,65 @@ body{
       .Homepage-Albums-Box{
         background:@back-item;
         height:200px;
-        width: 2102px;
+        width: 100%;
         padding:10px 10px 10px 0px;
         display:block;
         overflow: hidden;
         
         .Homepage-Albums-Animation-Handler{
-          position: static;
+          position: absolute;
           width: 100% ;
-          height:100%;
+          height: 200px;
           display:block;
-          animation: slider 60s linear infinite;
-          z-index: 1;
-        
-          &:hover{
+      
+          &:hover .Homepage-Albums-Box1,
+          &:hover .Homepage-Albums-Box2,
+          &:hover .Homepage-Albums-Box3{
             animation-play-state: paused;
           }
 
+          .Homepage-Albums-Box1{
+            position: absolute;
+            margin: 0px auto;
+            width: 100%;
+            width: 2100px;
+            display: inline-block;
+            animation: slider_box1 @slider_duration linear infinite;
+          }
+
+          .Homepage-Albums-Box2{
+            position: absolute;
+            margin-left:2100px;
+            height: 100%;
+            width: 2100px;
+            float: left;
+            display: inline-block;
+            animation: slider_box2 @slider_duration linear infinite;
+            animation-delay: @slider2_delay;
+          }   
+
+          .Homepage-Albums-Box3{
+            position: absolute;
+            margin-left:2100px;
+            height: 100%;
+            width: 2100px;
+            float: left;
+            display: inline-block;
+            animation: slider_box3 @slider_duration linear infinite;
+            animation-delay: @slider3_delay;
+          }    
+
           .Single-Album{
             width: 200px ;
-            height:100%;
+            height: 200px;
+            position: static;
             margin-left:10px;
-            float:left;
-            transition-duration: 1s;
+            float:left; 
             box-shadow: 0px 0px 5px #000;
             border-radius: 3px;
             cursor: pointer;
-            
-            &:hover{     
-              // transform: scale(1.05) ;     
+
+            &:hover{        
               z-index: 999;
             } 
 
@@ -216,25 +263,24 @@ body{
               text-align: center;
               white-space: normal;
               border-radius: 5px;
+              transition-duration: 1s;
 
               .Single-Album-Title{
                 font-weight: bold;
               }
             }
-
             .Single-Album-Image{
               width: 200px ;
-              height:200px ;
-              position: absolute;  
-              border-radius: 5px;   
-            }
+              height: 200px ;
+              border-radius: 5px; 
 
+              &:hover{
+                transition-duration: 1s;
+              }
+            }
           }
         }
       }
-
-
-
 
     .Homepage-Artist-Box{
       background:@back-item;
@@ -254,10 +300,3 @@ body{
     display:none;
   }
 }
-
-
-
-
-
-
-

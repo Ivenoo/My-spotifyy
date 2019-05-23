@@ -40,17 +40,28 @@ class HomePage extends React.Component {
  render() {
   return(
     <div className='Homepage-Box'>
-      <RandomAlbums mytoken={this.props.mytoken}/>
-      
+      <div className="Homepage-Albums-Box">
+        <div className="Homepage-Albums-Animation-Handler">
+          <div className="Homepage-Albums-Box1">
+            <RandomAlbums mytoken={this.props.mytoken}/>
+          </div>
+          <div className="Homepage-Albums-Box2">
+            <RandomAlbums mytoken={this.props.mytoken}/>
+          </div>
+          <div className="Homepage-Albums-Box3">
+            <RandomAlbums mytoken={this.props.mytoken}/>
+          </div>
+        </div>
+      </div>
+
       <div className='Homepage-Track-Box'>
-     { this.state.randomSongs.map((element, index)=>
-      <SingleTrack  key={index} parentElement={element} parentIndex={index} />
-      )}
-     </div>
-     <div className='Homepage-Artist-Box'>
-     TU KIEDYS BEDĄ  NAJPOPULARNIEJSI ARTYSCI SERIO
-     </div>
-     
+        { this.state.randomSongs.map((element, index)=>
+        <SingleTrack  key={index} parentElement={element} parentIndex={index} />
+        )}
+      </div>
+      <div className='Homepage-Artist-Box'>
+        TU KIEDYS BEDĄ  NAJPOPULARNIEJSI ARTYSCI SERIO
+      </div>
     </div>
   )
 }

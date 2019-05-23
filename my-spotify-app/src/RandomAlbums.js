@@ -47,28 +47,26 @@ class RandomAlbums extends React.Component {
 
   render() {
     return( 
-      <div className="Homepage-Albums-Box">
-        <div className="Homepage-Albums-Animation-Handler">
-          { this.state.albumList.map((element, index)=>
-            <span key={index} className="Single-Album" onClick={()=> window.open(element.external_urls.spotify)}>
-              <span className="Single-Album-Details">
-              <div className="Pusty"></div>
-                <span className="Single-Album-Details-Text">
-                  <span className="Single-Album-Title">
-                    {(element.artists.length > 1 )? 'AUTHORS' : 'AUTHOR'}<br/>
-                  </span>
-                  {element.artists.map((element2, index) => {
-                    return(<span key={index +1}  className="e"> {element2.name}<br/> </span>)}
-                  )}
-                  <br/>
-                  <span className="Single-Album-Title">ALBUM: </span> <br/>
-                  {element.name}
-                  </span>
-              </span>
-              <img src={element.images[1].url} className='Single-Album-Image' alt=" " />
+      <div>
+        { this.state.albumList.map((element, index)=>
+          <span key={index} className="Single-Album" onClick={()=> window.open(element.external_urls.spotify)}>
+            <span className="Single-Album-Details">
+            <div className="Pusty"></div>
+              <span className="Single-Album-Details-Text">
+                <span className="Single-Album-Title">
+                  {(element.artists.length > 1 )? 'AUTHORS' : 'AUTHOR'}<br/>
+                </span>
+                {element.artists.map((element2, index) => {
+                  return(<span key={index +1}  className="e"> {element2.name}<br/> </span>)}
+                )}
+                <br/>
+                <span className="Single-Album-Title">ALBUM: </span> <br/>
+                {element.name}
+                </span>
             </span>
-          )}
-        </div>
+            <img src={element.images[1].url} className='Single-Album-Image' alt=" " />
+          </span>
+        )}
       </div>
     )
   }
