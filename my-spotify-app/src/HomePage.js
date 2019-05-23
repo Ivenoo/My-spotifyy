@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
+import LastFavourite from './LastFavourite';
 import RandomAlbums from './RandomAlbums';
 import { randomOffset, randomLetter} from './Service'
 
@@ -55,13 +56,14 @@ class HomePage extends React.Component {
       </div>
 
       <div className='Homepage-Track-Box'>
-        { this.state.randomSongs.map((element, index)=>
-        <SingleTrack  key={index} parentElement={element} parentIndex={index} />
-        )}
-      </div>
-      <div className='Homepage-Artist-Box'>
-        TU KIEDYS BEDĄ  NAJPOPULARNIEJSI ARTYSCI SERIO
-      </div>
+     { this.state.randomSongs.map((element, index)=>
+      <SingleTrack  key={index} parentElement={element} parentIndex={index} />
+      )}
+     </div>
+     <div className='Homepage-Artist-Box'>
+     <LastFavourite mytoken={this.props.mytoken}/>
+     </div>
+     
     </div>
   )
 }
