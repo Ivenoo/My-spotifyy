@@ -1,8 +1,8 @@
 @font: 'Bahnschrift Condensed'; // do wyjebania xDDD
 
 @font-color: #c86400;
-@back-color: rgb(32, 32, 32);
-@back-item: hsl(0, 0%, 17%);
+@back-color: #202020;
+@back-item: #2b2b2b;
 
 
 @keyframes slider_box1 {
@@ -31,11 +31,11 @@ body{
   color: @font-color;
   z-index: 1;
   overflow-x: hidden;
+  width:1200px;
+  margin:auto;
 
   .App-Menu{
-    margin-bottom: 15px;
-    width:800px;
-    margin:auto;
+    text-align:center;
     margin-bottom:25px;
     padding-bottom:1px;
 
@@ -108,6 +108,7 @@ body{
             margin-top:3px;
             float:left;
             position:absolute;
+            border-radius: 5px;
           }
         
           .Single-Track-Play-Icon{
@@ -216,7 +217,7 @@ body{
           }
         }  
       }
-
+                                          ///ALBUMSSS//
       .Homepage-Albums-Box{
         background:@back-item;
         height:210px;
@@ -224,6 +225,8 @@ body{
         padding:10px 10px 10px 0px;
         display:block;
         overflow: hidden;
+        border-bottom: solid 1px @font-color;
+        border-top: solid 1px @font-color;
         
         .Homepage-Albums-Animation-Handler{
           position: absolute;
@@ -331,10 +334,16 @@ body{
       margin:10px 0px 0px 610px;
       width:600px;
 
-      .Title-Box{
-        text-align:center;
-        padding-top:10px;
+     
+
+      .Single-Track-Img{
+        width:100px;
+        height:100px;
+        margin-top:3px;
+        float:left;
+        border-radius: 5px;
       }
+      
       .Single-Track-Icon-Box{
         height: 70px;
       
@@ -401,10 +410,20 @@ body{
 
   }
 
-
-
-
-  }
+      .Title-Box{
+        text-align:center;
+        padding-top:10px;
+        padding-bottom:10px;
+        border-bottom: solid 1px @font-color;
+        background:@back-color;
+      }
+      .Title-Boxx{
+        text-align:center;
+        padding-top:10px;
+        padding-bottom:10px;
+        background:@back-color;
+      }
+    }
   }
   .notexist{
   display: none
