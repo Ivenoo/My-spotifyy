@@ -85,10 +85,10 @@ class SingleTrack extends React.Component {
             {/* </div> */}
             <div className="Single-Track-Info-Box">
               <span className="Single-Track-Author-Title">Author: </span>
-                <div className="Single-Track-Marquee-Author"  >
+                <marquee className="Single-Track-Marquee-Author"  >
                   {parentElement.artists.map((element2, index) => { 
                   return(<span key={index} className="Single-Track-Author"> {element2.name}, </span>)})}<br/>
-                </div>
+                </marquee>
               <span className="Single-Track-Name-Title">Title: </span>
               <span className="Single-Track-Name">" {parentElement.name} "</span><br/>
               <div className="Single-Track-Icon-Box">

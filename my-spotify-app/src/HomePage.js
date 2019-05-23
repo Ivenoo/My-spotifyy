@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
-import LastFavourite from './LastFavourite';
+import RandomArtist from './RandomArtist';
 import RandomAlbums from './RandomAlbums';
 import { randomOffset, randomLetter} from './Service'
 
@@ -19,7 +19,7 @@ class HomePage extends React.Component {
   refresh(){
     if(this.props.mytoken.length > 0){
     axios({
-      url: `https://api.spotify.com/v1/search?q=*${randomLetter()}*&type=track&limit=20&offset=${randomOffset()}`,
+      url: `https://api.spotify.com/v1/search?q=*${randomLetter()}*&type=track&limit=10&offset=${randomOffset()}`,
       headers:{
       'Authorization': 'Bearer ' + this.props.mytoken
       }
@@ -56,13 +56,14 @@ class HomePage extends React.Component {
         </div>
       </div>
       <div className='Homepage-Track-Box'>
-        <div className='Title-Box' > 20 RANDOM SONGS</div>
+        <div className='Title-Box' >RANDOM TRACKS</div>
      { this.state.randomSongs.map((element, index)=>
       <SingleTrack  key={index} parentElement={element} parentIndex={index} />
       )}
      </div>
      <div className='Homepage-Artist-Box'>
-     <LastFavourite mytoken={this.props.mytoken}/>
+     <div className="Title-Box">RANDOM ARTISTS</div>
+     <RandomArtist mytoken={this.props.mytoken}/>
      </div>
     </div>
   )
