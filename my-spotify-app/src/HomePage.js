@@ -40,9 +40,8 @@ class HomePage extends React.Component {
  render() {
   return(
     <div className='Homepage-Box'>
-      <div className='Homepage-Album-Box'>
-        <RandomAlbums mytoken={this.props.mytoken}/>
-      </div>
+      <RandomAlbums mytoken={this.props.mytoken}/>
+      
       <div className='Homepage-Track-Box'>
      <ol>
      { this.state.randomSongs.map((element, index)=>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { randomOffset, randomLetter} from './Service'
 
 
-class FindAlbum extends React.Component {
+class RandomAlbums extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -11,32 +11,31 @@ class FindAlbum extends React.Component {
       check: 0,
     }
   }
-componentDidMount(){
-  if(this.props.mytoken !== ''){
-    this.getList()
-    this.setState({
-      check: 1
-    })
+
+  componentDidMount(){
+    if(this.props.mytoken !== ''){
+      this.getList()
+      this.setState({
+        check: 1
+      })
+    }
   }
-}
 
   componentWillReceiveProps(){
     if(this.props.mytoken !== "" && this.state.check === 0){
       this.getList()
       this.setState({
         check: 1,
-        style: ''
       })
     }
   }
+
     //POBIERANIE INFORMACJI O ALBUMACH Z API//
   getList = () =>{
-    const letter= randomLetter()
-    const offset = randomOffset()
     axios({
-      url: `https://api.spotify.com/v1/search?q=${letter}&type=album&limit=10&offset=${offset}`,
+      url: `https://api.spotify.com/v1/search?q=${randomLetter()}&type=album&limit=10&offset=${randomOffset()}`,
       headers:{
-      'Authorization': 'Bearer ' + this.props.mytoken
+        'Authorization': 'Bearer ' + this.props.mytoken
       }
     }).then(resp =>{ 
       this.setState({
@@ -46,26 +45,33 @@ componentDidMount(){
   }
 
 
-
-
   render() {
     return( 
-       <span>
-       { this.state.albumList.map((element, index)=>
-            <span  key={index} className="Home-Single-Album" >
-            {/* {element.artists.map((element2, index) => {  */}
-            {/* return(<span key={index +1}  className="Single-Album-Details">Author: {element2.name}, </span>)})} */}
-            <span className="Single-Album-Details">DURA</span>
-             <img src={element.images[1].url} className='Img-Rand-Album' alt=" " /><br/>
-             
-            {/* Album: <strong className="album-name">" {element.name} "</strong><br/>
-             */}
-            <br/><br/><br/>
+      <div className="Homepage-Albums-Box">
+        <div className="Homepage-Albums-Animation-Handler">
+          { this.state.albumList.map((element, index)=>
+            <span key={index} className="Single-Album" onClick={()=> window.open(element.external_urls.spotify)}>
+              <span className="Single-Album-Details">
+              <div className="Pusty"></div>
+                <span className="Single-Album-Details-Text">
+                  <span className="Single-Album-Title">
+                    {(element.artists.length > 1 )? 'AUTHORS' : 'AUTHOR'}<br/>
+                  </span>
+                  {element.artists.map((element2, index) => {
+                    return(<span key={index +1}  className="e"> {element2.name}<br/> </span>)}
+                  )}
+                  <br/>
+                  <span className="Single-Album-Title">ALBUM: </span> <br/>
+                  {element.name}
+                  </span>
+              </span>
+              <img src={element.images[1].url} className='Single-Album-Image' alt=" " />
             </span>
-        )}
-        </span>
+          )}
+        </div>
+      </div>
     )
   }
 }
 
-export default FindAlbum;
+export default RandomAlbums;

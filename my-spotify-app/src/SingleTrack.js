@@ -12,14 +12,16 @@ class SingleTrack extends React.Component {
 
       // USTAWIANIE SERCA ORAZ PODMIENIANIE KOLORU  W ZALEZNOSCI CZY DODANA ZOSTALA PIOSENKA CZY NIE//
     heart = ((id) => {
-      const favourite =JSON.parse(localStorage.getItem('favourite'));
+      let favourite = [];
       let heartTrue = 0;
-      
-      favourite.forEach(element=>{
-        if(element === id){
-          heartTrue = 1;
-        }
-      })
+      if(localStorage.getItem('favourite')){
+        favourite = JSON.parse(localStorage.getItem('favourite'));
+        favourite.forEach(element=>{
+          if(element === id){
+            heartTrue = 1;
+          }
+        })
+      }
       if(heartTrue){
         return(<img  alt=" "  className="button-favourite" src="./img/red.png" width="40px" height="40px" onClick={this.changeFavourite.bind(this, id)}/>)
       }else{
@@ -47,23 +49,18 @@ class SingleTrack extends React.Component {
           if(!favouriteTrue){
             favourite.push(id)
             localStorage.setItem("favourite", JSON.stringify(favourite))
-            this.setState({
-              favourite: ''
-            })
           }
           else{
             favourite.splice(favouriteIndex, 1)
             localStorage.setItem("favourite", JSON.stringify(favourite));
-            this.setState({
-              favourite: ''
-            })
           }
         }
+      this.setState({
+        refresh: ''
+      })
     }
 
-      //OTWIERANIE FRAGMENTU UTWORU W NOWYM OKNIE//
-
-
+    //OTWIERANIE FRAGMENTU UTWORU W NOWYM OKNIE//
     render(){
       const parentElement = this.props.parentElement;
       const parentIndex = this.props.parentIndex;
