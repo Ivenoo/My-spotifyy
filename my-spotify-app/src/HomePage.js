@@ -43,11 +43,9 @@ class HomePage extends React.Component {
       <RandomAlbums mytoken={this.props.mytoken}/>
       
       <div className='Homepage-Track-Box'>
-     <ol>
      { this.state.randomSongs.map((element, index)=>
       <SingleTrack  key={index} parentElement={element} parentIndex={index} />
       )}
-     </ol>
      </div>
      <div className='Homepage-Artist-Box'>
      TU KIEDYS BEDĄ  NAJPOPULARNIEJSI ARTYSCI SERIO

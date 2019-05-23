@@ -23,9 +23,9 @@ class SingleTrack extends React.Component {
         })
       }
       if(heartTrue){
-        return(<img  alt=" "  className="button-favourite" src="./img/red.png" width="40px" height="40px" onClick={this.changeFavourite.bind(this, id)}/>)
+        return(<img  alt=" "  className="Single-Track-Button-Favourite" src="./img/red.png"  onClick={this.changeFavourite.bind(this, id)}/>)
       }else{
-        return(<img  alt=" " className="button-favourite" src="./img/white.png" width="40px" height="40px" onClick={this.changeFavourite.bind(this, id)}/>)
+        return(<img  alt=" " className="Single-Track-Button-Favourite" src="./img/white.png" onClick={this.changeFavourite.bind(this, id)}/>)
       }
     })
     
@@ -60,22 +60,39 @@ class SingleTrack extends React.Component {
       })
     }
 
-    //OTWIERANIE FRAGMENTU UTWORU W NOWYM OKNIE//
+      //OTWIERANIE FRAGMENTU UTWORU W NOWYM OKNIE//
+      yt = (url) =>{
+        window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(url)}`)
+      }
+      spotify = (url) =>{
+        window.open(url)
+      }
+      soundcloud = (url) =>{
+        window.open(`https://soundcloud.com/search/sounds?q=${encodeURIComponent(url)}`)
+      }
+
     render(){
       const parentElement = this.props.parentElement;
       const parentIndex = this.props.parentIndex;
       let trackLink = ""
       if(parentElement.preview_url !== null) 
-      trackLink = <img  className="button-favourite" onClick={() =>{listen(parentElement.preview_url)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
+      trackLink = <img  className="Single-Track-Play-Icon" onClick={() =>{listen(parentElement.preview_url)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
           return(
-            <li  key={parentIndex}>
-            Author: {parentElement.artists.map((element2, index) => { 
-               return(<span key={index}>{element2.name}, </span>)})}<br/>
-            Title: <strong className="track-name">" {parentElement.name} "</strong><br/>
-            <img src={parentElement.album.images[2].url} height="40px" width="40px" alt=" " /><br/>
-            {trackLink}
+            <div  key={parentIndex} className="Single-Track">
+              <img src={parentElement.album.images[1].url} className="Single-Track-Img" alt=" " />
+              {trackLink}
+           <span className="Single-Track-Author-Title">Author: </span>
+           {parentElement.artists.map((element2, index) => { 
+               return(<span key={index} className="Single-Track-Author"> {element2.name}, </span>)})}<br/>
+            <span className="Single-Track-Name-Title">Title: </span>
+            <span className="Single-Track-Name">" {parentElement.name} "</span><br/>
+           <div className="Single-Track-Icon-Box">
             {this.heart(parentElement.id)}
-            </li>
+            <a onClick={this.yt.bind(this,parentElement.name)} ><img src='./img/yt-icon.png' className="Single-Track-Comunity-Portal-yt" alt=" " /></a>
+            <a onClick={this.spotify.bind(this, parentElement.external_urls.spotify)} ><img src='./img/spotify-icon.png' className="Single-Track-Comunity-Portal-spotify" alt=" " /></a>
+            <a onClick={this.soundcloud.bind(this,parentElement.name)} ><img src='./img/soundcloud-icon.png' className="Single-Track-Comunity-Portal-soundcloud" alt=" " /></a>
+            </div>
+            </div>
             )
 
     }   
