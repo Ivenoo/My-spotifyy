@@ -41,8 +41,10 @@ class HomePage extends React.Component {
  render() {
   return(
     <div className='Homepage-Box'>
-       <div className='Title-Boxx' > RANDOM ALBUMS</div>
+      <div className="Right-Clear"></div>
+      <div className='Title-Boxx' > RANDOM ALBUMS</div>
       <div className="Homepage-Albums-Box">
+        <div className="Album-Box-Left-Smooth"></div> 
         <div className="Homepage-Albums-Animation-Handler">
           <div className="Homepage-Albums-Box1">
             <RandomAlbums mytoken={this.props.mytoken}/>
@@ -54,6 +56,7 @@ class HomePage extends React.Component {
             <RandomAlbums mytoken={this.props.mytoken}/>
           </div>
         </div>
+        <div className="Album-Box-Right-Smooth"></div> 
       </div>
       <div className='Homepage-Track-Box'>
         <div className='Title-Box' >RANDOM TRACKS</div>
@@ -65,6 +68,7 @@ class HomePage extends React.Component {
      <div className="Title-Box">RANDOM ARTISTS</div>
      <RandomArtist mytoken={this.props.mytoken}/>
      </div>
+ 
     </div>
   )
 }
