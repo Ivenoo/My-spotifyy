@@ -35,37 +35,46 @@ body{
   margin:auto;
 
   .App-Menu{
+    margin-top:30px;
+    margin-bottom:20px;
     text-align:center;
-    margin-bottom:25px;
-    padding-bottom:1px;
 
+    
     .Menu-Buttons{
-      padding-bottom: 5px;
+      background-color: @back-item;
+      color: rgb(107, 107, 107);
       text-decoration: none;
-      border-bottom: solid 2px #fff ; 
-      padding-right:10px;
-      padding-left:10px; 
-      color: @font-color;
+      border-bottom: solid 1px @font-color;  
+      border-top: solid 1px @font-color;  
+      padding: 10px;
       font-size:25px;  
-      transition-duration:1.5s;
+      transition-duration:1s;
     }
 
     .Default-Location{
-      cursor:pointer; 
-      box-shadow: 0 2px 1px -1px rgb(255, 115, 0);
+      color: @font-color;
     }
 
     .Menu-Buttons:hover{
-      color: #fff;
-      transform:scale(0.5);
+      cursor:pointer;
+      color: #FFF;
     }
   }
-
 
   .App-Content{
     margin: 0px auto;
     margin-top: 20px;
     z-index: 1;
+
+    .Right-Clear{
+      margin-left:1200px;
+      position: absolute;
+      width: 2000px;
+      height: 100%;
+      background-color: @back-color;
+      float: right;
+      z-index: 1000;
+    }
 
     .Player{
       position: fixed;
@@ -222,12 +231,34 @@ body{
         background:@back-item;
         height:210px;
         width: 100%;
-        padding:10px 5px 10px 5px;
+        padding:10px 0px 10px 0px;
         display:block;
         overflow: hidden;
         border-bottom: solid 1px @font-color;
         border-top: solid 1px @font-color;
-        
+        box-shadow: inset 15px 0px 15px 3px @back-item;
+
+
+        .Album-Box-Left-Smooth{
+          position:absolute;
+          margin-top:-10px;
+          height:230px;
+          width: 40px;
+          z-index: 999;
+          box-shadow: inset 15px 0px 15px -2px @back-item;
+        }
+
+        .Album-Box-Right-Smooth{
+          float:right;
+          margin-left: 1160px;
+          margin-top:-10px;
+          position:absolute;
+          height:230px;
+          width: 40px;
+          z-index: 999;
+          box-shadow: inset -15px 0px 15px 2px @back-item;
+        }
+
         .Homepage-Albums-Animation-Handler{
           position: absolute;
           padding-top:5px;
@@ -284,7 +315,7 @@ body{
             cursor: pointer;
 
             &:hover{        
-              z-index: 999;
+              z-index: 998;
             } 
 
             &:hover .Single-Album-Image{            
@@ -333,8 +364,6 @@ body{
       background:@back-item;
       margin:10px 0px 0px 610px;
       width:600px;
-
-     
 
       .Single-Track-Img{
         width:100px;
