@@ -41,6 +41,7 @@ class HomePage extends React.Component {
  render() {
   return(
     <div className='Homepage-Box'>
+       <div className='Title-Boxx' > RANDOM ALBUMS</div>
       <div className="Homepage-Albums-Box">
         <div className="Homepage-Albums-Animation-Handler">
           <div className="Homepage-Albums-Box1">
@@ -54,8 +55,8 @@ class HomePage extends React.Component {
           </div>
         </div>
       </div>
-
       <div className='Homepage-Track-Box'>
+        <div className='Title-Box' > 20 RANDOM SONGS</div>
      { this.state.randomSongs.map((element, index)=>
       <SingleTrack  key={index} parentElement={element} parentIndex={index} />
       )}
@@ -63,7 +64,6 @@ class HomePage extends React.Component {
      <div className='Homepage-Artist-Box'>
      <LastFavourite mytoken={this.props.mytoken}/>
      </div>
-     
     </div>
   )
 }
