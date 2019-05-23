@@ -106,6 +106,7 @@ body{
             margin-top:4px;
             margin: 13px 0px  0px 110px;
             position:absolute;
+            transition-duration: 2s;
             
           }
           .Single-Track-Comunity-Portal-yt{
@@ -130,8 +131,7 @@ body{
 
           .Single-Track-Comunity-Portal-soundcloud,
           .Single-Track-Comunity-Portal-spotify,
-          .Single-Track-Comunity-Portal-yt,
-          .Single-Track-Button-Favourite{
+          .Single-Track-Comunity-Portal-yt{
             transition-duration: 2s;
             // margin-top:12px;
             filter: grayscale(0.8);
@@ -139,13 +139,25 @@ body{
             
           }
 
-          .Single-Track-Comunity-Portal-soundcloud:hover,
-          .Single-Track-Comunity-Portal-spotify:hover,
-          .Single-Track-Comunity-Portal-yt:hover,
+          .Single-Track-Comunity-Portal-soundcloud:hover{
+            filter: grayscale(0);
+            transform:rotateY(360deg);
+          }
+
+          .Single-Track-Comunity-Portal-spotify:hover{
+            filter: grayscale(0);
+            transform:rotateZ(360deg);
+          }
+
+          .Single-Track-Comunity-Portal-yt:hover{
+            filter: grayscale(0);
+            transform:rotateX(360deg);
+          }
+
           .Single-Track-Button-Favourite:hover{
             filter: grayscale(0);
-            // transform:scale(1.2);
-            transform:rotateX(180deg);
+            transform:scale(1.2);
+            
           }
 
 

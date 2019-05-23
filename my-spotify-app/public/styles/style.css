@@ -88,6 +88,7 @@ body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Button-Favouri
   margin-top: 4px;
   margin: 13px 0px  0px 110px;
   position: absolute;
+  transition-duration: 2s;
 }
 body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-yt {
   width: 55px;
@@ -109,18 +110,26 @@ body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Porta
 }
 body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-soundcloud,
 body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-spotify,
-body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-yt,
-body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Button-Favourite {
+body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-yt {
   transition-duration: 2s;
   filter: grayscale(0.8);
   cursor: pointer;
 }
-body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-soundcloud:hover,
-body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-spotify:hover,
-body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-yt:hover,
+body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-soundcloud:hover {
+  filter: grayscale(0);
+  transform: rotateY(360deg);
+}
+body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-spotify:hover {
+  filter: grayscale(0);
+  transform: rotateZ(360deg);
+}
+body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Comunity-Portal-yt:hover {
+  filter: grayscale(0);
+  transform: rotateX(360deg);
+}
 body .App-Content .Homepage-Track-Box .Single-Track .Single-Track-Button-Favourite:hover {
   filter: grayscale(0);
-  transform: rotateX(180deg);
+  transform: scale(1.2);
 }
 body .App-Content .Homepage-Album-Box {
   padding: 10px 10px 10px 0px;
