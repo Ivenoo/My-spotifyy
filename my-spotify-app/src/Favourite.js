@@ -75,9 +75,10 @@ class Favourite extends React.Component {
       nextButton = <button onClick={this.addOffset}>Next</button>
     }
     return(
-      <div>
-        <div>ITS YOUR FAVOURITE SONGS</div>
-        <Limit changeLimit={this.changeLimit.bind(this)}/>
+      <div className='Favourite-Song'>
+        <div className='Favourite-Song-Limit'>
+          Limit: <Limit changeLimit={this.changeLimit.bind(this)}/>
+        </div>
         <ol>
           {
             this.state.favArray.slice(this.state.myoffset,parseInt(this.state.myoffset) + parseInt(this.state.limit)).map((element,index) =>

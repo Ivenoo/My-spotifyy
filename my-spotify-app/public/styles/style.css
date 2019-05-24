@@ -63,12 +63,23 @@ body .App-Content {
   margin-top: 20px;
   z-index: 1;
 }
+body .App-Content .Left-Clear {
+  margin-top: -10%;
+  margin-left: 0px;
+  position: absolute;
+  width: 2000px;
+  height: 120%;
+  background-color: #202020;
+  float: left;
+  z-index: 1000;
+  transform: translateX(-2000px);
+}
 body .App-Content .Right-Clear {
   margin-top: -10%;
   margin-left: 1200px;
   position: fixed;
   width: 2000px;
-  height: 110%;
+  height: 120%;
   background-color: #202020;
   float: right;
   z-index: 1000;
@@ -82,6 +93,18 @@ body .App-Content .Player-Box {
   bottom: 0%;
   display: none;
   margin: auto;
+}
+body .App-Content .Player-Box .Player-Box-Close {
+  margin-top: 0px;
+  margin-left: 1160px;
+  font-size: 15px;
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  color: #c86400;
+}
+body .App-Content .Player-Box .Player-Box-Close:hover {
+  color: #FFF;
 }
 body .App-Content .Player-Box .Track-Name-Audio {
   width: 1200px;
@@ -288,7 +311,7 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Album-Box-Left-Smooth {
   height: 230px;
   width: 40px;
   z-index: 999;
-  box-shadow: inset 15px 0px 15px -2px #2b2b2b;
+  box-shadow: inset 20px 0px 15px 2px #2b2b2b;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Album-Box-Right-Smooth {
   float: right;
@@ -298,7 +321,7 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Album-Box-Right-Smooth {
   height: 230px;
   width: 40px;
   z-index: 999;
-  box-shadow: inset -15px 0px 15px 2px #2b2b2b;
+  box-shadow: inset -20px 0px 15px -2px #2b2b2b;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler {
   position: absolute;
@@ -306,7 +329,6 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-
   width: 99% ;
   height: 210px;
   display: block;
-  overflow: hidden;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler:hover .Homepage-Albums-Box1,
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler:hover .Homepage-Albums-Box2,
@@ -315,9 +337,10 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler .Homepage-Albums-Box1 {
   position: absolute;
-  margin: 0px auto;
-  width: 100%;
+  margin-left: 0px;
+  height: 100%;
   width: 2100px;
+  float: left;
   display: inline-block;
   animation: slider_box1 60s linear infinite;
 }
@@ -367,7 +390,7 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-
   min-width: 180px;
   min-height: 160px;
   max-width: 180px;
-  padding: 20px 10px 20px 10spx;
+  padding: 20px 10px 20px 10px;
   position: absolute;
   text-align: center;
   white-space: normal;
@@ -466,6 +489,40 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Tra
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-pinterest:hover {
   filter: grayscale(0);
   transform: rotateY(360deg);
+}
+body .App-Content .Favourite-Song {
+  width: 1200;
+  background-color: #2b2b2b;
+  margin-top: 30px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+body .App-Content .Favourite-Song .Favourite-Song-Limit {
+  width: 1180;
+  font-size: 20px;
+  padding: 10px;
+  text-align: right;
+  color: #c86400;
+  background-color: #2b2b2b;
+}
+body .App-Content .Favourite-Song .Favourite-Song-Limit select {
+  font-size: 20px;
+  padding: 5px;
+  text-align: center;
+  text-align-last: center;
+  color: #c86400;
+  background-color: #2b2b2b;
+  outline: none;
+  border: none;
+}
+body .App-Content .Favourite-Song .Single-Track {
+  width: 1200;
+  margin: 0 px auto;
+  width: 390px;
+  height: 400px;
+  background-color: aquamarine;
+  position: relative;
+  float: left;
 }
 body .Scroll-Up {
   width: 30px;

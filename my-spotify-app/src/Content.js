@@ -7,11 +7,10 @@ import FindAlbum from './FindAlbum';
 import Favourite from './Favourite';
 import {Route, Switch} from 'react-router-dom';
 import Error from './Error';
+import {hidePlayer} from "./Service"
 
         // KOMPONENT WYSWIETLAJACY POSZCZEGÓLNY KOMPONENT  WYBRANY Z MENU //
 class Content extends React.Component {
- 
-
   render() {
     return(
       <div className="App-Content">
@@ -27,6 +26,7 @@ class Content extends React.Component {
         <img src='./img/scroll-up.png' className="Scroll-Up" alt=" " />
         <div className='Player-Box'>
           <div className="Track-Name-Audio"></div>
+          <div className="Player-Box-Close" onClick={()=>{hidePlayer()}}>close</div>
         <audio controls autoPlay className="Player"/>
         </div>
       </div>

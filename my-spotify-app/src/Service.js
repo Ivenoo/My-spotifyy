@@ -21,11 +21,21 @@ export const listen =(url,trackName) =>{
 
     let scroll =  document.querySelector('.Scroll-Up');
     scroll.className = "Scroll-Up Scroll-And-Audio";
-    console.log(scroll)
 
     let appContent =  document.querySelector('.Homepage-Track-Box');
     appContent.className = "Homepage-Track-Box App-Content-bottom" ;
 
     let appContentAritst =  document.querySelector('.Homepage-Artist-Box');
     appContentAritst.className = "Homepage-Artist-Box App-Content-bottom" ;
-  }
+}
+
+export const hidePlayer = () => {
+    let playerBox =  document.querySelector('.Player-Box');
+    playerBox.style.display = 'none';
+
+    let scroll =  document.querySelector('.Scroll-Up');
+    scroll.className = "Scroll-Up";
+
+    let player =  document.querySelector('.Player')
+    player.src = "";
+}

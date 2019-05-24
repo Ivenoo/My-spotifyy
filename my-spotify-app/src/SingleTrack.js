@@ -80,7 +80,7 @@ class SingleTrack extends React.Component {
           return(
             <div  key={parentIndex} className="Single-Track" >
             {/* <div className="Single-Track-Img-Play"> */}
-              <img src={parentElement.album.images[1].url}  className="Single-Track-Img" alt=" " />
+              <img src={parentElement.album.images[0].url}  className="Single-Track-Img" alt=" " />
               {trackLink}
             {/* </div> */}
             <div className="Single-Track-Info-Box">
