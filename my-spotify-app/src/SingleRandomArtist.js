@@ -9,6 +9,22 @@ class SingleRandomArtist extends React.Component {
         }
     }
 
+
+    fb = (url) =>{
+      console.log(url.trim())
+      window.open(`https://www.facebook.com/search/top/?q=${encodeURIComponent(url)}&epa=SEARCH_BOX`)
+    }
+    tw = (url) =>{
+      window.open(`https://twitter.com/search?q=${encodeURIComponent(url)}&src=typd`)
+    }
+    pinterest = (url) =>{
+      window.open(`https://pl.pinterest.com/search/pins/?q=${encodeURIComponent(url)}`)
+    }
+
+
+
+
+
            //WYSWIETLANIE POJEDYNCZEGO ARTYSTY //
     render(){
       const parentElement = this.props.parentElement;
@@ -19,17 +35,26 @@ class SingleRandomArtist extends React.Component {
         <div className="Random-Artists">
         {artistPhoto}
         <div className="Random-Artists-Info-Box">
-        Name: <strong className="artists-name">{parentElement.name}</strong><br/>
-        <span className="Random-Artists-Genres-Title">genres of music: </span>
-        <marquee className="Random-Artists-Marquee">
-        {parentElement.genres.map((element,index) =>{
-          return(
-            <span key={index}>{element},</span>
-          )
-        } )}
-        </marquee><br/>
-        total followres: {parentElement.followers.total}
+          <span className="Random-Artists-Genres-Titlee">Name :</span>
+          <span className="artists-name">{parentElement.name}</span><br/>
+          <span className="Random-Artists-Genres-Title">genres of music : </span>
+          <marquee className="Random-Artists-Marquee">
+          {parentElement.genres.map((element,index) =>{
+            return(
+              <span key={index} className="Random-Artist-One-Genre">{element}, </span>
+            )
+          })}
+          </marquee><br/>
+          <span className="Random-Artists-Genres-Titlee">total followres : </span>
+          <span>
+            {parentElement.followers.total}
+          </span>
         </div>
+        <div className="Single-Track-Icon-Box">
+                <a onClick={this.fb.bind(this,parentElement.name)} ><img src='./img/fb-icon.png' className="Single-Track-Comunity-Portal-fb btn btn-white btn-animation-1" alt=" " /></a>
+                <a onClick={this.tw.bind(this, parentElement.name)} ><img src='./img/tw-icon.png' className="Single-Track-Comunity-Portal-tw" alt=" " /></a>
+                <a onClick={this.pinterest.bind(this,parentElement.name)} ><img src='./img/pinterest-icon.png' className="Single-Track-Comunity-Portal-pinterest" alt=" " /></a>
+              </div>
         </div>
         )
 
