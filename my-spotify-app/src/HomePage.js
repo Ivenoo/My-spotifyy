@@ -41,6 +41,7 @@ class HomePage extends React.Component {
  render() {
   return(
     <div className='Homepage-Box'>
+      <div className="Left-Clear"></div>
       <div className="Right-Clear"></div>
       <div className='Title-Boxx' > RANDOM ALBUMS</div>
       <div className="Homepage-Albums-Box">
