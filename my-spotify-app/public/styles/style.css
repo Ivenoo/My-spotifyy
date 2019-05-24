@@ -88,7 +88,7 @@ body .App-Content .Homepage-Box .Homepage-Track-Box {
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track {
   display: block;
-  padding: 10px 0px 0px 0px;
+  padding: 10px 0px 0px 10px;
   border-bottom: solid 1px #c86400;
   height: 118px;
 }
@@ -157,19 +157,19 @@ body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt {
   width: 55px;
   height: 40px;
-  margin: 16px 0px  0px 270px;
+  margin: 16px 0px  0px 260px;
   position: absolute;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify {
   width: 49px;
   height: 49px;
-  margin: 13px 0px  0px 335px;
+  margin: 13px 0px  0px 325px;
   position: absolute;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud {
   width: 50px;
   height: 50px;
-  margin: 13px 0px  0px 394px;
+  margin: 13px 0px  0px 384px;
   position: absolute;
   z-index: 100;
 }
@@ -320,6 +320,10 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists {
   padding: 10px 0px 0px 0px;
   border-bottom: solid 1px #c86400;
   height: 118px;
+  padding-left: 10px;
+}
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists:hover {
+  background: #6b6b6b;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Artists-IMG {
   width: 100px;
@@ -352,25 +356,25 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Art
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-fb {
   width: 47px;
   height: 47px;
-  margin: -8px 0px 0px 420px;
+  margin: -8px 0px 0px 410px;
   position: absolute;
   border-radius: 5px;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-tw {
   width: 48px;
   height: 46px;
-  margin: -7px 0px 0px 477px;
+  margin: -7px 0px 0px 467px;
   position: absolute;
 }
-body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-insta {
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-pinterest {
   width: 50px;
   height: 50px;
-  margin: -9px 0px 10px 534px;
+  margin: -9px 0px 10px 524px;
   position: absolute;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-fb,
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-tw,
-body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-insta {
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-pinterest {
   transition-duration: 2s;
   filter: grayscale(0.8);
   cursor: pointer;
@@ -383,9 +387,9 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Tra
   filter: grayscale(0);
   transform: rotateZ(360deg);
 }
-body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-insta:hover {
+body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Track-Icon-Box .Single-Track-Comunity-Portal-pinterest:hover {
   filter: grayscale(0);
-  transform: rotateX(360deg);
+  transform: rotateY(360deg);
 }
 body .App-Content .Homepage-Box .Title-Box {
   text-align: center;

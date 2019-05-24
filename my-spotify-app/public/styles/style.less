@@ -88,7 +88,7 @@ body{
     
     .Homepage-Box{
       margin: 0px auto;
-                                      //TRACKK//
+                                      //HOMEPAGE TRACKK//
       .Homepage-Track-Box{
         background:@back-item;
         width:600px;
@@ -100,7 +100,7 @@ body{
 
         .Single-Track{
           display:block;
-          padding:10px 0px 0px 0px;
+          padding:10px 0px 0px 10px;
           border-bottom: solid 1px @font-color;
           height:118px;
           
@@ -180,21 +180,21 @@ body{
             .Single-Track-Comunity-Portal-yt{
               width:55px;
               height:40px;
-              margin: 16px 0px  0px 270px;
+              margin: 16px 0px  0px 260px;
               position:absolute;
             }
 
             .Single-Track-Comunity-Portal-spotify{
               width:49px;
               height:49px;
-              margin: 13px 0px  0px 335px;
+              margin: 13px 0px  0px 325px;
               position:absolute;
             }
             
             .Single-Track-Comunity-Portal-soundcloud{
               width:50px;
               height:50px;
-              margin: 13px 0px  0px 394px;
+              margin: 13px 0px  0px 384px;
               position:absolute;
               z-index: 100;
             }
@@ -374,6 +374,11 @@ body{
         padding: 10px 0px 0px 0px;
         border-bottom: solid 1px #c86400;
         height:118px;
+        padding-left:10px;
+
+        &:hover{
+          background:rgb(107, 107, 107); 
+        }
 
         .Random-Artists-IMG{
           width: 100px;
@@ -410,7 +415,7 @@ body{
           .Single-Track-Comunity-Portal-fb{
             width:47px;
             height:47px;
-            margin: -8px 0px  0px 420px;
+            margin: -8px 0px  0px 410px;
             position:absolute;
             border-radius:5px;
           }
@@ -418,20 +423,20 @@ body{
           .Single-Track-Comunity-Portal-tw{
             width:48px;
             height:46px;
-            margin:  -7px 0px  0px 477px;
+            margin:  -7px 0px  0px 467px;
             position:absolute;
           }
 
-          .Single-Track-Comunity-Portal-insta{
+          .Single-Track-Comunity-Portal-pinterest{
             width:50px;
             height:50px;
-            margin: -9px 0px  10px 534px;
+            margin: -9px 0px  10px 524px;
             position:absolute;
           }
 
           .Single-Track-Comunity-Portal-fb,
           .Single-Track-Comunity-Portal-tw,
-          .Single-Track-Comunity-Portal-insta{
+          .Single-Track-Comunity-Portal-pinterest{
             transition-duration: 2s;
             filter: grayscale(0.8);
             cursor:pointer;  
@@ -446,12 +451,10 @@ body{
             transform:rotateZ(360deg);
           }
 
-          .Single-Track-Comunity-Portal-insta:hover{
+          .Single-Track-Comunity-Portal-pinterest:hover{
             filter: grayscale(0);
-            transform:rotateX(360deg);
+            transform:rotateY(360deg);
           }
-          
-
         }
       }
 

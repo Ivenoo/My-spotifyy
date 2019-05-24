@@ -17,9 +17,11 @@ class SingleRandomArtist extends React.Component {
     tw = (url) =>{
       window.open(`https://twitter.com/search?q=${encodeURIComponent(url)}&src=typd`)
     }
-    insta = (url) =>{
-      window.open(`https://soundcloud.com/search/sounds?q=${encodeURIComponent(url)}`)
+    pinterest = (url) =>{
+      window.open(`https://pl.pinterest.com/search/pins/?q=${encodeURIComponent(url)}`)
     }
+
+
 
 
 
@@ -51,7 +53,7 @@ class SingleRandomArtist extends React.Component {
         <div className="Single-Track-Icon-Box">
                 <a onClick={this.fb.bind(this,parentElement.name)} ><img src='./img/fb-icon.png' className="Single-Track-Comunity-Portal-fb btn btn-white btn-animation-1" alt=" " /></a>
                 <a onClick={this.tw.bind(this, parentElement.name)} ><img src='./img/tw-icon.png' className="Single-Track-Comunity-Portal-tw" alt=" " /></a>
-                <a onClick={this.insta.bind(this,parentElement.name)} ><img src='./img/insta-icon.png' className="Single-Track-Comunity-Portal-insta" alt=" " /></a>
+                <a onClick={this.pinterest.bind(this,parentElement.name)} ><img src='./img/pinterest-icon.png' className="Single-Track-Comunity-Portal-pinterest" alt=" " /></a>
               </div>
         </div>
         )

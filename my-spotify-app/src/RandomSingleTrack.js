@@ -68,7 +68,7 @@ class RandomSingleTrack extends React.Component {
         window.open(url)
       }
       soundcloud = (url,author) =>{
-        window.open(`https://soundcloud.com/search/sounds?q=${encodeURIComponent(url)}${encodeURIComponent(author)}`)
+        window.open(`https://soundcloud.com/search/sounds?q=${encodeURIComponent(url)}%20${encodeURIComponent(author)}`)
       }
 
     render(){
