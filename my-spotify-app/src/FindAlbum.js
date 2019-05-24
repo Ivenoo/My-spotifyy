@@ -82,10 +82,11 @@ class FindAlbum extends React.Component {
   render() {
     return( 
       <div>
-         <div className="szukajka">
-        <input type="text" placeholder="Search Albums..." onChange={this.search.bind(this)}/><br/>
-       search: <br/>
-       </div>
+        <div className="Title-Box">SEARCH</div>
+        <div className="Searching-Bar"> 
+          <input type="text" placeholder="Are you looking for an album? Type something here..." className="Searching-Field" onChange={this.search.bind(this)}/>   
+        </div>
+        <div className="Title-Box">RESULTS</div>
        <span className={this.state.notFindAlbum}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
        <ol>
        { this.state.albumList.map((element, index)=>

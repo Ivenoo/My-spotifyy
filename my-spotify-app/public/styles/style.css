@@ -32,32 +32,46 @@ body {
   margin: auto;
 }
 body .App-Menu {
+  margin-top: 30px;
+  margin-bottom: 20px;
   text-align: center;
-  margin-bottom: 25px;
-  padding-bottom: 1px;
 }
 body .App-Menu .Menu-Buttons {
-  padding-bottom: 5px;
+  background-color: #2b2b2b;
+  color: #6b6b6b;
   text-decoration: none;
-  border-bottom: solid 2px #fff ;
-  padding-right: 10px;
-  padding-left: 10px;
-  color: #c86400;
+  border-bottom: solid 1px #c86400;
+  border-top: solid 1px #c86400;
+  padding: 10px;
   font-size: 25px;
-  transition-duration: 1.5s;
+  transition-duration: 1s;
+  outline: none;
 }
 body .App-Menu .Default-Location {
-  cursor: pointer;
-  box-shadow: 0 2px 1px -1px #ff7300;
+  color: #c86400;
 }
 body .App-Menu .Menu-Buttons:hover {
-  color: #fff;
-  transform: scale(0.5);
+  cursor: pointer;
+  color: #FFF;
+  outline: none;
+}
+body .App-Menu .Menu-Buttons:focus {
+  outline: none;
 }
 body .App-Content {
   margin: 0px auto;
   margin-top: 20px;
   z-index: 1;
+}
+body .App-Content .Right-Clear {
+  margin-top: -10%;
+  margin-left: 1200px;
+  position: fixed;
+  width: 2000px;
+  height: 110%;
+  background-color: #202020;
+  float: right;
+  z-index: 1000;
 }
 body .App-Content .Player {
   position: fixed;
@@ -66,6 +80,56 @@ body .App-Content .Player {
   height: 40px;
   background-color: #202020;
   display: none;
+}
+body .App-Content .Searching-Bar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+body .App-Content .Searching-Bar .Searching-Field {
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  width: 800px;
+  font-size: 20px;
+  padding: 10px;
+  color: #c86400;
+  background-color: #2b2b2b;
+}
+body .App-Content .Searching-Bar .Searching-Field:focus {
+  border-color: #c86400;
+  border: none;
+  outline: none;
+}
+body .App-Content .Searching-Bar .Searching-Limit {
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  font-size: 20px;
+  padding: 10px;
+  border-left: solid 1px #c86400;
+  color: #c86400;
+  background-color: #2b2b2b;
+  outline: none;
+}
+body .App-Content .Searching-Bar .Searching-Options {
+  padding-left: calc(49%);
+  border: none;
+  text-align: center;
+  color: #c86400;
+}
+body .App-Content .Title-Box {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #c86400;
+  background: #202020;
+}
+body .App-Content .Title-Boxx {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #202020;
 }
 body .App-Content .Homepage-Box {
   margin: 0px auto;
@@ -191,11 +255,30 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box {
   background: #2b2b2b;
   height: 210px;
   width: 100%;
-  padding: 10px 10px 10px 0px;
+  padding: 10px 0px 10px 0px;
   display: block;
   overflow: hidden;
   border-bottom: solid 1px #c86400;
   border-top: solid 1px #c86400;
+  box-shadow: inset 15px 0px 15px 3px #2b2b2b;
+}
+body .App-Content .Homepage-Box .Homepage-Albums-Box .Album-Box-Left-Smooth {
+  position: absolute;
+  margin-top: -10px;
+  height: 230px;
+  width: 40px;
+  z-index: 999;
+  box-shadow: inset 15px 0px 15px -2px #2b2b2b;
+}
+body .App-Content .Homepage-Box .Homepage-Albums-Box .Album-Box-Right-Smooth {
+  float: right;
+  margin-left: 1160px;
+  margin-top: -10px;
+  position: absolute;
+  height: 230px;
+  width: 40px;
+  z-index: 999;
+  box-shadow: inset -15px 0px 15px 2px #2b2b2b;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler {
   position: absolute;
@@ -249,7 +332,7 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-
   cursor: pointer;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler .Single-Album:hover {
-  z-index: 999;
+  z-index: 998;
 }
 body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-Handler .Single-Album:hover .Single-Album-Image {
   opacity: 0.1;
@@ -264,7 +347,7 @@ body .App-Content .Homepage-Box .Homepage-Albums-Box .Homepage-Albums-Animation-
   min-width: 180px;
   min-height: 160px;
   max-width: 180px;
-  padding: 20px 10px 20px 10px;
+  padding: 20px 10px 20px 10spx;
   position: absolute;
   text-align: center;
   white-space: normal;
@@ -314,19 +397,6 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Art
   width: 78.8%;
   display: inline;
   float: left;
-}
-body .App-Content .Homepage-Box .Title-Box {
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: solid 1px #c86400;
-  background: #202020;
-}
-body .App-Content .Homepage-Box .Title-Boxx {
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background: #202020;
 }
 body .notexist {
   display: none;

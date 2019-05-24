@@ -118,21 +118,20 @@ class FindArtist extends React.Component {
     }
     return(
       <div>
-        <div className="szukajka">
-        <input type="text" placeholder="Search Artists..." onChange={this.inputValue.bind(this)}/>
-        {/* <input type="text"  id= "searchArtist" placeholder="Search Artists..." onChange={this.looking.bind(this)}/> */}
-        <Limit changeLimit={this.limit.bind(this)}/>
-        <br/>
-       search:  <br/>
-       </div>
-       <ol className="list-Artist">
-       <span className={this.state.notFindArtist}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
-       {
-         this.state.artistList.map((element, index)=>
-         <SingleArtist  key={index} parentElement={element} parentIndex={index} />
-        )}
-       </ol>
-       {prevButton}
+        <div className="Title-Box">SEARCH</div>
+        <div className="Searching-Bar"> 
+          <input type="text" placeholder="Are you looking for an artist? Type nickname here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
+          <Limit changeLimit={this.limit.bind(this)} />    
+        </div>
+        <div className="Title-Box">RESULTS</div>
+      <ol className="list-Artist">
+      <span className={this.state.notFindArtist}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
+      {
+        this.state.artistList.map((element, index)=>
+        <SingleArtist  key={index} parentElement={element} parentIndex={index} />
+      )}
+      </ol>
+      {prevButton}
       {nextButton}
       </div>
     )

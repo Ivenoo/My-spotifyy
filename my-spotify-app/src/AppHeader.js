@@ -24,10 +24,10 @@ class AppHeader extends React.Component {
     return(
       <div className='App-Menu'>
         <Link className={this.targetButton('/')}  onClick={() => {this.setState({ refresh: ''})}} to="/" >Homepage</Link>
-        <Link className={this.targetButton('/findsound')}  onClick={() => {this.setState({ refresh: ''})}}  to="/findsound">Find Sound</Link>
-        <Link className={this.targetButton('/findartist')} onClick={() => {this.setState({ refresh: ''})}} to="/findartist">Find Artist</Link>
-        <Link className={this.targetButton('/findgenres')} onClick={() => {this.setState({ refresh: ''})}} to="/findgenres">Find Genres</Link>
-        <Link className={this.targetButton('/findalbum')}  onClick={() => {this.setState({ refresh: ''})}} to="/findalbum">Find Album</Link>
+        <Link className={this.targetButton('/findsound')}  onClick={() => {this.setState({ refresh: ''})}}  to="/findsound">Sounds</Link>
+        <Link className={this.targetButton('/findartist')} onClick={() => {this.setState({ refresh: ''})}} to="/findartist">Artists</Link>
+        <Link className={this.targetButton('/findgenres')} onClick={() => {this.setState({ refresh: ''})}} to="/findgenres">Genres</Link>
+        <Link className={this.targetButton('/findalbum')}  onClick={() => {this.setState({ refresh: ''})}} to="/findalbum">Albums</Link>
         <Link className={this.targetButton('/favourite')}  onClick={() => {this.setState({ refresh: ''})}} to="/favourite">Favourite</Link>
         </div>  
     )

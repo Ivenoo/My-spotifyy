@@ -88,9 +88,7 @@ class App extends React.Component {
       <Router>
       <div className="App">
         <AppHeader selectAction={this.selectAction} />
-        <div className="App-Content">
-          <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/>
-        </div>
+        <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/>
       </div>
       </Router>
     );

@@ -14,17 +14,17 @@ class Content extends React.Component {
 
   render() {
     return(
-      <div id="content">
-      <Switch>
-      <Route exact path="/" render={()=> <HomePage   mytoken={this.props.mytoken}/> }/>
-      <Route exact path="/findsound" render={()=> <FindSound  mytoken={this.props.mytoken}/> }/>
-      <Route exact path="/findartist" render={()=> <FindArtist mytoken={this.props.mytoken} /> }/>
-      <Route exact path="/findgenres" render={()=> <FindGenres searchGenres={this.props.genres} mytoken={this.props.mytoken} typeTracks={this.props.typeTracks}/> }/>
-      <Route exact path="/findalbum" render={()=> <FindAlbum   mytoken={this.props.mytoken} /> }/>
-      <Route exact path="/favourite" render={()=> <Favourite  mytoken={this.props.mytoken} />}/>
-      <Route component={()=> <Error/>}/>
-      </Switch>
-      <audio controls autoPlay className="Player"/>
+      <div className="App-Content">
+        <Switch>
+          <Route exact path="/" render={()=> <HomePage   mytoken={this.props.mytoken}/> }/>
+          <Route exact path="/findsound" render={()=> <FindSound  mytoken={this.props.mytoken}/> }/>
+          <Route exact path="/findartist" render={()=> <FindArtist mytoken={this.props.mytoken} /> }/>
+          <Route exact path="/findgenres" render={()=> <FindGenres searchGenres={this.props.genres} mytoken={this.props.mytoken} typeTracks={this.props.typeTracks}/> }/>
+          <Route exact path="/findalbum" render={()=> <FindAlbum   mytoken={this.props.mytoken} /> }/>
+          <Route exact path="/favourite" render={()=> <Favourite  mytoken={this.props.mytoken} />}/>
+          <Route component={()=> <Error/>}/>
+        </Switch>
+        <audio controls autoPlay className="Player"/>
       </div>
     )   
 }

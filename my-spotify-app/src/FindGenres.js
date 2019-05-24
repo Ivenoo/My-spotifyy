@@ -68,22 +68,24 @@ class FindGenres extends React.Component {
   render() {
     return(
       <div>
-        <div className="szukajka">
-       <select defaultValue='' onChange={this.inputValue.bind(this)}>
-         <option value="" disabled>Choose Genre ...</option>
-         {this.props.typeTracks.map((element, index)=>{
-           return(
-             <option key={index}>{element}</option>
-           )
-         })}
-       </select>
-       <Limit changeLimit={this.limit.bind(this)}/>
-       </div>
-       <ol>
-       {this.state.searchList.map((element, index)=>
-        <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
-        )}
-       </ol>
+       <div className="Title-Box">SEARCH</div>
+        <div className="Searching-Bar"> 
+          <select className="Searching-Field" defaultValue='' onChange={this.inputValue.bind(this)}>
+            <option className="Searching-Options" value="" disabled>Choose Genre ...</option>
+            {this.props.typeTracks.map((element, index)=>{
+              return(
+                <option className="Searching-Options" key={index}>{element}</option>
+              )
+            })}
+          </select>
+        <Limit changeLimit={this.limit.bind(this)}/>
+        </div>
+        <div className="Title-Box">RESULTS</div>
+          <ol>
+          {this.state.searchList.map((element, index)=>
+            <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
+          )}
+        </ol>
       </div>
     )
   }

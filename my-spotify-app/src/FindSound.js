@@ -116,23 +116,21 @@ class FindSound extends React.Component {
     }
     return(
       <div>
-        <div className="szukajka">
-        <input type="text" placeholder="Search Tracks..." onChange={this.inputValue.bind(this)}/>
-        <Limit changeLimit={this.limit.bind(this)}/>
-        <br/>
-       search:{this.state.searchValue}<br/>
-          
-       </div>
-       <span className={this.state.notFindTracks}><strong className="title">{this.state.searchValue} </strong> not exist</span>
-       <ol>
-       {
-         this.state.trackList.map((element, index)=>
-         <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
+        <div className="Title-Box">SEARCH</div>
+        <div className="Searching-Bar"> 
+          <input type="text" placeholder="Do you want to find a song? Enter its title here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
+          <Limit changeLimit={this.limit.bind(this)} />    
+        </div>
+        <div className="Title-Box">RESULTS</div>
+      <span className={this.state.notFindTracks}><strong className="title">{this.state.searchValue} </strong> not exist</span>
+      <ol>
+        {this.state.trackList.map((element, index)=>
+          <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
         )}
-       </ol>
+      </ol>
       {prevButton}
       {nextButton}
-    </div>
+      </div>
     )
   }
 }
