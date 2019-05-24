@@ -73,13 +73,34 @@ body .App-Content .Right-Clear {
   float: right;
   z-index: 1000;
 }
-body .App-Content .Player {
+body .App-Content .Player-Box {
+  border-top: 1px solid;
+  position: fixed;
+  width: 1200px;
+  height: 70px;
+  background-color: #202020;
+  bottom: 0%;
+  display: none;
+  margin: auto;
+}
+body .App-Content .Player-Box .Track-Name-Audio {
+  width: 1200px;
+  display: inline;
+  float: left;
+  height: 20px;
+  margin-top: 5px;
+  position: absolute;
+  text-align: center;
+}
+body .App-Content .Player-Box .Player {
   position: fixed;
   bottom: 0%;
   width: 1200px;
-  height: 40px;
+  height: 35px;
+  margin-bottom: 4px;
   background-color: #202020;
-  display: none;
+  display: inline;
+  float: left;
 }
 body .App-Content .Searching-Bar {
   margin-top: 20px;
@@ -140,7 +161,7 @@ body .App-Content .Homepage-Box .Homepage-Track-Box {
   margin-top: 10px;
   display: inline;
   float: left;
-  height: 1330px;
+  height: 1340px;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track {
   display: block;
@@ -227,7 +248,6 @@ body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-
   height: 50px;
   margin: 13px 0px  0px 384px;
   position: absolute;
-  z-index: 100;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud,
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify,
@@ -369,7 +389,7 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box {
   background: #2b2b2b;
   margin: 10px 0px 0px 610px;
   width: 600px;
-  height: 1330px;
+  height: 1340px;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists {
   display: block;
@@ -447,18 +467,25 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Tra
   filter: grayscale(0);
   transform: rotateY(360deg);
 }
-body .App-Content .Homepage-Box .Title-Box {
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: solid 1px #c86400;
-  background: #202020;
+body .Scroll-Up {
+  width: 30px;
+  height: 25px;
+  bottom: 0px;
+  margin-left: 590px;
+  position: fixed;
+  cursor: pointer;
+  filter: grayscale(1);
+  transition-duration: 1s;
+  z-index: 999;
 }
-body .App-Content .Homepage-Box .Title-Boxx {
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background: #202020;
+body .Scroll-Up:hover {
+  transform: scale(1.2);
+}
+body .Scroll-And-Audio {
+  bottom: 70px;
+}
+body .App-Content-bottom {
+  height: 1390px !important;
 }
 body .notexist {
   display: none;

@@ -24,7 +24,11 @@ class Content extends React.Component {
           <Route exact path="/favourite" render={()=> <Favourite  mytoken={this.props.mytoken} />}/>
           <Route component={()=> <Error/>}/>
         </Switch>
+        <img src='./img/scroll-up.png' className="Scroll-Up" alt=" " />
+        <div className='Player-Box'>
+          <div className="Track-Name-Audio"></div>
         <audio controls autoPlay className="Player"/>
+        </div>
       </div>
     )   
 }
