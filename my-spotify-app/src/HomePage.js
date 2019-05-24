@@ -69,7 +69,6 @@ class HomePage extends React.Component {
      <div className="Title-Box">RANDOM ARTISTS</div>
      <RandomArtist mytoken={this.props.mytoken}/>
      </div>
- 
     </div>
   )
 }
