@@ -77,14 +77,17 @@ class App extends React.Component {
   }
 }
 
-   
- 
+
+
+
   render() {
     if(!localStorage.getItem("limit")){
       localStorage.setItem("limit" , 20)
     }
+   
     this.check()
     return (
+      
       <Router>
       <div className="App">
        

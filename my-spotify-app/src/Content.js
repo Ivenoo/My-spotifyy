@@ -5,9 +5,11 @@ import HomePage from './HomePage';
 import FindGenres from './FindGenres';
 import FindAlbum from './FindAlbum';
 import Favourite from './Favourite';
-import {Route, Switch} from 'react-router-dom';
 import Error from './Error';
+import {Route, Switch} from 'react-router-dom';
 import {hidePlayer} from "./Service"
+import {ScrollUp} from './Service';
+
 
         // KOMPONENT WYSWIETLAJACY POSZCZEGÓLNY KOMPONENT  WYBRANY Z MENU //
 class Content extends React.Component {
@@ -23,7 +25,7 @@ class Content extends React.Component {
           <Route exact path="/favourite" render={()=> <Favourite  mytoken={this.props.mytoken} />}/>
           <Route component={()=> <Error/>}/>
         </Switch>
-        <img src='./img/scroll-up.png' className="Scroll-Up" alt=" " />
+        <img  onClick={() =>{ScrollUp()}} src='./img/scroll-up.png' className="Scroll-Up" alt=" " />
         <div className='Player-Box'>
           <div className="Track-Name-Audio"></div>
           <div className="Player-Box-Close" onClick={()=>{hidePlayer()}}>close</div>
