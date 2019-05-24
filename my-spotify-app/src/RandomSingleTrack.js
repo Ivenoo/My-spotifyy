@@ -76,7 +76,7 @@ class RandomSingleTrack extends React.Component {
       const parentIndex = this.props.parentIndex;
       let trackLink = ""
       if(parentElement.preview_url !== null) 
-      trackLink = <img  className="Single-Track-Play-Icon" onClick={() =>{listen(parentElement.preview_url)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
+      trackLink = <img  className="Single-Track-Play-Icon" onClick={() =>{listen(parentElement.preview_url,parentElement.name)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
           return(
             <div  key={parentIndex} className="Single-Track" >
               <img src={parentElement.album.images[1].url}  className="Single-Track-Img" alt=" " />

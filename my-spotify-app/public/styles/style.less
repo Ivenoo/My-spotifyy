@@ -97,13 +97,39 @@ body{
       z-index: 1000;
     }
 
+    .Player-Box{
+      border-top:1px solid;
+      position: fixed;
+      width: 1200px;
+      height: 70px;
+      background-color:  @back-color;
+      bottom: 0%;
+      display: none;
+      margin:auto;
+
+ 
+      .Track-Name-Audio{
+       
+        width:1200px;
+        display:inline;
+        float:left;
+        height:20px;
+        margin-top:5px;
+        position:absolute;
+        text-align:center;
+      }
+
     .Player{
       position: fixed;
       bottom: 0%;
       width: 1200px;
-      height: 40px;
+      height: 35px;
+      margin-bottom:4px;
       background-color:  @back-color;
-      display: none;
+      display:inline;
+      float:left;
+      
+      }
     }
 
     .Searching-Bar{
@@ -175,7 +201,7 @@ body{
         margin-top:10px;
         display:inline;
         float:left;
-        height:1330px;
+        height:1340px;
 
 
         .Single-Track{
@@ -276,7 +302,6 @@ body{
               height:50px;
               margin: 13px 0px  0px 384px;
               position:absolute;
-              z-index: 100;
             }
 
             .Single-Track-Comunity-Portal-soundcloud,
@@ -448,7 +473,7 @@ body{
       background:@back-item;
       margin:10px 0px 0px 610px;
       width:600px;
-      height:1330px;
+      height:1340px;
 
       .Random-Artists{
         display: block;
@@ -490,57 +515,77 @@ body{
             display: inline;
             color: white;
           }
-        }
-        .Single-Track-Icon-Box{
-
-          .Single-Track-Comunity-Portal-fb{
-            width:47px;
-            height:47px;
-            margin: -8px 0px  0px 410px;
-            position:absolute;
-            border-radius:5px;
           }
+          .Single-Track-Icon-Box{
 
-          .Single-Track-Comunity-Portal-tw{
-            width:48px;
-            height:46px;
-            margin:  -7px 0px  0px 467px;
-            position:absolute;
-          }
+            .Single-Track-Comunity-Portal-fb{
+              width:47px;
+              height:47px;
+              margin: -8px 0px  0px 410px;
+              position:absolute;
+              border-radius:5px;
+            }
 
-          .Single-Track-Comunity-Portal-pinterest{
-            width:50px;
-            height:50px;
-            margin: -9px 0px  10px 524px;
-            position:absolute;
-          }
+            .Single-Track-Comunity-Portal-tw{
+              width:48px;
+              height:46px;
+              margin:  -7px 0px  0px 467px;
+              position:absolute;
+            }
 
-          .Single-Track-Comunity-Portal-fb,
-          .Single-Track-Comunity-Portal-tw,
-          .Single-Track-Comunity-Portal-pinterest{
-            transition-duration: 2s;
-            filter: grayscale(0.8);
-            cursor:pointer;  
-          }
-          .Single-Track-Comunity-Portal-fb:hover{
-            filter: grayscale(0);
-            transform:rotateX(360deg);
-          }
+            .Single-Track-Comunity-Portal-pinterest{
+              width:50px;
+              height:50px;
+              margin: -9px 0px  10px 524px;
+              position:absolute;
+            }
 
-          .Single-Track-Comunity-Portal-tw:hover{
-            filter: grayscale(0);
-            transform:rotateZ(360deg);
-          }
+            .Single-Track-Comunity-Portal-fb,
+            .Single-Track-Comunity-Portal-tw,
+            .Single-Track-Comunity-Portal-pinterest{
+              transition-duration: 2s;
+              filter: grayscale(0.8);
+              cursor:pointer;  
+            }
+            .Single-Track-Comunity-Portal-fb:hover{
+              filter: grayscale(0);
+              transform:rotateX(360deg);
+            }
 
-          .Single-Track-Comunity-Portal-pinterest:hover{
-            filter: grayscale(0);
-            transform:rotateY(360deg);
+            .Single-Track-Comunity-Portal-tw:hover{
+              filter: grayscale(0);
+              transform:rotateZ(360deg);
+            }
+
+            .Single-Track-Comunity-Portal-pinterest:hover{
+              filter: grayscale(0);
+              transform:rotateY(360deg);
+            }
           }
         }
       }
-
     }
   }
+  .Scroll-Up{
+    width:30px;
+    height:25px;
+    bottom:0px;
+    margin-left:590px;
+    position:fixed;
+    cursor:pointer;
+    filter: grayscale(1);
+    transition-duration: 1s;
+    z-index:999;
+
+    &:hover{
+      transform:scale(1.2);
+    }
+  }
+  .Scroll-And-Audio{
+    bottom:70px;
+  }
+  .App-Content-bottom{
+    height:1390px !important;
   }
 
   .notexist{
