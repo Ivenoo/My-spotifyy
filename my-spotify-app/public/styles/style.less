@@ -34,6 +34,9 @@ body{
   width:1200px;
   margin:auto;
 
+
+
+
   .App-Menu{
     margin-top:30px;
     margin-bottom:20px;
@@ -71,6 +74,18 @@ body{
     margin-top: 20px;
     z-index: 1;
 
+    .Left-Clear{
+      margin-top: -10%;
+      margin-left:0px;
+      position: absolute;
+      width: 2000px;
+      height: 110%;
+      background-color: @back-color;
+      float: left;
+      z-index: 1000;
+      transform: translateX(-2000px)
+    }
+
     .Right-Clear{
       margin-top: -10%;
       margin-left:1200px;
@@ -89,66 +104,66 @@ body{
       height: 40px;
       background-color:  @back-color;
       display: none;
-      }
+    }
 
-      .Searching-Bar{
-        margin-top: 20px;
-        margin-bottom: 20px;
+    .Searching-Bar{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      .Searching-Field{
+        border: none;
         text-align: center;
-        .Searching-Field{
-          border: none;
-          text-align: center;
-          text-align-last: center;
-          width: 800px;
-          font-size: 20px;
-          padding: 10px;
-          color: @font-color;
-          background-color: @back-item;
+        text-align-last: center;
+        width: 800px;
+        font-size: 20px;
+        padding: 10px;
+        color: @font-color;
+        background-color: @back-item;
 
-          &:focus{
-            border-color: @font-color;
-            border: none;
-            outline: none;
-          }
-        }
-
-        .Searching-Limit{
+        &:focus{
+          border-color: @font-color;
           border: none;
-          text-align: center;
-          text-align-last: center;
-          font-size: 20px;
-          padding: 10px;
-          border-left: solid 1px @font-color;
-          color: @font-color;
-          background-color: @back-item;
           outline: none;
         }
-
-        
-        .Searching-Options{
-          padding-left: calc(50% - 1em);
-          border: none;
-          text-align: center;
-          // text-align-last: center;
-          color: @font-color;
-        }
-
-
       }
 
-      .Title-Box{
-        text-align:center;
-        padding-top:10px;
-        padding-bottom:10px;
-        border-bottom: solid 1px @font-color;
-        background:@back-color;
+      .Searching-Limit{
+        border: none;
+        text-align: center;
+        text-align-last: center;
+        font-size: 20px;
+        padding: 10px;
+        border-left: solid 1px @font-color;
+        color: @font-color;
+        background-color: @back-item;
+        outline: none;
       }
-      .Title-Boxx{
-        text-align:center;
-        padding-top:10px;
-        padding-bottom:10px;
-        background:@back-color;
+
+      
+      .Searching-Options{
+        padding-left: calc(50% - 1em);
+        border: none;
+        text-align: center;
+        // text-align-last: center;
+        color: @font-color;
       }
+
+
+    }
+
+    .Title-Box{
+      text-align:center;
+      padding-top:10px;
+      padding-bottom:10px;
+      border-bottom: solid 1px @font-color;
+      background:@back-color;
+    }
+    .Title-Boxx{
+      text-align:center;
+      padding-top:10px;
+      padding-bottom:10px;
+      background:@back-color;
+    }
 
     
     .Homepage-Box{
@@ -294,7 +309,7 @@ body{
           }
         }  
       }
-                                          ///ALBUMSSS//
+                                          ///ALBUMSS//
       .Homepage-Albums-Box{
         background:@back-item;
         height:210px;
@@ -333,8 +348,8 @@ body{
           width: 99% ;
           height: 210px;
           display:block;
-          overflow: hidden;
-      
+
+
           &:hover .Homepage-Albums-Box1,
           &:hover .Homepage-Albums-Box2,
           &:hover .Homepage-Albums-Box3{
@@ -343,9 +358,10 @@ body{
 
           .Homepage-Albums-Box1{
             position: absolute;
-            margin: 0px auto;
-            width: 100%;
+            margin-left: 0px;
+            height: 100%;
             width: 2100px;
+            float: left;
             display: inline-block;
             animation: slider_box1 @slider_duration linear infinite;
           }
@@ -401,7 +417,7 @@ body{
               min-width: 180px;
               min-height: 160px;
               max-width: 180px;
-              padding: 20px 10px 20px 10spx;
+              padding: 20px 10px 20px 10px;
               position: absolute;
               text-align: center;
               white-space: normal;
@@ -523,11 +539,10 @@ body{
         }
       }
 
-  }
-
-    
     }
   }
+  }
+
   .notexist{
   display: none
   }
