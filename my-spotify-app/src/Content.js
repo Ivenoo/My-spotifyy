@@ -28,7 +28,7 @@ class Content extends React.Component {
         <img  onClick={() =>{ScrollUp()}} src='./img/scroll-up.png' className="Scroll-Up" alt=" " />
         <div className='Player-Box'>
           <div className="Track-Name-Audio"></div>
-          <div className="Player-Box-Close" onClick={()=>{hidePlayer()}}>close</div>
+          <button className="Player-Box-Close" onClick={()=>{hidePlayer()}}>close</button>
         <audio controls autoPlay className="Player"/>
         </div>
       </div>
