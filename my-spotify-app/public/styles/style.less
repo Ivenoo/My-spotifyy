@@ -151,6 +151,7 @@ body{
       margin-top: 20px;
       margin-bottom: 20px;
       text-align: center;
+
       .Searching-Field{
         border: none;
         text-align: center;
@@ -185,7 +186,6 @@ body{
         padding-left: calc(50% - 1em);
         border: none;
         text-align: center;
-        // text-align-last: center;
         color: @font-color;
       }
 
@@ -514,13 +514,13 @@ body{
           margin-left:110px;
 
           .Random-Artists-Genres-Title{
-            width: 22.5%;
+            width: 23.5%;
             float: left;
             display: inline;
             color: white;
           }
           .Random-Artists-Marquee{
-            width:77.5%;
+            width:76.5%;
             display:inline;
             float:left;
           }
@@ -580,8 +580,119 @@ body{
         }
       }
     }
+                              // STYLE FOR FIND ARTISTS//
 
+   .list-Artist{
+    margin-top:0px;
 
+      .Find-Artists-Single-Artist{
+        width:900px;
+        height:150px;
+        border-bottom:solid 1px;
+        margin: auto;
+        position: relative;
+        
+        &:hover{
+          background:rgb(95, 95, 95); 
+        }
+
+        .Find-Artists-Img{
+        margin-top:2%;
+          width:120px;
+          height:110px;
+          padding-top: 2px;
+          padding-left: 6px;
+          position:absolute;
+          border-radius:10px;
+        }
+
+        .Find-Artist-Info-Box{
+            text-align:center;
+
+          .artist-name{
+            top: 15px;
+            position: relative;
+            display:block;
+            color:white;
+            font-size:20px;
+            }
+
+          .Find-Artists-Genres-Title{
+              color:white;
+              font-size:15px;
+          }
+          .Find-Artists-Genres-Value{
+            margin-left:125px;
+          }
+          .Find-Artists-Popularity{
+            position:relative;
+            top:20px;
+            left:135px;
+            width:200px;
+            float:left;
+            text-align:left;
+          }
+          .Find-Artists-Followers{
+            position:relative;
+            top:20px;
+            float:right;
+            width:200px;
+            text-align:left;
+          }
+          .Find-Artists-Comunity-Portal-fb{
+            width:47px;
+            height:47px;
+            margin: -15px 0px  0px -26.5px;
+            position:absolute;
+            border-radius:5px;
+            cursor:pointer;
+            filter: grayscale(0.8);
+            transition-duration: 2s;
+            border-radius:8px;
+
+            &:hover{
+              filter: grayscale(0);
+              transform:scale(1.2);
+              box-shadow: 3px 3px 5px 2px black;
+            }
+          }
+
+          .Find-Artists-Comunity-Portal-tw{
+            width:48px;
+            height:46px;
+            margin:  -15px 0px  0px -83.5px;
+            position:absolute;
+            cursor:pointer;
+            filter: grayscale(0.8);
+            transition-duration: 2s;
+            border-radius:80px;
+
+            &:hover{
+              filter: grayscale(0);
+              transform:scale(1.2);
+              box-shadow: 3px 3px 5px 2px black;
+            }
+          }
+
+          .Find-Artists-Comunity-Portal-pinterest{
+            width:50px;
+            height:50px;
+            margin: -16px 0px  0px 29.5px;
+            position:absolute;
+            cursor:pointer;
+            filter: grayscale(0.8);
+            transition-duration: 2s;
+            border-radius:80px;
+
+            &:hover{
+              filter: grayscale(0);
+              transform:scale(1.2);
+              box-shadow: 3px 3px 5px 2px black;
+            }
+          }
+        }
+      }
+    }
 
     .Favourite-Song{
       width: 1200;
@@ -611,7 +722,6 @@ body{
       }
 
       .Single-Track{
-        // margin: 30px;
         width: 1200;
         margin: 0 px auto;
         width: 390px;
@@ -635,14 +745,13 @@ body{
     filter: grayscale(1);
     transition-duration: 1s;
     z-index:999;
-    transition-duration:10s;
 
     &:hover{
       transform:scale(1.2);
     }
   }
   .Scroll-And-Audio{
-    bottom:70px;
+    bottom:75px;
   }
 
   .App-Content-bottom{
