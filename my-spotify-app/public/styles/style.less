@@ -20,10 +20,15 @@
   100%{transform: translateX(-200%);}
 }
 
+
 @slider_duration: 60s;
 @slider2_delay: 0s;
 @slider3_delay: 30s;
 
+@keyframes marquee {
+  0% { left: 80%; }
+  100% { left: -60%; }
+}
 
 body{
   background: @back-color;
@@ -580,13 +585,57 @@ body{
         }
       }
     }
-                              // STYLE FOR FIND ARTISTS//
+
+                              // STYLE FOR FIND SOUNDS //
+  .Find-Sounds{
+    .Find-Soungs-Single-Sound{
+      background:rgb(0, 0, 0);
+
+      .Single-Track{
+        
+        .Single-Track-Img{
+          width:100px;
+          height:100px;
+        }
+
+        .Single-Track-Info-Box{
+
+          .Single-Track-Author-Title{
+
+          }
+
+          .Single-Track-Marquee-Author{
+
+            .Single-Track-Author{
+
+            }
+          }
+
+          .Single-Track-Name-Title{
+
+          }
+
+          .Single-Track-Name{
+
+          }
+
+          .Single-Track-Icon-Box{
+            
+          }
+        }
+      }
+    }
+  }
+
+
+
+                              // STYLE FOR FIND ARTISTS //
 
    .list-Artist{
     margin-top:0px;
 
       .Find-Artists-Single-Artist{
-        width:900px;
+        width:1200px;
         height:150px;
         border-bottom:solid 1px;
         margin: auto;
@@ -595,15 +644,19 @@ body{
         &:hover{
           background:rgb(95, 95, 95); 
         }
+        
+        &:hover .Find-Artists-Marquee-Box{
+          animation: marquee 20s linear infinite;
+       }
 
         .Find-Artists-Img{
-        margin-top:2%;
+          margin-top:20px;
           width:120px;
           height:110px;
-          padding-top: 2px;
           padding-left: 6px;
           position:absolute;
           border-radius:10px;
+          z-index:20;
         }
 
         .Find-Artist-Info-Box{
@@ -621,9 +674,33 @@ body{
               color:white;
               font-size:15px;
           }
-          .Find-Artists-Genres-Value{
-            margin-left:125px;
+
+          .marquee {
+            height: 25px;
+            width: 1200px;
+            overflow: hidden;
+            position: relative;
+            text-align:center;
+
+          .Find-Artists-Marquee-Box{
+            display: block;
+            height: 25px;
+            position: relative;
+            overflow: hidden;
+            padding-left:11%;
+          
+
+           .Find-Artists-Span-Marquee{
+              max-height:25px;
+              white-space:nowrap;
+              text-align:right;
+              margin-left: -110px;
+           } 
           }
+          }
+
+
+
           .Find-Artists-Popularity{
             position:relative;
             top:20px;
@@ -631,6 +708,11 @@ body{
             width:200px;
             float:left;
             text-align:left;
+            color:white;
+            .Find-Artists-Popularity-Value{
+              color:@font-color;
+            }
+            
           }
           .Find-Artists-Followers{
             position:relative;
@@ -638,6 +720,10 @@ body{
             float:right;
             width:200px;
             text-align:left;
+            color:white;
+            .Find-Artists-Followers-Value{
+              color:@font-color;
+            }
           }
           .Find-Artists-Comunity-Portal-fb{
             width:47px;

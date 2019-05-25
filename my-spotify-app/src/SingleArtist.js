@@ -32,14 +32,17 @@ class SingleArtist extends React.Component {
     }else{
       artistPhoto =<img src='img/default-avatar.png' className="Find-Artists-Img" alt=""/>
     }
-      let dura = ""
+      let dura = []
     if(parentElement.genres.length != []){
-      console.log('są genresy')
        {parentElement.genres.map((element,index) =>{
-          dura = <span key={index}>{element}, </span>
-      })}
+         if(dura.length < parentElement.genres.length -1){
+         dura.push(` ${element}`);
+         }else{
+          dura += `${element}`;
+         }
+      })}console.log(dura)
     }else{
-      dura = <span>nie podano </span>
+      dura = <span>not specified </span>
     }
     
       return(   
@@ -49,15 +52,18 @@ class SingleArtist extends React.Component {
          <span className="artist-name">{parentElement.name}</span><br/>
         <span className="Find-Artists-Genres-Title">genres of music:</span>
         <div className="Find-Artists-Genres-Value">
-          <marquee>
-        {dura}
-        </marquee></div>
+          <div className="marquee">
+            <div className="Find-Artists-Marquee-Box">
+                <span className="Find-Artists-Span-Marquee">{dura}</span>
+            </div>
+        </div>
+        </div>
         <br/>
-        <span className="Find-Artists-Popularity">popiularity spotify : {parentElement.popularity}</span>
+        <span className="Find-Artists-Popularity">popiularity spotify :<span className="Find-Artists-Popularity-Value"> {parentElement.popularity}</span></span>
         <a onClick={this.fb.bind(this,parentElement.name)} ><img src='./img/fb-icon.png' className="Find-Artists-Comunity-Portal-fb btn btn-white btn-animation-1" alt=" " /></a>
         <a onClick={this.tw.bind(this, parentElement.name)} ><img src='./img/tw-icon.png' className="Find-Artists-Comunity-Portal-tw" alt=" " /></a>
         <a onClick={this.pinterest.bind(this,parentElement.name)} ><img src='./img/pinterest-icon.png' className="Find-Artists-Comunity-Portal-pinterest" alt=" " /></a>
-        <span className="Find-Artists-Followers">total spotify followres: {parentElement.followers.total}</span><br/><br/><br/>
+        <span className="Find-Artists-Followers">total spotify followres:<span className="Find-Artists-Followers-Value"> {parentElement.followers.total}</span></span><br/><br/><br/>
       </div>
         </div>
         )
