@@ -148,7 +148,6 @@ body{
         background-color:  @back-color;
         display:inline;
         float:left;
-        
         }
     }
 
@@ -589,43 +588,158 @@ body{
                               // STYLE FOR FIND SOUNDS //
   .Find-Sounds{
     .Find-Soungs-Single-Sound{
-      background:rgb(0, 0, 0);
+      background:@back-item;
 
       .Single-Track{
-        
+        min-height:118px;
+        max-height:300px;
+        border-bottom: solid 1px;
+
         .Single-Track-Img{
-          width:100px;
-          height:100px;
+          width: 110px;
+          height: 110px;
+          margin-top: 3px;
+          float: left;
+          position: absolute;
+          border-radius: 5px;
+          z-index: 10;
+        }
+
+        .Single-Track-Play-Icon{
+          height:70px;
+          width:70px;
+          margin:21px 0px 0px 21px;
+          float:left;
+          position:absolute;
+          opacity: 0.5;
+          cursor:pointer;
+          transition-duration: 1s;
+          z-index: 20;
+
         }
 
         .Single-Track-Info-Box{
+          padding-top:10px;
+          text-align:center;
 
           .Single-Track-Author-Title{
-
+            display:none;
           }
 
-          .Single-Track-Marquee-Author{
-
             .Single-Track-Author{
+              font-size:20px;
+              color:white;
+              
 
+            }
+
+          .Single-Track-Name-Title{
+            display:none;
+          }
+          .Single-Track-Marquee{
+            height: 25px;
+            width: 1200px;
+            overflow: hidden;
+            position: relative;
+            text-align:center;
+
+            .Find-Artists-Marquee-Box{
+              display: block;
+              height: 25px;
+              position: relative;
+              overflow: hidden;
+              margin-left:11%;
+
+              .Single-Track-Name{
+                font-size:20px;
+                max-height:25px;
+                white-space:nowrap;
+                text-align:right;
+                margin-left: -135px;
+              }
             }
           }
 
-          .Single-Track-Name-Title{
-
-          }
-
-          .Single-Track-Name{
-
-          }
 
           .Single-Track-Icon-Box{
+            float: right;
+            width:1200px;
             
+            .Single-Track-Button-Favourite{
+              width:50px;
+              height:50px;
+              position:static;
+              float:left;
+              margin-left:120px;
+              cursor:pointer;
+              transition-duration: 1s;
+              &:hover{
+                transform:scale(1.2);
+              }
+            }
+            .Single-Track-Comunity-Portal-yt{
+              width:50px;
+              height:40px;
+              margin-top:-5px;
+              position:static;
+              float:right;
+              margin-top:4px;
+              margin-right:10px;
+              transition-duration: 2s;
+              &:hover{
+                filter: grayscale(0);
+                transform:rotateX(360deg);
+              }
+
+            }
+
+            .Single-Track-Comunity-Portal-spotify{
+              width:50px;
+              height:50px;
+              position:static;
+              float:right;
+              margin-right:10px;
+              transition-duration: 2s;
+              &:hover{
+                filter: grayscale(0);
+                transform:rotateZ(360deg);
+              }
+            }
+
+            .Single-Track-Comunity-Portal-soundcloud{
+              width:50px;
+              height:50px;
+              position:static;
+              float:right;
+              margin-right:10px;
+              transition-duration: 2s;
+              &:hover{
+                filter: grayscale(0);
+                transform:rotateY(360deg);
+              }
+            }
+
+            .Single-Track-Comunity-Portal-yt,
+            .Single-Track-Comunity-Portal-spotify,
+            .Single-Track-Comunity-Portal-soundcloud{
+              cursor:pointer;
+            }
+
           }
         }
       }
     }
   }
+  .Find-Sounds-And-Player{
+    margin-bottom: 49px;
+  }
+
+  .Player-Box-Close{
+    cursor:pointer;
+  }
+
+
+
 
 
 
@@ -650,9 +764,9 @@ body{
        }
 
         .Find-Artists-Img{
-          margin-top:20px;
+          margin-top:16px;
           width:120px;
-          height:110px;
+          height:120px;
           padding-left: 6px;
           position:absolute;
           border-radius:10px;
@@ -697,6 +811,7 @@ body{
               margin-left: -110px;
            } 
           }
+
           }
 
 
@@ -718,7 +833,7 @@ body{
             position:relative;
             top:20px;
             float:right;
-            width:200px;
+            width:220px;
             text-align:left;
             color:white;
             .Find-Artists-Followers-Value{

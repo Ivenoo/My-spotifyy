@@ -32,17 +32,17 @@ class SingleArtist extends React.Component {
     }else{
       artistPhoto =<img src='img/default-avatar.png' className="Find-Artists-Img" alt=""/>
     }
-      let dura = []
+      let genresTable = []
     if(parentElement.genres.length != []){
        {parentElement.genres.map((element,index) =>{
-         if(dura.length < parentElement.genres.length -1){
-         dura.push(` ${element}`);
+         if(genresTable.length < parentElement.genres.length -1){
+          genresTable.push(` ${element}`);
          }else{
-          dura += `${element}`;
+          genresTable += `${element}`;
          }
-      })}console.log(dura)
+      })}
     }else{
-      dura = <span>not specified </span>
+      genresTable = <span>not specified </span>
     }
     
       return(   
@@ -54,7 +54,7 @@ class SingleArtist extends React.Component {
         <div className="Find-Artists-Genres-Value">
           <div className="marquee">
             <div className="Find-Artists-Marquee-Box">
-                <span className="Find-Artists-Span-Marquee">{dura}</span>
+                <span className="Find-Artists-Span-Marquee">{genresTable}</span>
             </div>
         </div>
         </div>
