@@ -20,6 +20,7 @@
   100%{transform: translateX(-200%);}
 }
 
+
 @slider_duration: 60s;
 @slider2_delay: 0s;
 @slider3_delay: 30s;
@@ -28,6 +29,11 @@
 @keyframes genres_transform {
   0% {opacity:  1;};
   100%{opacity:  0;};
+}
+
+@keyframes marquee {
+  0% { left: 80%; }
+  100% { left: -60%; }
 }
 
 body{
@@ -164,6 +170,7 @@ body{
       margin-top: 20px;
       margin-bottom: 20px;
       text-align: center;
+
       .Searching-Field{
         border: none;
         text-align: center;
@@ -198,7 +205,6 @@ body{
         padding-left: calc(50% - 1em);
         border: none;
         text-align: center;
-        // text-align-last: center;
         color: @font-color;
       }
 
@@ -527,13 +533,13 @@ body{
           margin-left:110px;
 
           .Random-Artists-Genres-Title{
-            width: 22.5%;
+            width: 23.5%;
             float: left;
             display: inline;
             color: white;
           }
           .Random-Artists-Marquee{
-            width:77.5%;
+            width:76.5%;
             display:inline;
             float:left;
           }
@@ -593,10 +599,319 @@ body{
         }
       }
     }
+                              // STYLE FOR FIND SOUNDS //
+  .Find-Sounds{
+    .Find-Soungs-Single-Sound{
+      background:@back-item;
+
+      .Single-Track{
+        min-height:118px;
+        max-height:300px;
+        border-bottom: solid 1px;
+
+        .Single-Track-Img{
+          width: 110px;
+          height: 110px;
+          margin-top: 3px;
+          float: left;
+          position: absolute;
+          border-radius: 5px;
+          z-index: 10;
+        }
+
+        .Single-Track-Play-Icon{
+          height:70px;
+          width:70px;
+          margin:21px 0px 0px 21px;
+          float:left;
+          position:absolute;
+          opacity: 0.5;
+          cursor:pointer;
+          transition-duration: 1s;
+          z-index: 20;
+
+        }
+
+        .Single-Track-Info-Box{
+          padding-top:10px;
+          text-align:center;
+
+          .Single-Track-Author-Title{
+            display:none;
+          }
+
+            .Single-Track-Author{
+              font-size:20px;
+              color:white;
+              
+
+            }
+
+          .Single-Track-Name-Title{
+            display:none;
+          }
+          .Single-Track-Marquee{
+            height: 25px;
+            width: 1200px;
+            overflow: hidden;
+            position: relative;
+            text-align:center;
+
+            .Find-Artists-Marquee-Box{
+              display: block;
+              height: 25px;
+              position: relative;
+              overflow: hidden;
+              margin-left:11%;
+
+              .Single-Track-Name{
+                font-size:20px;
+                max-height:25px;
+                white-space:nowrap;
+                text-align:right;
+                margin-left: -135px;
+              }
+            }
+          }
+
+
+          .Single-Track-Icon-Box{
+            float: right;
+            width:1200px;
+            
+            .Single-Track-Button-Favourite{
+              width:50px;
+              height:50px;
+              position:static;
+              float:left;
+              margin-left:120px;
+              cursor:pointer;
+              transition-duration: 1s;
+              &:hover{
+                transform:scale(1.2);
+              }
+            }
+            .Single-Track-Comunity-Portal-yt{
+              width:50px;
+              height:40px;
+              margin-top:-5px;
+              position:static;
+              float:right;
+              margin-top:4px;
+              margin-right:10px;
+              transition-duration: 2s;
+              &:hover{
+                filter: grayscale(0);
+                transform:rotateX(360deg);
+              }
+
+            }
+
+            .Single-Track-Comunity-Portal-spotify{
+              width:50px;
+              height:50px;
+              position:static;
+              float:right;
+              margin-right:10px;
+              transition-duration: 2s;
+              &:hover{
+                filter: grayscale(0);
+                transform:rotateZ(360deg);
+              }
+            }
+
+            .Single-Track-Comunity-Portal-soundcloud{
+              width:50px;
+              height:50px;
+              position:static;
+              float:right;
+              margin-right:10px;
+              transition-duration: 2s;
+              &:hover{
+                filter: grayscale(0);
+                transform:rotateY(360deg);
+              }
+            }
+
+            .Single-Track-Comunity-Portal-yt,
+            .Single-Track-Comunity-Portal-spotify,
+            .Single-Track-Comunity-Portal-soundcloud{
+              cursor:pointer;
+            }
+
+          }
+        }
+      }
+    }
+  }
+  .Find-Sounds-And-Player{
+    margin-bottom: 49px;
+  }
+
+  .Player-Box-Close{
+    cursor:pointer;
+    background: @back-color;
+    border:none;
+    outline:none;
+  }
+
+
+
+
+
+
+                              // STYLE FOR FIND ARTISTS //
+
+   .list-Artist{
+    margin-top:0px;
+
+      .Find-Artists-Single-Artist{
+        width:1200px;
+        height:150px;
+        border-bottom:solid 1px;
+        margin: auto;
+        position: relative;
+        
+        &:hover{
+          background:rgb(95, 95, 95); 
+        }
+        
+        &:hover .Find-Artists-Marquee-Box{
+          animation: marquee 20s linear infinite;
+       }
+
+        .Find-Artists-Img{
+          margin-top:16px;
+          width:120px;
+          height:120px;
+          padding-left: 6px;
+          position:absolute;
+          border-radius:10px;
+          z-index:20;
+        }
+
+        .Find-Artist-Info-Box{
+            text-align:center;
+
+          .artist-name{
+            top: 15px;
+            position: relative;
+            display:block;
+            color:white;
+            font-size:20px;
+            }
+
+          .Find-Artists-Genres-Title{
+              color:white;
+              font-size:15px;
+          }
+
+          .marquee {
+            height: 25px;
+            width: 1200px;
+            overflow: hidden;
+            position: relative;
+            text-align:center;
+
+          .Find-Artists-Marquee-Box{
+            display: block;
+            height: 25px;
+            position: relative;
+            overflow: hidden;
+            padding-left:11%;
+          
+
+           .Find-Artists-Span-Marquee{
+              max-height:25px;
+              white-space:nowrap;
+              text-align:right;
+              margin-left: -110px;
+           } 
+          }
+
+          }
+          .Find-Artists-Popularity{
+            position:relative;
+            top:20px;
+            left:135px;
+            width:200px;
+            float:left;
+            text-align:left;
+            color:white;
+            .Find-Artists-Popularity-Value{
+              color:@font-color;
+            }
+            
+          }
+          .Find-Artists-Followers{
+            position:relative;
+            top:20px;
+            float:right;
+            width:220px;
+            text-align:left;
+            color:white;
+            .Find-Artists-Followers-Value{
+              color:@font-color;
+            }
+          }
+          .Find-Artists-Comunity-Portal-fb{
+            width:47px;
+            height:47px;
+            margin: -15px 0px  0px -26.5px;
+            position:absolute;
+            border-radius:5px;
+            cursor:pointer;
+            filter: grayscale(0.8);
+            transition-duration: 2s;
+            border-radius:8px;
+
+            &:hover{
+              filter: grayscale(0);
+              transform:scale(1.2);
+              box-shadow: 3px 3px 5px 2px black;
+            }
+          }
+
+          .Find-Artists-Comunity-Portal-tw{
+            width:48px;
+            height:46px;
+            margin:  -15px 0px  0px -83.5px;
+            position:absolute;
+            cursor:pointer;
+            filter: grayscale(0.8);
+            transition-duration: 2s;
+            border-radius:80px;
+
+            &:hover{
+              filter: grayscale(0);
+              transform:scale(1.2);
+              box-shadow: 3px 3px 5px 2px black;
+            }
+          }
+
+          .Find-Artists-Comunity-Portal-pinterest{
+            width:50px;
+            height:50px;
+            margin: -16px 0px  0px 29.5px;
+            position:absolute;
+            cursor:pointer;
+            filter: grayscale(0.8);
+            transition-duration: 2s;
+            border-radius:80px;
+
+            &:hover{
+              filter: grayscale(0);
+              transform:scale(1.2);
+              box-shadow: 3px 3px 5px 2px black;
+            }
+          }
+        }
+      }
+    }
+  
 
     .Genres{
       width: 1200px;
-
       .Choose-Genre{
         min-width: 1200px;
         min-height: 500px;
@@ -623,6 +938,13 @@ body{
         position:absolute;
       }
     }
+
+    .Favourite-Song{
+      width: 1200;
+      background-color: @back-item;
+      margin-top: 30px;
+      border-top: 1px solid;
+      border-bottom: 1px solid;
 
 
 
@@ -678,6 +1000,15 @@ body{
           }  
         }
 
+      .Single-Track{
+        width: 1200;
+        margin: 0 px auto;
+        width: 390px;
+        height: 400px;
+        background-color: aquamarine;
+        position: relative;
+        float: left;
+        
 
         .Favourite-Song-Options-Limit-Box{
           float:right;
@@ -709,6 +1040,8 @@ body{
       //     float: left;
       //   }
       // }
+      }
+    }
     }
   }
   .Scroll-Up{
@@ -727,7 +1060,7 @@ body{
     }
   }
   .Scroll-And-Audio{
-    bottom:70px;
+    bottom:75px;
   }
 
   .App-Content-bottom{

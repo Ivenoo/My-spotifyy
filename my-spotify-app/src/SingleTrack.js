@@ -76,28 +76,44 @@ class SingleTrack extends React.Component {
       const parentIndex = this.props.parentIndex;
       let trackLink = ""
       if(parentElement.preview_url !== null) 
-      trackLink = <img  className="Single-Track-Play-Icon" onClick={() =>{listen(parentElement.preview_url)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
+      trackLink = <img  className="Single-Track-Play-Icon" onClick={() =>{listen(parentElement.preview_url,parentElement.name)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
+
+      let tableArtists = [];
+      let finishArtists = '';
+      parentElement.artists.map((element2, index) => {
+        if(tableArtists.length < parentElement.artists.length -1){
+          tableArtists.push(`${element2.name},`+ ' ')
+        }else{
+          tableArtists.push(`${element2.name}`)
+        }})
+        
+        if(tableArtists.length > 5){
+          finishArtists = <marquee><span className='Single-Track-Author'>{tableArtists}</span></marquee>
+        }else{
+          finishArtists =  <span className='Single-Track-Author'>{tableArtists}</span>
+        }
           return(
             <div  key={parentIndex} className="Single-Track" >
-              {/* <div className="Single-Track-Img-Play"> */}
-                <img src={parentElement.album.images[0].url}  className="Single-Track-Img" alt=" " />
-                {trackLink}
-              {/* </div> */}
-              <div className="Single-Track-Info-Box">
-                <span className="Single-Track-Author-Title">Author : </span>
-                  <marquee className="Single-Track-Marquee-Author"  >
-                    {parentElement.artists.map((element2, index) => { 
-                    return(<span key={index} className="Single-Track-Author"> {element2.name}, </span>)})}<br/>
-                  </marquee>
-                <span className="Single-Track-Name-Title">Title : </span>
-                <span className="Single-Track-Name">" {parentElement.name} "</span><br/>
-                <div className="Single-Track-Icon-Box">
-                  {this.heart(parentElement.id)}
-                  <a onClick={this.yt.bind(this,parentElement.name)} ><img src='./img/yt-icon.png' className="Single-Track-Comunity-Portal-yt" alt=" " /></a>
-                  <a onClick={this.spotify.bind(this, parentElement.external_urls.spotify)} ><img src='./img/spotify-icon.png' className="Single-Track-Comunity-Portal-spotify" alt=" " /></a>
-                  <a onClick={this.soundcloud.bind(this,parentElement.name)} ><img src='./img/soundcloud-icon.png' className="Single-Track-Comunity-Portal-soundcloud" alt=" " /></a>
+            {/* <div className="Single-Track-Img-Play"> */}
+              <img src={parentElement.album.images[0].url}  className="Single-Track-Img" alt=" " />
+              {trackLink}
+            {/* </div> */}
+            <div className="Single-Track-Info-Box">
+              <span className="Single-Track-Author-Title">Author : </span>
+                <div>{finishArtists}</div>
+              <span className="Single-Track-Name-Title">Title : </span>
+              <div className="Single-Track-Marquee">
+                 <div className="Find-Artists-Marquee-Box">
+                  <span className="Single-Track-Name">" {parentElement.name} "</span><br/>
                 </div>
               </div>
+              <div className="Single-Track-Icon-Box">
+                {this.heart(parentElement.id)}
+                <a onClick={this.soundcloud.bind(this,parentElement.name)} ><img src='./img/soundcloud-icon.png' className="Single-Track-Comunity-Portal-soundcloud" alt=" " /></a>
+                <a onClick={this.spotify.bind(this, parentElement.external_urls.spotify)} ><img src='./img/spotify-icon.png' className="Single-Track-Comunity-Portal-spotify" alt=" " /></a>
+                <a onClick={this.yt.bind(this,parentElement.name)} ><img src='./img/yt-icon.png' className="Single-Track-Comunity-Portal-yt" alt=" " /></a>
+              </div>
+            </div>
             </div>
           )
 

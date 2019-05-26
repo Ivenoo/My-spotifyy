@@ -454,13 +454,13 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Art
   margin-left: 110px;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Artists-Info-Box .Random-Artists-Genres-Title {
-  width: 22.5%;
+  width: 23.5%;
   float: left;
   display: inline;
   color: white;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Random-Artists-Info-Box .Random-Artists-Marquee {
-  width: 77.5%;
+  width: 76.5%;
   display: inline;
   float: left;
 }
@@ -508,29 +508,105 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Tra
   filter: grayscale(0);
   transform: rotateY(360deg);
 }
-body .App-Content .Genres {
-  width: 1200px;
+body .App-Content .list-Artist {
+  margin-top: 0px;
 }
-body .App-Content .Genres .Choose-Genre {
-  min-width: 1200px;
-  min-height: 500px;
-  background-color: aquamarine;
+body .App-Content .list-Artist .Find-Artists-Single-Artist {
+  width: 900px;
+  height: 150px;
+  border-bottom: solid 1px;
+  margin: auto;
   position: relative;
 }
-body .App-Content .Genres .Choose-Genre .Genres-Single-Genre {
-  min-width: 100px;
-  min-height: 100px;
-  max-width: 100px;
-  max-height: 100px;
-  background-color: red;
-  position: absolute;
-  display: inline;
+body .App-Content .list-Artist .Find-Artists-Single-Artist:hover {
+  background: #5f5f5f;
 }
-body .App-Content .Genres .Results {
-  min-width: 1200px;
-  min-height: 500px;
-  background-color: blue;
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artists-Img {
+  margin-top: 2%;
+  width: 120px;
+  height: 110px;
+  padding-top: 2px;
+  padding-left: 6px;
   position: absolute;
+  border-radius: 10px;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box {
+  text-align: center;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .artist-name {
+  top: 15px;
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 20px;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Genres-Title {
+  color: white;
+  font-size: 15px;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Genres-Value {
+  margin-left: 125px;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Popularity {
+  position: relative;
+  top: 20px;
+  left: 135px;
+  width: 200px;
+  float: left;
+  text-align: left;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Followers {
+  position: relative;
+  top: 20px;
+  float: right;
+  width: 200px;
+  text-align: left;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-fb {
+  width: 47px;
+  height: 47px;
+  margin: -15px 0px 0px -26.5px;
+  position: absolute;
+  border-radius: 5px;
+  cursor: pointer;
+  filter: grayscale(0.8);
+  transition-duration: 2s;
+  border-radius: 8px;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-fb:hover {
+  filter: grayscale(0);
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px 2px black;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-tw {
+  width: 48px;
+  height: 46px;
+  margin: -15px 0px 0px -83.5px;
+  position: absolute;
+  cursor: pointer;
+  filter: grayscale(0.8);
+  transition-duration: 2s;
+  border-radius: 80px;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-tw:hover {
+  filter: grayscale(0);
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px 2px black;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-pinterest {
+  width: 50px;
+  height: 50px;
+  margin: -16px 0px 0px 29.5px;
+  position: absolute;
+  cursor: pointer;
+  filter: grayscale(0.8);
+  transition-duration: 2s;
+  border-radius: 80px;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-pinterest:hover {
+  filter: grayscale(0);
+  transform: scale(1.2);
+  box-shadow: 3px 3px 5px 2px black;
 }
 body .App-Content .Favourite-Song {
   width: 1200px;
@@ -606,7 +682,7 @@ body .Scroll-Up:hover {
   transform: scale(1.2);
 }
 body .Scroll-And-Audio {
-  bottom: 70px;
+  bottom: 75px;
 }
 body .App-Content-bottom {
   padding-bottom: 60px !important;

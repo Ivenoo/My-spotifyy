@@ -9,7 +9,37 @@ export const randomLetter = () =>{
     const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     return(randomLetter)
 }
-export const listen =(url,trackName) =>{
+
+export const hidePlayer = () => {
+    let playerBox =  document.querySelector('.Player-Box');
+    playerBox.style.display = 'none';
+
+    let scroll =  document.querySelector('.Scroll-Up');
+    scroll.className = "Scroll-Up";
+
+    let player =  document.querySelector('.Player')
+    player.src = "";
+    
+    if(document.querySelector('.Homepage-Box')){
+        let appContent =  document.querySelector('.Homepage-Box');
+        appContent.className = "Homepage-Box" ;
+    }else if(document.querySelector('.Find-Sounds')){
+        let appContent =  document.querySelector('.Find-Sounds');
+        appContent.className = "Find-Sounds" ;
+    }
+}
+
+
+
+export const ScrollUp = () =>{
+    window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
+ }
+
+ export const listen =(url,trackName) =>{
     let playerBox =  document.querySelector('.Player-Box');
     playerBox.style.display = 'block';
 
@@ -22,31 +52,21 @@ export const listen =(url,trackName) =>{
     let scroll =  document.querySelector('.Scroll-Up');
     scroll.className = "Scroll-Up Scroll-And-Audio";
 
-    let appContent =  document.querySelector('.Homepage-Box');
-    appContent.className = "Homepage-Box App-Content-bottom " ;
+    if(document.querySelector('.Homepage-Box')){
+
+        let appContent =  document.querySelector('.Homepage-Box');
+        appContent.className = "Homepage-Box App-Content-bottom " ;
+
+    }else if(document.querySelector('.Find-Sounds')){
+        let appContent =  document.querySelector('.Find-Sounds');
+        appContent.className = "Find-Sounds Find-Sounds-And-Player" ;
+    }
+
+
 }
 
-export const hidePlayer = () => {
-    let playerBox =  document.querySelector('.Player-Box');
-    playerBox.style.display = 'none';
+ // DO ZNIKANIA PRZYCISKU SCROLL UP///
 
-    let scroll =  document.querySelector('.Scroll-Up');
-    scroll.className = "Scroll-Up";
-
-    let player =  document.querySelector('.Player')
-    player.src = "";
-    
-    let appContent =  document.querySelector('.Homepage-Box');
-    appContent.className = "Homepage-Box";
-}
-
-export const ScrollUp = () =>{
-    window.scroll({
-        top: 0, 
-        left: 0, 
-        behavior: 'smooth'
-      });
- }
 
 //  export const buttonScroll = () =>{
 //     console.log(window.pageYOffset)
@@ -57,3 +77,4 @@ export const ScrollUp = () =>{
 //     }
 //  }
 
+npm 

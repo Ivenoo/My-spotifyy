@@ -28,7 +28,7 @@ class FindArtist extends React.Component {
     this.setState({
       limit: limitValue,
     })
-    console.log(this.state.artistList.length)
+    // console.log(this.state.artistList.length)
     setTimeout(() => this.search(this.state.searchValue),10)
   }
 
@@ -68,14 +68,13 @@ class FindArtist extends React.Component {
     this.setState({
       refresh: ''
     })
-    console.log('GL')
       let url = `https://api.spotify.com/v1/search?q=${value}&type=artist&limit=${this.state.limit}`
       if(link !== 0){
         url = link;
         const start = link.indexOf('offset=')
         const stop = link.indexOf('&limit')
         const finishoff = link.slice(start,stop)
-        console.log(finishoff)
+        // console.log(finishoff)
         this.setState({
           myoffset: finishoff
         })
@@ -90,23 +89,24 @@ class FindArtist extends React.Component {
         artistList: resp.data.artists.items,
         prev: resp.data.artists.previous
       })
-      this.exist()
+      // console.log(this.state.artistList)
+      // this.exist()
       }).catch(error => (new Error(console.log(error))))
   
     
   }
   //WYSWIETLA  NAPIS JESLI NIE ZNALEZIONO DANEGO ARTYSTY//
-  exist =() =>{
-    if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
-      this.setState({
-        notFindArtist: 'exist'
-      })
-    }else{
-      this.setState({
-        notFindArtist: 'notexist'
-      })
-    }
-  }
+  // exist =() =>{
+  //   if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
+  //     this.setState({
+  //       notFindArtist: 'exist'
+  //     })
+  //   }else{
+  //     this.setState({
+  //       notFindArtist: 'notexist'
+  //     })
+  //   }
+  // }
 
   render() {
     let prevButton = "", nextButton = "";
@@ -124,13 +124,13 @@ class FindArtist extends React.Component {
           <Limit changeLimit={this.limit.bind(this)} />    
         </div>
         <div className="Title-Box">RESULTS</div>
-      <ol className="list-Artist">
+      <div className="list-Artist">
       <span className={this.state.notFindArtist}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
       {
         this.state.artistList.map((element, index)=>
-        <SingleArtist  key={index} parentElement={element} parentIndex={index} />
+        <SingleArtist  key={index} parentElement={element} parentIndex={index} /> 
       )}
-      </ol>
+      </div>
       {prevButton}
       {nextButton}
       </div>
