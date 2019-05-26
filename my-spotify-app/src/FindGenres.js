@@ -66,21 +66,39 @@ class FindGenres extends React.Component {
   }
 
   render() {
+    {console.log(this.props.typeTracks.length)}
     return(
-      <div>
+      <div className="Genres">
+
        <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
           <select className="Searching-Field" defaultValue='' onChange={this.inputValue.bind(this)}>
             <option className="Searching-Options" value="" disabled>Choose Genre ...</option>
             {this.props.typeTracks.map((element, index)=>{
               return(
-                <option className="Searching-Options" key={index}>{element}</option>
+                <option className="Searching-Options" key={index}>{element}</option> 
               )
             })}
           </select>
         <Limit changeLimit={this.limit.bind(this)}/>
         </div>
         <div className="Title-Box">RESULTS</div>
+
+
+        <div className="Results">
+        Wyniki
+        </div>
+        <div className="Choose-Genre">
+        {this.props.typeTracks.map((element, index)=>{
+              return(
+                <div className="Genres-Single-Genre" key={index}>{element}</div> 
+              )
+            })}
+        </div>
+
+
+
+
           <ol>
           {this.state.searchList.map((element, index)=>
             <SingleTrack  key={index} parentElement={element} parentIndex={index}/>

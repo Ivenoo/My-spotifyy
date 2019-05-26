@@ -22,6 +22,14 @@
     transform: translateX(-200%);
   }
 }
+@keyframes genres_transform {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 body {
   background: #202020;
   font-family: 'Bahnschrift Condensed';
@@ -30,6 +38,14 @@ body {
   overflow-x: hidden;
   width: 1200px;
   margin: auto;
+}
+body .centralaxDD {
+  left: 50%;
+  min-width: 1px;
+  height: 100%;
+  position: fixed;
+  z-index: 1001;
+  background-color: aquamarine;
 }
 body .App-Menu {
   margin-top: 30px;
@@ -105,6 +121,7 @@ body .App-Content .Player-Box .Player-Box-Close {
 }
 body .App-Content .Player-Box .Player-Box-Close:hover {
   color: #FFF;
+  cursor: pointer;
 }
 body .App-Content .Player-Box .Track-Name-Audio {
   width: 1200px;
@@ -124,6 +141,7 @@ body .App-Content .Player-Box .Player {
   background-color: #202020;
   display: inline;
   float: left;
+  cursor: pointer;
 }
 body .App-Content .Searching-Bar {
   margin-top: 20px;
@@ -184,7 +202,7 @@ body .App-Content .Homepage-Box .Homepage-Track-Box {
   margin-top: 10px;
   display: inline;
   float: left;
-  height: 1340px;
+  height: 1330px;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track {
   display: block;
@@ -220,7 +238,7 @@ body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-
   opacity: 0.7;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Author-Title {
-  width: 11%;
+  width: 12%;
   float: left;
   display: inline;
   color: white;
@@ -233,7 +251,7 @@ body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Marquee-Author {
   float: left;
-  width: 90%;
+  width: 89%;
 }
 body .App-Content .Homepage-Box .Homepage-Track-Box .Single-Track .Single-Track-Author {
   color: #c86400;
@@ -412,7 +430,7 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box {
   background: #2b2b2b;
   margin: 10px 0px 0px 610px;
   width: 600px;
-  height: 1340px;
+  height: 1330px;
 }
 body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists {
   display: block;
@@ -490,39 +508,88 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Tra
   filter: grayscale(0);
   transform: rotateY(360deg);
 }
+body .App-Content .Genres {
+  width: 1200px;
+}
+body .App-Content .Genres .Choose-Genre {
+  min-width: 1200px;
+  min-height: 500px;
+  background-color: aquamarine;
+  position: relative;
+}
+body .App-Content .Genres .Choose-Genre .Genres-Single-Genre {
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  background-color: red;
+  position: absolute;
+  display: inline;
+}
+body .App-Content .Genres .Results {
+  min-width: 1200px;
+  min-height: 500px;
+  background-color: blue;
+  position: absolute;
+}
 body .App-Content .Favourite-Song {
-  width: 1200;
-  background-color: #2b2b2b;
-  margin-top: 30px;
+  width: 1200px;
+  margin-top: 40px;
+}
+body .App-Content .Favourite-Song .Favourite-Song-Options {
   border-top: 1px solid;
   border-bottom: 1px solid;
-}
-body .App-Content .Favourite-Song .Favourite-Song-Limit {
-  width: 1180;
-  font-size: 20px;
-  padding: 10px;
-  text-align: right;
+  margin: 0px auto;
+  top: 20px;
+  height: 30px;
+  width: 1180px;
+  padding: 10px 10px 10px 10px;
   color: #c86400;
   background-color: #2b2b2b;
+  position: sticky;
+  text-align: center;
 }
-body .App-Content .Favourite-Song .Favourite-Song-Limit select {
-  font-size: 20px;
+body .App-Content .Favourite-Song .Favourite-Song-Options .Prev-Button {
+  margin: 0px auto;
+  width: 100px;
+  height: 20px;
   padding: 5px;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  color: #6b6b6b;
+  left: 50%;
+  transform: translateX(-300%);
+}
+body .App-Content .Favourite-Song .Favourite-Song-Options .Prev-Button:hover {
+  color: #c86400;
+}
+body .App-Content .Favourite-Song .Favourite-Song-Options .Next-Button {
+  margin: 0px auto;
+  width: 100px;
+  height: 20px;
+  padding: 5px;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  color: #6b6b6b;
+  left: 50%;
+  transform: translateX(200%);
+}
+body .App-Content .Favourite-Song .Favourite-Song-Options .Next-Button:hover {
+  color: #c86400;
+}
+body .App-Content .Favourite-Song .Favourite-Song-Options .Favourite-Song-Options-Limit-Box {
+  float: right;
+}
+body .App-Content .Favourite-Song .Favourite-Song-Options .Favourite-Song-Options-Limit-Box select {
+  font-size: 20px;
   text-align: center;
   text-align-last: center;
   color: #c86400;
   background-color: #2b2b2b;
   outline: none;
   border: none;
-}
-body .App-Content .Favourite-Song .Single-Track {
-  width: 1200;
-  margin: 0 px auto;
-  width: 390px;
-  height: 400px;
-  background-color: aquamarine;
-  position: relative;
-  float: left;
 }
 body .Scroll-Up {
   width: 30px;
@@ -542,7 +609,7 @@ body .Scroll-And-Audio {
   bottom: 70px;
 }
 body .App-Content-bottom {
-  height: 1390px !important;
+  padding-bottom: 60px !important;
 }
 body .notexist {
   display: none;

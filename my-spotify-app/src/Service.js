@@ -24,9 +24,6 @@ export const listen =(url,trackName) =>{
 
     let appContent =  document.querySelector('.Homepage-Box');
     appContent.className = "Homepage-Box App-Content-bottom " ;
-
-    let appContentAritst =  document.querySelector('.Homepage-Artist-Box');
-    appContentAritst.className = "Homepage-Artist-Box App-Content-bottom" ;
 }
 
 export const hidePlayer = () => {
@@ -38,6 +35,9 @@ export const hidePlayer = () => {
 
     let player =  document.querySelector('.Player')
     player.src = "";
+    
+    let appContent =  document.querySelector('.Homepage-Box');
+    appContent.className = "Homepage-Box";
 }
 
 export const ScrollUp = () =>{

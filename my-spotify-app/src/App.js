@@ -90,7 +90,7 @@ class App extends React.Component {
       
       <Router>
       <div className="App">
-       
+      <div className="centralaxDD"></div>
         <AppHeader selectAction={this.selectAction} />
         <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/> 
       </div>

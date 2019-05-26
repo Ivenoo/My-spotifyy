@@ -69,25 +69,27 @@ class Favourite extends React.Component {
   render() {
     let prevButton = "", nextButton = "";
     if(this.state.myoffset  > 0){
-      prevButton = <button onClick={this.removeOffset}>Previous</button>
+      prevButton = <div className="Prev-Button" onClick={this.removeOffset}> PREV </div>
     }
     if(this.state.myoffset < this.state.favArray.length - this.state.limit){
-      nextButton = <button onClick={this.addOffset}>Next</button>
+      nextButton = <div className="Next-Button" onClick={this.addOffset}> NEXT </div>
     }
     return(
       <div className='Favourite-Song'>
-        <div className='Favourite-Song-Limit'>
-          Limit: <Limit changeLimit={this.changeLimit.bind(this)}/>
+        <div className='Favourite-Song-Options'>
+          {prevButton}
+          {nextButton}
+          <div className="Favourite-Song-Options-Limit-Box">
+            Limit: <Limit changeLimit={this.changeLimit.bind(this)}/>
+          </div>
         </div>
-        <ol>
-          {
-            this.state.favArray.slice(this.state.myoffset,parseInt(this.state.myoffset) + parseInt(this.state.limit)).map((element,index) =>
-                <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
-            )
-          }
-        </ol>
-              {prevButton}
-              {nextButton}
+        <div className="Favourite-Song-Box">
+          <ol>
+            {this.state.favArray.slice(this.state.myoffset,parseInt(this.state.myoffset) + parseInt(this.state.limit)).map((element,index) =>
+              <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
+            )}
+          </ol>
+        </div>
       </div>
       )
     }
