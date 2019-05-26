@@ -84,11 +84,9 @@ class Favourite extends React.Component {
           </div>
         </div>
         <div className="Favourite-Song-Box">
-          <ol>
-            {this.state.favArray.slice(this.state.myoffset,parseInt(this.state.myoffset) + parseInt(this.state.limit)).map((element,index) =>
-              <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
-            )}
-          </ol>
+          {this.state.favArray.slice(this.state.myoffset,parseInt(this.state.myoffset) + parseInt(this.state.limit)).map((element,index) =>
+            <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
+          )}
         </div>
       </div>
       )
