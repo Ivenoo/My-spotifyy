@@ -942,13 +942,14 @@ body{
 
     .Favourite-Song{
       width: 1200;
-      margin-top: 30px;
+      margin-top: 10px;
+      position: absolute;
 
       .Favourite-Song-Options{
         border-top: 1px solid;
         border-bottom: 1px solid;
         margin: 0px auto;
-        top: 20px;
+        top: 10px;
         height: 30px;
         width: 1180px;
         padding: 10px 10px 10px 10px;
@@ -956,7 +957,6 @@ body{
         background-color: @back-item;
         position: sticky;
         text-align: center;
-
 
         .Prev-Button{
           margin: 0px auto;
@@ -996,6 +996,8 @@ body{
           position: absolute;
           right: 0px;
           font-size: 20px;
+          height: 20px;
+          padding: 5px;
           select{
             font-size: 20px;
             text-align: center;
@@ -1007,37 +1009,113 @@ body{
           }
         }
       }
-
-      .Single-Track{
+      
+      .Favourite-Song-Box{
         border-top: 1px solid;
         border-bottom: 1px solid;
-        width: 1200;
-        margin: 0 px auto;
-        width: 390px;
-        height: 100px;
-        background-color: aquamarine;
-        position: relative;
-        float: left;
-        
+        width: 1200px;
+        margin: 20px 0px 0px 0px;
+        background-color: @back-item;
+        position: absolute;
+
+        .Single-Track{
+          width: 240px;
+          height: 240px;
+          margin: 0px auto;
+          position: relative;
+          float:left;
+          background-color: @back-item;
+          white-space: trim;
+
+          &:hover .Single-Track-Play-Icon{
+            display:block;
+          }
+
+          .Single-Track-Play-Icon{
+            position:absolute;
+            width: 30px;
+            height: 30px;
+            margin:10px;
+            bottom: 0px;
+            left: 0px;
+            z-index: 100;
+            display:none;
+  
+              &:hover .Single-Track-Info-Box{
+                z-index:11;
+              }
+          }
+
+
+
+          .Single-Track-Info-Box{ 
+            width: 220px;
+            height: 220px;
+            padding: 10px;
+            margin: 0px;
+            position: absolute;
+            z-index:9;
+            text-shadow: 0px 0px 2px #000000;
+
+            &:hover {
+              z-index:11;
+            }
+
+            .Single-Track-Button-Favourite{
+              position:absolute;
+              width: 30px;
+              height: 30px;
+              margin: 10px;
+              margin-right:15px;
+              top: 0px;
+              right: 0px;
+              z-index: 100;
+            }
+  
+            .Single-Track-Comunity-Portal-soundcloud{
+              display:none;
+            }
+  
+            .Single-Track-Comunity-Portal-spotify{
+              position:absolute;
+              width: 30px;
+              height: 30px;
+              margin-right:15px;
+              bottom: 50px;
+              right: 0px;
+              z-index: 100;
+            }
+  
+            .Single-Track-Comunity-Portal-yt{
+              position:absolute;
+              width: 40px;
+              height: 30px;
+              margin:10px;
+              bottom: 0px;
+              right: 0px;
+              z-index: 100;
+            }
+          }
+
+
+
+
+
+          .Single-Track-Img{
+            width: 240px;
+            height: 240px;
+            z-index: 10;
+            position: absolute;
+
+            &:hover{
+              z-index:8;
+            }
+            &:hover .Single-Track-Info-Box{
+              z-index:11;
+            }
+          }   
+        }
       }
-
-      // .Favourite-Song-Box{
-      //   width: 900px;
-      //   position: relative;
-      //   min-height:600px;
-
-      //   .Single-Track{
-      //     // margin: 30px;
-      //     width: 1200px;
-      //     // margin: 0 px auto;
-      //     width: 390px;
-      //     height: 400px;
-      //     background-color: aquamarine;
-      //     position: absolute;
-      //     float: left;
-      //   }
-      // }
-      
   }
   .Scroll-Up{
     width:30px;

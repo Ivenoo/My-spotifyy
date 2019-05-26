@@ -99,7 +99,7 @@ class SingleTrack extends React.Component {
               {trackLink}
             {/* </div> */}
             <div className="Single-Track-Info-Box">
-              <span className="Single-Track-Author-Title">Author : </span>
+                <span className="Single-Track-Author-Title">Author : </span>
                 <div>{finishArtists}</div>
               <span className="Single-Track-Name-Title">Title : </span>
               <div className="Single-Track-Marquee">
