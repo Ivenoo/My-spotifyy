@@ -908,6 +908,7 @@ body{
         }
       }
     }
+  }
   
 
     .Genres{
@@ -941,16 +942,7 @@ body{
 
     .Favourite-Song{
       width: 1200;
-      background-color: @back-item;
       margin-top: 30px;
-      border-top: 1px solid;
-      border-bottom: 1px solid;
-
-
-
-    .Favourite-Song{
-      width: 1200px;
-      margin-top: 40px;
 
       .Favourite-Song-Options{
         border-top: 1px solid;
@@ -1000,18 +992,10 @@ body{
           }  
         }
 
-      .Single-Track{
-        width: 1200;
-        margin: 0 px auto;
-        width: 390px;
-        height: 400px;
-        background-color: aquamarine;
-        position: relative;
-        float: left;
-        
-
         .Favourite-Song-Options-Limit-Box{
-          float:right;
+          position: absolute;
+          right: 0px;
+          font-size: 20px;
           select{
             font-size: 20px;
             text-align: center;
@@ -1022,6 +1006,19 @@ body{
             border: none;
           }
         }
+      }
+
+      .Single-Track{
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        width: 1200;
+        margin: 0 px auto;
+        width: 390px;
+        height: 100px;
+        background-color: aquamarine;
+        position: relative;
+        float: left;
+        
       }
 
       // .Favourite-Song-Box{
@@ -1040,9 +1037,7 @@ body{
       //     float: left;
       //   }
       // }
-      }
-    }
-    }
+      
   }
   .Scroll-Up{
     width:30px;

@@ -76,5 +76,3 @@ export const ScrollUp = () =>{
 //         console.log('schowaj się')
 //     }
 //  }
-
-npm 

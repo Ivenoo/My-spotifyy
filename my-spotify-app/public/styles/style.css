@@ -30,6 +30,14 @@
     opacity: 0;
   }
 }
+@keyframes marquee {
+  0% {
+    left: 80%;
+  }
+  100% {
+    left: -60%;
+  }
+}
 body {
   background: #202020;
   font-family: 'Bahnschrift Condensed';
@@ -508,11 +516,142 @@ body .App-Content .Homepage-Box .Homepage-Artist-Box .Random-Artists .Single-Tra
   filter: grayscale(0);
   transform: rotateY(360deg);
 }
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound {
+  background: #2b2b2b;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track {
+  min-height: 118px;
+  max-height: 300px;
+  border-bottom: solid 1px;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Img {
+  width: 110px;
+  height: 110px;
+  margin-top: 3px;
+  float: left;
+  position: absolute;
+  border-radius: 5px;
+  z-index: 10;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Play-Icon {
+  height: 70px;
+  width: 70px;
+  margin: 21px 0px 0px 21px;
+  float: left;
+  position: absolute;
+  opacity: 0.5;
+  cursor: pointer;
+  transition-duration: 1s;
+  z-index: 20;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box {
+  padding-top: 10px;
+  text-align: center;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Author-Title {
+  display: none;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Author {
+  font-size: 20px;
+  color: white;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Name-Title {
+  display: none;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Marquee {
+  height: 25px;
+  width: 1200px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Marquee .Find-Artists-Marquee-Box {
+  display: block;
+  height: 25px;
+  position: relative;
+  overflow: hidden;
+  margin-left: 11%;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Marquee .Find-Artists-Marquee-Box .Single-Track-Name {
+  font-size: 20px;
+  max-height: 25px;
+  white-space: nowrap;
+  text-align: right;
+  margin-left: -135px;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box {
+  float: right;
+  width: 1200px;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Button-Favourite {
+  width: 50px;
+  height: 50px;
+  position: static;
+  float: left;
+  margin-left: 120px;
+  cursor: pointer;
+  transition-duration: 1s;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Button-Favourite:hover {
+  transform: scale(1.2);
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt {
+  width: 50px;
+  height: 40px;
+  margin-top: -5px;
+  position: static;
+  float: right;
+  margin-top: 4px;
+  margin-right: 10px;
+  transition-duration: 2s;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt:hover {
+  filter: grayscale(0);
+  transform: rotateX(360deg);
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify {
+  width: 50px;
+  height: 50px;
+  position: static;
+  float: right;
+  margin-right: 10px;
+  transition-duration: 2s;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify:hover {
+  filter: grayscale(0);
+  transform: rotateZ(360deg);
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud {
+  width: 50px;
+  height: 50px;
+  position: static;
+  float: right;
+  margin-right: 10px;
+  transition-duration: 2s;
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud:hover {
+  filter: grayscale(0);
+  transform: rotateY(360deg);
+}
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt,
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify,
+body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud {
+  cursor: pointer;
+}
+body .App-Content .Find-Sounds-And-Player {
+  margin-bottom: 49px;
+}
+body .App-Content .Player-Box-Close {
+  cursor: pointer;
+  background: #202020;
+  border: none;
+  outline: none;
+}
 body .App-Content .list-Artist {
   margin-top: 0px;
 }
 body .App-Content .list-Artist .Find-Artists-Single-Artist {
-  width: 900px;
+  width: 1200px;
   height: 150px;
   border-bottom: solid 1px;
   margin: auto;
@@ -521,14 +660,17 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist {
 body .App-Content .list-Artist .Find-Artists-Single-Artist:hover {
   background: #5f5f5f;
 }
+body .App-Content .list-Artist .Find-Artists-Single-Artist:hover .Find-Artists-Marquee-Box {
+  animation: marquee 20s linear infinite;
+}
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artists-Img {
-  margin-top: 2%;
+  margin-top: 16px;
   width: 120px;
-  height: 110px;
-  padding-top: 2px;
+  height: 120px;
   padding-left: 6px;
   position: absolute;
   border-radius: 10px;
+  z-index: 20;
 }
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box {
   text-align: center;
@@ -544,8 +686,25 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
   color: white;
   font-size: 15px;
 }
-body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Genres-Value {
-  margin-left: 125px;
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .marquee {
+  height: 25px;
+  width: 1200px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .marquee .Find-Artists-Marquee-Box {
+  display: block;
+  height: 25px;
+  position: relative;
+  overflow: hidden;
+  padding-left: 11%;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .marquee .Find-Artists-Marquee-Box .Find-Artists-Span-Marquee {
+  max-height: 25px;
+  white-space: nowrap;
+  text-align: right;
+  margin-left: -110px;
 }
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Popularity {
   position: relative;
@@ -554,13 +713,21 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
   width: 200px;
   float: left;
   text-align: left;
+  color: white;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Popularity .Find-Artists-Popularity-Value {
+  color: #c86400;
 }
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Followers {
   position: relative;
   top: 20px;
   float: right;
-  width: 200px;
+  width: 220px;
   text-align: left;
+  color: white;
+}
+body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Followers .Find-Artists-Followers-Value {
+  color: #c86400;
 }
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-fb {
   width: 47px;
@@ -608,11 +775,35 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
   transform: scale(1.2);
   box-shadow: 3px 3px 5px 2px black;
 }
-body .App-Content .Favourite-Song {
+body .Genres {
   width: 1200px;
-  margin-top: 40px;
 }
-body .App-Content .Favourite-Song .Favourite-Song-Options {
+body .Genres .Choose-Genre {
+  min-width: 1200px;
+  min-height: 500px;
+  background-color: aquamarine;
+  position: relative;
+}
+body .Genres .Choose-Genre .Genres-Single-Genre {
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  background-color: red;
+  position: absolute;
+  display: inline;
+}
+body .Genres .Results {
+  min-width: 1200px;
+  min-height: 500px;
+  background-color: blue;
+  position: absolute;
+}
+body .Favourite-Song {
+  width: 1200;
+  margin-top: 30px;
+}
+body .Favourite-Song .Favourite-Song-Options {
   border-top: 1px solid;
   border-bottom: 1px solid;
   margin: 0px auto;
@@ -625,7 +816,7 @@ body .App-Content .Favourite-Song .Favourite-Song-Options {
   position: sticky;
   text-align: center;
 }
-body .App-Content .Favourite-Song .Favourite-Song-Options .Prev-Button {
+body .Favourite-Song .Favourite-Song-Options .Prev-Button {
   margin: 0px auto;
   width: 100px;
   height: 20px;
@@ -637,10 +828,10 @@ body .App-Content .Favourite-Song .Favourite-Song-Options .Prev-Button {
   left: 50%;
   transform: translateX(-300%);
 }
-body .App-Content .Favourite-Song .Favourite-Song-Options .Prev-Button:hover {
+body .Favourite-Song .Favourite-Song-Options .Prev-Button:hover {
   color: #c86400;
 }
-body .App-Content .Favourite-Song .Favourite-Song-Options .Next-Button {
+body .Favourite-Song .Favourite-Song-Options .Next-Button {
   margin: 0px auto;
   width: 100px;
   height: 20px;
@@ -652,13 +843,15 @@ body .App-Content .Favourite-Song .Favourite-Song-Options .Next-Button {
   left: 50%;
   transform: translateX(200%);
 }
-body .App-Content .Favourite-Song .Favourite-Song-Options .Next-Button:hover {
+body .Favourite-Song .Favourite-Song-Options .Next-Button:hover {
   color: #c86400;
 }
-body .App-Content .Favourite-Song .Favourite-Song-Options .Favourite-Song-Options-Limit-Box {
-  float: right;
+body .Favourite-Song .Favourite-Song-Options .Favourite-Song-Options-Limit-Box {
+  position: absolute;
+  right: 0px;
+  font-size: 20px;
 }
-body .App-Content .Favourite-Song .Favourite-Song-Options .Favourite-Song-Options-Limit-Box select {
+body .Favourite-Song .Favourite-Song-Options .Favourite-Song-Options-Limit-Box select {
   font-size: 20px;
   text-align: center;
   text-align-last: center;
@@ -666,6 +859,17 @@ body .App-Content .Favourite-Song .Favourite-Song-Options .Favourite-Song-Option
   background-color: #2b2b2b;
   outline: none;
   border: none;
+}
+body .Favourite-Song .Single-Track {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  width: 1200;
+  margin: 0 px auto;
+  width: 390px;
+  height: 100px;
+  background-color: aquamarine;
+  position: relative;
+  float: left;
 }
 body .Scroll-Up {
   width: 30px;
