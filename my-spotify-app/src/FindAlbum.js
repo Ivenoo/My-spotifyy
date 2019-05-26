@@ -56,12 +56,6 @@ class FindAlbum extends React.Component {
     }).catch(error => (new Error(console.log(error))))
   }
 
-      //URUCHAMIANIE  ODTWARZACZA W NOWYM OKNIE //
-  listen(url){
-    if(url != null){
-      window.open(url)
-    }
-  }
 
 
 
@@ -81,18 +75,21 @@ class FindAlbum extends React.Component {
 
   render() {
     return( 
-      <div>
+      <div className="Find-Albums">
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
           <input type="text" placeholder="Are you looking for an album? Type something here..." className="Searching-Field" onChange={this.search.bind(this)}/>   
         </div>
         <div className="Title-Box">RESULTS</div>
        <span className={this.state.notFindAlbum}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
-       <ol>
+       <div className="Find-Albums-Box">
        { this.state.albumList.map((element, index)=>
           <SingleAlbum  key={index} parentElement={element} parentIndex={index} mytoken={this.props.mytoken}/>
         )}
-        </ol>
+        </div>
+        <div className= "test">
+        <div className="Find-Albums-Tracks-Box"></div>
+        </div>
       </div>
     )
   }
