@@ -21,7 +21,6 @@ class SingleAlbum extends React.Component {
     render(){
       const parentElement = this.props.parentElement;
       const parentIndex = this.props.parentIndex;
-      console.log(parentElement)
       return(
         <div  id={this.testow(parentIndex)} className="Find-Albums-One-Album">
         <span className="Single-Album-Title">Album:</span>

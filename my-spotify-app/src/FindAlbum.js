@@ -17,51 +17,81 @@ class FindAlbum extends React.Component {
       timeout: 0,
       valuee: 's',
       tracksList: [],
-      backColor: ''
+      backColor: '',
+      prev: null,
+      next: null,
+      myoffset: 'offset=0'
     }
   }
 
               //POBIERANIE LISTY  ALBUMOW  Z API // 
   search(e){
+
     const value = e.currentTarget.value
     this.setState({
       searchValueToExist: value
     })
   
     this.setState({
-      searchValue: value
+      searchValue: value,
+      tracksList: []
     })
+
     
     if(value === ''){
       this.setState({
         albumList: [],
-        tracksList: []
+        notFindAlbum: 'notexist',
       })
+      const results = document.querySelector('.Title-Box-Res')
+      results.style.display='none'
       const albumTracks = document.querySelector('.Find-Albums-Tracks-Box')
       albumTracks.style.display= 'none'
     }else{
       if(timeouter) clearTimeout(timeouter);
         timeouter = setTimeout(() => { 
-        this.getList(this.state.searchValue)
+        this.getList(this.state.searchValue,0)
       }, 1000);
     }
 
   }
-    //POBIERANIE INFORMACJI O ALBUMACH Z API//
-  getList = (value) =>{
-    axios({
-      url: `https://api.spotify.com/v1/search?q=${value}&type=album&limit=10`,
-      headers:{
-      'Authorization': 'Bearer ' + this.props.mytoken
+    //POBIERANIE INFORMACJI O ALBUMACH Z API// 
+  getList = (value,link) =>{ 
+    this.setState({
+      refresh: '',
+      tracksList: []
+    })
+    if(this.state.backColor != ''){
+      const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
+      backingAlbumListColor.style.background="#2b2b2b";
+    }
+      let url = `https://api.spotify.com/v1/search?q=${value}&type=album&limit=10`
+      if(link !== 0){
+        url = link;
+        const start = link.indexOf('offset=')
+        const stop = link.indexOf('&limit')
+        const finishoff = link.slice(start,stop)
+        this.setState({
+          myoffset: finishoff
+        })
       }
-    }).then(resp =>{ 
-      this.setState({
-        albumList: resp.data.albums.items
+      axios({
+        url: url,
+        headers:{
+        'Authorization': 'Bearer ' + this.props.mytoken
+        }
+      }).then(resp =>{
+       const results = document.querySelector('.Title-Box-Res')
+       results.style.display='block'
+        this.setState({
+        albumList: resp.data.albums.items,
+        prev: resp.data.albums.previous,
+        next: resp.data.albums.next
       })
       const albumListTracks  = document.querySelector('.Find-Albums-Tracks-Box')  
       albumListTracks.style.display = "block";
       this.exist()
-    }).catch(error => (new Error(console.log(error))))
+      }).catch(error => (new Error(console.log(error))))  
   }
 
       //POBIERA  INFORMACJE O ALBUMIE I ZWRACA  JAKO ELEMENT LISTY//
@@ -85,16 +115,12 @@ class FindAlbum extends React.Component {
         //ROZWIJANIE LISTY //
       openList = (id,index) =>{
         this.showSongs(id)
-        console.log(this.state.albumList)
         if(this.state.backColor != ''){
           const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
           backingAlbumListColor.style.background="#2b2b2b";
-          // backingAlbumListColor.style.border="none";
-          // backingAlbumListColor.style.borderBottom="solid 1px #c86400";
         }
         const onShowAlbumList = document.querySelector(`#album${index}`)
         onShowAlbumList.style.background="#5f5f5f";
-        // onShowAlbumList.style.border="solid 1px red";
         this.setState({
           backColor: `album${index}`
         })
@@ -117,13 +143,23 @@ class FindAlbum extends React.Component {
 
 
   render() {
+    let prevButton = "";
+    let nextButton = "";
+    if(this.state.prev !==null){
+      prevButton = <button onClick={this.getList.bind(this,0,this.state.prev)} className="Find-Sounds-Button-Prev">PREV</button>
+    }
+    if(this.state.next !==null){
+      nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
+    }
     return( 
       <div className="Find-Albums">
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
-          <input type="text" placeholder="Are you looking for an album? Type something here..." className="Searching-Field" onChange={this.search.bind(this)}/>   
+          <input type="text" placeholder="Are you looking for an album? Type something here..." className="Searching-Field" onChange={this.search.bind(this)}/> 
+          {prevButton}
+          {nextButton}   
         </div>
-        <div className="Title-Box">RESULTS</div>
+        <div className="Title-Box-Res">RESULTS</div>
        <span className={this.state.notFindAlbum}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
        <div className="Find-Albums-Box">
        { this.state.albumList.map((element, index)=>

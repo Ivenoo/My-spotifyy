@@ -45,7 +45,11 @@ class FindSound extends React.Component {
           trackList: [],
           prev: null,
           next: null,
+          notFindTracks: 'notexist',
         })
+        const results = document.querySelector('.Title-Box-Res')
+        results.style.display='none';
+        const exists = document.querySelector('.exist')
       }else{
         if(this.state.trackList.length<1){
          
@@ -59,6 +63,7 @@ class FindSound extends React.Component {
   }
     //POBIERA INFORMACJE  O PIOSENKACH Z API//
   getList = (value,link) =>{
+
     this.setState({
       refresh: ''
     })
@@ -78,7 +83,10 @@ class FindSound extends React.Component {
       headers:{
       'Authorization': 'Bearer ' + this.props.mytoken
       }
-    }).then(resp =>{ this.setState({
+    }).then(resp =>{
+      const results = document.querySelector('.Title-Box-Res')
+      results.style.display='block';
+      this.setState({
       trackList: resp.data.tracks.items,
       prev: resp.data.tracks.previous,
       next: resp.data.tracks.next
@@ -123,7 +131,7 @@ class FindSound extends React.Component {
           {prevButton}
           {nextButton}  
         </div>
-        <div className="Title-Box">RESULTS</div>
+        <div className="Title-Box-Res">RESULTS</div>
       <span className={this.state.notFindTracks}><strong className="title">{this.state.searchValue} </strong> not exist</span>
       <div className="Find-Soungs-Single-Sound">
         {this.state.trackList.map((element, index)=>

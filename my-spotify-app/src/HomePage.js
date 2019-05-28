@@ -25,11 +25,34 @@ class HomePage extends React.Component {
       }
     }).then(resp =>  this.setState({
       randomSongs:  resp.data.tracks.items
-    }))}
+    })).then(resp =>{
+      setTimeout(()=>{
+        const Loader = document.querySelector('.Loader');
+        Loader.style.display = 'none';
+        const  Shadow = document.querySelector('.Shadow-Box');
+        Shadow.className= "Shadow-Box Shadow-Key";
+      },1000)
+        setTimeout(()=>{
+          const  Shadow = document.querySelector('.Shadow-Box');
+          Shadow.className= "Shadow-Box";
+          Shadow.style.display= "none";
+          const ShadowScroll = document.querySelector('html');
+          ShadowScroll.style.overflowY = 'visible';
+        },2999)
+
+    })}
   }
 
     //  WCZYTYWANIE LOSOWEJ LISTY PRZY KAZDYM WEJSCIU NA HOMEPAGE//
   componentDidMount(){
+    const Loader = document.querySelector('.Loader')
+    Loader.style.display = 'block';
+    const  Shadow = document.querySelector('.Shadow-Box')
+    Shadow.className= "Shadow-Box"
+    Shadow.style.display = 'block';
+    Shadow.style.zIndex = '1998';
+    const ShadowScroll = document.querySelector('html');
+    ShadowScroll.style.overflowY = 'hidden';
     this.refresh()
   }
 
@@ -39,6 +62,7 @@ class HomePage extends React.Component {
   }
 
  render() {
+   
   return(
     <div className='Homepage-Box'>
       <div className="Left-Clear"></div>
