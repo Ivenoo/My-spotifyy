@@ -118,6 +118,7 @@ body .App-Content .Player-Box {
   bottom: 0%;
   display: none;
   margin: auto;
+  z-index: 999;
 }
 body .App-Content .Player-Box .Player-Box-Close {
   margin-top: 0px;
@@ -571,14 +572,14 @@ body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-T
   height: 25px;
   position: relative;
   overflow: hidden;
-  margin-left: 11%;
+  margin-left: 6%;
 }
 body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Marquee .Find-Artists-Marquee-Box .Single-Track-Name {
   font-size: 20px;
   max-height: 25px;
   white-space: nowrap;
   text-align: right;
-  margin-left: -135px;
+  margin-left: -74px;
 }
 body .App-Content .Find-Sounds .Find-Soungs-Single-Sound .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box {
   float: right;
@@ -705,7 +706,7 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
   max-height: 25px;
   white-space: nowrap;
   text-align: right;
-  margin-left: -110px;
+  margin-left: -134px;
 }
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Popularity {
   position: relative;
@@ -733,7 +734,7 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-fb {
   width: 47px;
   height: 47px;
-  margin: -15px 0px 0px -26.5px;
+  margin: -15px 0px 0px -12.5px;
   position: absolute;
   border-radius: 5px;
   cursor: pointer;
@@ -749,7 +750,7 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-tw {
   width: 48px;
   height: 46px;
-  margin: -15px 0px 0px -83.5px;
+  margin: -15px 0px 0px -76.5px;
   position: absolute;
   cursor: pointer;
   filter: grayscale(0.8);
@@ -764,7 +765,7 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
 body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box .Find-Artists-Comunity-Portal-pinterest {
   width: 50px;
   height: 50px;
-  margin: -16px 0px 0px 29.5px;
+  margin: -16px 0px 0px 48.5px;
   position: absolute;
   cursor: pointer;
   filter: grayscale(0.8);
@@ -778,27 +779,257 @@ body .App-Content .list-Artist .Find-Artists-Single-Artist .Find-Artist-Info-Box
 }
 body .Genres {
   width: 1200px;
+  margin-top: 10px;
+  position: absolute;
 }
 body .Genres .Choose-Genre {
-  min-width: 1200px;
-  min-height: 500px;
-  background-color: aquamarine;
-  position: relative;
+  width: 1200px;
+  margin: 0px auto;
+  background-color: #2b2b2b;
+  position: absolute;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  z-index: 2;
 }
-body .Genres .Choose-Genre .Genres-Single-Genre {
+body .Genres .Choose-Genre .Single-Genre-Box {
+  margin: 0px auto;
   min-width: 100px;
   min-height: 100px;
   max-width: 100px;
-  max-height: 100px;
-  background-color: red;
+  background-color: aquamarine;
+  position: relative;
+  float: left;
+  cursor: pointer;
+  white-space: trim;
+  box-shadow: inset 0px 0px 5px 5px #2b2b2b;
+}
+body .Genres .Choose-Genre .Single-Genre-Box .Single-Genre-Text {
+  width: 100px;
+  text-align: center;
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+body .Genres .Genres-Results-Box {
+  width: 1200px;
+  margin: 0px auto;
+  min-height: 500px;
+  background-color: #202020;
   position: absolute;
+  z-index: 1;
+}
+body .Genres .Genres-Results-Box .Genres-Options {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  margin: 0px auto;
+  top: 10px;
+  height: 30px;
+  width: 1180px;
+  padding: 10px 10px 10px 10px;
+  color: #c86400;
+  background-color: #2b2b2b;
+  position: sticky;
+  text-align: center;
+  z-index: 999;
+}
+body .Genres .Genres-Results-Box .Genres-Options .Back-Button {
+  margin: 0px auto;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  color: #6b6b6b;
+  left: 50%;
+  transform: translateX(-200%);
+}
+body .Genres .Genres-Results-Box .Genres-Options .Back-Button:hover {
+  color: #c86400;
+  cursor: pointer;
+}
+body .Genres .Genres-Results-Box .Genres-Options .Refresh-Button {
+  margin: 0px auto;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  color: #6b6b6b;
+  left: 50%;
+  transform: translateX(100%);
+}
+body .Genres .Genres-Results-Box .Genres-Options .Refresh-Button:hover {
+  color: #c86400;
+  cursor: pointer;
+}
+body .Genres .Genres-Results-Box .Genres-Options .Genres-Options-Limit-Box {
+  position: absolute;
+  right: 0px;
+  font-size: 20px;
+  height: 20px;
+  padding: 5px;
+}
+body .Genres .Genres-Results-Box .Genres-Options .Genres-Options-Limit-Box select {
+  font-size: 20px;
+  text-align: center;
+  text-align-last: center;
+  color: #c86400;
+  background-color: #2b2b2b;
+  outline: none;
+  border: none;
+}
+body .Genres .Genres-Results-Box .Results-List {
+  margin: 20px 0px 0px 0px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  background-color: #2b2b2b;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track {
+  min-height: 118px;
+  max-height: 300px;
+  border-bottom: solid 1px;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Img {
+  width: 110px;
+  height: 110px;
+  margin-top: 3px;
+  float: left;
+  position: absolute;
+  border-radius: 5px;
+  z-index: 10;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Play-Icon {
+  height: 70px;
+  width: 70px;
+  margin: 21px 0px 0px 21px;
+  float: left;
+  position: absolute;
+  opacity: 0.5;
+  cursor: pointer;
+  transition-duration: 1s;
+  z-index: 20;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box {
+  padding-top: 10px;
+  text-align: center;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Author-Title {
+  display: none;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Author {
+  font-size: 20px;
+  color: white;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Name-Title {
+  display: none;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Marquee {
+  height: 25px;
+  width: 1200px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Marquee .Find-Artists-Marquee-Box {
+  display: block;
+  height: 25px;
+  position: relative;
+  overflow: hidden;
+  margin-left: 6%;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Marquee .Find-Artists-Marquee-Box .Single-Track-Name {
+  font-size: 20px;
+  max-height: 25px;
+  white-space: nowrap;
+  text-align: right;
+  margin-left: -74px;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box {
+  float: right;
+  width: 1200px;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Button-Favourite {
+  width: 50px;
+  height: 50px;
+  position: static;
+  float: left;
+  margin-left: 120px;
+  cursor: pointer;
+  transition-duration: 1s;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Button-Favourite:hover {
+  transform: scale(1.2);
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt {
+  width: 50px;
+  height: 40px;
+  margin-top: -5px;
+  position: static;
+  float: right;
+  margin-top: 4px;
+  margin-right: 10px;
+  transition-duration: 2s;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt:hover {
+  filter: grayscale(0);
+  transform: rotateX(360deg);
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify {
+  width: 50px;
+  height: 50px;
+  position: static;
+  float: right;
+  margin-right: 10px;
+  transition-duration: 2s;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify:hover {
+  filter: grayscale(0);
+  transform: rotateZ(360deg);
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud {
+  width: 50px;
+  height: 50px;
+  position: static;
+  float: right;
+  margin-right: 10px;
+  transition-duration: 2s;
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud:hover {
+  filter: grayscale(0);
+  transform: rotateY(360deg);
+}
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-yt,
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-spotify,
+body .Genres .Genres-Results-Box .Results-List .Single-Track .Single-Track-Info-Box .Single-Track-Icon-Box .Single-Track-Comunity-Portal-soundcloud {
+  cursor: pointer;
+}
+body .Find-Albums {
+  width: 1200px;
+}
+body .Find-Albums .Find-Albums-Box {
+  background: #2b2b2b;
+  width: 595px;
+  float: left;
   display: inline;
 }
-body .Genres .Results {
-  min-width: 1200px;
-  min-height: 500px;
-  background-color: blue;
-  position: absolute;
+body .Find-Albums .Find-Albums-Box .Find-Albums-One-Album {
+  border-bottom: solid 1px #c86400;
+  height: 150px;
+}
+body .Find-Albums .test {
+  height: 1509px;
+  float: right;
+  width: 595px;
+  background: #2b2b2b;
+  border-bottom: solid 1px #c86400;
+}
+body .Find-Albums .test .Find-Albums-Tracks-Box {
+  float: right;
+  background: #2b2b2b;
+  position: fixed;
+  padding-top: 10px;
+  padding-left: 20px;
 }
 body .Favourite-Song {
   width: 1200;
@@ -898,6 +1129,7 @@ body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Play-Icon {
   left: 0px;
   display: none;
   opacity: 0.8;
+  z-index: 15;
   cursor: pointer;
 }
 body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box {

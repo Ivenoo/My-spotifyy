@@ -13,7 +13,6 @@ class FindGenres extends React.Component {
       searchList:[],
       limit: 5,
       refresh: '',
-      randOffset: 0
     }
   }
 
@@ -27,83 +26,83 @@ class FindGenres extends React.Component {
   }
 
     // POBIERA WARTOSC INPUTA I PRZYPISUJE DO ZMIENNEJ//
-  inputValue(e){
-    const value = e.currentTarget.value
-    this.setState({
-      searchValue: value,
-      randOffset: randomOffset()
-    })
-    setTimeout(() => this.search(this.state.searchValue),10)
-  }
+    selectGenre(value){
+      this.setState({
+        searchValue: value,
+      });
+      setTimeout(() => this.search(this.state.searchValue),10)
+    }  
 
     //POBIERA PIOSENKI Z WYBRANEGO GATUNKU//
   search(value){
-    this.setState({
-      refresh: ''
-    })
     if(value === ''){
-    this.setState({
-    searchList: []
-  })
-  }else{
-    axios({
-      url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}&offset=${this.state.randOffset}`,
-      headers:{
-      'Authorization': 'Bearer ' + this.props.mytoken
-      }
-    }).then(resp =>
-      { this.setState({
-      searchList: resp.data.tracks.items
-    })
-    }).catch(error => (new Error(console.log(error))))
-  }
-    //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
-  }
-  listen(url){
-    if(url != null){
-      window.open(url)
+      this.setState({
+        searchList: []
+      })
+    }else{
+      axios({
+        url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}&offset=${randomOffset()}`,
+        headers:{
+        'Authorization': 'Bearer ' + this.props.mytoken
+        }
+      }).then(resp =>
+        { this.setState({
+        searchList: resp.data.tracks.items
+      })
+      }).catch(error => (new Error(console.log(error))))
     }
   }
 
-  render() {
-    {console.log(this.props.typeTracks.length)}
-    return(
-      <div className="Genres">
+  changeLimit = (e) =>{
+    const newLimit = e.currentTarget.value
+    this.setState({
+      limit: newLimit
+    })
+    setTimeout(()=>{this.search(this.state.searchValue)}, 10);
+  }
+    //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
 
-       <div className="Title-Box">SEARCH</div>
-        <div className="Searching-Bar"> 
-          <select className="Searching-Field" defaultValue='' onChange={this.inputValue.bind(this)}>
-            <option className="Searching-Options" value="" disabled>Choose Genre ...</option>
-            {this.props.typeTracks.map((element, index)=>{
-              return(
-                <option className="Searching-Options" key={index}>{element}</option> 
-              )
-            })}
-          </select>
-        <Limit changeLimit={this.limit.bind(this)}/>
-        </div>
-        <div className="Title-Box">RESULTS</div>
-
-
-        <div className="Results">
-        Wyniki
-        </div>
-        <div className="Choose-Genre">
+  render() { 
+    let display;
+    if(this.state.searchValue === ''){
+      display =        
+      <div className="Choose-Genre">
         {this.props.typeTracks.map((element, index)=>{
-              return(
-                <div className="Genres-Single-Genre" key={index}>{element}</div> 
-              )
-            })}
+          return(
+            <div className="Single-Genre-Box"  onClick={this.selectGenre.bind(this, element)} key={index} >
+              <div className="Single-Genre-Text">{element}</div>
+            </div> 
+          )
+        })}
+      </div>
+    }
+    else{
+      let back = "", rerandom = "";
+      back = <div className="Back-Button" onClick={()=>this.setState({searchValue: ''})}> Back to genres list </div>
+      rerandom = <div className="Refresh-Button" onClick={this.search.bind(this, this.state.searchValue)}> Refresh </div>
+
+
+      display = 
+      <div className="Genres-Results-Box">
+        <div className='Genres-Options'>
+          <div className="Genres-Options-Select">
+          {back}
+          {rerandom}
+          </div>
+          <div className="Genres-Options-Limit-Box">
+            Limit: <Limit changeLimit={this.changeLimit.bind(this)}/>
+          </div>
         </div>
-
-
-
-
-          <ol>
+        <div className="Results-List">
           {this.state.searchList.map((element, index)=>
             <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
           )}
-        </ol>
+        </div>
+      </div>
+    }
+    return(
+      <div className="Genres">
+        {display}
       </div>
     )
   }

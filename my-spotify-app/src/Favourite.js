@@ -10,8 +10,6 @@ class Favourite extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      box:[],
-      box2: [],
       favArray: [],
       myoffset: 0,
       limit: 5,
