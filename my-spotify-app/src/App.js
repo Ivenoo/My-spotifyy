@@ -17,13 +17,13 @@ class App extends React.Component {
                       // POBIERANIE LISTY  TYPÓW MUZYKI //
   getGenres = () =>{
     axios({
-      url: `https://api.spotify.com/v1/recommendations/available-genre-seeds`,
+      url: `https://api.spotify.com/v1/browse/categories?limit=50`,
       headers: {
         'Authorization': 'Bearer ' + this.state.mytoken
     }}
     ).then( resp =>{
       this.setState({
-        typeTracks: resp.data.genres
+        typeTracks: resp.data.categories.items
       })
     })
     .catch(error =>{
@@ -64,7 +64,7 @@ class App extends React.Component {
           mytoken: response.access_token
         })
         this.getGenres()
-        setTimeout(()=>{this.refreshToken()} , 3599900)
+        setTimeout(()=>{this.refreshToken()} , 3500000)
       }
     });  
   }

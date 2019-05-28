@@ -38,7 +38,6 @@ class RandomArtist extends React.Component {
         'Authorization': 'Bearer ' + this.props.mytoken
         }
       }).then(resp =>{
-        console.log(resp.data.artists.items)
         this.setState({
         artistList: resp.data.artists.items
       })

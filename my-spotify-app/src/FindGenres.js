@@ -30,6 +30,7 @@ class FindGenres extends React.Component {
       this.setState({
         searchValue: value,
       });
+      console.log(value)
       setTimeout(() => this.search(this.state.searchValue),10)
     }  
 
@@ -40,15 +41,19 @@ class FindGenres extends React.Component {
         searchList: []
       })
     }else{
+      // let url = `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}&offset=${randomOffset()}`;
+
       axios({
-        url: `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}&offset=${randomOffset()}`,
+        url: `https://api.spotify.com/v1/browse/categories/${value}/playlists`,
         headers:{
         'Authorization': 'Bearer ' + this.props.mytoken
         }
       }).then(resp =>
-        { this.setState({
-        searchList: resp.data.tracks.items
-      })
+        { 
+          console.log(resp.data.playlists.items)
+          this.setState({
+            searchList: resp.data.playlists.items
+          })
       }).catch(error => (new Error(console.log(error))))
     }
   }
@@ -58,7 +63,7 @@ class FindGenres extends React.Component {
     this.setState({
       limit: newLimit
     })
-    setTimeout(()=>{this.search(this.state.searchValue)}, 10);
+    setTimeout(()=>{this.search(this.state.searchValue)}, 100);
   }
     //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
 
@@ -69,8 +74,10 @@ class FindGenres extends React.Component {
       <div className="Choose-Genre">
         {this.props.typeTracks.map((element, index)=>{
           return(
-            <div className="Single-Genre-Box"  onClick={this.selectGenre.bind(this, element)} key={index} >
-              <div className="Single-Genre-Text">{element}</div>
+            <div className="Single-Genre-Box element-icon"   onClick={this.selectGenre.bind(this, element.id)} key={index} >
+              <div className="Single-Genre-Text">{element.name}</div>
+              <img src={element.icons[0].url} className="Single-Genre-Image" alt=" "/>
+              <div className="Shadow-Box"></div>
             </div> 
           )
         })}
@@ -94,8 +101,15 @@ class FindGenres extends React.Component {
           </div>
         </div>
         <div className="Results-List">
-          {this.state.searchList.map((element, index)=>
+          {/* {this.state.searchList.map((element, index)=>
             <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
+          )} */}
+          {this.state.searchList.map((element, index)=>
+            // <SingleAlbum key={index} parentElement={element} parentIndex={index}/>
+            <div className="Single-Track" >
+              xD {element.tracks.total} <br/>
+              {element.name}
+            </div>
           )}
         </div>
       </div>

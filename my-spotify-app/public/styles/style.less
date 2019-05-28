@@ -993,22 +993,45 @@ body{
         
         .Single-Genre-Box{
           margin: 0px auto;
-          min-width: 100px;
-          min-height: 100px;
-          max-width: 100px;
-          background-color: aquamarine;
+          position:relative;
+          min-width: 120px;
+          min-height: 120px;
+          background-color: @back-item;
           position: relative;
           float:left;
           cursor:pointer;
           white-space: trim;
-          box-shadow: inset 0px 0px 5px 5px @back-item;
+
+          .Shadow-Box{
+            width: 120px;
+            height: 120px;
+            margin: 0px auto;
+            position: absolute;
+            box-shadow: inset 0px 0px 6px 4px @back-item;
+            z-index:12;
+
+            &:hover{
+              box-shadow: inset 0px 0px 6px 4px #FFFFFF;
+            }
+          }
  
 
           .Single-Genre-Text{
-            width: 100px;
+            width: 120px;
             text-align: center;
-            margin-top: 50%;
+            margin-top: 75%;
             transform: translateY(-50%);
+            color:  #FFFFFF;
+            z-index: 11;
+            position: absolute;
+          }
+
+          .Single-Genre-Image{
+            margin: 0px auto;
+            widows: 120px;
+            height: 120px;
+            position: absolute;
+            z-index: 10;
           }
         }
 
