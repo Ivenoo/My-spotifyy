@@ -26,6 +26,7 @@ class FindAlbum extends React.Component {
 
               //POBIERANIE LISTY  ALBUMOW  Z API // 
   search(e){
+
     const value = e.currentTarget.value
     this.setState({
       searchValueToExist: value
@@ -37,12 +38,13 @@ class FindAlbum extends React.Component {
     })
 
     
- 
-    
     if(value === ''){
       this.setState({
         albumList: [],
+        notFindAlbum: 'notexist',
       })
+      const results = document.querySelector('.Title-Box-Res')
+      results.style.display='none'
       const albumTracks = document.querySelector('.Find-Albums-Tracks-Box')
       albumTracks.style.display= 'none'
     }else{
@@ -79,6 +81,8 @@ class FindAlbum extends React.Component {
         'Authorization': 'Bearer ' + this.props.mytoken
         }
       }).then(resp =>{
+       const results = document.querySelector('.Title-Box-Res')
+       results.style.display='block'
         this.setState({
         albumList: resp.data.albums.items,
         prev: resp.data.albums.previous,
@@ -155,7 +159,7 @@ class FindAlbum extends React.Component {
           {prevButton}
           {nextButton}   
         </div>
-        <div className="Title-Box">RESULTS</div>
+        <div className="Title-Box-Res">RESULTS</div>
        <span className={this.state.notFindAlbum}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
        <div className="Find-Albums-Box">
        { this.state.albumList.map((element, index)=>

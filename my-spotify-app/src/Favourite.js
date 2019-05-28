@@ -18,7 +18,14 @@ class Favourite extends React.Component {
 
         // FUNKCJA POBIERAJACA ULUBIONE PIOSENKI PO ID (KTORE JEST W LOCAL STORAGE)//
   myFavouriteSongs =(e) =>{
-
+    const ShadowScroll = document.querySelector('html');
+    ShadowScroll.style.overflowY = 'hidden';
+    const Loader = document.querySelector('.Loader')
+    Loader.style.display = 'block';
+    const  Shadow = document.querySelector('.Shadow-Box')
+    Shadow.className= "Shadow-Box"
+    Shadow.style.display = 'block';
+    Shadow.style.zIndex = '1998';
     setTimeout(() =>{ 
       JSON.parse(localStorage.getItem('favourite')).map(element =>
       axios({
@@ -26,11 +33,26 @@ class Favourite extends React.Component {
         headers:{
          'Authorization': 'Bearer ' + this.props.mytoken
         }
-      }).then(resp =>{ 
+      }).then(resp =>{  
         this.state.favArray.push(resp.data)
           this.setState({
             favArray: this.state.favArray
           }) 
+      }).then(resp =>{
+        setTimeout(()=>{
+          const Loader = document.querySelector('.Loader');
+          Loader.style.display = 'none';
+          const  Shadow = document.querySelector('.Shadow-Box');
+          Shadow.className= "Shadow-Box Shadow-Key";
+        },1000)
+
+        setTimeout(()=>{
+          const  Shadow = document.querySelector('.Shadow-Box');
+          Shadow.className= "Shadow-Box";
+          Shadow.style.display= "none";
+
+        },3000)
+
       })
     )
     },10)

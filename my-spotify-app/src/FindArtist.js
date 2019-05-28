@@ -36,15 +36,14 @@ class FindArtist extends React.Component {
   inputValue(e){
     const value = e.currentTarget.value
     this.setState({
-      searchValue: value
+      searchValue: value,
+      searchValueToExist: value
     })
     setTimeout(() => this.search(this.state.searchValue),10)
   }
 
     //PRZYPISANIE DO STANU WARTOSCI  Z INPUTA I WYWOLANIE POBIERANIA  LISTY//
   search(value){
-    console.log(this.state.prev);
-    console.log(this.state.next);
       clearTimeout(timeouter);
      
         this.setState({
@@ -58,6 +57,8 @@ class FindArtist extends React.Component {
     next: null,
     notFindArtist: 'notexist'
   })
+  const results = document.querySelector('.Title-Box-Res')
+  results.style.display='none'
   }else{
     timeouter = setTimeout(() => {
     this.getList(value, 0)
@@ -86,31 +87,30 @@ class FindArtist extends React.Component {
         'Authorization': 'Bearer ' + this.props.mytoken
         }
       }).then(resp =>{
+        const results = document.querySelector('.Title-Box-Res')
+        results.style.display='block'
         this.setState({
         artistList: resp.data.artists.items,
         prev: resp.data.artists.previous,
         next: resp.data.artists.next
-        
-        
       })
-      // console.log(this.state.artistList)
-      // this.exist()
+      this.exist()
       }).catch(error => (new Error(console.log(error))))
   
     
   }
-  //WYSWIETLA  NAPIS JESLI NIE ZNALEZIONO DANEGO ARTYSTY//
-  // exist =() =>{
-  //   if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
-  //     this.setState({
-  //       notFindArtist: 'exist'
-  //     })
-  //   }else{
-  //     this.setState({
-  //       notFindArtist: 'notexist'
-  //     })
-  //   }
-  // }
+  // WYSWIETLA  NAPIS JESLI NIE ZNALEZIONO DANEGO ARTYSTY//
+  exist =() =>{
+    if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
+      this.setState({
+        notFindArtist: 'exist'
+      })
+    }else{
+      this.setState({
+        notFindArtist: 'notexist'
+      })
+    }
+  }
 
   render() {
     let prevButton = "", nextButton = "";
@@ -130,7 +130,7 @@ class FindArtist extends React.Component {
           {prevButton}
           {nextButton} 
         </div>
-        <div className="Title-Box">RESULTS</div>
+        <div className="Title-Box-Res">RESULTS</div>
       <div className="list-Artist">
       <span className={this.state.notFindArtist}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
       {
