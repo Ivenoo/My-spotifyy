@@ -26,6 +26,12 @@ class FindAlbum extends React.Component {
 
               //POBIERANIE LISTY  ALBUMOW  Z API // 
   search(e){
+    const LoaderAlbums = document.querySelector('.Loader-Albums');
+    LoaderAlbums.style.display = 'block';
+    const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
+    ShadowAlbums.className= "Loader-Shadow-Box-Albums";
+    ShadowAlbums.style.display = 'block';
+    ShadowAlbums.style.zIndex = '1998';
 
     const value = e.currentTarget.value
     this.setState({
@@ -42,11 +48,20 @@ class FindAlbum extends React.Component {
       this.setState({
         albumList: [],
         notFindAlbum: 'notexist',
+        next: null,
+        prev: null,
+        backColor: '',
       })
-      const results = document.querySelector('.Title-Box-Res')
-      results.style.display='none'
-      const albumTracks = document.querySelector('.Find-Albums-Tracks-Box')
-      albumTracks.style.display= 'none'
+      const LoaderAlbums = document.querySelector('.Loader-Albums');
+      LoaderAlbums.style.display = 'none';
+      const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
+      ShadowAlbums.className= "Loader-Shadow-Box-Albums";
+      ShadowAlbums.style.display= "none";
+
+      const results = document.querySelector('.Title-Box-Res');
+      results.style.display='none';
+      const albumTracks = document.querySelector('.Find-Albums-Tracks-Box');
+      albumTracks.style.display= 'none';
     }else{
       if(timeouter) clearTimeout(timeouter);
         timeouter = setTimeout(() => { 
@@ -59,9 +74,9 @@ class FindAlbum extends React.Component {
   getList = (value,link) =>{ 
     this.setState({
       refresh: '',
-      tracksList: []
+      tracksList: [],
     })
-    if(this.state.backColor != ''){
+    if(this.state.backColor != ''&& this.state.searchValue != []){
       const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
       backingAlbumListColor.style.background="#2b2b2b";
     }
@@ -88,6 +103,18 @@ class FindAlbum extends React.Component {
         prev: resp.data.albums.previous,
         next: resp.data.albums.next
       })
+      
+        const LoaderAlbums = document.querySelector('.Loader-Albums');
+        LoaderAlbums.style.display = 'none';
+        const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
+        ShadowAlbums.className= "Loader-Shadow-Box-Albums Shadow-Key-Albums"; 
+      
+      setTimeout(()=>{
+        const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
+        ShadowAlbums.className= "Loader-Shadow-Box-Albums";
+        ShadowAlbums.style.display= "none";
+       },2000)
+
       const albumListTracks  = document.querySelector('.Find-Albums-Tracks-Box')  
       albumListTracks.style.display = "block";
       this.exist()
@@ -96,6 +123,7 @@ class FindAlbum extends React.Component {
 
       //POBIERA  INFORMACJE O ALBUMIE I ZWRACA  JAKO ELEMENT LISTY//
       showSongs(id){
+        
             axios({
               url: `https://api.spotify.com/v1/albums/${id}/tracks`,
               headers:{
@@ -153,12 +181,17 @@ class FindAlbum extends React.Component {
     }
     return( 
       <div className="Find-Albums">
+           <div className="Loader-Shadow-Box-Albums"></div>
+           <div className="Loader-Albums">LOADING...</div>
+      
+        
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
           <input type="text" placeholder="Are you looking for an album? Type something here..." className="Searching-Field" onChange={this.search.bind(this)}/> 
           {prevButton}
           {nextButton}   
         </div>
+        <div className="Find-Album-All-Resutls">
         <div className="Title-Box-Res">RESULTS</div>
        <span className={this.state.notFindAlbum}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
        <div className="Find-Albums-Box">
@@ -175,6 +208,7 @@ class FindAlbum extends React.Component {
               )
           }
         })}
+        </div>
         </div>
         </div>
       </div>
