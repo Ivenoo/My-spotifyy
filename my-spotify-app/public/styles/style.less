@@ -125,6 +125,7 @@ body{
       bottom: 0%;
       display: none;
       margin:auto;
+      z-index: 900;
 
       
       .Player-Box-Close{ 
@@ -747,6 +748,34 @@ body{
         }
       }
     }
+
+    .Find-Sounds-Button-Prev,
+    .Find-Sounds-Button-Next{
+      font-size:20px;
+      padding:5px;
+      position:absolute;
+      width:90px;
+      height:43px;
+      background:none;
+      color:#6b6b6b;
+      border:none;
+      outline:none;
+      cursor:pointer;
+      transition-duration: 1s;
+
+      &:hover{
+        transform:scale(1.1);
+        color:@font-color;
+      }
+
+    }
+
+    .Find-Sounds-Button-Prev{
+      margin-left:-1007px;
+    }
+    .Find-Sounds-Button-Next{
+      margin-left:30px;
+    }
   }
   .Find-Sounds-And-Player{
     margin-bottom: 49px;
@@ -916,6 +945,33 @@ body{
           }
         }
       }
+    }
+    .Find-Sounds-Button-Prev,
+    .Find-Sounds-Button-Next{
+      font-size:20px;
+      padding:5px;
+      position:absolute;
+      width:90px;
+      height:43px;
+      background:none;
+      color:#6b6b6b;
+      border:none;
+      outline:none;
+      cursor:pointer;
+      transition-duration: 1s;
+
+      &:hover{
+        transform:scale(1.1);
+        color:@font-color;
+      }
+
+    }
+
+    .Find-Sounds-Button-Prev{
+      margin-left:-1007px;
+    }
+    .Find-Sounds-Button-Next{
+      margin-left:30px;
     }
   }
   
@@ -1160,6 +1216,7 @@ body{
         }
       }
     }
+   
   }
 
 

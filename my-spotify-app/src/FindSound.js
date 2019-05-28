@@ -109,17 +109,19 @@ class FindSound extends React.Component {
   render() {
     let prevButton = "", nextButton = "";
     if(this.state.prev !==null){
-      prevButton = <button onClick={this.getList.bind(this,0,this.state.prev)}>Previous</button>
+      prevButton = <button onClick={this.getList.bind(this,0,this.state.prev)} className="Find-Sounds-Button-Prev">PREV</button>
     }
     if(this.state.next !==null){
-      nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}>Next</button>
+      nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
     return(
       <div className="Find-Sounds">
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
           <input type="text" placeholder="Do you want to find a song? Enter its title here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
-          <Limit changeLimit={this.limit.bind(this)} />    
+          <Limit changeLimit={this.limit.bind(this)} />  
+          {prevButton}
+          {nextButton}  
         </div>
         <div className="Title-Box">RESULTS</div>
       <span className={this.state.notFindTracks}><strong className="title">{this.state.searchValue} </strong> not exist</span>
@@ -128,8 +130,7 @@ class FindSound extends React.Component {
           <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
         )}
       </div>
-      {prevButton}
-      {nextButton}
+
       </div>
     )
   }
