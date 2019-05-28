@@ -87,7 +87,7 @@ class SingleTrack extends React.Component {
           tableArtists.push(`${element2.name}`)
         }})
         
-        if(tableArtists.length > 5){
+        if(tableArtists.length > 5 && window.location.pathname !== '/favourite' ){
           finishArtists = <marquee><span className='Single-Track-Author'>{tableArtists}</span></marquee>
         }else{
           finishArtists =  <span className='Single-Track-Author'>{tableArtists}</span>
@@ -104,6 +104,7 @@ class SingleTrack extends React.Component {
               {imges}
               {trackLink}
             {/* </div> */}
+            <div className="Shadow-Box"> </div>
             <div className="Single-Track-Info-Box">
                 <span className="Single-Track-Author-Title">Author : </span>
                 <div>{finishArtists}</div>

@@ -52,7 +52,7 @@ body{
     position: fixed;
     z-index: 1001;
     background-color: aquamarine;
-    display:none;
+    display: none;
   }
 
 
@@ -1241,6 +1241,8 @@ body{
         background-color: @back-item;
         position: absolute;
 
+
+
         .Single-Track{
           width: 240px;
           height: 240px;
@@ -1249,9 +1251,14 @@ body{
           float:left;
           background-color: @back-item;
           white-space: trim;
+          transition-duration: 0.5s;
 
-          &:hover .Single-Track-Play-Icon{
-            display:block;
+          .Shadow-Box{
+            width: 240px;
+            height: 240px;
+            margin: 0px auto;
+            position: absolute;
+            box-shadow: inset 0px 0px 5px 5px @back-item;
           }
 
           .Single-Track-Play-Icon{
@@ -1261,15 +1268,10 @@ body{
             margin:10px;
             bottom: 0px;
             left: 0px;
-            z-index: 100;
             display:none;
-  
-              &:hover .Single-Track-Info-Box{
-                z-index:11;
-              }
+            opacity: 0.8;
+            cursor:pointer;
           }
-
-
 
           .Single-Track-Info-Box{ 
             width: 220px;
@@ -1277,11 +1279,14 @@ body{
             padding: 10px;
             margin: 0px;
             position: absolute;
-            z-index:9;
-            text-shadow: 0px 0px 2px #000000;
+            color: #FFF;
+            text-shadow: 1px 2px 2px #000;
+            display:block;
 
-            &:hover {
-              z-index:11;
+            .Single-Track-Name-Title,
+            .Single-Track-Author-Title{
+              color: @font-color;
+              text-shadow: 1px 2px 2px #000;
             }
 
             .Single-Track-Button-Favourite{
@@ -1292,7 +1297,9 @@ body{
               margin-right:15px;
               top: 0px;
               right: 0px;
-              z-index: 100;
+              display:none;
+              opacity: 0.8;
+              cursor:pointer;
             }
   
             .Single-Track-Comunity-Portal-soundcloud{
@@ -1306,7 +1313,9 @@ body{
               margin-right:15px;
               bottom: 50px;
               right: 0px;
-              z-index: 100;
+              display:none;
+              opacity: 0.8;
+              cursor:pointer;
             }
   
             .Single-Track-Comunity-Portal-yt{
@@ -1316,27 +1325,30 @@ body{
               margin:10px;
               bottom: 0px;
               right: 0px;
-              z-index: 100;
+              display:none;
+              opacity: 0.8;
+              cursor:pointer;
             }
           }
-
-
-
-
 
           .Single-Track-Img{
             width: 240px;
             height: 240px;
-            z-index: 10;
             position: absolute;
+            opacity: 0.5;
+          }  
+          &:hover{
+            z-index: 100;
+            transform: scale(1.2);
+          } 
 
-            &:hover{
-              z-index:8;
-            }
-            &:hover .Single-Track-Info-Box{
-              z-index:11;
-            }
-          }   
+          &:hover .Single-Track-Info-Box,
+          &:hover .Single-Track-Button-Favourite,
+          &:hover .Single-Track-Play-Icon,
+          &:hover .Single-Track-Comunity-Portal-spotify,
+          &:hover .Single-Track-Comunity-Portal-yt{
+            display: block;
+          } 
         }
       }
   }
