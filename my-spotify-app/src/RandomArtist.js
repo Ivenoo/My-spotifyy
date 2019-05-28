@@ -47,7 +47,7 @@ class RandomArtist extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="Random-Artists-Box">
        
        {
          this.state.artistList.map((element, index)=>
