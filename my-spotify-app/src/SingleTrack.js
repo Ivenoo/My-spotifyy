@@ -92,10 +92,16 @@ class SingleTrack extends React.Component {
         }else{
           finishArtists =  <span className='Single-Track-Author'>{tableArtists}</span>
         }
+        let imges = ''
+        if(parentElement.album != undefined){
+          imges = <img src={parentElement.album.images[0].url}  className="Single-Track-Img" alt=" " />
+        }else{
+          imges = ''
+        }
           return(
             <div  key={parentIndex} className="Single-Track" >
             {/* <div className="Single-Track-Img-Play"> */}
-              <img src={parentElement.album.images[0].url}  className="Single-Track-Img" alt=" " />
+              {imges}
               {trackLink}
             {/* </div> */}
             <div className="Shadow-Box"> </div>

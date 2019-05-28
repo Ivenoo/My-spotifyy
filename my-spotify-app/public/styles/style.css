@@ -54,7 +54,6 @@ body .centralaxDD {
   position: fixed;
   z-index: 1001;
   background-color: aquamarine;
-  display: none;
 }
 body .App-Menu {
   margin-top: 30px;
@@ -1111,14 +1110,9 @@ body .Favourite-Song .Favourite-Song-Box .Single-Track {
   float: left;
   background-color: #2b2b2b;
   white-space: trim;
-  transition-duration: 0.5s;
 }
-body .Favourite-Song .Favourite-Song-Box .Single-Track .Shadow-Box {
-  width: 240px;
-  height: 240px;
-  margin: 0px auto;
-  position: absolute;
-  box-shadow: inset 0px 0px 5px 5px #2b2b2b;
+body .Favourite-Song .Favourite-Song-Box .Single-Track:hover .Single-Track-Play-Icon {
+  display: block;
 }
 body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Play-Icon {
   position: absolute;
@@ -1127,6 +1121,7 @@ body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Play-Icon {
   margin: 10px;
   bottom: 0px;
   left: 0px;
+  z-index: 100;
   display: none;
   opacity: 0.8;
   z-index: 15;
@@ -1138,14 +1133,11 @@ body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box {
   padding: 10px;
   margin: 0px;
   position: absolute;
-  color: #FFF;
-  text-shadow: 1px 2px 2px #000;
-  display: block;
+  z-index: 9;
+  text-shadow: 0px 0px 2px #000000;
 }
-body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .Single-Track-Name-Title,
-body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .Single-Track-Author-Title {
-  color: #c86400;
-  text-shadow: 1px 2px 2px #000;
+body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box:hover {
+  z-index: 11;
 }
 body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .Single-Track-Button-Favourite {
   position: absolute;
@@ -1155,9 +1147,7 @@ body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .S
   margin-right: 15px;
   top: 0px;
   right: 0px;
-  display: none;
-  opacity: 0.8;
-  cursor: pointer;
+  z-index: 100;
 }
 body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .Single-Track-Comunity-Portal-soundcloud {
   display: none;
@@ -1169,9 +1159,7 @@ body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .S
   margin-right: 15px;
   bottom: 50px;
   right: 0px;
-  display: none;
-  opacity: 0.8;
-  cursor: pointer;
+  z-index: 100;
 }
 body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .Single-Track-Comunity-Portal-yt {
   position: absolute;
@@ -1180,26 +1168,19 @@ body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Info-Box .S
   margin: 10px;
   bottom: 0px;
   right: 0px;
-  display: none;
-  opacity: 0.8;
-  cursor: pointer;
+  z-index: 100;
 }
 body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Img {
   width: 240px;
   height: 240px;
+  z-index: 10;
   position: absolute;
-  opacity: 0.5;
 }
-body .Favourite-Song .Favourite-Song-Box .Single-Track:hover {
-  z-index: 100;
-  transform: scale(1.2);
+body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Img:hover {
+  z-index: 8;
 }
-body .Favourite-Song .Favourite-Song-Box .Single-Track:hover .Single-Track-Info-Box,
-body .Favourite-Song .Favourite-Song-Box .Single-Track:hover .Single-Track-Button-Favourite,
-body .Favourite-Song .Favourite-Song-Box .Single-Track:hover .Single-Track-Play-Icon,
-body .Favourite-Song .Favourite-Song-Box .Single-Track:hover .Single-Track-Comunity-Portal-spotify,
-body .Favourite-Song .Favourite-Song-Box .Single-Track:hover .Single-Track-Comunity-Portal-yt {
-  display: block;
+body .Favourite-Song .Favourite-Song-Box .Single-Track .Single-Track-Img:hover .Single-Track-Info-Box {
+  z-index: 11;
 }
 body .Scroll-Up {
   width: 30px;

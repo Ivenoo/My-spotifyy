@@ -43,6 +43,8 @@ class FindArtist extends React.Component {
 
     //PRZYPISANIE DO STANU WARTOSCI  Z INPUTA I WYWOLANIE POBIERANIA  LISTY//
   search(value){
+    console.log(this.state.prev);
+    console.log(this.state.next);
       clearTimeout(timeouter);
      
         this.setState({
@@ -74,7 +76,6 @@ class FindArtist extends React.Component {
         const start = link.indexOf('offset=')
         const stop = link.indexOf('&limit')
         const finishoff = link.slice(start,stop)
-        // console.log(finishoff)
         this.setState({
           myoffset: finishoff
         })
@@ -87,7 +88,10 @@ class FindArtist extends React.Component {
       }).then(resp =>{
         this.setState({
         artistList: resp.data.artists.items,
-        prev: resp.data.artists.previous
+        prev: resp.data.artists.previous,
+        next: resp.data.artists.next
+        
+        
       })
       // console.log(this.state.artistList)
       // this.exist()
@@ -110,18 +114,21 @@ class FindArtist extends React.Component {
 
   render() {
     let prevButton = "", nextButton = "";
+
     if(this.state.prev !==null){
-      prevButton = <button onClick={this.getList.bind(this,0,this.state.prev)}>Previous</button>
+      prevButton = <button onClick={this.getList.bind(this,0,this.state.prev)} className="Find-Sounds-Button-Prev">PREV</button>
     }
     if(this.state.next !==null){
-      nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}>Next</button>
+      nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
     return(
       <div>
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
           <input type="text" placeholder="Are you looking for an artist? Type nickname here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
-          <Limit changeLimit={this.limit.bind(this)} />    
+          <Limit changeLimit={this.limit.bind(this)} />   
+          {prevButton}
+          {nextButton} 
         </div>
         <div className="Title-Box">RESULTS</div>
       <div className="list-Artist">
@@ -131,8 +138,7 @@ class FindArtist extends React.Component {
         <SingleArtist  key={index} parentElement={element} parentIndex={index} /> 
       )}
       </div>
-      {prevButton}
-      {nextButton}
+
       </div>
     )
   }
