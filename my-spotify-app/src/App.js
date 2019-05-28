@@ -90,7 +90,7 @@ class App extends React.Component {
       
       <Router>
       <div className="App">
-      <div className="Shadow-Box"></div>
+      <div className="Loader-Shadow-Box"></div>
         <div className="Loader">LOADING...</div>
       <div className="centralaxDD"></div>
         <AppHeader selectAction={this.selectAction} />

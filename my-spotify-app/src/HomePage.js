@@ -29,12 +29,12 @@ class HomePage extends React.Component {
       setTimeout(()=>{
         const Loader = document.querySelector('.Loader');
         Loader.style.display = 'none';
-        const  Shadow = document.querySelector('.Shadow-Box');
-        Shadow.className= "Shadow-Box Shadow-Key";
+        const  Shadow = document.querySelector('.Loader-Shadow-Box');
+        Shadow.className= "Loader-Shadow-Box Shadow-Key";
       },1000)
         setTimeout(()=>{
-          const  Shadow = document.querySelector('.Shadow-Box');
-          Shadow.className= "Shadow-Box";
+          const  Shadow = document.querySelector('.Loader-Shadow-Box');
+          Shadow.className= "Loader-Shadow-Box";
           Shadow.style.display= "none";
           const ShadowScroll = document.querySelector('html');
           ShadowScroll.style.overflowY = 'visible';
@@ -47,8 +47,8 @@ class HomePage extends React.Component {
   componentDidMount(){
     const Loader = document.querySelector('.Loader')
     Loader.style.display = 'block';
-    const  Shadow = document.querySelector('.Shadow-Box')
-    Shadow.className= "Shadow-Box"
+    const  Shadow = document.querySelector('.Loader-Shadow-Box')
+    Shadow.className= "Loader-Shadow-Box"
     Shadow.style.display = 'block';
     Shadow.style.zIndex = '1998';
     const ShadowScroll = document.querySelector('html');
