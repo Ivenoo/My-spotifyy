@@ -1083,10 +1083,10 @@ body{
           position: sticky;
           text-align: center;
           z-index: 999;
-  
-          .Back-Button{
+
+          .Prev-Button{
             margin: 0px auto;
-            width: 200px;
+            width: 100px;
             height: 20px;
             padding: 5px;
             font-size: 20px;
@@ -1094,7 +1094,41 @@ body{
             text-align:center;
             color: rgb(107, 107, 107);
             left: 50%;
-            transform: translateX(-200%); 
+            transform: translateX(-300%);
+  
+            &:hover{
+              color: @font-color;
+            }
+          }
+  
+          .Next-Button{
+            margin: 0px auto;
+            width: 100px;
+            height: 20px;
+            padding: 5px;
+            font-size: 20px;
+            position:absolute;
+            text-align:center;
+            color: rgb(107, 107, 107);
+            left: 50%;
+            transform: translateX(200%);
+  
+            &:hover{
+              color: @font-color;
+            }
+          }
+
+          .Back-Button{
+            margin: 0px auto;
+            width: 170px;
+            height: 20px;
+            padding: 5px;
+            font-size: 20px;
+            position:absolute;
+            text-align:center;
+            color: rgb(107, 107, 107);
+            left: 50%;
+            transform: translateX(-50%); 
   
             &:hover{
               color: @font-color;
@@ -1141,151 +1175,236 @@ body{
         .Results-List{
           margin: 20px 0px 0px 0px;
           border-top: 1px solid;
-          border-bottom: 1px solid;
-          background-color: @back-item;
 
-          .Single-Track{
-            min-height:118px;
-            max-height:300px;
-            border-bottom: solid 1px;
-    
-            .Single-Track-Img{
-              width: 110px;
-              height: 110px;
-              margin-top: 3px;
-              float: left;
-              position: absolute;
-              border-radius: 5px;
-              z-index: 10;
-            }
-    
-            .Single-Track-Play-Icon{
-              height:70px;
-              width:70px;
-              margin:21px 0px 0px 21px;
-              float:left;
-              position:absolute;
-              opacity: 0.5;
-              cursor:pointer;
-              transition-duration: 1s;
-              z-index: 20;
-    
-            }
-    
-            .Single-Track-Info-Box{
-              padding-top:10px;
+          .Playlists-Box{
+            background:@back-item;
+            width:595px;
+            float:left;
+            display:inline;
+            position:relative;
+          
+            .Single-Playlist{
+              border-bottom: solid 1px @font-color;
+              height:150px;
               text-align:center;
-    
-              .Single-Track-Author-Title{
-                display:none;
+              padding-top:5px;
+              transition-duration: 0.5s;
+              position:relative;
+
+              &:hover{
+                background: #5f5f5f !important; 
               }
-    
-                .Single-Track-Author{
-                  font-size:20px;
-                  color:white;
-                  
-    
+           
+              .Single-Playlist-Img{
+                height:100px;
+                width:100px;
+                top: 50%;
+                left: 10px;
+                position:absolute;
+                border-radius:10px;
+                transform: translateY(-50%);
+              }
+
+              .Single-Playlist-Title-Value{
+                font-size: 20px;
+              }             
+
+              .Single-Playlist-Total-Info{
+                position: absolute;
+                top: 85px;
+                left:50%;
+                transform: translateX(-50%);
+
+                .Single-Playlist-Total{
+                  color: #FFFFFF;
+                  font-size: 20px;
+                  display: inline;
+                }         
+                .Single-Playlist-Total-Amount{
+                  font-size: 20px;
+                  display: inline;
+                }        
+              }
+
+              .main-button{
+                border-radius:10px;
+                background: @font-color;
+                cursor: pointer;
+                color:white;
+                bottom: 20px;
+                outline:none;
+                transition-duration: 1s;
+                position: absolute;
+                transform: translateX(-50%);
+                span{
+                  padding:4px;
                 }
-    
+                &:hover{
+                  transform: translateX(-50%) scale(1.1);
+
+                }
+               }
+
+               .Single-Playlist-Find-Spotify{
+                position:absolute;
+                width:100px;
+                height:100px;
+                top:50%;
+                right: 10px;
+                transform: translateY(-50%);
+                filter: grayscale(0.8);
+                cursor:pointer;
+                transition-duration:2s;
+  
+                &:hover{
+                  filter: grayscale(0);
+                  transform: translateY(-50%) rotateZ(360deg) ;
+                }
+              }
+
+            }
+          }
+          .Playlists-Tracks{
+            float:right;
+            width:595px;
+            background:@back-item;
+            display:block;
+
+            .Single-Track{
+              background: @back-item;
+              border-bottom: solid 1px @font-color;
+              cursor:pointer;
+              height: 100px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              transition-duration: 2s;
+              position: relative;
+  
+              &:hover{
+                background: rgb(95, 95, 95); ;
+              }
+
+              .Single-Track-Img{
+                width: 100px;
+                height: 100px;
+                left: 5px;
+                border-radius: 10px;
+                position: absolute
+              }
+  
+              .Single-Track-Play-Icon{
+                width:100px;
+                height:100px;
+                position:absolute;
+                cursor:pointer;
+                transition-duration: 1s;
+                opacity: 0.5;
+                left: 5px;
+
+                &:hover{
+                  opacity: 0.8;
+                }
+              }
+  
+              .Single-Track-Author-Title,
               .Single-Track-Name-Title{
                 display:none;
               }
+
+
+
+              .Single-Track-Author{
+                width: 485px;
+                margin-left:110px;
+                position: absolute;
+                text-align: center;
+                top: 30px;
+                display:inline;
+              }
+
               .Single-Track-Marquee{
-                height: 25px;
-                width: 1200px;
-                overflow: hidden;
-                position: relative;
-                text-align:center;
-    
+  
                 .Find-Artists-Marquee-Box{
-                  display: block;
-                  height: 25px;
-                  position: relative;
-                  overflow: hidden;
-                  margin-left:6%;
-    
+                  text-align:center;
+                  min-height:100px;
+                  padding-left: 110px;
+
                   .Single-Track-Name{
                     font-size:20px;
-                    max-height:25px;
-                    white-space:nowrap;
-                    text-align:right;
-                    margin-left: -74px;
+                    
                   }
                 }
               }
-    
-    
-              .Single-Track-Icon-Box{
-                float: right;
-                width:1200px;
-                
-                .Single-Track-Button-Favourite{
-                  width:50px;
-                  height:50px;
-                  position:static;
-                  float:left;
-                  margin-left:120px;
-                  cursor:pointer;
-                  transition-duration: 1s;
-                  &:hover{
-                    transform:scale(1.2);
-                  }
+  
+            .Single-Track-Icon-Box{
+              width:100%;
+  
+              .Single-Track-Button-Favourite{
+                width:40px;
+                height:40px;
+                bottom:10px;
+                left: 115px;
+                transition-duration: 1s;
+                cursor:pointer;
+                position:absolute;
+  
+                &:hover{
+                  transform:scale(1.2);
                 }
-                .Single-Track-Comunity-Portal-yt{
-                  width:50px;
-                  height:40px;
-                  margin-top:-5px;
-                  position:static;
-                  float:right;
-                  margin-top:4px;
-                  margin-right:10px;
-                  transition-duration: 2s;
-                  &:hover{
-                    filter: grayscale(0);
-                    transform:rotateX(360deg);
-                  }
-    
-                }
-    
-                .Single-Track-Comunity-Portal-spotify{
-                  width:50px;
-                  height:50px;
-                  position:static;
-                  float:right;
-                  margin-right:10px;
-                  transition-duration: 2s;
-                  &:hover{
-                    filter: grayscale(0);
-                    transform:rotateZ(360deg);
-                  }
-                }
-    
-                .Single-Track-Comunity-Portal-soundcloud{
-                  width:50px;
-                  height:50px;
-                  position:static;
-                  float:right;
-                  margin-right:10px;
-                  transition-duration: 2s;
-                  &:hover{
-                    filter: grayscale(0);
-                    transform:rotateY(360deg);
-                  }
-                }
-    
-                .Single-Track-Comunity-Portal-yt,
-                .Single-Track-Comunity-Portal-spotify,
-                .Single-Track-Comunity-Portal-soundcloud{
-                  cursor:pointer;
-                }
-    
               }
-            }
+  
+              .Single-Track-Comunity-Portal-yt{
+                width:40px;
+                height:34px;
+                margin: -49px 0px 0px 450px;
+                transition-duration: 2s;
+  
+                &:hover{
+                  filter: grayscale(0);
+                  transform:rotateX(360deg);
+                }
+              }
+  
+              .Single-Track-Comunity-Portal-spotify{
+                width:40px;
+                height:40px;
+                margin: -50px 0px 0px 500px; 
+                transition-duration: 2s;
+  
+                &:hover{
+                  filter: grayscale(0);
+                  transform:rotateZ(360deg);
+                }
+              }
+              
+              .Single-Track-Comunity-Portal-soundcloud{
+                width:40px;
+                height:40px;
+                margin: -50px 0px 0px 550px; 
+                transition-duration: 2s;
+  
+                &:hover{
+                  filter: grayscale(0);
+                  transform:rotateY(360deg);
+                }
+              }
+  
+            .Single-Track-Comunity-Portal-soundcloud,
+            .Single-Track-Comunity-Portal-spotify,
+            .Single-Track-Comunity-Portal-yt{
+                  filter: grayscale(0.8);
+                  position:absolute;
+                  cursor:pointer;
+                 
+              }
+            } 
           }
 
-  }
+          }
+        }
       }
     }
+
                               ////FIND ALBUMS ///
     .Find-Albums{
         width:1200px;
@@ -1522,7 +1641,6 @@ body{
 
 
   }
-
 
     .Favourite-Song{
       width: 1200;

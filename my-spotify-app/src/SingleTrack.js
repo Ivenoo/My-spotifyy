@@ -74,30 +74,46 @@ class SingleTrack extends React.Component {
     render(){
       const parentElement = this.props.parentElement;
       const parentIndex = this.props.parentIndex;
-      let trackLink = ""
+      let trackLink = "";
       if(parentElement.preview_url !== null) 
       trackLink = <img  className="Single-Track-Play-Icon" onClick={() =>{listen(parentElement.preview_url,parentElement.name)}} src="http://www.freepngclipart.com/download/logo/44070-play-computer-youtube-button-icons-download-free-image.png" width="30px" heigth="30px" alt =" "/>
 
-      let tableArtists = [];
-      let finishArtists = '';
+      let tableArtists = [], title = '';
+
       parentElement.artists.map((element2, index) => {
         if(tableArtists.length < parentElement.artists.length -1){
           tableArtists.push(`${element2.name},`+ ' ')
         }else{
           tableArtists.push(`${element2.name}`)
         }})
+
+        let finishArtists =  <span className='Single-Track-Author'>{tableArtists}</span>
         
         if(tableArtists.length > 5 && window.location.pathname !== '/favourite' ){
           finishArtists = <marquee><span className='Single-Track-Author'>{tableArtists}</span></marquee>
-        }else{
-          finishArtists =  <span className='Single-Track-Author'>{tableArtists}</span>
         }
+
+        if(  tableArtists.length> 3 && window.location.pathname === "/findgenres" ){
+          finishArtists = <span className='Single-Track-Author'><marquee>{tableArtists}</marquee></span>
+        }
+
+
         let imges = ''
+  
+       
         if(parentElement.album != undefined){
           imges = <img src={parentElement.album.images[0].url}  className="Single-Track-Img" alt=" " />
         }else{
           imges = ''
         }
+
+        if(parentElement.name.length >= 40 && window.location.pathname === '/findgenres' ){
+          title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
+        }else{
+          title =  <span className="Single-Track-Name">" {parentElement.name} "</span>
+        }
+
+
           return(
             <div  key={parentIndex} className="Single-Track" >
             {/* <div className="Single-Track-Img-Play"> */}
@@ -111,7 +127,7 @@ class SingleTrack extends React.Component {
               <span className="Single-Track-Name-Title">Title : </span>
               <div className="Single-Track-Marquee">
                  <div className="Find-Artists-Marquee-Box">
-                  <span className="Single-Track-Name">" {parentElement.name} "</span><br/>
+                  {title}<br/>
                 </div>
               </div>
               <div className="Single-Track-Icon-Box">
@@ -128,5 +144,4 @@ class SingleTrack extends React.Component {
 }
 
 export default SingleTrack;
-
 
