@@ -800,8 +800,15 @@ body{
       margin-left:30px;
     }
   }
+  .Find-Albums-And-Player{
+    margin-bottom:68px;
+  }
+  .Find-Album-Tracks-And-Player,
   .Find-Sounds-And-Player{
-    margin-bottom: 49px;
+    margin-bottom:62px;
+  }
+  .Find-Fav-And-Player{
+    margin-bottom:100px ;
   }
 
   .Player-Box-Close{
@@ -1517,7 +1524,6 @@ body{
         .Find-Albums-Tracks-Box{
           float:right;
           width:595px;
-          background:@back-item;
           
           display:none;
 
@@ -1637,11 +1643,10 @@ body{
         }
       }
     }
-   
-
 
   }
 
+                   /// FAVOURITE STYLES///
     .Favourite-Song{
       width: 1200;
       margin-top: 10px;
@@ -1719,7 +1724,7 @@ body{
         border-top: 1px solid;
         border-bottom: 1px solid;
         width: 1200px;
-        margin: 20px 0px 0px 0px;
+        margin-top: 20px;
         background-color: @back-item;
         position: absolute;
 
@@ -1741,6 +1746,7 @@ body{
             margin: 0px auto;
             position: absolute;
             box-shadow: inset 0px 0px 5px 5px @back-item;
+            z-index: 14;
           }
 
           .Single-Track-Play-Icon{
@@ -1752,7 +1758,7 @@ body{
             left: 0px;
             display:none;
             opacity: 0.8;
-            z-index: 15;
+            z-index: 20;
             cursor:pointer;
           }
 
@@ -1765,6 +1771,7 @@ body{
             color: #FFF;
             text-shadow: 1px 2px 2px #000;
             display:block;
+            margin-bottom:30px;
 
             .Single-Track-Name-Title,
             .Single-Track-Author-Title{
@@ -1825,12 +1832,18 @@ body{
             transform: scale(1.2);
           } 
 
-          &:hover .Single-Track-Info-Box,
+          &:hover .Single-Track-Info-Box{
+            display: block;
+            z-index: 15;
+          }
+         
           &:hover .Single-Track-Button-Favourite,
           &:hover .Single-Track-Play-Icon,
           &:hover .Single-Track-Comunity-Portal-spotify,
           &:hover .Single-Track-Comunity-Portal-yt{
             display: block;
+            z-index: 16;
+            cursor:pointer;
           } 
         }
       }

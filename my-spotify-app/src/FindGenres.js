@@ -3,7 +3,7 @@ import axios from 'axios';
 import SinglePlaylist from './SinglePlaylist';
 import SingleTrack from './SingleTrack';
 import Limit from './Limit';
-import {randomOffset} from './Service'
+import {hidePlayer} from './Service'
 
 
 class FindGenres extends React.Component {
@@ -53,13 +53,14 @@ class FindGenres extends React.Component {
   changeLimit(e){
     const newLimit = parseInt(e.currentTarget.value)
     this.setState({
-      limit: newLimit
+      limit: newLimit,
+      myoffset: 0,
     })
     setTimeout(()=>{this.showSongs(this.state.url)}, 100);
   }
 
   tracksList(url, index, totalTracks){
-    console.log("ttt" + totalTracks);
+    hidePlayer()
     this.showSongs(url)
     this.setState({
       myoffset: 0,
@@ -98,7 +99,6 @@ class FindGenres extends React.Component {
     //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
   render() { 
     let display;
-    let pusta = '';
     if(this.state.searchValue === ''){
       display =        
       <div className="Choose-Genre">
@@ -115,7 +115,7 @@ class FindGenres extends React.Component {
     }
     else{
       let back = "", prevButton = "", nextButton="";
-      back = <div className="Back-Button" onClick={()=>this.setState({searchValue: '', tracksList: []})}> All categories </div>
+      back = <div className="Back-Button" onClick={()=>this.setState({searchValue: '', tracksList: [], url: ''})}> All categories </div>
      
       if(this.state.tracksList.length !== 0){
         if(this.state.myoffset  > 0){
