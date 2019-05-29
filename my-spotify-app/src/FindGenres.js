@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import SinglePlaylist from './SinglePlaylist';
 import SingleTrack from './SingleTrack';
 import Limit from './Limit';
 import {randomOffset} from './Service'
@@ -10,27 +11,21 @@ class FindGenres extends React.Component {
     super(props);
     this.state = {
       searchValue: '',
-      searchList:[],
-      limit: 5,
+      backColor: '',
+      playList:[],
+      tracksList: [],
+      totals:'', 
+      limit: 100,
+      myoffset: 0,
       refresh: '',
+      url: "",
     }
   }
-
-    // USTAWIA LIMIT WYSWIETLANYCH  PIOSENEK NA STRONE//
-  limit(e){
-    const limitValue = e.currentTarget.value
-    this.setState({
-      limit: limitValue,
-    })
-   setTimeout(() => this.search(this.state.searchValue),10)
-  }
-
     // POBIERA WARTOSC INPUTA I PRZYPISUJE DO ZMIENNEJ//
     selectGenre(value){
       this.setState({
         searchValue: value,
       });
-      console.log(value)
       setTimeout(() => this.search(this.state.searchValue),10)
     }  
 
@@ -38,11 +33,9 @@ class FindGenres extends React.Component {
   search(value){
     if(value === ''){
       this.setState({
-        searchList: []
+        playList: []
       })
     }else{
-      // let url = `https://api.spotify.com/v1/search?q=genre:${value}&type=track&limit=${this.state.limit}&offset=${randomOffset()}`;
-
       axios({
         url: `https://api.spotify.com/v1/browse/categories/${value}/playlists`,
         headers:{
@@ -50,25 +43,62 @@ class FindGenres extends React.Component {
         }
       }).then(resp =>
         { 
-          console.log(resp.data.playlists.items)
           this.setState({
-            searchList: resp.data.playlists.items
+            playList: resp.data.playlists.items
           })
       }).catch(error => (new Error(console.log(error))))
     }
   }
 
-  changeLimit = (e) =>{
-    const newLimit = e.currentTarget.value
+  changeLimit(e){
+    const newLimit = parseInt(e.currentTarget.value)
     this.setState({
       limit: newLimit
     })
-    setTimeout(()=>{this.search(this.state.searchValue)}, 100);
+    setTimeout(()=>{this.showSongs(this.state.url)}, 100);
   }
-    //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
 
+  tracksList(url, index, totalTracks){
+    console.log("ttt" + totalTracks);
+    this.showSongs(url)
+    this.setState({
+      myoffset: 0,
+      tracksListLength: totalTracks,
+    })
+    // console.log("tototot"+ totalTracks )
+    if(this.state.backColor != ''){
+      const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
+      backingAlbumListColor.style.background="#2b2b2b";
+    }
+    const onShowAlbumList = document.querySelector(`#playlist${index}`)
+    onShowAlbumList.style.background="#5f5f5f";
+    this.setState({
+      backColor: `playlist${index}`
+    })
+  }
+
+
+  showSongs(url){  
+    this.setState({
+      url: url,
+    })
+    url = `${url}?&offset=${this.state.myoffset}&limit=${this.state.limit}`;
+    axios({
+    url: url,
+    headers:{
+      'Authorization': 'Bearer ' + this.props.mytoken
+      }
+    }).then(resp =>{ 
+      this.setState({
+        tracksList: resp.data.items
+      }) 
+    }).catch(error => (new Error(console.log(error))))
+  }
+
+    //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
   render() { 
     let display;
+    let pusta = '';
     if(this.state.searchValue === ''){
       display =        
       <div className="Choose-Genre">
@@ -84,33 +114,64 @@ class FindGenres extends React.Component {
       </div>
     }
     else{
-      let back = "", rerandom = "";
-      back = <div className="Back-Button" onClick={()=>this.setState({searchValue: ''})}> Back to genres list </div>
-      rerandom = <div className="Refresh-Button" onClick={this.search.bind(this, this.state.searchValue)}> Refresh </div>
+      let back = "", prevButton = "", nextButton="";
+      back = <div className="Back-Button" onClick={()=>this.setState({searchValue: '', tracksList: []})}> All categories </div>
+     
+      if(this.state.tracksList.length !== 0){
+        if(this.state.myoffset  > 0){
+          prevButton = <div className="Prev-Button" 
+          onClick={()=>{
+            let newOffset = parseInt(this.state.myoffset) -  parseInt(this.state.limit)
+            if(newOffset < 0) newOffset = 0;
+            this.setState({myoffset: newOffset }); 
+            this.showSongs(this.state.url); 
+          }}> PREV </div>
+        }
 
+        console.log("off+lim " + parseInt(this.state.myoffset+this.state.limit))
+        console.log("Długość " + this.state.tracksListLength)
+
+        if(this.state.myoffset+this.state.limit < this.state.tracksListLength){
+          nextButton = <div className="Next-Button" 
+          onClick={()=>{
+            const newOffset = parseInt(this.state.myoffset + this.state.limit)
+            this.setState({myoffset: newOffset }); 
+            this.showSongs(this.state.url); 
+          }}> NEXT </div>
+        }
+      }
 
       display = 
-      <div className="Genres-Results-Box">
+      <div  className="Genres-Results-Box">
         <div className='Genres-Options'>
           <div className="Genres-Options-Select">
+          {prevButton}
           {back}
-          {rerandom}
+          {nextButton}
           </div>
           <div className="Genres-Options-Limit-Box">
-            Limit: <Limit changeLimit={this.changeLimit.bind(this)}/>
+            Limit: <Limit changeLimit={this.changeLimit.bind(this)} limit={this.state.limit}/>
           </div>
         </div>
-        <div className="Results-List">
-          {/* {this.state.searchList.map((element, index)=>
-            <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
-          )} */}
-          {this.state.searchList.map((element, index)=>
-            // <SingleAlbum key={index} parentElement={element} parentIndex={index}/>
-            <div className="Single-Track" >
-              xD {element.tracks.total} <br/>
-              {element.name}
-            </div>
-          )}
+        <div  className="Results-List">
+
+      
+          <div className="Playlists-Box">
+          { this.state.playList.map((element, index)=>{
+            return(
+              <SinglePlaylist  key={index} parentElement={element} parentTotals={element.tracks.total} parentIndex={index} mytoken={this.props.mytoken} tracksList={this.tracksList.bind(this, element.tracks.href, index, element.tracks.total)}/>
+            )})}
+          </div>
+
+          <div className="Playlists-Tracks">
+            {this.state.tracksList.map((element,index) =>{
+              if(this.state.tracksList.length> 0){
+                return(
+                  <SingleTrack  key={index} parentElement={element.track} parentIndex={index}/>
+                )
+              }
+            })}
+          </div>
         </div>
       </div>
     }
