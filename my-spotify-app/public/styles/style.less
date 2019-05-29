@@ -212,6 +212,7 @@ body{
         color: @font-color;
         background-color: @back-item;
         outline: none;
+        cursor:pointer;
       }
 
       
@@ -822,10 +823,11 @@ body{
 
       .Find-Artists-Single-Artist{
         width:1200px;
-        height:150px;
+        height:160px;
         border-bottom:solid 1px;
         margin: auto;
         position: relative;
+        background: @back-item;
         
         &:hover{
           background:rgb(95, 95, 95); 
@@ -837,13 +839,14 @@ body{
      
 
         .Find-Artists-Img{
-          margin-top:16px;
+          margin-top:30px;
           width:120px;
           height:120px;
           padding-left: 6px;
           position:absolute;
           border-radius:10px;
           z-index:20;
+          background: @back-item;
         }
           
        &:hover .Find-Artists-Img{
@@ -854,11 +857,12 @@ body{
             text-align:center;
 
           .artist-name{
-            top: 15px;
+            top: 5px;
             position: relative;
             display:block;
             color:white;
             font-size:20px;
+            margin-bottom:15px;
             }
 
           .Find-Artists-Genres-Title{
@@ -1517,35 +1521,6 @@ body{
    
 
 
-    .Loader-Albums{
-      display:none;
-      position:absolute;
-      font-size:40px;
-      left:50%;
-      top:50%;
-      transform: translate(-50%,-50%);
-      z-index:2000;
-      overflow-y: hidden;
-    }
-  
-    
-  
-    .Loader-Shadow-Box-Albums{
-      position:absolute;
-      z-index:998;
-      margin-top: 165px;
-      height:135%;
-      width:1200px;
-      background:@back-color;
-      display:none ;
-      // opacity: 0.7;
-      overflow-x: hidden;
-      overflow-y: hidden;
-    }
-  
-    .Shadow-Key-Albums{
-      animation: Shadow_box 2s linear ;
-    }
   }
 
 
@@ -1579,6 +1554,7 @@ body{
           color: rgb(107, 107, 107);
           left: 50%;
           transform: translateX(-300%);
+          cursor:pointer;
 
           &:hover{
             color: @font-color;
@@ -1596,6 +1572,7 @@ body{
           color: rgb(107, 107, 107);
           left: 50%;
           transform: translateX(200%);
+          cursor:pointer;
 
           &:hover{
             color: @font-color;
@@ -1762,14 +1739,19 @@ body{
     padding-bottom:60px !important;
   }
 
-  .notexist{
+  .exist{
   display: none
   }
-  .exist{
-    display: block
+  .notexist{
+    display: block;
+    text-align:center;
+    font-size:25px;
+    margin-top:20px;
+    color:white;
   }
   .title{
     color:red;
+    display:block;
   }
   .main-buttonc{
     display:none;
@@ -1799,11 +1781,56 @@ body{
     overflow-y: hidden;
   }
 
+  .Shadow-Loader{
+    animation: Shadow_box 0.4s linear ;
+  }
   .Shadow-Key{
-    animation: Shadow_box 2s linear ;
+    animation: Shadow_box 1.2s linear ;
   }
 
 
+}
+
+.Loader-Finders{
+  display:none;
+  position:absolute;
+  font-size:40px;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  z-index:2000;
+  overflow-y: hidden;
+}
+
+
+
+.Loader-Shadow-Box-Finders{
+  position:absolute;
+  z-index:998;
+  margin-top: 165px;
+  height:135%;
+  width:1200px;
+  background:@back-color;
+  display:none ;
+  // opacity: 0.7;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.Shadow-Loader-Finders{
+  animation: Shadow_box 0.3s linear ;
+}
+.Shadow-Key-Finders{
+  animation: Shadow_box 1.2s linear ;
+}
+
+.Searching-Limit{
+  cursor:pointer;
+}
+
+.Loader-Icon{
+  height:400px;
+  width:400px;
 }
 }
 

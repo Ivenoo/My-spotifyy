@@ -28,17 +28,22 @@ class HomePage extends React.Component {
     })).then(resp =>{
       setTimeout(()=>{
         const Loader = document.querySelector('.Loader');
-        Loader.style.display = 'none';
+        Loader.className = 'Loader Shadow-Loader';
         const  Shadow = document.querySelector('.Loader-Shadow-Box');
         Shadow.className= "Loader-Shadow-Box Shadow-Key";
       },1000)
+        setTimeout(()=>{
+          const Loader = document.querySelector('.Loader');
+          Loader.className = 'Loader';
+          Loader.style.display = 'none';
+        },1400)
         setTimeout(()=>{
           const  Shadow = document.querySelector('.Loader-Shadow-Box');
           Shadow.className= "Loader-Shadow-Box";
           Shadow.style.display= "none";
           const ShadowScroll = document.querySelector('html');
           ShadowScroll.style.overflowY = 'visible';
-        },2999)
+        },2200)
 
     })}
   }

@@ -6,7 +6,7 @@ class Limit extends React.Component {
 
     render(){
         return(
-            <select className="Searching-Limit" onChange={this.props.changeLimit.bind(this)} >
+            <select className="Searching-Limit"  onChange={this.props.changeLimit.bind(this)} >
                 <option>5</option>
                 <option>10</option>
                 <option>15</option>

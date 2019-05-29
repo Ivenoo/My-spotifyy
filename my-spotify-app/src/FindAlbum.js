@@ -13,7 +13,7 @@ class FindAlbum extends React.Component {
       searchValue: [],
       albumList:[],
       searchValueToExist: '',
-      notFindAlbum: 'notexist',
+      notFindAlbum: 'exist',
       timeout: 0,
       valuee: 's',
       tracksList: [],
@@ -26,10 +26,12 @@ class FindAlbum extends React.Component {
 
               //POBIERANIE LISTY  ALBUMOW  Z API // 
   search(e){
-    const LoaderAlbums = document.querySelector('.Loader-Albums');
+    const ShadowScroll = document.querySelector('html');
+    ShadowScroll.style.overflowY = 'hidden';
+    const LoaderAlbums = document.querySelector('.Loader-Finders');
     LoaderAlbums.style.display = 'block';
-    const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
-    ShadowAlbums.className= "Loader-Shadow-Box-Albums";
+    const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+    ShadowAlbums.className= "Loader-Shadow-Box-Finders";
     ShadowAlbums.style.display = 'block';
     ShadowAlbums.style.zIndex = '1998';
 
@@ -47,15 +49,15 @@ class FindAlbum extends React.Component {
     if(value === ''){
       this.setState({
         albumList: [],
-        notFindAlbum: 'notexist',
+        notFindAlbum: 'exist',
         next: null,
         prev: null,
         backColor: '',
       })
-      const LoaderAlbums = document.querySelector('.Loader-Albums');
+      const LoaderAlbums = document.querySelector('.Loader-Finders');
       LoaderAlbums.style.display = 'none';
-      const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
-      ShadowAlbums.className= "Loader-Shadow-Box-Albums";
+      const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+      ShadowAlbums.className= "Loader-Shadow-Box-Finders";
       ShadowAlbums.style.display= "none";
 
       const results = document.querySelector('.Title-Box-Res');
@@ -96,24 +98,40 @@ class FindAlbum extends React.Component {
         'Authorization': 'Bearer ' + this.props.mytoken
         }
       }).then(resp =>{
-       const results = document.querySelector('.Title-Box-Res')
-       results.style.display='block'
+
         this.setState({
         albumList: resp.data.albums.items,
         prev: resp.data.albums.previous,
         next: resp.data.albums.next
       })
+        if(window.location.pathname === "/findalbum"){
+          const results = document.querySelector('.Title-Box-Res')
+          results.style.display='block'
+        }
+        const LoaderAlbums = document.querySelector('.Loader-Finders');
+        LoaderAlbums.className = 'Loader-Finders Shadow-Loader-Finders'
+        const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+        ShadowAlbums.className= "Loader-Shadow-Box-Finders Shadow-Key-Finders"; 
       
-        const LoaderAlbums = document.querySelector('.Loader-Albums');
-        LoaderAlbums.style.display = 'none';
-        const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
-        ShadowAlbums.className= "Loader-Shadow-Box-Albums Shadow-Key-Albums"; 
-      
+        setTimeout(()=>{
+          if(this.state.exist !== 'notexist' && document.querySelector('#album4') ){
+            const ShadowScroll = document.querySelector('html');
+            ShadowScroll.style.overflowY = 'visible';
+          }
+        },100)
+
+        setTimeout(()=>{
+          const LoaderAlbums = document.querySelector('.Loader-Finders');
+          LoaderAlbums.className = 'Loader-Finders'
+          LoaderAlbums.style.display = 'none';
+        },300)
       setTimeout(()=>{
-        const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Albums');
-        ShadowAlbums.className= "Loader-Shadow-Box-Albums";
-        ShadowAlbums.style.display= "none";
-       },2000)
+        if(window.location.pathname === "/findalbum"){
+          const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+          ShadowAlbums.className= "Loader-Shadow-Box-Finders";
+          ShadowAlbums.style.display= "none";
+        }
+       },1200)
 
       const albumListTracks  = document.querySelector('.Find-Albums-Tracks-Box')  
       albumListTracks.style.display = "block";
@@ -160,11 +178,11 @@ class FindAlbum extends React.Component {
   exist =() =>{
     if(this.state.albumList.length <= 0 && this.state.searchValue.length > 0){
     this.setState({
-      notFindAlbum: 'exist'
+      notFindAlbum: 'notexist'
     })
     }else{
       this.setState({
-        notFindAlbum: 'notexist'
+        notFindAlbum: 'exist'
       })
     }
   }
@@ -181,8 +199,8 @@ class FindAlbum extends React.Component {
     }
     return( 
       <div className="Find-Albums">
-           <div className="Loader-Shadow-Box-Albums"></div>
-           <div className="Loader-Albums">LOADING...</div>
+           <div className="Loader-Shadow-Box-Finders"></div>
+           <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
       
         
         <div className="Title-Box">SEARCH</div>
@@ -193,7 +211,7 @@ class FindAlbum extends React.Component {
         </div>
         <div className="Find-Album-All-Resutls">
         <div className="Title-Box-Res">RESULTS</div>
-       <span className={this.state.notFindAlbum}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
+       <span className={this.state.notFindAlbum}> NOT FOUND :<span className="title">{this.state.searchValueToExist} </span></span>
        <div className="Find-Albums-Box">
        { this.state.albumList.map((element, index)=>
           <SingleAlbum  key={index} parentElement={element} parentIndex={index} mytoken={this.props.mytoken} tracksList={this.openList.bind(this,element.id,index)}/>

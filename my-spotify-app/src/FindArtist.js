@@ -17,10 +17,12 @@ class FindArtist extends React.Component {
       next: null,
       myoffset: 'offset=0',
       timeout: 0,
-      notFindArtist: 'notexist',
+      notFindArtist: 'exist',
       searchValueToExist: ''
     }
   }
+
+
     
     //WYZNACZANIE LIMITU WYSWIETLNYCH PIOSENEK NA STRONE//
   limit(e){
@@ -44,8 +46,15 @@ class FindArtist extends React.Component {
 
     //PRZYPISANIE DO STANU WARTOSCI  Z INPUTA I WYWOLANIE POBIERANIA  LISTY//
   search(value){
+    const ShadowScroll = document.querySelector('html');
+    ShadowScroll.style.overflowY = 'hidden';
+    const LoaderAlbums = document.querySelector('.Loader-Finders');
+    LoaderAlbums.style.display = 'block';
+    const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+    ShadowAlbums.className= "Loader-Shadow-Box-Finders";
+    ShadowAlbums.style.display = 'block';
+    ShadowAlbums.style.zIndex = '1998';
       clearTimeout(timeouter);
-     
         this.setState({
           searchValue: value
         })
@@ -55,8 +64,15 @@ class FindArtist extends React.Component {
     artistList: [],
     prev: null,
     next: null,
-    notFindArtist: 'notexist'
+    notFindArtist: 'exist'
   })
+
+  const LoaderAlbums = document.querySelector('.Loader-Finders');
+  LoaderAlbums.style.display = 'none';
+  const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+  ShadowAlbums.className= "Loader-Shadow-Box-Finders";
+  ShadowAlbums.style.display= "none";
+
   const results = document.querySelector('.Title-Box-Res')
   results.style.display='none'
   }else{
@@ -87,14 +103,45 @@ class FindArtist extends React.Component {
         'Authorization': 'Bearer ' + this.props.mytoken
         }
       }).then(resp =>{
-        const results = document.querySelector('.Title-Box-Res')
-        results.style.display='block'
-        this.setState({
-        artistList: resp.data.artists.items,
-        prev: resp.data.artists.previous,
-        next: resp.data.artists.next
-      })
-      this.exist()
+
+          this.setState({
+          artistList: resp.data.artists.items,
+          prev: resp.data.artists.previous,
+          next: resp.data.artists.next
+        })
+
+        if(window.location.pathname === "/findartist"){
+          const results = document.querySelector('.Title-Box-Res')
+          results.style.display='block'
+        }
+        const LoaderAlbums = document.querySelector('.Loader-Finders');
+        LoaderAlbums.className = 'Loader-Finders Shadow-Loader-Finders'
+          const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+          ShadowAlbums.className= "Loader-Shadow-Box-Finders Shadow-Key-Finders"; 
+        
+                
+        setTimeout(()=>{
+          if(this.state.exist !== 'notexist' && document.querySelector('#artist4') ){
+            const ShadowScroll = document.querySelector('html');
+            ShadowScroll.style.overflowY = 'visible';
+          }
+        },100)
+
+        setTimeout(()=>{
+          const LoaderAlbums = document.querySelector('.Loader-Finders');
+          LoaderAlbums.className = 'Loader-Finders'
+          LoaderAlbums.style.display = 'none';
+        },300)
+
+        setTimeout(()=>{
+          if(window.location.pathname === "/findartist"){
+          const  ShadowAlbums = document.querySelector('.Loader-Shadow-Box-Finders');
+          ShadowAlbums.className= "Loader-Shadow-Box-Finders";
+          ShadowAlbums.style.display= "none";
+          }
+        },1200)
+
+        this.exist()
       }).catch(error => (new Error(console.log(error))))
   
     
@@ -103,11 +150,11 @@ class FindArtist extends React.Component {
   exist =() =>{
     if(this.state.artistList.length <= 0 && this.state.searchValueToExist.length > 0){
       this.setState({
-        notFindArtist: 'exist'
+        notFindArtist: 'notexist'
       })
     }else{
       this.setState({
-        notFindArtist: 'notexist'
+        notFindArtist: 'exist'
       })
     }
   }
@@ -123,6 +170,10 @@ class FindArtist extends React.Component {
     }
     return(
       <div>
+        
+        <div className="Loader-Shadow-Box-Finders"></div>
+           <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
+
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
           <input type="text" placeholder="Are you looking for an artist? Type nickname here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
@@ -132,7 +183,7 @@ class FindArtist extends React.Component {
         </div>
         <div className="Title-Box-Res">RESULTS</div>
       <div className="list-Artist">
-      <span className={this.state.notFindArtist}><strong className="title">{this.state.searchValueToExist} </strong> not exist</span>
+      <span className={this.state.notFindArtist}>NOT FOUND : <span className="title">{this.state.searchValueToExist} </span> </span>
       {
         this.state.artistList.map((element, index)=>
         <SingleArtist  key={index} parentElement={element} parentIndex={index} /> 

@@ -35,21 +35,27 @@ class SingleArtist extends React.Component {
       let genresTable = []
     if(parentElement.genres.length != []){
        {parentElement.genres.map((element,index) =>{
-         if(genresTable.length < parentElement.genres.length -1){
-          genresTable.push(` ${element}`);
+         if(genresTable.length < parentElement.genres.length -1 ){
+          genresTable.push(` ${element}, `);
          }else{
-          genresTable += `${element}`;
+          genresTable.push `${element}`;
          }
       })}
     }else{
       genresTable = <span>not specified </span>
     }
-    
+    const parentIndex = `artist${this.props.parentIndex}`
+    let artistName = '';
+    if(parentElement.name.length > 100){
+      artistName = <marquee className="artist-name">{parentElement.name}</marquee>
+    }else{
+      artistName = <span className="artist-name">{parentElement.name}</span>
+    }
       return(   
         <div className="Find-Artists-Single-Artist">
         {artistPhoto}
-        <div className='Find-Artist-Info-Box'>
-         <span className="artist-name">{parentElement.name}</span><br/>
+        <div id={parentIndex} className='Find-Artist-Info-Box'>
+         {artistName}
         <span className="Find-Artists-Genres-Title">genres of music:</span>
         <div className="Find-Artists-Genres-Value">
           <div className="marquee">

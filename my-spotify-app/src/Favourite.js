@@ -42,17 +42,21 @@ class Favourite extends React.Component {
 
         setTimeout(()=>{
           const Loader = document.querySelector('.Loader');
-          Loader.style.display = 'none';
+          Loader.className = 'Loader Shadow-Loader';
           const  Shadow = document.querySelector('.Loader-Shadow-Box');
           Shadow.className= "Loader-Shadow-Box Shadow-Key";
           
         },1000)
-
+        setTimeout(()=>{
+          const Loader = document.querySelector('.Loader');
+          Loader.className = 'Loader';
+          Loader.style.display = 'none';
+        },1400)
         setTimeout(()=>{
           const  Shadow = document.querySelector('.Loader-Shadow-Box');
           Shadow.className= "Loader-Shadow-Box";
           Shadow.style.display= "none";
-         },3000)
+         },2200)
 
       })
     )
@@ -69,7 +73,8 @@ class Favourite extends React.Component {
     ShadowScroll.style.overflowY = 'visible';
     const newLimit = e.currentTarget.value
     this.setState({
-      limit: newLimit
+      limit: newLimit,
+      myoffset: 0
     })
   }
 
