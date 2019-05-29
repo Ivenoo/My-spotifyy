@@ -39,19 +39,20 @@ class Favourite extends React.Component {
             favArray: this.state.favArray
           }) 
       }).then(resp =>{
+
         setTimeout(()=>{
           const Loader = document.querySelector('.Loader');
           Loader.style.display = 'none';
           const  Shadow = document.querySelector('.Loader-Shadow-Box');
           Shadow.className= "Loader-Shadow-Box Shadow-Key";
+          
         },1000)
 
         setTimeout(()=>{
           const  Shadow = document.querySelector('.Loader-Shadow-Box');
           Shadow.className= "Loader-Shadow-Box";
           Shadow.style.display= "none";
-
-        },3000)
+         },3000)
 
       })
     )
@@ -64,6 +65,8 @@ class Favourite extends React.Component {
 
       //USTAWIENIE LIMITU WYSWIETLANYCH PIOSENEK//
   changeLimit = (e) =>{
+    const ShadowScroll = document.querySelector('html');
+    ShadowScroll.style.overflowY = 'visible';
     const newLimit = e.currentTarget.value
     this.setState({
       limit: newLimit
