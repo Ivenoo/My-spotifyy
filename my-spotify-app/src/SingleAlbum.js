@@ -14,7 +14,7 @@ class SingleAlbum extends React.Component {
     }
 
     testow = (index) =>{
-      return(`playlist${index}`)
+      return(`album${index}`)
     }
 
     

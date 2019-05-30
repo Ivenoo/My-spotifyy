@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SingleAlbum from './SingleAlbum';
 import SingleTrack from './SingleTrack';
+import {hidePlayer} from './Service';
 
 
 let timeouter;
@@ -159,7 +160,8 @@ class FindAlbum extends React.Component {
         //ZMIANA PRZYCISKU ROZWIJANIA LISTY//
   
         //ROZWIJANIE LISTY //
-      openList = (id,index) =>{
+      trackList = (id,index) =>{
+        hidePlayer()
         this.showSongs(id)
         if(this.state.backColor != ''){
           const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
@@ -167,6 +169,7 @@ class FindAlbum extends React.Component {
         }
         const onShowAlbumList = document.querySelector(`#album${index}`)
         onShowAlbumList.style.background="#5f5f5f";
+
         this.setState({
           backColor: `album${index}`
         })
@@ -214,7 +217,7 @@ class FindAlbum extends React.Component {
        <span className={this.state.notFindAlbum}> NOT FOUND :<span className="title">{this.state.searchValueToExist} </span></span>
        <div className="Find-Albums-Box">
        { this.state.albumList.map((element, index)=>
-          <SingleAlbum  key={index} parentElement={element} parentIndex={index} mytoken={this.props.mytoken} tracksList={this.openList.bind(this,element.id,index)}/>
+          <SingleAlbum  key={index} parentElement={element} parentIndex={index} mytoken={this.props.mytoken} tracksList={this.trackList.bind(this,element.id,index)}/>
         )}
         </div>
         <div className= "Find-Albums-Tracks-Box">

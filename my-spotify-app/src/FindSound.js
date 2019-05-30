@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SingleTrack from './SingleTrack';
 import Limit from './Limit'
-
+import {hidePlayer} from './Service'
 
 let timeouter;
 
@@ -40,7 +40,7 @@ class FindSound extends React.Component {
   }
     //FUNKCJA  PRZYPISUJACA CZYSZCZACA LISTE JESLI INPUT JEST PUSTY W PRZECIWNYM WYPADKU URUCHAMIA FUNKCJE  POBIERZ PIOSENKI//
   search(value){
-
+    hidePlayer()
     const ShadowScroll = document.querySelector('html');
     ShadowScroll.style.overflowY = 'hidden';
     const LoaderAlbums = document.querySelector('.Loader-Finders');
@@ -139,11 +139,6 @@ class FindSound extends React.Component {
   }
 
 
-  listen(url){
-    if(url != null){
-  window.open(url)
-  }
-  }
 
   exist =() =>{
     if(this.state.trackList.length <= 0 && this.state.searchValue.length > 0){
@@ -156,7 +151,7 @@ class FindSound extends React.Component {
       })
   }
   }
-
+  
   render() {
     let prevButton = "", nextButton = "";
     if(this.state.prev !==null){
@@ -165,6 +160,7 @@ class FindSound extends React.Component {
     if(this.state.next !==null){
       nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
+
     return(
       <div className="Find-Sounds">
            {this.props.check}       
@@ -186,7 +182,7 @@ class FindSound extends React.Component {
           <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
         )}
       </div>
-
+        
       </div>
     )
   }

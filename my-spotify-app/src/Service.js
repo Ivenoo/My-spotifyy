@@ -26,6 +26,20 @@ export const hidePlayer = () => {
     }else if(document.querySelector('.Find-Sounds')){
         let appContent =  document.querySelector('.Find-Sounds');
         appContent.className = "Find-Sounds" ;
+    }else if(document.querySelector('.Find-Albums')){
+        let appContent =  document.querySelector('.Find-Albums-Album-Tracks');
+        appContent.className = "Find-Albums-Album-Tracks" ;
+        let appContent2 =  document.querySelector('.Find-Albums-Box');
+        appContent2.className = "Find-Albums-Box" ;
+    }else if(document.querySelector('.Favourite-Song-Box')){
+        let appContent =  document.querySelector('.Favourite-Song-Box');
+        appContent.className = "Favourite-Song-Box" ;
+    }else if(document.querySelector('.Playlists-Box')){
+        let appContent =  document.querySelector('.Playlists-Box');
+        appContent.className = "Playlists-Box" ;
+        let appContent2 =  document.querySelector('.Playlists-Tracks');
+        appContent2.className = "Playlists-Tracks" ;
+        
     }
 }
 
@@ -60,6 +74,20 @@ export const ScrollUp = () =>{
     }else if(document.querySelector('.Find-Sounds')){
         let appContent =  document.querySelector('.Find-Sounds');
         appContent.className = "Find-Sounds Find-Sounds-And-Player" ;
+
+    }else if(document.querySelector('.Find-Albums')){
+        let appContent =  document.querySelector('.Find-Albums-Album-Tracks');
+        appContent.className = "Find-Albums-Album-Tracks Find-Album-Tracks-And-Player" ;
+        let appContent2 =  document.querySelector('.Find-Albums-Box');
+        appContent2.className = "Find-Albums-Box Find-Albums-And-Player" ;
+    }else if(document.querySelector('.Favourite-Song-Box')){
+        let appContent =  document.querySelector('.Favourite-Song-Box');
+        appContent.className = "Favourite-Song-Box Find-Fav-And-Player" ;
+    }else if(document.querySelector('.Playlists-Box')){
+        let appContent =  document.querySelector('.Playlists-Box');
+        appContent.className = "Playlists-Box Find-Album-Tracks-And-Player" ;
+        let appContent2 =  document.querySelector('.Playlists-Tracks');
+        appContent2.className = "Playlists-Tracks Find-Albums-And-Player" ;
     }
 
 
