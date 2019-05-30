@@ -154,10 +154,10 @@ class FindSound extends React.Component {
   
   render() {
     let prevButton = "", nextButton = "";
-    if(this.state.prev !==null){
+    if(this.state.prev !== null){
       prevButton = <button onClick={this.getList.bind(this,0,this.state.prev)} className="Find-Sounds-Button-Prev">PREV</button>
     }
-    if(this.state.next !==null){
+    if(this.state.next !== null){
       nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
 

@@ -785,20 +785,29 @@ body{
       outline:none;
       cursor:pointer;
       transition-duration: 1s;
-
-      &:hover{
-        transform:scale(1.1);
-        color:@font-color;
-      }
-
     }
 
     .Find-Sounds-Button-Prev{
-      margin-left:-1007px;
+      left: 50%;
+      transform: translateX(-640%);
+      z-index:2000;
+
+      &:hover{
+        transform: scale(1.1) translateX(-580%);
+        color:@font-color;
+      }
     }
     .Find-Sounds-Button-Next{
-      margin-left:30px;
+      left: 50%;
+      transform: translateX(540%);
+
+      &:hover{
+        transform: scale(1.1) translateX(490%);
+        color:@font-color;
+      }
     }
+
+
   }
   .Find-Albums-And-Player{
     margin-bottom:68px;
