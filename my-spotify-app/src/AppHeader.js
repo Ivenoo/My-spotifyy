@@ -25,9 +25,16 @@ class AppHeader extends React.Component {
     this.setState({
        refresh: ''
     }); 
-    hidePlayer()
+    hidePlayer();
+    this.setState({ state: this.state });
   }
- 
+
+  updateHeader = () =>{
+    setTimeout(()=>{
+      this.setState({ refresh: this.refresh })
+    }, 2000)
+  }
+
   render() {
     return(
       <div className='App-Menu'>
@@ -37,6 +44,7 @@ class AppHeader extends React.Component {
         <Link className={this.targetButton('/findalbum')}  onClick={() => {this.refresh()}} to="/findalbum">Albums</Link>
         <Link className={this.targetButton('/findgenres')} onClick={() => {this.refresh()}} to="/findgenres">Category</Link>
         <Link className={this.targetButton('/favourite')}  onClick={() => {this.refresh()}} to="/favourite">Favourite</Link>
+          {this.updateHeader()}
         </div>  
     )
   }

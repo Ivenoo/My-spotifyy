@@ -74,24 +74,21 @@ class App extends React.Component {
   check = () =>{
     if(this.state.mytoken === ''){
       this.refreshToken() 
-  }
-}
-
-
-
+    }
+  } 
 
   render() {
     if(!localStorage.getItem("limit")){
       localStorage.setItem("limit" , 20)
     }
-   
+  
     this.check()
-    return (
-      
+
+    return (   
       <Router>
       <div className="App">
       <div className="Loader-Shadow-Box"></div>
-        <div className="Loader"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
+        <div className="Loader"><img  className="Loader-Icon" alt=" " src='./img/loader.gif'/></div>
       <div className="centralaxDD"></div>
         <AppHeader selectAction={this.selectAction} />
         <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/> 

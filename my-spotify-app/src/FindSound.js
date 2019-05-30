@@ -167,7 +167,7 @@ class FindSound extends React.Component {
     }
     return(
       <div className="Find-Sounds">
-                
+           {this.props.check}       
            <div className="Loader-Shadow-Box-Finders"></div>
            <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
 
@@ -176,7 +176,8 @@ class FindSound extends React.Component {
           <input type="text" placeholder="Do you want to find a song? Enter its title here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
           <Limit changeLimit={this.limit.bind(this)} />  
           {prevButton}
-          {nextButton}  
+          {nextButton}
+          
         </div>
         <div className="Title-Box-Res">RESULTS</div>
       <span className={this.state.notFindTracks}> NOT FOUND : <span className="title">{this.state.searchValue} </span></span>
