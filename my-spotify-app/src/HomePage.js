@@ -88,7 +88,7 @@ class HomePage extends React.Component {
         </div>
         <div className="Album-Box-Right-Smooth"></div> 
       </div>
-      <div className='Homepage-Track-Box'>
+      <div className='Homepage-Track-Box '>
         <div className='Title-Box' >RANDOM TRACKS</div>
      { this.state.randomSongs.map((element, index)=>
       <RandomSingleTrack  key={index} parentElement={element} parentIndex={index} />

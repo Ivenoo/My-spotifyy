@@ -1896,7 +1896,7 @@ body{
   }
   .Loader{
     display:none;
-    position:absolute;
+    position:fixed;
     font-size:40px;
     left:50%;
     top:50%;
@@ -1910,7 +1910,7 @@ body{
   .Loader-Shadow-Box{
     position:absolute;
     z-index:998;
-    height:100%;
+    height:300%;
     width:1200px;
     background:@back-color;
     display:none;
@@ -1977,21 +1977,140 @@ html{
 }
 
 
-@media only screen and (max-width:767px){
+@media only screen and (max-width:1199px){
   body{
-    background:blue;
+
+    .App{
+      width:100%;
+      .App-Content{
+
+                                                   //---------- HOMEPAGE TABLET ----------//
+
+        .Homepage-Box{
+
+          .Right-Clear{
+            margin-left:98%;
+          }
+          .Homepage-Albums-Box{
+            
+            .Album-Box-Right-Smooth{
+              margin-left: 100%;
+              transform: translateX(-138%);
+              
+            }
+          }
+
+          .Homepage-Track-Box{
+            width:51% ;
+
+            .Single-Track{
+
+              .Single-Track-Author-Title{
+                width:18%;
+              }
+
+              .Single-Track-Author {
+                margin-left:4px;
+              } 
+
+              .Single-Track-Name-Title{
+                width:12%;
+              }
+
+              .Single-Track-Marquee-Author{
+                width:84%;
+              }
+
+              .Single-Track-Icon-Box{
+                width:100%;
+                margin-top:31px;
+                
+                .Single-Track-Comunity-Portal-yt{
+                  margin-left:13px;
+                  margin-top:16.5px;
+                }
+
+                .Single-Track-Comunity-Portal-spotify{
+                  margin-left:80px;
+                  margin-top:12px;
+                }
+
+                .Single-Track-Comunity-Portal-soundcloud{
+                  margin-left:141px;
+                }
+              }
+
+            }
+          }
+                
+          .Homepage-Artist-Box{
+            width:51% ;
+            margin-left:53%;
+            
+            .Random-Artists-Box{
+
+              .Random-Artists-Info-Box{
+
+              }
+
+              .Single-Track-Icon-Box{
+
+                .Single-Track-Comunity-Portal-fb{
+                  margin-left:120px ;
+                  margin-top:6px;
+                }
+                .Single-Track-Comunity-Portal-tw{
+                  margin-left:180px ;
+                  margin-top:7px;
+                }
+                .Single-Track-Comunity-Portal-pinterest{
+                  margin-left:240px ;
+                  margin-top:5px;
+                }
+
+              }
+            }
+          }
+        }
+        .Player-Box{
+          width:99%;
+
+          .Track-Name-Audio{
+            margin-left: 50%;
+            transform: translateX(-50%);
+          }
+          .Player{
+            width:100%;
+          }
+        .Player-Box-Close{
+          margin-left:100%;
+          transform: translateX(-120%);
+          }
+        }
+      }
+
+                                                //---------- FIND SOUND TABLET ----------//
+      .Find-Sounds{
+
+        .Searching-Bar{
+
+          .Searching-Field{
+            width: 70%;
+          }
+        }
+      }
+    }
   }
-  
 }
 
 
-@media only screen and (max-width:599px){
+@media only screen and (max-width:799px){
   body{
     background:red;
   }
 }
 
-@media only screen and (max-width:480px){
+@media only screen and (max-width:599px){
   body{
     background:green;
   }

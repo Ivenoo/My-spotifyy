@@ -84,7 +84,7 @@ class RandomSingleTrack extends React.Component {
             <div className="Single-Track-Info-Box">
               <span className="Single-Track-Author-Title">Author : </span>
                 <div >
-                  <span  className="Single-Track-Author"> {parentElement.artists[0].name}</span><br/>
+                  <span  className="Single-Track-Author "> {parentElement.artists[0].name}</span><br/>
                 </div>
               <span className="Single-Track-Name-Title">Title : </span>
               <marquee className="Single-Track-Marquee-Author"  >
