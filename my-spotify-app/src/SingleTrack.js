@@ -89,7 +89,7 @@ class SingleTrack extends React.Component {
 
         let finishArtists =  <span className='Single-Track-Author'>{tableArtists}</span>
         
-        if(tableArtists.length > 5 && window.location.pathname !== '/favourite' ){
+        if(tableArtists.length > 3 && window.location.pathname !== '/favourite' ){
           finishArtists = <marquee><span className='Single-Track-Author'>{tableArtists}</span></marquee>
         }
 
@@ -112,8 +112,14 @@ class SingleTrack extends React.Component {
         }else{
           title =  <span className="Single-Track-Name">" {parentElement.name} "</span>
         }
-
-
+        let forTablet = window.matchMedia("(max-width: 900px)")
+        if(forTablet){
+          if(parentElement.name.length >= 77){
+            title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
+          }else{
+            title =  <span className="Single-Track-Name">" {parentElement.name} "</span>
+          }
+        }
           return(
             <div  key={parentIndex} className="Single-Track" >
             {/* <div className="Single-Track-Img-Play"> */}
@@ -123,7 +129,7 @@ class SingleTrack extends React.Component {
             <div className="Shadow-Box"> </div>
             <div className="Single-Track-Info-Box">
                 <span className="Single-Track-Author-Title">Author : </span>
-                <div>{finishArtists}</div>
+                <div className="Single-Track-Author-Box">{finishArtists}</div>
               <span className="Single-Track-Name-Title">Title : </span>
               <div className="Single-Track-Marquee">
                  <div className="Find-Artists-Marquee-Box">

@@ -169,7 +169,7 @@ class FindArtist extends React.Component {
       nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
     return(
-      <div>
+      <div className ='Find-Artists'>
         
         <div className="Loader-Shadow-Box-Finders"></div>
            <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>

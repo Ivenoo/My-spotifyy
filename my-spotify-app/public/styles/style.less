@@ -636,6 +636,9 @@ body{
         min-height:118px;
         max-height:300px;
         border-bottom: solid 1px;
+        &:hover{
+          background:rgb(107, 107, 107);
+        }
 
         .Single-Track-Img{
           width: 110px;
@@ -2096,15 +2099,102 @@ html{
           transform: translateX(-120%);
           }
         }
-      }
+      
 
                                                 //---------- FIND SOUND TABLET ----------//
-      .Find-Sounds{
+        .Find-Sounds{
 
-        .Searching-Bar{
+          .Searching-Bar{
 
-          .Searching-Field{
-            width: 70%;
+            .Find-Sounds-Button-Next{
+              left:87%;
+              transform: translateX(0%);
+            }
+
+
+            .Searching-Field{
+              width: 60%;
+            }
+          }
+
+          .Find-Sounds-Button-Prev{
+            left:1%;
+            transform: translateX(0%);
+
+            &:hover{ 
+              transform: scale(1) translateX(0%);
+            }
+          }
+
+          .Find-Soungs-Single-Sound{
+            width:100%;
+
+            .Single-Track{
+              
+              .Single-Track-Info-Box{
+
+                .Single-Track-Icon-Box{
+                  width:100%;
+                }  
+
+                .Single-Track-Author-Box{
+                  margin-left:110px;
+                }
+
+                .Single-Track-Marquee{
+                  width:100%;
+              
+                  .Find-Artists-Marquee-Box{
+                    margin-left:110px;
+
+                    .Single-Track-Name{
+                      margin-left:0px;;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+
+        //---------- FIND ARTIST FOR TABLET ---------- //
+        .Find-Artists{
+          width:100%;
+
+          .Searching-Bar{
+
+            .Find-Sounds-Button-Next{
+              left:87%;
+              transform: translateX(0%);
+            }
+
+            .Searching-Field{
+              width: 60% ;
+            }
+          }
+
+          .Find-Sounds-Button-Prev{
+            left:1%;
+            transform: translateX(0%);
+
+            &:hover{ 
+              transform: scale(1) translateX(0%);
+            }
+          }
+        }
+       .list-Artist{
+
+          .Find-Artists-Single-Artist{
+            width:100%;
+
+            .Find-Artist-Info-Box{
+
+              .marquee{
+                width:100%;
+              }
+           
+            }
           }
         }
       }

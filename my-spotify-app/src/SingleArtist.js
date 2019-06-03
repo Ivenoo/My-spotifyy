@@ -51,6 +51,19 @@ class SingleArtist extends React.Component {
     }else{
       artistName = <span className="artist-name">{parentElement.name}</span>
     }
+
+    let forTablet = window.matchMedia("(max-width: 900px)"),
+         title = '';
+    if(forTablet){
+      if(genresTable.length >= 77){
+        console.log(genresTable.length)
+        title =  <marquee className="Find-Artists-Span-Marquee">{genresTable}</marquee>
+      }else{
+        console.log('else '+ genresTable.length)
+        title =  <span className="Find-Artists-Span-Marquee">{genresTable}</span>
+      }
+    }
+
       return(   
         <div className="Find-Artists-Single-Artist">
         {artistPhoto}
@@ -60,7 +73,7 @@ class SingleArtist extends React.Component {
         <div className="Find-Artists-Genres-Value">
           <div className="marquee">
             <div className="Find-Artists-Marquee-Box">
-                <span className="Find-Artists-Span-Marquee">{genresTable}</span>
+                {title}
             </div>
         </div>
         </div>
