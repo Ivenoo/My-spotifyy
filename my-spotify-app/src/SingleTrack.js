@@ -120,6 +120,13 @@ class SingleTrack extends React.Component {
             title =  <span className="Single-Track-Name">" {parentElement.name} "</span>
           }
         }
+        if(forTablet){
+          if(parentElement.name.length >= 45 && window.location.pathname === "/findgenres"){
+            title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
+          }else{
+            title =  <span className="Single-Track-Name">" {parentElement.name} "</span>
+          }
+        }
           return(
             <div  key={parentIndex} className="Single-Track" >
             {/* <div className="Single-Track-Img-Play"> */}

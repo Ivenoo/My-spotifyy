@@ -923,8 +923,8 @@ body{
             color:white;
             .Find-Artists-Popularity-Value{
               color:@font-color;
-            }
-            
+          }
+          
           }
           .Find-Artists-Followers{
             position:relative;
@@ -1222,17 +1222,20 @@ body{
               }
            
               .Single-Playlist-Img{
-                height:100px;
-                width:100px;
-                top: 50%;
-                left: 10px;
+                height:100%;
+                width:100%;
+                top: 0px;
+                left: 0px;
+                opacity: 0.15;
                 position:absolute;
-                border-radius:10px;
-                transform: translateY(-50%);
+                z-index: 9;
+                // border-radius:10px;
+                // transform: translateY(-50%);
               }
 
               .Single-Playlist-Title-Value{
                 font-size: 20px;
+                z-index: 10;
               }             
 
               .Single-Playlist-Total-Info{
@@ -1240,6 +1243,7 @@ body{
                 top: 85px;
                 left:50%;
                 transform: translateX(-50%);
+                z-index: 10;
 
                 .Single-Playlist-Total{
                   color: #FFFFFF;
@@ -1262,6 +1266,7 @@ body{
                 transition-duration: 1s;
                 position: absolute;
                 transform: translateX(-50%);
+                z-index: 11;
                 span{
                   padding:4px;
                 }
@@ -1273,14 +1278,15 @@ body{
 
                .Single-Playlist-Find-Spotify{
                 position:absolute;
-                width:100px;
-                height:100px;
-                top:50%;
+                width:40px;
+                height:40px;
+                bottom:10px;
                 right: 10px;
                 transform: translateY(-50%);
                 filter: grayscale(0.8);
                 cursor:pointer;
                 transition-duration:2s;
+                z-index: 11;
   
                 &:hover{
                   filter: grayscale(0);
@@ -1670,19 +1676,18 @@ body{
       width: 1200;
       margin-top: 10px;
       position: absolute;
-      // display: flex;
+
 
       .Favourite-Song-Options{
         border-top: 1px solid;
         border-bottom: 1px solid;
         margin: 0px auto;
-        top: 10px;
+        margin-top: 10px;
         height: 30px;
         width: 1180px;
         padding: 10px 10px 10px 10px;
         color: @font-color;
         background-color: @back-item;
-        position: sticky;
         text-align: center;
 
         .Prev-Button{
@@ -1990,210 +1995,374 @@ html{
 
 
 @media only screen and (max-width:1199px){
-  body{
+  html{
+      width: 100%;
+    body{
+      margin: 0px auto;
 
-    .App{
-      width:100%;
-      .App-Content{
+      .Menu-Buttons:focus{
+        outline: none;
+        cursor: pointer;
+        color: @font-color;
+      }
 
-                                                   //---------- HOMEPAGE TABLET ----------//
 
-        .Homepage-Box{
+      .App{
+        width:100%;
 
-          .Right-Clear{
-            margin-left:98%;
-          }
-          .Homepage-Albums-Box{
-            
-            .Album-Box-Right-Smooth{
-              margin-left: 100%;
-              transform: translateX(-138%);
-              
-            }
-          }
-
-          .Homepage-Track-Box{
-            width:51% ;
-
-            .Single-Track{
-
-              .Single-Track-Author-Title{
-                width:18%;
-              }
-
-              .Single-Track-Author {
-                margin-left:4px;
-              } 
-
-              .Single-Track-Name-Title{
-                width:12%;
-              }
-
-              .Single-Track-Marquee-Author{
-                width:84%;
-              }
-
-              .Single-Track-Icon-Box{
-                width:100%;
-                margin-top:31px;
-                
-                .Single-Track-Comunity-Portal-yt{
-                  margin-left:13px;
-                  margin-top:16.5px;
-                }
-
-                .Single-Track-Comunity-Portal-spotify{
-                  margin-left:80px;
-                  margin-top:12px;
-                }
-
-                .Single-Track-Comunity-Portal-soundcloud{
-                  margin-left:141px;
-                }
-              }
-
-            }
-          }
-                
-          .Homepage-Artist-Box{
-            width:51% ;
-            margin-left:53%;
-            
-            .Random-Artists-Box{
-
-              .Random-Artists-Info-Box{
-
-              }
-
-              .Single-Track-Icon-Box{
-
-                .Single-Track-Comunity-Portal-fb{
-                  margin-left:120px ;
-                  margin-top:6px;
-                }
-                .Single-Track-Comunity-Portal-tw{
-                  margin-left:180px ;
-                  margin-top:7px;
-                }
-                .Single-Track-Comunity-Portal-pinterest{
-                  margin-left:240px ;
-                  margin-top:5px;
-                }
-
-              }
-            }
+        .App-Menu{
+          .Menu-Buttons:hover{
+            cursor:pointer;
+            color: @font-color;
+            outline: none;
           }
         }
-        .Player-Box{
-          width:99%;
 
-          .Track-Name-Audio{
-            margin-left: 50%;
-            transform: translateX(-50%);
-          }
-          .Player{
-            width:100%;
-          }
-        .Player-Box-Close{
-          margin-left:100%;
-          transform: translateX(-120%);
-          }
-        }
-      
+        .App-Content{
+          //---------- HOMEPAGE TABLET ----------//
 
-                                                //---------- FIND SOUND TABLET ----------//
-        .Find-Sounds{
+          .Homepage-Box{
 
-          .Searching-Bar{
-
-            .Find-Sounds-Button-Next{
-              left:87%;
-              transform: translateX(0%);
+            .Right-Clear{
+              margin-left:98%;
             }
-
-
-            .Searching-Field{
-              width: 60%;
-            }
-          }
-
-          .Find-Sounds-Button-Prev{
-            left:1%;
-            transform: translateX(0%);
-
-            &:hover{ 
-              transform: scale(1) translateX(0%);
-            }
-          }
-
-          .Find-Soungs-Single-Sound{
-            width:100%;
-
-            .Single-Track{
+            .Homepage-Albums-Box{
               
-              .Single-Track-Info-Box{
+              .Album-Box-Right-Smooth{
+                margin-left: 100%;
+                transform: translateX(-138%);
+                
+              }
+            }
+
+            .Homepage-Track-Box{
+              width:51% ;
+
+              .Single-Track{
+
+                .Single-Track-Author-Title{
+                  width:18%;
+                }
+
+                .Single-Track-Author {
+                  margin-left:4px;
+                } 
+
+                .Single-Track-Name-Title{
+                  width:12%;
+                }
+
+                .Single-Track-Marquee-Author{
+                  width:84%;
+                }
 
                 .Single-Track-Icon-Box{
                   width:100%;
-                }  
+                  margin-top:31px;
+                  
+                  .Single-Track-Comunity-Portal-yt{
+                    margin-left:13px;
+                    margin-top:16.5px;
+                  }
 
-                .Single-Track-Author-Box{
-                  margin-left:110px;
+                  .Single-Track-Comunity-Portal-spotify{
+                    margin-left:80px;
+                    margin-top:12px;
+                  }
+
+                  .Single-Track-Comunity-Portal-soundcloud{
+                    margin-left:141px;
+                  }
                 }
 
-                .Single-Track-Marquee{
-                  width:100%;
+              }
+            }
+                  
+            .Homepage-Artist-Box{
+              width:51% ;
+              margin-left:53%;
               
-                  .Find-Artists-Marquee-Box{
-                    margin-left:110px;
+              .Random-Artists-Box{
 
-                    .Single-Track-Name{
-                      margin-left:0px;;
+                .Random-Artists-Info-Box{
+
+                }
+
+                .Single-Track-Icon-Box{
+
+                  .Single-Track-Comunity-Portal-fb{
+                    margin-left:120px ;
+                    margin-top:6px;
+                  }
+                  .Single-Track-Comunity-Portal-tw{
+                    margin-left:180px ;
+                    margin-top:7px;
+                  }
+                  .Single-Track-Comunity-Portal-pinterest{
+                    margin-left:240px ;
+                    margin-top:5px;
+                  }
+
+                }
+              }
+            }
+          }
+          .Player-Box{
+            width:99%;
+
+            .Track-Name-Audio{
+              margin-left: 50%;
+              transform: translateX(-50%);
+            }
+            .Player{
+              width:100%;
+            }
+          .Player-Box-Close{
+            margin-left:100%;
+            transform: translateX(-120%);
+            }
+          }
+        
+
+                                                  //---------- FIND SOUND TABLET ----------//
+          .Find-Sounds{
+
+            .Searching-Bar{
+
+              .Find-Sounds-Button-Next{
+                left:87%;
+                transform: translateX(0%);
+              }
+
+
+              .Searching-Field{
+                width: 60%;
+              }
+            }
+
+            .Find-Sounds-Button-Prev{
+              left:1%;
+              transform: translateX(0%);
+
+              &:hover{ 
+                transform: scale(1) translateX(0%);
+              }
+            }
+
+            .Find-Soungs-Single-Sound{
+              width:100%;
+
+              .Single-Track{
+                
+                .Single-Track-Info-Box{
+
+                  .Single-Track-Icon-Box{
+                    width:100%;
+                  }  
+
+                  .Single-Track-Author-Box{
+                    margin-left:110px;
+                  }
+
+                  .Single-Track-Marquee{
+                    width:100%;
+                
+                    .Find-Artists-Marquee-Box{
+                      margin-left:110px;
+
+                      .Single-Track-Name{
+                        margin-left:0px;;
+                      }
                     }
                   }
                 }
               }
             }
           }
-        }
 
 
-        //---------- FIND ARTIST FOR TABLET ---------- //
-        .Find-Artists{
-          width:100%;
-
-          .Searching-Bar{
-
-            .Find-Sounds-Button-Next{
-              left:87%;
-              transform: translateX(0%);
-            }
-
-            .Searching-Field{
-              width: 60% ;
-            }
-          }
-
-          .Find-Sounds-Button-Prev{
-            left:1%;
-            transform: translateX(0%);
-
-            &:hover{ 
-              transform: scale(1) translateX(0%);
-            }
-          }
-        }
-       .list-Artist{
-
-          .Find-Artists-Single-Artist{
+          //---------- FIND ARTIST FOR TABLET ---------- //
+          .Find-Artists{
             width:100%;
 
-            .Find-Artist-Info-Box{
+            .Searching-Bar{
 
-              .marquee{
-                width:100%;
+              .Find-Sounds-Button-Next{
+                left:87%;
+                transform: translateX(0%);
               }
-           
+
+              .Searching-Field{
+                width: 60% ;
+              }
+            }
+
+            .Find-Sounds-Button-Prev{
+              left:1%;
+              transform: translateX(0%);
+
+              &:hover{ 
+                transform: scale(1) translateX(0%);
+              }
+            }
+          }
+        .list-Artist{
+
+            .Find-Artists-Single-Artist{
+              width:100%;
+
+              .Find-Artist-Info-Box{
+
+                .marquee{
+                  width:100%;
+                }
+            
+              }
+            }
+          }
+        //GENRESS TABLETS
+          
+          .Genres{
+            width: 100%;
+            margin: 0px  auto;
+            background: @back-color;
+
+            .Choose-Genre{
+              margin: 0px auto;
+              width: 720px;
+              position: absolute;
+              margin-left: 50%;
+              transform: translateX(-50%);
+            }
+
+            .Genres-Results-Box{
+              width: 90%;
+              position: absolute;
+              margin-left: 50%;
+              transform: translateX(-50%);
+
+              .Genres-Options{
+                width: 100%;
+                padding: 10px 0px 10px 0px;
+
+                .Prev-Button{
+                  transform: translateX(-200%);
+                }
+
+                .Next-Button{
+                  transform: translateX(100%);
+                }
+
+
+
+              }
+
+              .Playlists-Box{
+                width: 40%;
+                .Single-Playlist{
+                  .Single-Playlist-Find-Spotify{
+                    position: absolute;
+                    right: 2%;
+                    bottom: 1%;
+                  }
+                }
+              }
+
+              .Playlists-Tracks{
+                width: 58%;
+                position: absolute;
+                left: 41%;
+
+                .Single-Track{
+                  width: 100%;
+
+                  .Single-Track-Info-Box{
+                    width: 100%;
+
+                    .Single-Track-Marquee{
+                      width: 100%;
+                      .Find-Artists-Marquee-Box{
+                        width: 73%;
+                        .Single-Track-Name{
+                          margin: 0px auto;
+                          text-align: center;
+                        }
+                      }
+                    }
+
+                    .Single-Track-Author-Box{
+                      width: 100%;
+                      .Single-Track-Author{
+                        width: 75%;
+                        position: absolute;
+                        text-align: center;
+                        margin-left: 110px;
+                      }
+                    }
+
+                    .Single-Track-Icon-Box{
+                      position: absolute;
+                      background-color: red;
+                      right: 0px;
+
+                      
+                      .Single-Track-Comunity-Portal-yt{
+                        position: absolute;
+                        right: 120px;
+                      }
+
+                      .Single-Track-Comunity-Portal-spotify{
+                        position: absolute;
+                        right: 70px;
+                      }
+
+                      .Single-Track-Comunity-Portal-soundcloud{
+                        position: absolute;
+                        right: 20px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+        // FAVOURITEE TABLETS
+        
+          .Favourite-Song{
+            width: 100%;
+
+            .Favourite-Song-Options{
+              width: 100%;
+              padding: 10px 0px 10px 0px;
+
+            }
+
+            .Favourite-Song-Box{
+              width: 94%; 
+              padding: 0px 3% 0% 3%;
+              // transform: scale(0.8);
+
+              .Single-Track{
+                height: 23vw;
+                width: 25%;
+
+                .Shadow-Box{
+                  width: 100%;
+                  height: 100%;
+                }
+
+                .Single-Track-Img{
+                  width: 100%;
+                  height: 100%;
+                }
+
+                .Single-Track-Info-Box{
+                  width: 90%;
+                  height:  90%;
+                  padding: 5%;
+                }
+              }
             }
           }
         }
@@ -2204,13 +2373,17 @@ html{
 
 
 @media only screen and (max-width:799px){
+html{
   body{
-    background:red;
+    background:red ;
   }
+}  
 }
 
 @media only screen and (max-width:599px){
+html{ 
   body{
     background:green;
   }
+}  
 }
