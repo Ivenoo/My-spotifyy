@@ -47,9 +47,9 @@ class SingleArtist extends React.Component {
     const parentIndex = `artist${this.props.parentIndex}`
     let artistName = '';
     if(parentElement.name.length > 100){
-      artistName = <marquee className="artist-name">{parentElement.name}</marquee>
+      artistName = <marquee className="Artist-Name">{parentElement.name}</marquee>
     }else{
-      artistName = <span className="artist-name">{parentElement.name}</span>
+      artistName = <span className="Artist-Name">{parentElement.name}</span>
     }
 
 
@@ -66,31 +66,32 @@ class SingleArtist extends React.Component {
     if(forPhone){
       title = <marquee className="Find-Artists-Span-Marquee">{genresTable}</marquee>
       if(parentElement.name.length > 35){
-        artistName = <marquee className="artist-name">{parentElement.name}</marquee>
+        artistName = <marquee className="Artist-Name">{parentElement.name}</marquee>
       }
     }
     
     return (
       <div className="Find-Artists-Single-Artist">
         {artistPhoto}
+        <div className="Find-Artists-Img-Shadow"></div>
         <div id={parentIndex} className='Find-Artist-Info-Box'>
          {artistName}
         <span className="Find-Artists-Genres-Title">genres of music:</span>
         <div className="Find-Artists-Genres-Value">
-          <div className="marquee">
+          <div className="Marquee">
             <div className="Find-Artists-Marquee-Box">
                 {title}
               </div>
 
             </div>
         </div>
-        </div>
         <br/>
-        <span className="Find-Artists-Popularity">popiularity spotify :<span className="Find-Artists-Popularity-Value"> {parentElement.popularity}</span></span>
+        <span className="Find-Artists-Popularity">popularity spotify :<span className="Find-Artists-Popularity-Value"> {parentElement.popularity}</span></span>
         <a onClick={this.fb.bind(this,parentElement.name)} ><img src='./img/fb-icon.png' className="Find-Artists-Comunity-Portal-fb btn btn-white btn-animation-1" alt=" " /></a>
         <a onClick={this.tw.bind(this, parentElement.name)} ><img src='./img/tw-icon.png' className="Find-Artists-Comunity-Portal-tw" alt=" " /></a>
         <a onClick={this.pinterest.bind(this,parentElement.name)} ><img src='./img/pinterest-icon.png' className="Find-Artists-Comunity-Portal-pinterest" alt=" " /></a>
-        <span className="Find-Artists-Followers">total spotify followres:<span className="Find-Artists-Followers-Value"> {parentElement.followers.total}</span></span><br/><br/><br/>
+        <div className="Find-Artists-Followers">total spotify followres:<span className="Find-Artists-Followers-Value"> {parentElement.followers.total}</span></div><br/><br/><br/>
+        </div>
       </div>
         )
 
