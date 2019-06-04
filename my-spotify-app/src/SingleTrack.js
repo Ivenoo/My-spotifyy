@@ -113,7 +113,7 @@ class SingleTrack extends React.Component {
     }
 
     let forTablet = window.matchMedia("(max-width: 900px)")
-    if (forTablet) {   
+    if (forTablet.matches) {   
       if (parentElement.name.length >= 77) {
         title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
       } else if (parentElement.name.length < 77) {
@@ -121,7 +121,7 @@ class SingleTrack extends React.Component {
       }
     }
 
-    if(forTablet){
+    if(forTablet.matches){
       if(parentElement.name.length >= 25 && window.location.pathname === "/findgenres"){
         title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
       }else if(parentElement.name.length < 25 && window.location.pathname === "/findgenres"){

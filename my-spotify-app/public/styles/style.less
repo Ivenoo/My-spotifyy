@@ -136,7 +136,7 @@ body{
       bottom: 0%;
       display: none;
       margin:auto;
-      z-index: 999;
+      z-index: 1111;
 
       
       .Player-Box-Close{ 
@@ -184,6 +184,21 @@ body{
       margin-top: 20px;
       margin-bottom: 20px;
       text-align: center;
+
+      .Back-To-Album-List{
+        margin-top:5px;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        top: 195px;
+        background:none;
+        border:none;
+        outline:none;
+        font-size:30px;
+        color: #6b6b6b;
+        cursor:pointer;
+        display:none;
+      }
 
       .Searching-Field{
         border: none;
@@ -374,17 +389,14 @@ body{
 
             .Single-Track-Comunity-Portal-soundcloud:hover{
               filter: grayscale(0);
-              transform:rotateY(360deg);
             }
 
             .Single-Track-Comunity-Portal-spotify:hover{
               filter: grayscale(0);
-              transform:rotateZ(360deg);
             }
 
             .Single-Track-Comunity-Portal-yt:hover{
               filter: grayscale(0);
-              transform:rotateX(360deg);
             }
 
             .Single-Track-Button-Favourite:hover{
@@ -611,17 +623,14 @@ body{
             }
             .Single-Track-Comunity-Portal-fb:hover{
               filter: grayscale(0);
-              transform:rotateX(360deg);
             }
 
             .Single-Track-Comunity-Portal-tw:hover{
               filter: grayscale(0);
-              transform:rotateZ(360deg);
             }
 
             .Single-Track-Comunity-Portal-pinterest:hover{
               filter: grayscale(0);
-              transform:rotateY(360deg);
             }
           }
         }
@@ -1138,6 +1147,7 @@ body{
             color: rgb(107, 107, 107);
             left: 50%;
             transform: translateX(200%);
+            cursor:pointer;
   
             &:hover{
               color: @font-color;
@@ -1155,6 +1165,7 @@ body{
             color: rgb(107, 107, 107);
             left: 50%;
             transform: translateX(-50%); 
+            cursor:pointer;
   
             &:hover{
               color: @font-color;
@@ -1305,7 +1316,6 @@ body{
             .Single-Track{
               background: @back-item;
               border-bottom: solid 1px @font-color;
-              cursor:pointer;
               height: 100px;
               padding-top: 5px;
               padding-bottom: 5px;
@@ -1628,7 +1638,6 @@ body{
 
               &:hover{
                 filter: grayscale(0);
-                transform:rotateX(360deg);
               }
             }
 
@@ -1640,7 +1649,6 @@ body{
 
               &:hover{
                 filter: grayscale(0);
-                transform:rotateZ(360deg);
               }
             }
             
@@ -1652,7 +1660,6 @@ body{
 
               &:hover{
                 filter: grayscale(0);
-                transform:rotateY(360deg);
               }
             }
 
@@ -2044,7 +2051,23 @@ html{
                 
               }
             }
+            .Homepage-Albums-Box{
 
+              .Homepage-Albums-Animation-Handler{
+                
+                  .Single-Album{
+
+                    .Single-Album-Image{            
+                      opacity: 0.1;
+                    } 
+        
+                    .Single-Album-Details{
+                      display:block;
+                      box-shadow: 0px 0px 5px #FFF;
+                    }
+                }
+              }
+            }
             .Homepage-Track-Box{
               width:49% ;
 
@@ -2073,6 +2096,7 @@ html{
                   .Single-Track-Comunity-Portal-yt{
                     margin-left:13px;
                     margin-top:16.5px;
+
                   }
 
                   .Single-Track-Comunity-Portal-spotify{
@@ -2118,7 +2142,7 @@ html{
             }
           }
           .Player-Box{
-            width:99%;
+            width:100%;
 
             .Track-Name-Audio{
               margin-left: 50%;
@@ -2360,10 +2384,12 @@ html{
                 padding: 10px 0px 10px 0px;
 
                 .Prev-Button{
+                  cursor:pointer;
                   transform: translateX(-200%);
                 }
 
                 .Next-Button{
+                  cursor:pointer;
                   transform: translateX(100%);
                 }
 
@@ -2489,12 +2515,72 @@ html{
 @media only screen and (max-width:799px){
 html{
   body{
-    background:red;
+    //background:red;
     .App{
-
-      .App-Menu{
-
+      .Loader-Icon{
+        width:200px;
+        height:200px;
       }
+  
+    //---------------------------- HOMEPAGE PHONE ------------------------------------------//
+
+    .App-Content{
+
+      .Homepage-Box{
+
+        .Homepage-Albums-Box {
+
+          .Album-Box-Right-Smooth{
+            transform: translateX(-120%);
+          }
+        }
+
+        .Homepage-Track-Box{
+          width:100%;
+
+          .Single-Track {
+
+            .Single-Track-Icon-Box{
+
+              .Single-Track-Comunity-Portal-yt{
+                right: 140px;
+                margin-left: 0px;
+              }
+              .Single-Track-Comunity-Portal-spotify{
+              right: 80px;
+              margin-left: 0px;
+              }
+              .Single-Track-Comunity-Portal-soundcloud{
+              right: 20px;
+              margin-left: 0px;
+              }
+            }
+          }
+        } 
+
+        .Homepage-Artist-Box{
+          display:none;
+        }
+         
+      }
+    }
+      //---------------------------- FIND SOUNDS PHONE ------------------------------------------//
+
+      .App-Content {
+        .Find-Sounds{ 
+          .Searching-Bar{ 
+            .Find-Sounds-Button-Next{
+              top:195px;
+              left:65%;
+            }
+          }
+  
+          .Find-Sounds-Button-Prev{
+            left:17.5%;
+            top:195px;
+          }
+        }
+      }    
     //---------------------------- FIND ARTIST PHONE ------------------------------------------//
 
       .App-Content{
@@ -2544,21 +2630,119 @@ html{
             }
           }
         }
-      
-          //---------------------------- FIND ALBUM PHONE ------------------------------------------//
-        .Genres{
-
-        }
       }
+      //---------------------------- FIND ALBUM PHONE ------------------------------------------//
+      .App-Content{ 
+        
+        .Find-Albums{
+
+          .Find-Album-All-Resutls {
+        
+            .Find-Albums-Tracks-Box {
+
+              .Find-Albums-Album-Tracks{
+
+                .Single-Track {
+
+                  .Single-Track-Icon-Box {
+
+                    .Single-Track-Comunity-Portal-yt{
+                      width:50px;
+                      height:44px;
+                    }
+                    .Single-Track-Comunity-Portal-spotify{
+                      right: 62px;
+                    }
+                    .Single-Track-Comunity-Portal-soundcloud{
+                      right:5px;
+                    }
+                    .Single-Track-Comunity-Portal-spotify,
+                    .Single-Track-Comunity-Portal-soundcloud{
+                      width:50px;
+                      height:50px;
+
+                    }
+                  }
+                }
+              }
+            }
+          }
+            .Searching-Bar{
+            height:70px;
+
+
+            .Back-To-Album-List{
+              margin-top:5px;
+              position:absolute;
+              left:50%;
+              transform:translateX(-50%);
+              top: 195px;
+              background:none;
+              border:none;
+              outline:none;
+              font-size:25px;
+              color: #6b6b6b;
+              cursor:pointer;
+              display:none;
+              margin-left:2px;
+            }
+            .Find-Sounds-Button-Next{
+              left:92%;
+              transform:translate(-100%);
+              top:210px;
+              font-size:20px;
+            }
+          }
+          .Find-Sounds-Button-Prev{
+            top:210px;
+            left:8%;
+            font-size:20px;
+          }
+          .Find-Album-All-Resutls {
+
+            .Find-Albums-Tracks-Box{
+              margin-left:0px;
+              width:100%;
+            }
+ 
+            
+
+
+            .Find-Albums-Box {
+              font-size:20px;
+              width:100%;
+
+              .Find-Albums-One-Album{
+
+                .Total-Box{
+                  top: 79%;
+                  left: 44px;
+                  font-size:15px;
+                }
+                .main-button{
+                  width: 152px;
+                  top: 60%;
+                  height: 38px;
+                  border-radius: 220px;
+
+                  span{
+                    font-size: 20px;
+                  }
+                }
+                .Single-Album-Find-Spotify{
+                  width: 60px;
+                  height: 60px;
+                  top: 60%;
+                  left: 84%;
+                  filter: grayscale(0);          
+                }
+              }
+            }
+          }
+        }
+      }  
     }
   }
 }  
 }
 
-@media only screen and (max-width:599px){
-html{ 
-  body{
-    background:green;
-  }
-}  
-}

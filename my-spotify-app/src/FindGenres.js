@@ -66,7 +66,6 @@ class FindGenres extends React.Component {
       myoffset: 0,
       tracksListLength: totalTracks,
     })
-    // console.log("tototot"+ totalTracks )
     if(this.state.backColor != ''){
       const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
       backingAlbumListColor.style.background="#2b2b2b";
@@ -128,8 +127,6 @@ class FindGenres extends React.Component {
           }}> PREV </div>
         }
 
-        console.log("off+lim " + parseInt(this.state.myoffset+this.state.limit))
-        console.log("Długość " + this.state.tracksListLength)
 
         if(this.state.myoffset+this.state.limit < this.state.tracksListLength){
           nextButton = <div className="Next-Button" 

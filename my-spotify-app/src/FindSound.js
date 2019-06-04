@@ -151,6 +151,7 @@ class FindSound extends React.Component {
       })
   }
   }
+
   
   render() {
     let prevButton = "", nextButton = "";
@@ -160,6 +161,15 @@ class FindSound extends React.Component {
     if(this.state.next !== null){
       nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
+    let inputSearch= '';
+    let forTablet = window.matchMedia("(max-width: 900px)")
+    if(forTablet.matches){
+        inputSearch = <input type="text" placeholder="Do you want to find a song?" className="Searching-Field" onChange={this.inputValue.bind(this)}/>
+      }else{
+        console.log(forTablet)
+        inputSearch = <input type="text" placeholder="Do you want to find a song? Enter its title here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
+      }
+        
 
     return(
       <div className="Find-Sounds">
@@ -169,7 +179,7 @@ class FindSound extends React.Component {
 
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
-          <input type="text" placeholder="Do you want to find a song? Enter its title here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
+          {inputSearch}
           <Limit changeLimit={this.limit.bind(this)} />  
           {prevButton}
           {nextButton}

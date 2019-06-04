@@ -90,7 +90,8 @@ class FindAlbum extends React.Component {
         const stop = link.indexOf('&limit')
         const finishoff = link.slice(start,stop)
         this.setState({
-          myoffset: finishoff
+          myoffset: finishoff,
+          refresh: ''
         })
       }
       axios({
@@ -152,7 +153,6 @@ class FindAlbum extends React.Component {
               this.setState({
                 tracksList: resp.data.items
               }) 
-              // console.log(this.state.tracksList)
             }).catch(error => (new Error(console.log(error))))
           }
       
@@ -161,6 +161,14 @@ class FindAlbum extends React.Component {
   
         //ROZWIJANIE LISTY //
       trackList = (id,index) =>{
+        let forPhone = window.matchMedia("(max-width: 799px)")
+        if(forPhone.matches){
+          const changeAlbumOnTrack = document.querySelector('.Find-Albums-Box')
+          changeAlbumOnTrack.style.display = 'none';
+
+          const  buttonBackToAlbums = document.querySelector('.Back-To-Album-List')
+          buttonBackToAlbums.style.display="block";
+        }
         hidePlayer()
         this.showSongs(id)
         if(this.state.backColor != ''){
@@ -200,16 +208,24 @@ class FindAlbum extends React.Component {
     if(this.state.next !==null){
       nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
+    let inputSearch= '';
+    let forTablet = window.matchMedia("(max-width: 900px)")
+    if(forTablet.matches){
+        inputSearch = <input type="text" placeholder="looking for an album?" className="Searching-Field" onChange={this.search.bind(this)}/> 
+      }else{
+        inputSearch = <input type="text" placeholder="Are you looking for an album? Type something here..." className="Searching-Field" onChange={this.search.bind(this)}/> 
+      }
     return( 
       <div className="Find-Albums">
            <div className="Loader-Shadow-Box-Finders"></div>
            <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
       
-        
+
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
-          <input type="text" placeholder="Are you looking for an album? Type something here..." className="Searching-Field" onChange={this.search.bind(this)}/> 
+          {inputSearch}
           {prevButton}
+          <button className="Back-To-Album-List">ALBUM LIST</button>
           {nextButton}   
         </div>
         <div className="Find-Album-All-Resutls">
