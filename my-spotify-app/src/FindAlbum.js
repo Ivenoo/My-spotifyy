@@ -166,8 +166,21 @@ class FindAlbum extends React.Component {
           const changeAlbumOnTrack = document.querySelector('.Find-Albums-Box')
           changeAlbumOnTrack.style.display = 'none';
 
+          const changeAlbumOnTrackBox = document.querySelector('.Find-Albums-Tracks-Box')
+          changeAlbumOnTrackBox.style.display = 'block';
+
           const  buttonBackToAlbums = document.querySelector('.Back-To-Album-List')
           buttonBackToAlbums.style.display="block";
+
+          
+          const changeAlbumOnTrackNext = document.querySelector('.Find-Sounds-Button-Next')
+          if(changeAlbumOnTrackNext){
+          changeAlbumOnTrackNext.style.display = 'none';
+          }
+          const  changeAlbumOnTrackPrev = document.querySelector('.Find-Sounds-Button-Prev')
+          if(changeAlbumOnTrackPrev){
+            changeAlbumOnTrackPrev.style.display="none";
+          }
         }
         hidePlayer()
         this.showSongs(id)
@@ -195,6 +208,25 @@ class FindAlbum extends React.Component {
       this.setState({
         notFindAlbum: 'exist'
       })
+    }
+  }
+  FindAlbumsFromTrack =() =>{
+    const changeAlbumOnTrack = document.querySelector('.Find-Albums-Box')
+    changeAlbumOnTrack.style.display = 'block';
+  
+    const changeAlbumOnTrackBox = document.querySelector('.Find-Albums-Tracks-Box')
+    changeAlbumOnTrackBox.style.display = 'none';
+
+    const  buttonBackToAlbums = document.querySelector('.Back-To-Album-List')
+    buttonBackToAlbums.style.display="none";
+
+    const changeAlbumOnTrackNext = document.querySelector('.Find-Sounds-Button-Next')
+    if(changeAlbumOnTrackNext){
+    changeAlbumOnTrackNext.style.display = 'block';
+    }
+    const  changeAlbumOnTrackPrev = document.querySelector('.Find-Sounds-Button-Prev')
+    if(changeAlbumOnTrackPrev){
+      changeAlbumOnTrackPrev.style.display="block";
     }
   }
 
@@ -225,7 +257,7 @@ class FindAlbum extends React.Component {
         <div className="Searching-Bar"> 
           {inputSearch}
           {prevButton}
-          <button className="Back-To-Album-List">ALBUM LIST</button>
+          <button className="Back-To-Album-List" onClick={this.FindAlbumsFromTrack.bind(this)}>ALBUM LIST</button>
           {nextButton}   
         </div>
         <div className="Find-Album-All-Resutls">

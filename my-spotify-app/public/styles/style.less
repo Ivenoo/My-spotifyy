@@ -1536,6 +1536,41 @@ body{
     .Find-Albums{
         width:1200px;
 
+        .Find-Sounds-Button-Prev,
+        .Find-Sounds-Button-Next{
+          font-size:20px;
+          padding:5px;
+          position:absolute;
+          width:90px;
+          height:43px;
+          background:none;
+          color:#6b6b6b;
+          border:none;
+          outline:none;
+          cursor:pointer;
+          transition-duration: 1s;
+        }
+
+        .Find-Sounds-Button-Prev{
+          left: 50%;
+          transform: translateX(-640%);
+          z-index:2000;
+    
+          &:hover{
+            transform: scale(1.1) translateX(-580%);
+            color:@font-color;
+          }
+        }
+        .Find-Sounds-Button-Next{
+          left: 50%;
+          transform: translateX(540%);
+    
+          &:hover{
+            transform: scale(1.1) translateX(490%);
+            color:@font-color;
+          }
+        }
+      
         .Find-Albums-Box{
           background:@back-item;
           width:595px;
@@ -2902,7 +2937,7 @@ html{
 
                 .Total-Box{
                   top: 79%;
-                  left: 44px;
+                  left: 48px;
                   font-size:15px;
                 }
                 .main-button{
@@ -2918,7 +2953,7 @@ html{
                 .Single-Album-Find-Spotify{
                   width: 60px;
                   height: 60px;
-                  top: 60%;
+                  top: 57%;
                   left: 84%;
                   filter: grayscale(0);          
                 }
