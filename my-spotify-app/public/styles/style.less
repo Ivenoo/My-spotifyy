@@ -561,13 +561,13 @@ body{
           margin-left:110px;
 
           .Random-Artists-Genres-Title{
-            width: 23.5%;
+            width: 55px;
             float: left;
             display: inline;
             color: white;
           }
           .Random-Artists-Marquee{
-            width:76.5%;
+            width:78.5%;
             display:inline;
             float:left;
           }
@@ -858,23 +858,17 @@ body{
      
 
         .Find-Artists-Img{
-          margin-top:30px;
-          width:120px;
-          height:120px;
-          padding-left: 6px;
+          width:100%;
+          height:100%;
+          opacity:0.2;
           position:absolute;
-          border-radius:10px;
-          z-index:20;
-          background: @back-item;
+          z-index:1;
+
         }
           
-       &:hover .Find-Artists-Img{
-        background:rgb(95, 95, 95); 
-      }
-
         .Find-Artist-Info-Box{
             text-align:center;
-
+            
           .artist-name{
             top: 5px;
             position: relative;
@@ -916,11 +910,12 @@ body{
           .Find-Artists-Popularity{
             position:relative;
             top:20px;
-            left:135px;
+            left:55px;
             width:200px;
             float:left;
             text-align:left;
             color:white;
+            z-index:20;
             .Find-Artists-Popularity-Value{
               color:@font-color;
           }
@@ -933,6 +928,7 @@ body{
             width:220px;
             text-align:left;
             color:white;
+            z-index:20;
             .Find-Artists-Followers-Value{
               color:@font-color;
             }
@@ -947,6 +943,8 @@ body{
             filter: grayscale(0.8);
             transition-duration: 2s;
             border-radius:8px;
+            z-index:20;
+            
 
             &:hover{
               filter: grayscale(0);
@@ -964,6 +962,7 @@ body{
             filter: grayscale(0.8);
             transition-duration: 2s;
             border-radius:80px;
+            z-index:20;
 
             &:hover{
               filter: grayscale(0);
@@ -981,6 +980,7 @@ body{
             filter: grayscale(0.8);
             transition-duration: 2s;
             border-radius:80px;
+            z-index:20;
 
             &:hover{
               filter: grayscale(0);
@@ -1881,9 +1881,12 @@ body{
     cursor:pointer;
     filter: grayscale(1);
     z-index:999;
+    // transition-duration: 1s;
+    
 
     &:hover{
       transform:scale(1.2);
+      transition-duration: 1s;
     }
   }
   .Scroll-And-Audio{
@@ -2006,9 +2009,18 @@ html{
         color: @font-color;
       }
 
-
       .App{
         width:100%;
+
+        .Scroll-Up{
+          margin-left: 51%;
+          transform: translateX(-50%);     
+  
+  
+          &:hover{
+            transform: scale(1.2) translateX(-45%);
+          }
+        }
 
         .App-Menu{
           .Menu-Buttons:hover{
@@ -2077,16 +2089,14 @@ html{
 
               }
             }
-                  
+
+
             .Homepage-Artist-Box{
               width:51% ;
               margin-left:53%;
               
               .Random-Artists-Box{
-
-                .Random-Artists-Info-Box{
-
-                }
+                width:100%;
 
                 .Single-Track-Icon-Box{
 
@@ -2182,44 +2192,57 @@ html{
 
 
           //---------- FIND ARTIST FOR TABLET ---------- //
-          .Find-Artists{
-            width:100%;
-
-            .Searching-Bar{
-
-              .Find-Sounds-Button-Next{
-                left:87%;
-                transform: translateX(0%);
+          .Find-Artists{ 
+            width:100%; 
+            .Searching-Bar{ 
+              .Find-Sounds-Button-Next{ 
+                left:87%; 
+                transform: translateX(0%); 
               }
-
-              .Searching-Field{
-                width: 60% ;
+              .Searching-Field{ 
+                width: 60% ; 
               }
             }
-
-            .Find-Sounds-Button-Prev{
-              left:1%;
-              transform: translateX(0%);
-
+            .Find-Sounds-Button-Prev{ 
+              left:1%; 
+              transform: translateX(0%); 
               &:hover{ 
-                transform: scale(1) translateX(0%);
+                transform: scale(1) translateX(0%); 
               }
             }
           }
-        .list-Artist{
-
-            .Find-Artists-Single-Artist{
-              width:100%;
-
-              .Find-Artist-Info-Box{
-
-                .marquee{
-                  width:100%;
+          .list-Artist{ 
+            .Find-Artists-Single-Artist{ 
+              width:100%; 
+              .Find-Artists-Img{ 
+                width:100%; 
+                height:100%; 
+                opacity:0.1; 
+                position:absolute; 
+                z-index:1; 
+                &:hover .Find-Artists-Marquee-Box{ 
+                  animation: marquee 0s linear infinite; 
                 }
-            
+              }
+              &:hover .Find-Artists-Marquee-Box{
+                animation: marquee 0s linear infinite; 
+              }
+              .Find-Artist-Info-Box{ 
+                .marquee{ 
+                  width:100%; 
+                  .Find-Artists-Marquee-Box{ 
+                    padding-left:0px; 
+                    .Find-Artists-Span-Marquee{ 
+                      margin-left:0px; 
+                    }
+                  }
+                }
+                .Find-Artists-Popularity{ 
+                  left:30px; 
+                }
               }
             }
-          }
+}
         //GENRESS TABLETS
           
           .Genres{
