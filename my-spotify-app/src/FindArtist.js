@@ -171,7 +171,7 @@ class FindArtist extends React.Component {
 
 
     return(
-      <div className ='Find-Artists'>
+      <div>
         
         <div className="Loader-Shadow-Box-Finders"></div>
            <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>

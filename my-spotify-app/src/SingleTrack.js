@@ -39,7 +39,7 @@ class SingleTrack extends React.Component {
       let favouriteTrue = 0;
       let favouriteIndex;
 
-      for (let i = 0; i < favourite.length; i++) {
+      for (let i = 0; i < favourite.length; i  ) {
         if (favourite[i] === id) {
           favouriteTrue = 1;
           favouriteIndex = i;
@@ -82,7 +82,7 @@ class SingleTrack extends React.Component {
 
     parentElement.artists.map((element2, index) => {
       if (tableArtists.length < parentElement.artists.length - 1) {
-        tableArtists.push(`${element2.name},` + ' ')
+        tableArtists.push(`${element2.name},` +  ' ')
       } else {
         tableArtists.push(`${element2.name}`)
       }
