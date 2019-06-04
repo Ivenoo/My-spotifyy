@@ -171,7 +171,7 @@ class FindArtist extends React.Component {
 
 
     return(
-      <div>
+      <div className="Find-Artist">
         
         <div className="Loader-Shadow-Box-Finders"></div>
            <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
@@ -183,14 +183,18 @@ class FindArtist extends React.Component {
           {prevButton}
           {nextButton} 
         </div>
-        <div className="Title-Box-Res">RESULTS</div>
-      <div className="list-Artist">
+      
+      <div className="Title-Box-Res">RESULTS</div>
+      
+
+      <div className="List-Artist">
       <span className={this.state.notFindArtist}>NOT FOUND : <span className="title">{this.state.searchValueToExist} </span> </span>
       {
         this.state.artistList.map((element, index)=>
         <SingleArtist  key={index} parentElement={element} parentIndex={index} /> 
       )}
       </div>
+
 
       </div>
     )
