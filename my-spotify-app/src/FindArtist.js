@@ -168,6 +168,8 @@ class FindArtist extends React.Component {
     if(this.state.next !==null){
       nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
+
+
     return(
       <div className ='Find-Artists'>
         
@@ -176,7 +178,7 @@ class FindArtist extends React.Component {
 
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
-          <input type="text" placeholder="Are you looking for an artist? Type nickname here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
+          <input type="text" placeholder="Looking for artist? ..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
           <Limit changeLimit={this.limit.bind(this)} />   
           {prevButton}
           {nextButton} 
