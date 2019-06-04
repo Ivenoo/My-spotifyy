@@ -926,7 +926,7 @@ body{
         margin-top:0px;
         
         .Find-Artists-Single-Artist{
-            width:100%px;
+            width:100%;
             height:160px;
             border-bottom:solid 1px;
             margin: auto;
@@ -2277,44 +2277,58 @@ html{
 
 
           //---------- FIND ARTIST FOR TABLET ---------- //
-          .Find-Artists{
+          .Find-Artist{
             width:100%;
 
             .Searching-Bar{
+              width: 100%; 
 
-              .Find-Sounds-Button-Next{
-                left:87%;
+              .Find-Sounds-Button-Prev{
+                position: absolute;
+                left: 2%;
+                width:100px;
                 transform: translateX(0%);
+                z-index:2000;
+          
+                &:hover{
+                  transform: scale(1.1) translateX(0%);
+                  color:@font-color;
+                }
               }
-
-              .Searching-Field{
-                width: 60% ;
+              
+              .Find-Sounds-Button-Next{
+                position: absolute;
+                left: 98%;
+                transform: translateX(-100%);
+                
+                &:hover{
+                  transform: scale(1.1) translateX(-90%);
+                  color:@font-color;
+                }
               }
             }
+          
 
-            .Find-Sounds-Button-Prev{
-              left:1%;
-              transform: translateX(0%);
-
-              &:hover{ 
-                transform: scale(1) translateX(0%);
-              }
-            }
-          }
-        .list-Artist{
+        .List-Artist{
 
             .Find-Artists-Single-Artist{
               width:100%;
 
+              .Find-Artists-Img,
+              .Find-Artists-Img-Shadow{
+                width: 75%;
+              }
+
               .Find-Artist-Info-Box{
 
-                .marquee{
-                  width:100%;
+                .Marquee{
+                  width:75%;
                 }
             
               }
             }
           }
+        }
 
 
                  //------------_ ALBUMS TABLET_----------------//
@@ -2636,14 +2650,6 @@ html{
         }
       }
     }
-  }
-}  
-}
-
-@media only screen and (max-width:599px){
-html{ 
-  body{
-    background:green;
   }
 }  
 }
