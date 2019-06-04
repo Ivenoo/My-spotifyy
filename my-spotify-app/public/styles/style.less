@@ -2684,51 +2684,138 @@ html{
 
       .App-Content{
 
-        .Find-Artists{
+        .Find-Artist{
+          width:100%;
 
           .Searching-Bar{
+            width: 100%; 
 
+            .Find-Sounds-Button-Prev{
+              position: absolute;
+              top: 195px;
+              left: 2%;
+              width:100px;
+              transform: translateX(0%);
+              z-index:2000;
+        
+              &:hover{
+                transform: scale(1.1) translateX(0%);
+                color:@font-color;
+              }
+            }
+            
             .Find-Sounds-Button-Next{
-              top:195px;
-              left:64%;
-            }
-          }
-          .Find-Sounds-Button-Prev{
-            top:195px;
-            left:12%;
-          }
-        }
-
-        .list-Artist{
-
-          .Find-Artists-Single-Artist{
-
-            .Find-Artist-Info-Box{
+              top: 195px;
+              position: absolute;
+              left: 98%;
+              transform: translateX(-100%);
               
-              .Find-Artists-Popularity{
-                top:8px;
-                left:10px;
+              &:hover{
+                transform: scale(1.1) translateX(-90%);
+                color:@font-color;
+              }
+            }
+          }
+        
+
+          .List-Artist{
+            .Find-Artists-Single-Artist{
+              width:100%;
+              height: 190px;
+
+              .Find-Artists-Img,
+              .Find-Artists-Img-Shadow{
+                width: 100%;
               }
 
-              .Find-Artists-Followers{
-                float: left;
-                position: absolute;
-                left: 10px;
-                top: 131px;
-              }
+              .Find-Artist-Info-Box{
 
-              .Find-Artists-Comunity-Portal-pinterest{
-                right:10px;
-              }
-              .Find-Artists-Comunity-Portal-fb{
-                right:70px;
-              }
-              .Find-Artists-Comunity-Portal-tw{
-                right:129px;
+                .Marquee{
+                  width:100%;
+                }
+            
+                .Find-Artists-Popularity{
+                  position:relative;
+                  left:50%;
+                  top: -25px;
+                  width:100%;
+                  transform: translateX(-50%);
+                  float:left;
+                  text-align:center;
+                  color:white;
+                  z-index:3;    
+                  display: block;   
+                }
+                .Find-Artists-Followers{
+                  position:relative;
+                  left: 50%;
+                  top: -25px;
+                  transform: translateX(-50%);
+                  float:left;
+                  width:220px;
+
+                  text-align:center;
+                  color:white;
+                  z-index:3;
+
+                }
+                .Find-Artists-Comunity-Portal-fb{
+                  width:57px;
+                  height:57px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  margin: 25px 0px  0px 0px;
+                  position:absolute;
+                  border-radius:5px;
+                  cursor:pointer;
+                  filter: grayscale(0.8);
+                  transition-duration: 2s;
+                  border-radius:8px;
+                  z-index:3;
+                  &:hover{
+                    transform: translateX(-50%);
+                  }
+                }
+      
+                .Find-Artists-Comunity-Portal-tw{
+                  width:58px;
+                  height:56px;
+                  left: 50%;
+                  transform: translateX(-200%);
+                  margin:  25px 0px  0px 0px;
+                  position:absolute;
+                  cursor:pointer;
+                  filter: grayscale(0.8);
+                  transition-duration: 2s;
+                  border-radius:80px;
+                  z-index:3;
+                  &:hover{
+                    transform: translateX(-200%);
+                  }
+                }
+      
+                .Find-Artists-Comunity-Portal-pinterest{
+                  width:60px;
+                  height:60px;
+                  left: 50%;
+                  margin: 24px 0px  0px 0px;
+                  transform: translateX(100%);
+                  position:absolute;
+                  cursor:pointer;
+                  filter: grayscale(0.8);
+                  transition-duration: 2s;
+                  border-radius:80px;
+                  z-index:3;
+
+                  &:hover{
+                    transform: translateX(100%)
+                  }
+                }
               }
             }
           }
         }
+
       }
       //---------------------------- FIND ALBUM PHONE ------------------------------------------//
       .App-Content{ 
