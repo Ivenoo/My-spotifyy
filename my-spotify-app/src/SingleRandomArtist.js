@@ -37,7 +37,7 @@ class SingleRandomArtist extends React.Component {
         <div className="Random-Artists-Info-Box">
           <span className="Random-Artists-Genres-Titlee">Name :</span>
           <span className="artists-name">{parentElement.name}</span><br/>
-          <span className="Random-Artists-Genres-Title">genres : </span>
+          <span className="Random-Artists-Genres-Title">genres of music : </span>
           <marquee className="Random-Artists-Marquee">
           {parentElement.genres.map((element,index) =>{
             return(

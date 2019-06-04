@@ -17,7 +17,6 @@ class SingleAlbum extends React.Component {
       return(`album${index}`)
     }
 
-  
     
     render(){
       const parentElement = this.props.parentElement;
@@ -52,14 +51,7 @@ class SingleAlbum extends React.Component {
       }else{
         longArtists = <span  className="Single-Album-Author-Value" >{ArtistsTable}</span>
       }
-      let forTablet = window.matchMedia("(max-width: 1199px)")
-      if(forTablet){
-      if(parentElement.artists.length >= 3){
-        longArtists = <marquee  className="Single-Album-Author-Value" >{ArtistsTable}</marquee>
-      }else{
-        longArtists = <span  className="Single-Album-Author-Value" >{ArtistsTable}</span>
-      }
-    }
+
       return(
         <div  id={this.testow(parentIndex)} className="Find-Albums-One-Album">
         <span className="Single-Album-Title">Album:</span>
