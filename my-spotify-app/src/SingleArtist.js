@@ -58,7 +58,6 @@ class SingleArtist extends React.Component {
     } else {
       artistName = <span className="artist-name">{parentElement.name}</span>
     }
-<<<<<<< HEAD
 
     let forTablet = window.matchMedia("(max-width: 900px)"),
       title = '';
@@ -88,18 +87,6 @@ class SingleArtist extends React.Component {
               <div className="Find-Artists-Marquee-Box">
                 {title}
               </div>
-=======
-      return(   
-        <div className="Find-Artists-Single-Artist">
-        {artistPhoto}
-        <div id={parentIndex} className='Find-Artist-Info-Box'>
-         {artistName}
-        <span className="Find-Artists-Genres-Title">genres of music:</span>
-        <div className="Find-Artists-Genres-Value">
-          <div className="marquee">
-            <div className="Find-Artists-Marquee-Box">
-                <span className="Find-Artists-Span-Marquee">{genresTable}</span>
->>>>>>> parent of 8d4ef12... SSD
             </div>
 
           </div>
