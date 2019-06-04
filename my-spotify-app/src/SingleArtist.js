@@ -51,10 +51,9 @@ class SingleArtist extends React.Component {
     }else{
       artistName = <span className="artist-name">{parentElement.name}</span>
     }
-<<<<<<< HEAD
+
 
     let forTablet = window.matchMedia("(max-width: 900px)"),
-<<<<<<< HEAD
       title = '';
     if (forTablet) {
       if (genresTable.length >= 9) {
@@ -73,21 +72,6 @@ class SingleArtist extends React.Component {
     
     return (
       <div className="Find-Artists-Single-Artist">
-=======
-         title = '';
-    if(forTablet){
-      if(genresTable.length >= 77){
-        console.log(genresTable.length)
-        title =  <marquee className="Find-Artists-Span-Marquee">{genresTable}</marquee>
-      }else{
-        console.log('else '+ genresTable.length)
-        title =  <span className="Find-Artists-Span-Marquee">{genresTable}</span>
-      }
-    }
-
-      return(   
-        <div className="Find-Artists-Single-Artist">
->>>>>>> parent of cdc6f95... s
         {artistPhoto}
         <div id={parentIndex} className='Find-Artist-Info-Box'>
          {artistName}
@@ -96,22 +80,8 @@ class SingleArtist extends React.Component {
           <div className="marquee">
             <div className="Find-Artists-Marquee-Box">
                 {title}
-<<<<<<< HEAD
               </div>
-=======
-      return(   
-        <div className="Find-Artists-Single-Artist">
-        {artistPhoto}
-        <div id={parentIndex} className='Find-Artist-Info-Box'>
-         {artistName}
-        <span className="Find-Artists-Genres-Title">genres of music:</span>
-        <div className="Find-Artists-Genres-Value">
-          <div className="marquee">
-            <div className="Find-Artists-Marquee-Box">
-                <span className="Find-Artists-Span-Marquee">{genresTable}</span>
->>>>>>> parent of 8d4ef12... SSD
-=======
->>>>>>> parent of cdc6f95... s
+
             </div>
         </div>
         </div>
@@ -122,7 +92,6 @@ class SingleArtist extends React.Component {
         <a onClick={this.pinterest.bind(this,parentElement.name)} ><img src='./img/pinterest-icon.png' className="Find-Artists-Comunity-Portal-pinterest" alt=" " /></a>
         <span className="Find-Artists-Followers">total spotify followres:<span className="Find-Artists-Followers-Value"> {parentElement.followers.total}</span></span><br/><br/><br/>
       </div>
-        </div>
         )
 
     }   
