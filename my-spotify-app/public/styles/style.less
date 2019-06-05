@@ -51,7 +51,7 @@ body{
     min-width: 1px;
     height: 100%;
     position: fixed;
-    z-index: 1001;
+    z-index: 99999;
     background-color: aquamarine;
     display: none;
   }
@@ -65,6 +65,10 @@ body{
     width:1200px;
     margin:auto;
     overflow-y: hidden;
+
+    .Phone-Menu{
+      display:none;
+    }
 
   .App-Menu{
     margin-top:30px;
@@ -2671,15 +2675,65 @@ html{
   body{
     //background:red;
     .App{
+      .App-Content{
+        margin-top: 65px !important;
+      }
       .Loader-Icon{
         width:200px;
         height:200px;
+      }
+      
+      .Phone-Menu{
+        display: block;
+        margin:auto;
+        margin-bottom: 50px;
+        position: absolute;
+        // background: red;
+        filter: grayscale(1);
+        width: 50px;
+        height: 43px;
+        top: 10px;
+        left: 50%;
+        transform: rotate(180deg) translate(50%);
+        cursor: pointer;
+      }
+      
+      .Phone-Menu-Selected{
+        transform:  translate(-50%);
+      }
+
+      .App-Menu{
+        margin: auto;
+        margin-top: 65px;
+        height:auto;
+        position:absolute;
+        width:100%;
+        z-index: 2000;
+        .Menu-Buttons{ 
+          margin: auto;
+          width: 95%;   
+          height: 0px;
+          text-align:center;
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s, opacity 0.5s linear;
+        }
+
+        .Menu-Buttons-Open{
+          height: 25px;
+          padding: 10px;
+          width: 100%;
+          transform: translate(-1.5%);
+          display:block;
+          visibility: visible;
+          opacity: 1; 
+          transition: visibility 0s, opacity 1s linear;
+        }
       }
   
     //---------------------------- HOMEPAGE PHONE ------------------------------------------//
 
     .App-Content{
-
       .Homepage-Box{
 
         .Homepage-Albums-Box {
