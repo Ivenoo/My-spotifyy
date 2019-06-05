@@ -2610,6 +2610,26 @@ html{
               width: 100%;
               padding: 10px 0px 10px 0px;
 
+              .Prev-Button{
+                left: 50%;
+                transform: translateX(-200%);
+                cursor:pointer;
+      
+                &:hover{
+                  color: @font-color;
+                }
+              }
+      
+              .Next-Button{
+                left: 50%;
+                transform: translateX(100%);
+                cursor:pointer;
+      
+                &:hover{
+                  color: @font-color;
+                }  
+              }
+
             }
 
             .Favourite-Song-Box{
@@ -2961,7 +2981,72 @@ html{
             }
           }
         }
-      }  
+      } 
+      // FAAVVV FONS
+
+    .App-Content{ 
+      .Favourite-Song{
+        width: 100%;
+
+        .Favourite-Song-Options{
+          width: 100%;
+          padding: 10px 0px 10px 0px;
+
+          .Favourite-Song-Options-Limit-Box{
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
+          .Prev-Button{
+            left: 0%;
+            transform: translateX(20%);
+            cursor:pointer;
+  
+            &:hover{
+              color: @font-color;
+            }
+          }
+  
+          .Next-Button{
+            left: 100%;
+            transform: translateX(-120%);
+            cursor:pointer;
+  
+            &:hover{
+              color: @font-color;
+            }  
+          }
+
+        }
+
+        .Favourite-Song-Box{
+          width: 94%; 
+          padding: 0px 3% 0% 3%;
+          // transform: scale(0.8);
+
+          .Single-Track{
+            height: 46vw;
+            width: 50%;
+
+            .Shadow-Box{
+              width: 100%;
+              height: 100%;
+            }
+
+            .Single-Track-Img{
+              width: 100%;
+              height: 100%;
+            }
+
+            .Single-Track-Info-Box{
+              width: 90%;
+              height:  90%;
+              padding: 5%;
+            }
+          }
+        }
+      } 
+    }
     }
   }
 }  
