@@ -17,11 +17,13 @@ class SingleAlbum extends React.Component {
       return(`playlist${index}`)
     }
 
+
     
     render(){
       const parentElement = this.props.parentElement;
       const parentIndex = this.props.parentIndex;
       const totalTracks = parentElement.tracks.total;
+
 
       return(
         <div  id={this.testow(parentIndex)} className="Single-Playlist">
