@@ -97,7 +97,13 @@ class SingleTrack extends React.Component {
     if (tableArtists.length > 3 && window.location.pathname === "/findgenres") {
       finishArtists = <span className='Single-Track-Author'><marquee>{tableArtists}</marquee></span>
     }
-
+    const forPhone = window.matchMedia("(max-width: 799px)")
+    if(forPhone.matches){
+      if (tableArtists.length > 2 && window.location.pathname === "/findgenres") {
+      finishArtists = <span className='Single-Track-Author'><marquee>{tableArtists}</marquee></span>
+      }
+    }
+  
 
     let imges = ''
     if (parentElement.album != undefined) {

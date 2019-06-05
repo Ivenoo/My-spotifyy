@@ -1127,6 +1127,7 @@ body{
       margin-top: 10px;
       position: absolute;
 
+
       .Choose-Genre{
         width: 1200px;
         margin: 0px auto;
@@ -1203,6 +1204,23 @@ body{
           position: sticky;
           text-align: center;
           z-index: 999;
+
+          
+          .Back-To-Album-List{
+            margin-top:5px;
+            position:absolute;
+            left:50%;
+            transform:translateX(-50%);
+            top: 45px;
+            background:none;
+            border:none;
+            outline:none;
+            font-size:25px;
+            color: #6b6b6b;
+            cursor:pointer;
+            display:none;
+            margin-left:2px;
+          }
 
           .Prev-Button{
             margin: 0px auto;
@@ -1283,6 +1301,7 @@ body{
             font-size: 20px;
             height: 20px;
             padding: 5px;
+            display:none;
             select{
               font-size: 20px;
               text-align: center;
@@ -1291,6 +1310,7 @@ body{
               background-color: @back-item;
               outline: none;
               border: none;
+
             }
           }
         }
@@ -2970,6 +2990,40 @@ html{
             .Choose-Genre{
               width:360px;
             }
+
+           .Genres-Results-Box {
+
+            .Genres-Options{
+
+
+              .Prev-Button{
+                top: 48px;
+                left: 0%;
+                transform: translateX(0%);
+              }
+
+              .Next-Button{
+                right:0%;
+                left: auto;
+                top: 49px;
+                transform: translateX(0%);
+              }
+
+            }
+
+            .Playlists-Box{
+              width: 100%;
+            }
+            .Playlists-Tracks{
+              width:100%;
+              float:left;
+              left:0px;
+            }
+
+           }
+           marquee{
+            margin-right: 10%;
+           }
           }
         }
       }
