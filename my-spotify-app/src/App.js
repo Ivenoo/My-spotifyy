@@ -77,6 +77,24 @@ class App extends React.Component {
     }
   } 
 
+  setClass = () => {
+    let menuItems = document.querySelectorAll('.Menu-Buttons');
+    let phoneMenuIcon = document.querySelector('.Phone-Menu');
+ 
+    if(document.querySelectorAll(".Menu-Buttons-Open").length === 0){
+      phoneMenuIcon.classList.add("Phone-Menu-Selected")
+      menuItems.forEach(element=>
+        element.classList.add("Menu-Buttons-Open")
+      )
+    }
+    else{
+      phoneMenuIcon.classList.remove("Phone-Menu-Selected")
+      menuItems.forEach(element=>
+        element.classList.remove("Menu-Buttons-Open")
+      )
+    }
+  }
+
   render() {
     if(!localStorage.getItem("limit")){
       localStorage.setItem("limit" , 20)
@@ -90,6 +108,7 @@ class App extends React.Component {
       <div className="Loader-Shadow-Box"></div>
         <div className="Loader"><img  className="Loader-Icon" alt=" " src='./img/loader.gif'/></div>
       <div className="centralaxDD"></div>
+      <img src="./img/scroll-up.png" className="Phone-Menu" alt=" " onClick={()=>this.setClass()}></img>
         <AppHeader selectAction={this.selectAction} />
         <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/> 
       </div>
