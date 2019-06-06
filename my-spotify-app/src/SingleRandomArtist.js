@@ -51,9 +51,10 @@ class SingleRandomArtist extends React.Component {
           </span>
         </div>
         <div className="Single-Track-Icon-Box">
-                <a onClick={this.fb.bind(this,parentElement.name)} ><img src='./img/fb-icon.png' className="Single-Track-Comunity-Portal-fb btn btn-white btn-animation-1" alt=" " /></a>
-                <a onClick={this.tw.bind(this, parentElement.name)} ><img src='./img/tw-icon.png' className="Single-Track-Comunity-Portal-tw" alt=" " /></a>
-                <a onClick={this.pinterest.bind(this,parentElement.name)} ><img src='./img/pinterest-icon.png' className="Single-Track-Comunity-Portal-pinterest" alt=" " /></a>
+          {/* ZMIENIC A NA BUTTONY I POPRAWIC STYLE WTEDY  */}
+                <a href='#' onClick={this.fb.bind(this,parentElement.name)} ><img src='./img/fb-icon.png' className="Single-Track-Comunity-Portal-fb btn btn-white btn-animation-1" alt=" " /></a>
+                <a href='#' onClick={this.tw.bind(this, parentElement.name)} ><img src='./img/tw-icon.png' className="Single-Track-Comunity-Portal-tw" alt=" " /></a>
+                <a href='#' onClick={this.pinterest.bind(this,parentElement.name)} ><img src='./img/pinterest-icon.png' className="Single-Track-Comunity-Portal-pinterest" alt=" " /></a>
               </div>
         </div>
         )

@@ -1,8 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import { get } from 'https';
-import SingleTrack from './SingleTrack';
-// import {listen} from './Service'
+
 
 
 class SingleAlbum extends React.Component {
@@ -28,19 +25,20 @@ class SingleAlbum extends React.Component {
         SingleAlbumTitle = <marquee className="Single-Album-Title-Value" >{parentElement.name}</marquee>  
       }
       let ArtistsTable = []
-      if(parentElement.artists.length != []){
+      if(parentElement.artists.length !== []){
         if(parentElement.artists.length > 1){
-          {parentElement.artists.map((element,index) =>{
+          parentElement.artists.map(element => {
             if(ArtistsTable.length < parentElement.artists.length-1){
              ArtistsTable.push(`${element.name}, `);
             }else{
              ArtistsTable.push(`${element.name}`);
             }
-         })}
+            return(0);
+         })
         }else{
-          {parentElement.artists.map((element,index) =>{
-              ArtistsTable += `${element.name}`;
-          })}
+          parentElement.artists.map(element =>
+           ArtistsTable += `${element.name}`
+          )
         }
       }else{
         ArtistsTable = <span>not specified </span>

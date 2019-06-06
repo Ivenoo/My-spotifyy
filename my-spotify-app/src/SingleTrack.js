@@ -80,12 +80,13 @@ class SingleTrack extends React.Component {
 
     let tableArtists = [], title = '';
 
-    parentElement.artists.map((element2, index) => {
+    parentElement.artists.map(element2 => {
       if (tableArtists.length < parentElement.artists.length - 1) {
-        tableArtists.push(`${element2.name},` +  ' ')
+        tableArtists.push(`${element2.name},\u2002`)
       } else {
         tableArtists.push(`${element2.name}`)
       }
+      return(0);
     })
 
     let finishArtists = <span className='Single-Track-Author'>{tableArtists}</span>
@@ -106,7 +107,7 @@ class SingleTrack extends React.Component {
   
 
     let imges = ''
-    if (parentElement.album != undefined) {
+    if (parentElement.album !== undefined) {
       imges = <img src={parentElement.album.images[0].url} className="Single-Track-Img" alt=" " />
     } else {
       imges = ''

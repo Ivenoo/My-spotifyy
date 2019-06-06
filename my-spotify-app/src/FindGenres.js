@@ -90,7 +90,7 @@ class FindGenres extends React.Component {
       myoffset: 0,
       tracksListLength: totalTracks,
     })
-    if(this.state.backColor != ''){
+    if(this.state.backColor !== ''){
       const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
       backingAlbumListColor.style.background="#2b2b2b";
     }
@@ -219,6 +219,7 @@ class FindGenres extends React.Component {
                   <SingleTrack  key={index} parentElement={element.track} parentIndex={index}/>
                 )
               }
+              return(0);
             })}
           </div>
         </div>
