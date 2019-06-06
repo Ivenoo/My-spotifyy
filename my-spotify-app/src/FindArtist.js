@@ -168,27 +168,33 @@ class FindArtist extends React.Component {
     if(this.state.next !==null){
       nextButton = <button onClick={this.getList.bind(this,0,this.state.next)}className="Find-Sounds-Button-Next">NEXT</button>
     }
+
+
     return(
-      <div>
+      <div className="Find-Artist">
         
         <div className="Loader-Shadow-Box-Finders"></div>
            <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
 
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 
-          <input type="text" placeholder="Are you looking for an artist? Type nickname here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
+          <input type="text" placeholder="Looking for artist? ..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
           <Limit changeLimit={this.limit.bind(this)} />   
           {prevButton}
           {nextButton} 
         </div>
-        <div className="Title-Box-Res">RESULTS</div>
-      <div className="list-Artist">
+      
+      <div className="Title-Box-Res">RESULTS</div>
+      
+
+      <div className="List-Artist">
       <span className={this.state.notFindArtist}>NOT FOUND : <span className="title">{this.state.searchValueToExist} </span> </span>
       {
         this.state.artistList.map((element, index)=>
         <SingleArtist  key={index} parentElement={element} parentIndex={index} /> 
       )}
       </div>
+
 
       </div>
     )

@@ -39,7 +39,7 @@ class SingleTrack extends React.Component {
       let favouriteTrue = 0;
       let favouriteIndex;
 
-      for (let i = 0; i < favourite.length; i++) {
+      for (let i = 0; i < favourite.length; i++  ) {
         if (favourite[i] === id) {
           favouriteTrue = 1;
           favouriteIndex = i;
@@ -82,7 +82,7 @@ class SingleTrack extends React.Component {
 
     parentElement.artists.map((element2, index) => {
       if (tableArtists.length < parentElement.artists.length - 1) {
-        tableArtists.push(`${element2.name},` + ' ')
+        tableArtists.push(`${element2.name},` +  ' ')
       } else {
         tableArtists.push(`${element2.name}`)
       }
@@ -97,7 +97,13 @@ class SingleTrack extends React.Component {
     if (tableArtists.length > 3 && window.location.pathname === "/findgenres") {
       finishArtists = <span className='Single-Track-Author'><marquee>{tableArtists}</marquee></span>
     }
-
+    const forPhone = window.matchMedia("(max-width: 799px)")
+    if(forPhone.matches){
+      if (tableArtists.length > 2 && window.location.pathname === "/findgenres") {
+      finishArtists = <span className='Single-Track-Author'><marquee>{tableArtists}</marquee></span>
+      }
+    }
+  
 
     let imges = ''
     if (parentElement.album != undefined) {
@@ -111,27 +117,30 @@ class SingleTrack extends React.Component {
     } else {
       title = <span className="Single-Track-Name">" {parentElement.name} "</span>
     }
+
     let forTablet = window.matchMedia("(max-width: 900px)")
-    if (forTablet) {   
+    if (forTablet.matches) {   
       if (parentElement.name.length >= 77) {
         title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
-      } else {
+      } else if (parentElement.name.length < 77) {
         title = <span className="Single-Track-Name">" {parentElement.name} "</span>
       }
     }
-    if(forTablet){
-      if(parentElement.name.length >= 45 && window.location.pathname === "/findgenres"){
+
+    if(forTablet.matches){
+      if(parentElement.name.length >= 25 && window.location.pathname === "/findgenres"){
         title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
-      }else{
+      }else if(parentElement.name.length < 25 && window.location.pathname === "/findgenres"){
         title =  <span className="Single-Track-Name">" {parentElement.name} "</span>
       }
     }
 
     if (parentElement.name.length >= 40 && window.location.pathname === '/findalbum') {
       title = <marquee><span className="Single-Track-Name">" {parentElement.name} "</span></marquee>
-    } else {
+    } else if(parentElement.name.length < 40 && window.location.pathname === '/findalbum') {
       title = <span className="Single-Track-Name">" {parentElement.name} "</span>
     }
+    
     return (
       <div key={parentIndex} className="Single-Track" >
         {/* <div className="Single-Track-Img-Play"> */}

@@ -60,13 +60,36 @@ class FindGenres extends React.Component {
   }
 
   tracksList(url, index, totalTracks){
+    let forPhone = window.matchMedia("(max-width: 799px)")
+        if(forPhone.matches){
+          const changeCategoryOnTrack = document.querySelector('.Playlists-Box')
+          changeCategoryOnTrack.style.display = 'none';
+
+          const changeCategoryOnTrackBox = document.querySelector('.Playlists-Tracks')
+          changeCategoryOnTrackBox.style.display = 'block';
+
+          const GenresOption = document.querySelector('.Genres-Options')
+          GenresOption.style.height= '70px'
+
+          const  buttonBackToCategory = document.querySelector('.Back-To-Album-List')
+          buttonBackToCategory.style.display="block";
+
+          const changeCategoryOnTrackNext = document.querySelector('.Next-Button')
+          if(changeCategoryOnTrackNext){
+           changeCategoryOnTrackNext.style.display = 'block';
+          }
+          const  changeCategoryOnTrackPrev = document.querySelector('.Prev-Button')
+          if(changeCategoryOnTrackPrev){
+            changeCategoryOnTrackPrev.style.display="block";
+          }
+
+        }
     hidePlayer()
     this.showSongs(url)
     this.setState({
       myoffset: 0,
       tracksListLength: totalTracks,
     })
-    // console.log("tototot"+ totalTracks )
     if(this.state.backColor != ''){
       const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
       backingAlbumListColor.style.background="#2b2b2b";
@@ -76,6 +99,30 @@ class FindGenres extends React.Component {
     this.setState({
       backColor: `playlist${index}`
     })
+  }
+
+  
+  CategoryFromTrack =() =>{
+    const changeCategoryOnTrack = document.querySelector('.Playlists-Box')
+    changeCategoryOnTrack.style.display = 'block';
+  
+    const changeCategoryOnTrackBox = document.querySelector('.Playlists-Tracks')
+    changeCategoryOnTrackBox.style.display = 'none';
+
+    const  buttonBackToCategory = document.querySelector('.Back-To-Album-List')
+    buttonBackToCategory.style.display="none";
+
+    const changeCategoryOnTrackNext = document.querySelector('.Next-Button')
+    if(changeCategoryOnTrackNext){
+    changeCategoryOnTrackNext.style.display = 'none';
+    }
+    const  changeCategoryOnTrackPrev = document.querySelector('.Prev-Button')
+    if(changeCategoryOnTrackPrev){
+      changeCategoryOnTrackPrev.style.display="none";
+    }
+    
+    const GenresOption = document.querySelector('.Genres-Options')
+    GenresOption.style.height= '30px'
   }
 
 
@@ -93,11 +140,13 @@ class FindGenres extends React.Component {
       this.setState({
         tracksList: resp.data.items
       }) 
+      console.log(this.state.tracksList.length)
     }).catch(error => (new Error(console.log(error))))
   }
 
     //OTWIERA NOWE OKNO Z PIOSENKA PO KLIKNIECIU NA   PRZYCISK PLAY//
   render() { 
+
     let display;
     if(this.state.searchValue === ''){
       display =        
@@ -122,21 +171,20 @@ class FindGenres extends React.Component {
           prevButton = <div className="Prev-Button" 
           onClick={()=>{
             let newOffset = parseInt(this.state.myoffset) -  parseInt(this.state.limit)
-            if(newOffset < 0) newOffset = 0;
-            this.setState({myoffset: newOffset }); 
-            this.showSongs(this.state.url); 
+            if(this.state.myoffset < 0) newOffset = 0;
+            this.setState({myoffset: newOffset });
+            setTimeout(()=>{this.showSongs(this.state.url)},10); 
           }}> PREV </div>
         }
 
-        console.log("off+lim " + parseInt(this.state.myoffset+this.state.limit))
-        console.log("Długość " + this.state.tracksListLength)
 
-        if(this.state.myoffset+this.state.limit < this.state.tracksListLength){
+        if(this.state.limit< this.state.tracksListLength-this.state.myoffset){
           nextButton = <div className="Next-Button" 
           onClick={()=>{
             const newOffset = parseInt(this.state.myoffset + this.state.limit)
             this.setState({myoffset: newOffset }); 
-            this.showSongs(this.state.url); 
+            setTimeout(()=>{this.showSongs(this.state.url)},10); 
+
           }}> NEXT </div>
         }
       }
@@ -147,6 +195,7 @@ class FindGenres extends React.Component {
           <div className="Genres-Options-Select">
           {prevButton}
           {back}
+          <button className="Back-To-Album-List" onClick={this.CategoryFromTrack.bind(this)}>PLAYLISTS</button>
           {nextButton}
           </div>
           <div className="Genres-Options-Limit-Box">

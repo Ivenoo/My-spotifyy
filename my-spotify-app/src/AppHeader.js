@@ -35,15 +35,18 @@ class AppHeader extends React.Component {
     }, 2000)
   }
 
+
+
+
   render() {
     return(
       <div className='App-Menu'>
-        <Link className={this.targetButton('/')}  onClick={() => {this.refresh()}} to="/" >Homepage</Link>
-        <Link className={this.targetButton('/findsound')}  onClick={() => {this.refresh()}} to="/findsound">Sounds</Link>
-        <Link className={this.targetButton('/findartist')} onClick={() => {this.refresh()}} to="/findartist">Artists</Link>
-        <Link className={this.targetButton('/findalbum')}  onClick={() => {this.refresh()}} to="/findalbum">Albums</Link>
-        <Link className={this.targetButton('/findgenres')} onClick={() => {this.refresh()}} to="/findgenres">Category</Link>
-        <Link className={this.targetButton('/favourite')}  onClick={() => {this.refresh()}} to="/favourite">Favourite</Link>
+        <Link className={this.targetButton('/')}  onClick={() => {this.refresh(); this.props.setMenuPhoneClick()}} to="/" >Homepage</Link>
+        <Link className={this.targetButton('/findsound')}  onClick={() => {this.refresh(); this.props.setMenuPhoneClick()}} to="/findsound">Sounds</Link>
+        <Link className={this.targetButton('/findartist')} onClick={() => {this.refresh(); this.props.setMenuPhoneClick()}} to="/findartist">Artists</Link>
+        <Link className={this.targetButton('/findalbum')}  onClick={() => {this.refresh(); this.props.setMenuPhoneClick()}} to="/findalbum">Albums</Link>
+        <Link className={this.targetButton('/findgenres')} onClick={() => {this.refresh(); this.props.setMenuPhoneClick()}} to="/findgenres">Category</Link>
+        <Link className={this.targetButton('/favourite')}  onClick={() => {this.refresh(); this.props.setMenuPhoneClick()}} to="/favourite">Favourite</Link>
           {this.updateHeader()}
         </div>  
     )
