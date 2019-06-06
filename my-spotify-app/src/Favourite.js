@@ -3,9 +3,6 @@ import axios from 'axios';
 import SingleTrack from './SingleTrack';
 import Limit from './Limit'
 
-
-
-
 class Favourite extends React.Component {
   constructor(props){
     super(props);
@@ -16,7 +13,7 @@ class Favourite extends React.Component {
     }
   }
 
-        // FUNKCJA POBIERAJACA ULUBIONE PIOSENKI PO ID (KTORE JEST W LOCAL STORAGE)//
+  // FUNKCJA POBIERAJACA ULUBIONE PIOSENKI PO ID (KTORE JEST W LOCAL STORAGE)//
   myFavouriteSongs =(e) =>{
     const ShadowScroll = document.querySelector('html');
     ShadowScroll.style.overflowY = 'hidden';
