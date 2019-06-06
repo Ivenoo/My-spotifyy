@@ -101,8 +101,12 @@ class App extends React.Component {
     }
   
     this.check()
-
-    return (   
+    if(this.state.mytoken === ''){
+      return(
+        <div></div>
+      )
+    }else{
+      return(
       <Router>
       <div className="App">
       <div className="Loader-Shadow-Box"></div>
@@ -113,7 +117,9 @@ class App extends React.Component {
         <Content action={this.state.action} mytoken={this.state.mytoken} refreshToken={this.refreshToken} getGenres={this.getGenres} typeTracks={this.state.typeTracks}/> 
       </div>
       </Router>
-    );
+      );
+    }
+
   }
 }
  
