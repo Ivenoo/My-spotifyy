@@ -1,11 +1,11 @@
 {
-  "main.js": "/My-spotify/my-spotify-app/static/js/main.d9f25105.chunk.js",
-  "main.js.map": "/My-spotify/my-spotify-app/static/js/main.d9f25105.chunk.js.map",
-  "runtime~main.js": "/My-spotify/my-spotify-app/static/js/runtime~main.75dd321a.js",
-  "runtime~main.js.map": "/My-spotify/my-spotify-app/static/js/runtime~main.75dd321a.js.map",
-  "static/js/2.cf67ae08.chunk.js": "/My-spotify/my-spotify-app/static/js/2.cf67ae08.chunk.js",
-  "static/js/2.cf67ae08.chunk.js.map": "/My-spotify/my-spotify-app/static/js/2.cf67ae08.chunk.js.map",
-  "index.html": "/My-spotify/my-spotify-app/index.html",
-  "precache-manifest.c483d21fe788daa36208045c1a51c7c4.js": "/My-spotify/my-spotify-app/precache-manifest.c483d21fe788daa36208045c1a51c7c4.js",
-  "service-worker.js": "/My-spotify/my-spotify-app/service-worker.js"
+  "main.js": "/My-spotifyy/my-spotify-app/static/js/main.8a58160d.chunk.js",
+  "main.js.map": "/My-spotifyy/my-spotify-app/static/js/main.8a58160d.chunk.js.map",
+  "runtime~main.js": "/My-spotifyy/my-spotify-app/static/js/runtime~main.3f7857c1.js",
+  "runtime~main.js.map": "/My-spotifyy/my-spotify-app/static/js/runtime~main.3f7857c1.js.map",
+  "static/js/2.ffab6d01.chunk.js": "/My-spotifyy/my-spotify-app/static/js/2.ffab6d01.chunk.js",
+  "static/js/2.ffab6d01.chunk.js.map": "/My-spotifyy/my-spotify-app/static/js/2.ffab6d01.chunk.js.map",
+  "index.html": "/My-spotifyy/my-spotify-app/index.html",
+  "precache-manifest.e2ab31db4f1c14e9ac4848c1e56b8065.js": "/My-spotifyy/my-spotify-app/precache-manifest.e2ab31db4f1c14e9ac4848c1e56b8065.js",
+  "service-worker.js": "/My-spotifyy/my-spotify-app/service-worker.js"
 }

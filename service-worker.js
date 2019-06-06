@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/My-spotify/my-spotify-app/precache-manifest.c483d21fe788daa36208045c1a51c7c4.js"
+  "/My-spotifyy/my-spotify-app/precache-manifest.e2ab31db4f1c14e9ac4848c1e56b8065.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/My-spotify/my-spotify-app/index.html", {
+workbox.routing.registerNavigationRoute("/My-spotifyy/my-spotify-app/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
