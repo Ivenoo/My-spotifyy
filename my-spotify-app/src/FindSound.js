@@ -27,6 +27,7 @@ class FindSound extends React.Component {
   this.setState({
     limit: limitValue,
   })
+  console.log(this.state.trackList.length)
   setTimeout(() => this.search(this.state.searchValue),10)
 }
     //POBIERANIE WARTOSCI INPUTA I PRZYPISYWANIE DO STANU//
@@ -64,7 +65,7 @@ class FindSound extends React.Component {
 
         const results = document.querySelector('.Title-Box-Res')
         results.style.display='none';
-        
+        const exists = document.querySelector('.exist')
       }else{
         if(this.state.trackList.length<1){
          
@@ -165,6 +166,7 @@ class FindSound extends React.Component {
     if(forTablet.matches){
         inputSearch = <input type="text" placeholder="Do you want to find a song?" className="Searching-Field" onChange={this.inputValue.bind(this)}/>
       }else{
+        console.log(forTablet)
         inputSearch = <input type="text" placeholder="Do you want to find a song? Enter its title here..." className="Searching-Field" onChange={this.inputValue.bind(this)}/>
       }
         
@@ -173,7 +175,7 @@ class FindSound extends React.Component {
       <div className="Find-Sounds">
            {this.props.check}       
            <div className="Loader-Shadow-Box-Finders"></div>
-           <div className="Loader-Finders"><img alt="sorry i can't read that img"  className="Loader-Icon" src='./img/loader.gif'/></div>
+           <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
 
         <div className="Title-Box">SEARCH</div>
         <div className="Searching-Bar"> 

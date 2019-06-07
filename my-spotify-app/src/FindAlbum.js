@@ -79,7 +79,7 @@ class FindAlbum extends React.Component {
       refresh: '',
       tracksList: [],
     })
-    if(this.state.backColor !==''&& this.state.searchValue !== []){
+    if(this.state.backColor != ''&& this.state.searchValue != []){
       const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
       backingAlbumListColor.style.background="#2b2b2b";
     }
@@ -184,7 +184,7 @@ class FindAlbum extends React.Component {
         }
         hidePlayer()
         this.showSongs(id)
-        if(this.state.backColor !== ''){
+        if(this.state.backColor != ''){
           const backingAlbumListColor = document.querySelector(`#${this.state.backColor}`)
           backingAlbumListColor.style.background="#2b2b2b";
         }
@@ -250,7 +250,7 @@ class FindAlbum extends React.Component {
     return( 
       <div className="Find-Albums">
            <div className="Loader-Shadow-Box-Finders"></div>
-           <div className="Loader-Finders"><img alt="i can't read that img" className="Loader-Icon" src='./img/loader.gif'/></div>
+           <div className="Loader-Finders"><img  className="Loader-Icon" src='./img/loader.gif'/></div>
       
 
         <div className="Title-Box">SEARCH</div>
@@ -276,7 +276,6 @@ class FindAlbum extends React.Component {
               <SingleTrack  key={index} parentElement={element} parentIndex={index}/>
               )
           }
-          return(0);
         })}
         </div>
         </div>

@@ -33,18 +33,16 @@ class SingleArtist extends React.Component {
       artistPhoto =<img src='img/default-avatar.png' className="Find-Artists-Img" alt=""/>
     }
       let genresTable = []
-    if(parentElement.genres.length !== []){
-      parentElement.genres.map((element,index) =>{
+    if(parentElement.genres.length != []){
+       {parentElement.genres.map((element,index) =>{
          if(genresTable.length < parentElement.genres.length -1 ){
           genresTable.push(` ${element}, `);
          }else{
           genresTable.push `${element}`;
          }
-         return(0);
-      })
+      })}
     }else{
       genresTable = <span>not specified </span>
-      return(0);
     }
     const parentIndex = `artist${this.props.parentIndex}`
     let artistName = '';
